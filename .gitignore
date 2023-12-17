@@ -5,6 +5,9 @@
 .cph/
 *.prob
 
+# Ignore VSCode Configurations
+.vscode/
+
 # Ignore OS generated files
 .DS_Store
 .DS_Store?
