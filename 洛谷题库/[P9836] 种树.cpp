@@ -71,7 +71,7 @@ int main() {
             ans = (long long)ans * (heap.top() + 1) % MOD,
             heap.pop();
 
-    cout << ans << endl;
+    write(ans), putchar('\n');
     fflush(stdout);
     return 0;
 }
