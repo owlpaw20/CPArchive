@@ -1,0 +1,5 @@
+# Ignore Clang-Format configuration
+.clang-format
+
+# Ignore CPH assistance files
+.cph/
