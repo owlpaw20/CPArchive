@@ -1,0 +1,52 @@
+#include <cstring>
+#include <iostream>
+
+#define endl '\n'
+
+using namespace std;
+using lng = long long;
+
+const int N = 5e5 + 10;
+
+int n, ans;
+int a[N], tmp[N];
+
+lng inversions(int l, int r) {
+    if (l >= r) return 0LL;
+    int mid = (l + r) >> 1;
+    lng ret = inversions(l, mid) + inversions(mid + 1, r);
+    int lx = l, rx = mid + 1, idx = 0;
+    while (lx <= mid && rx <= r)
+        if (a[lx] <= a[rx]) {
+            tmp[idx++] = a[lx++];
+            ret += rx - mid - 1;
+        } else
+            tmp[idx++] = a[rx++];
+    while (lx <= mid)
+        tmp[idx++] = a[lx++],
+        ret += r - mid;
+    while (rx <= r)
+        tmp[idx++] = a[rx++];
+    for (int i = l, j = 0; i <= r; i++, j++) a[i] = tmp[j];
+    return ret;
+}
+
+void solve(int n) {
+    int ans = 0;
+    memset(a, 0, sizeof a);
+    for (int i = 1; i <= n; i++) cin >> a[i];
+    cout << inversions(1, n) << endl;
+}
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    while (cin >> n) {
+        if (n == 0) break;
+        solve(n);
+    }
+
+    fflush(stdout);
+    return 0;
+}
