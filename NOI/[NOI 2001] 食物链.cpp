@@ -1,10 +1,10 @@
 #include <iostream>
-
 using namespace std;
 
 const int N = 5e4 + 10;
 
-int n, k, opt, x, y, cnt, p[N], dist[N];
+int n, k;
+int cnt, p[N], dist[N];
 
 int find_set(int x) {
     if (p[x] == x) return x;
@@ -21,13 +21,16 @@ int main() {
     for (int i = 1; i <= n; i++) p[i] = i;
 
     while (k--) {
+        int opt, x, y;
         cin >> opt >> x >> y;
+
         if (x > n || y > n) {
             cnt++;
             continue;
         }
 
-        int rx = find_set(x), ry = find_set(y);
+        int rx = find_set(x);
+        int ry = find_set(y);
         int relation = (opt == 1 ? 0 : 1);
 
         if (rx == ry) {
@@ -40,5 +43,7 @@ int main() {
     }
 
     cout << cnt << endl;
+
+    fflush(stdout);
     return 0;
 }

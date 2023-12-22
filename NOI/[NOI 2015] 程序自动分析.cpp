@@ -37,20 +37,19 @@ int main() {
     cin.tie(nullptr);
 
     cin >> T;
-
     while (T--) {
         tmp.clear();
         idx = 0;
 
         cin >> n;
-
         for (int i = 1; i <= n; i++) {
             int a, b, c;
             cin >> a >> b >> c;
             opt[i] = (Operation){(bool)c, address(a), address(b)};
         }
 
-        for (int i = 1; i <= idx; i++) p[i] = i;
+        for (int i = 1; i <= idx; i++)
+            p[i] = i;
 
         for (int i = 1; i <= n; i++)
             if (opt[i].equality == true)
@@ -63,7 +62,6 @@ int main() {
                     flag = false;
                     break;
                 }
-
         if (flag) puts("YES");
         else puts("NO");
     }
