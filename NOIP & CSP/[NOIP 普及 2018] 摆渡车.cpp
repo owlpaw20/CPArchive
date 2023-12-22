@@ -1,5 +1,7 @@
 #include <iostream>
 
+#define endl '\n'
+
 using namespace std;
 
 const int N = 4e6 + 10;
@@ -39,6 +41,8 @@ int main() {
     int ans = INF;
     for (int i = maxt; i < maxt + m; i++)
         ans = min(ans, f[i]);
+
     cout << ans << endl;
+    fflush(stdout);
     return 0;
 }
