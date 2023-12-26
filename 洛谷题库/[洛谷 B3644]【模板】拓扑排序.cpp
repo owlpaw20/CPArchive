@@ -1,8 +1,7 @@
-#include <iostream>
-#include <cstdio>
-#include <cstring>
-#include <vector>
 #include <queue>
+#include <vector>
+#include <cstring>
+#include <iostream>
 using namespace std;
 
 const int N = 1000;

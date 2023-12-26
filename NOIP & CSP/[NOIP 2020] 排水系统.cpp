@@ -1,10 +1,9 @@
-#include <cstdio>
 #include <vector>
 #include <iostream>
 #include <algorithm>  // __gcd()
 
 using namespace std;
-using lng = __int128;
+using lng = __int128_t;
 using PII = pair<lng, lng>;
 
 const int N = 1e5 + 10;
