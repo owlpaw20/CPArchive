@@ -9,21 +9,21 @@
 #define y second
 
 using namespace std;
-using dbl = double;
+using flt = double;
 using PII = pair<int, int>;
 
 const int N = 150 + 10;
-const dbl INF = DBL_MAX;
+const flt INF = DBL_MAX;
 
 int n;
 PII p[N];
-dbl g[N][N];
+flt g[N][N];
 int belong[N];
-dbl pd[N], ad[N];
+flt pd[N], ad[N];
 // pd 即 pasture dist，两个牧区之间的最短路长度的最大值
 // ad 即 area diameter，整个牧场的直径，即该牧场内所有 pd 的最大值
 
-dbl dist(PII a, PII b) {
+flt dist(PII a, PII b) {
     return sqrt((a.x - b.x) * (a.x - b.x) +
                 (a.y - b.y) * (a.y - b.y));
 }
@@ -70,7 +70,7 @@ int main() {
         ad[belong[i]] = max(ad[belong[i]], pd[i]);
     }
 
-    dbl ans = INF;
+    flt ans = INF;
     for (int i = 1; i <= n; i++)
         for (int j = i + 1; j <= n; j++)
             if (belong[i] != belong[j])
