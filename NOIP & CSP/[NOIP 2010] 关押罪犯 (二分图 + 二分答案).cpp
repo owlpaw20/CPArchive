@@ -1,5 +1,8 @@
 #include <cstring>
 #include <iostream>
+
+#define endl '\n'
+
 using namespace std;
 
 const int N = 2e4 + 10;
@@ -62,5 +65,6 @@ int main() {
     }
 
     cout << r << endl;
+    fflush(stdout);
     return 0;
 }
