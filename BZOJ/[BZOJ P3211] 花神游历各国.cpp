@@ -88,8 +88,8 @@ int main() {
         int K, l, r;
         cin >> K >> l >> r;
         if (l > r) swap(l, r);
-        if (K == 0) SGT.rangeSqrt(l, r);
         if (K == 1) cout << SGT.queryRangeSum(l, r) << '\n';
+        if (K == 2) SGT.rangeSqrt(l, r);
     }
 
     fflush(stdout);
