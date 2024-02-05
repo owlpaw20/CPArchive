@@ -7,12 +7,12 @@ const int N = 15;
 int n, mod[N], rem[N];
 ll prod = 1, Mi, ans;
 
-void exgcd(ll a, ll b, ll &x, ll &y) {
+void extend_gcd(ll a, ll b, ll &x, ll &y) {
     if (b == 0) {
         x = 1, y = 0;
         return;
     }
-    exgcd(b, a % b, y, x);
+    extend_gcd(b, a % b, y, x);
     y -= a / b * x;
 }
 
@@ -29,7 +29,7 @@ int main() {
     for (int i = 1; i <= n; i++) {
         Mi = prod / mod[i];
         ll x = 0, y = 0;
-        exgcd(Mi, mod[i], x, y);
+        extend_gcd(Mi, mod[i], x, y);
         ans += rem[i] * Mi * (x < 0 ? x + mod[i] : x);
     }
 

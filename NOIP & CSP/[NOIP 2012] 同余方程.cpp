@@ -7,13 +7,10 @@ using lng = long long;
 
 int a, b;
 
-void exgcd(lng a, lng b, lng& x, lng& y) {
-    if (b == 0)
-        return (void)(x = 1, y = 0);
-    exgcd(b, a % b, x, y);
-    lng tmp = y;
-    y = x - a / b * y;
-    x = tmp;
+void extend_gcd(lng a, lng b, lng& x, lng& y) {
+    if (b == 0) return (void)(x = 1, y = 0);
+    extend_gcd(b, a % b, y, x);
+    y -= a / b * x;
 }
 
 int main() {
@@ -22,11 +19,9 @@ int main() {
 
     cin >> a >> b;
 
-    lng x = 0, y = 0;
-    exgcd(a, b, x, y);
+    lng x, y;
+    extend_gcd(a, b, x, y);
 
     cout << (x % b + b) % b << endl;
-
-    fflush(stdout);
-    return 0;
+    return fflush(stdout), 0;
 }
