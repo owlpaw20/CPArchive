@@ -12,11 +12,11 @@ const int MOD = 1e4 + 7;
 
 template <class Type>
 class Stack {
-   private:
+  private:
     Type data[N];
     int t = 0;
 
-   public:
+  public:
     void push(Type x) { data[++t] = x; }
     void pop() { t--; }
     Type top() { return data[t]; }

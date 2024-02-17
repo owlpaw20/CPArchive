@@ -14,7 +14,7 @@ int fUp[N], fDown[N];
 void DFS(int up, int down, int i) {
     if (up + down >= ans)  // 最优性剪枝
         return;
-        
+
     if (i > n) {                    // 如果已经遍历完了所有点
         ans = min(ans, up + down);  // 则求最优解
         return;                     // 并退出搜索

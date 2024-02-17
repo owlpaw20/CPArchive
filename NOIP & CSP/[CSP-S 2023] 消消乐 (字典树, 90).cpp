@@ -10,10 +10,10 @@ const int N = 2e6 + 10;
 
 template <class Type>
 class Stack {
-   private:
+  private:
     vector<Type> data;
 
-   public:
+  public:
     Stack() {}
     Stack(int n) { data.reserve(n); }
     int size() const { return data.size(); }
@@ -32,12 +32,12 @@ class Stack {
 using STK = Stack<char>;
 
 class Trie {
-   private:
+  private:
     int tr[N][26];
     int cnt[N];
     int idx;
 
-   public:
+  public:
     void insert(const STK& st) {
         int p = 0, len = st.size();
         for (int i = 0; i < len; i++) {

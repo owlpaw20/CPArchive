@@ -92,7 +92,7 @@ struct SegTree {
 namespace TreeDecomp {
     int ed[M], nx[M], head[N], val[N], idx;
     int fa[N], pref[N], depth[N], size[N], top[N];
-    int dfn[N], nval[N], nidx;
+    int dfn[N], newval[N], timestamp;
 
     void connect(int u, int v) {
         ed[idx] = v;
@@ -121,9 +121,9 @@ namespace TreeDecomp {
 
     // 通过第二遍 DFS 来确定各个节点所属的重链及其子节点
     void DFS2(int u, int path_top) {
-        top[u] = path_top;        // 通过递归传值记录各个节点所在重链的链头
-        dfn[u] = ++nidx;      // 更新节点的 DFS 序
-        nval[nidx] = val[u];  // 并标记该节点处的权值
+        top[u] = path_top;    // 通过递归传值记录各个节点所在重链的链头
+        dfn[u] = ++timestamp;      // 更新节点的 DFS 序
+        newval[timestamp] = val[u];  // 并标记该节点处的权值
 
         if (pref[u] == 0) return;  // 如果当前节点为叶子节点则退出
 
@@ -193,7 +193,7 @@ int main() {
     DFS1(root, 0);
     DFS2(root, root);
 
-    SGT.init(nval);
+    SGT.init(newval);
     SGT.build(1, 1, n);
 
     while (m--) {

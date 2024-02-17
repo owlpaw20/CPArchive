@@ -64,7 +64,7 @@ int main() {
         else if (question_mark == 2)             // 问号在右边
             for (int i = 0; i < 26; i++)
                 ans[i] = cnt[i][0] - cnt[i][1];  // 说明左边元素及其数量更多
-        
+
         bool valid = true;
         int empty_cnt = 0;
 
