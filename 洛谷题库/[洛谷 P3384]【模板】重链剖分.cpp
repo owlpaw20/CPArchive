@@ -121,8 +121,8 @@ namespace TreeDecomp {
 
     // 通过第二遍 DFS 来确定各个节点所属的重链及其子节点
     void DFS2(int u, int path_top) {
-        top[u] = path_top;    // 通过递归传值记录各个节点所在重链的链头
-        dfn[u] = ++timestamp;      // 更新节点的 DFS 序
+        top[u] = path_top;           // 通过递归传值记录各个节点所在重链的链头
+        dfn[u] = ++timestamp;        // 更新节点的 DFS 序
         newval[timestamp] = val[u];  // 并标记该节点处的权值
 
         if (pref[u] == 0) return;  // 如果当前节点为叶子节点则退出

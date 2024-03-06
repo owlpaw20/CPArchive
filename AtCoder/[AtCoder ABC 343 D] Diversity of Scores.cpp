@@ -1,5 +1,5 @@
-#include <map>
 #include <iostream>
+#include <unordered_map>
 
 #define endl '\n'
 
@@ -10,7 +10,7 @@ const int N = 2e5 + 5;
 
 int n, T;
 i64 scores[N];
-map<i64, int> vis;
+unordered_map<i64, int> vis;
 
 int main() {
     ios::sync_with_stdio(false);
