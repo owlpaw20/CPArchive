@@ -3,12 +3,12 @@
 #define endl '\n'
 
 using namespace std;
-using lng = long long;
-using PII = pair<lng, lng>;
+using i64 = long long;
+using PII = pair<i64, i64>;
 
 const int N = 1e5 + 5;
 
-lng L, n, slope, intcp;
+i64 L, n, slope, intcp;
 PII h[N];
 
 int main() {
@@ -27,14 +27,14 @@ int main() {
     }
 
     // 函数最小值的初始值
-    lng fval = slope * h[1].first + intcp;
+    i64 fval = slope * h[1].first + intcp;
 
     // 计算函数其他段的斜率与 y 轴截距，取得最小值
     h[n + 1].first = L;
     for (int i = 1; i <= n; i++) {
         slope += 2 * h[i].second;
         intcp -= 2 * h[i].first * h[i].second;
-        lng tval = slope * h[i + 1].first + intcp;
+        i64 tval = slope * h[i + 1].first + intcp;
         if (tval > 0)
             fval = min(fval, tval);
     }

@@ -1,20 +1,20 @@
 #include <iostream>
 using namespace std;
-using lng = long long;
+using i64 = long long;
 
 const int N = 3e5 + 10;
-const lng LONGINF = 0x7FFFFFFFFFFFFFFF;
+const i64 LONGINF = 0x7FFFFFFFFFFFFFFF;
 
-lng n, m;
-lng a[N], b[N];
+i64 n, m;
+i64 a[N], b[N];
 
-lng ceil(lng a, lng b) {
+i64 ceil(i64 a, i64 b) {
     if (a % b == 0LL) return a / b;
     return a / b + 1;
 }
 
-bool check(lng x) {
-    lng cnt = 0;
+bool check(i64 x) {
+    i64 cnt = 0;
     for (int i = 1; i <= n; i++) {
         if (a[i] < b[i])
             cnt += ceil(x, b[i]);  // 能自学就全自学
@@ -35,9 +35,9 @@ int main() {
         cin >> b[i];
         a[i] = max(a[i], b[i]);
     }
-    lng l = 0, r = LONGINF, ans = 0;
+    i64 l = 0, r = LONGINF, ans = 0;
     while (l <= r) {
-        lng mid = (l + r) >> 1;
+        i64 mid = (l + r) >> 1;
         if (check(mid)) {
             ans = mid;
             l = mid + 1;

@@ -1,12 +1,12 @@
 #include <iostream>
 using namespace std;
-using lng = long long;
+using i64 = long long;
 
 const int N = 12;
 const int M = 1 << 12;
 
 int n, m;
-lng f[N][M];
+i64 f[N][M];
 bool state[M];
 
 void solve(const int& n, const int& m) {

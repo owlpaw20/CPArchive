@@ -5,15 +5,15 @@
 #define endl '\n'
 
 using namespace std;
-using lng = long long;
-using PII = pair<lng, lng>;
+using i64 = long long;
+using PII = pair<i64, i64>;
 
 const int N = 2e5 + 5;
 
-lng h;
+i64 h;
 int x, y, z;
 int ed[N], nx[N], wt[N], head[N], idx;
-lng dist[N];  // 只使用操作 2 和 3 最低能够到达的楼层，且 dist[i] % x = i
+i64 dist[N];  // 只使用操作 2 和 3 最低能够到达的楼层，且 dist[i] % x = i
 bool vis[N];
 
 void connect(int u, int v, int w) {
@@ -61,7 +61,7 @@ int main() {
 
     Dijkstra(1);
 
-    lng ans = 0;
+    i64 ans = 0;
     for (int i = 0; i < x; i++)
         if (h >= dist[i])                  // 只统计操作后仍在高度限制内的情况
             ans += (h - dist[i]) / x + 1;  // 将所有跳得到的楼层全部统计下来

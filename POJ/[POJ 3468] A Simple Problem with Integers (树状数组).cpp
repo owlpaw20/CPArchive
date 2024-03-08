@@ -3,21 +3,21 @@
 #define endl '\n'
 
 using namespace std;
-using lng = long long;
+using i64 = long long;
 
 const int N = 1e5 + 5;
 
 struct BinIdxTree {
-    lng node[N];
+    i64 node[N];
     int n;
 
-    void inc(int x, lng v) {
+    void inc(int x, i64 v) {
         for (int i = x; i <= n; i += (i & -i))
             node[i] += v;
     }
 
-    lng query(int x) {
-        lng ret = 0;
+    i64 query(int x) {
+        i64 ret = 0;
         for (int i = x; i; i -= (i & -i))
             ret += node[i];
         return ret;
@@ -27,7 +27,7 @@ struct BinIdxTree {
 int n, q;
 BinIdxTree BIT1, BIT2;
 
-lng get_prefix_sum(int x) {
+i64 get_prefix_sum(int x) {
     return BIT1.query(x) * (x + 1) - BIT2.query(x);
 }
 
@@ -40,7 +40,7 @@ int main() {
 
     for (int i = 1, p = 0, t; i <= n; i++) {
         cin >> t;
-        lng d = t - p;
+        i64 d = t - p;
         BIT1.inc(i, d);
         BIT2.inc(i, d * i);
         p = t;

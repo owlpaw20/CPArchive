@@ -6,18 +6,18 @@
 #define endl '\n'
 
 using namespace std;
-using lng = long long;
-using PII = pair<lng, int>;
+using i64 = long long;
+using PII = pair<i64, int>;
 
 const int N = 5e6 + 5;
 const int M = 6e6 + 5;
 const int INTMAX = (1LL << 31) - 1;
 
 int n;
-lng l, r;
+i64 l, r;
 vector<int> a;
 int ed[M], wt[M], nx[M], head[N], idx;
-lng dist[N];
+i64 dist[N];
 bool vis[N];
 
 void connect(int u, int v, int w) {
@@ -69,7 +69,7 @@ int main() {
 
     Dijkstra();
 
-    lng ansl = 0, ansr = 0;
+    i64 ansl = 0, ansr = 0;
     for (int i = 0; i < min_a; i++) {
         if (r >= dist[i]) ansr += (r - dist[i]) / min_a + 1;
         if (l - 1 >= dist[i]) ansl += (l - 1 - dist[i]) / min_a + 1;

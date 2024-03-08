@@ -4,9 +4,9 @@
 #define endl '\n'
 
 using namespace std;
-using lng = long long;
+using i64 = long long;
 
-lng n, m, K;
+i64 n, m, K;
 
 int main() {
     ios::sync_with_stdio(false);
@@ -14,13 +14,13 @@ int main() {
 
     cin >> n >> m >> K;
 
-    lng LCM = lcm(n, m);
-    auto check = [&](lng x) { return x / n + x / m - 2 * (x / LCM) < K; };
+    i64 LCM = lcm(n, m);
+    auto check = [&](i64 x) { return x / n + x / m - 2 * (x / LCM) < K; };
 
-    lng l = 0, r = 2e18;
+    i64 l = 0, r = 2e18;
 
     while (l < r) {
-        lng mid = (l + r) >> 1;
+        i64 mid = (l + r) >> 1;
         if (check(mid)) l = mid + 1;
         else r = mid;
     }

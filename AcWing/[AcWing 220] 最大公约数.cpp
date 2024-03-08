@@ -4,7 +4,7 @@
 #define endl '\n'
 
 using namespace std;
-using lng = long long;
+using i64 = long long;
 
 const int N = 1e7 + 5;
 
@@ -13,7 +13,7 @@ int n;
 bool not_prime[N];
 vector<int> primes;
 int phi[N];
-lng phi_sum[N];
+i64 phi_sum[N];
 
 void get_phi(int n) {
     phi[1] = 1;
@@ -48,7 +48,7 @@ int main() {
     for (int i = 2; i <= n; i++)
         phi_sum[i] = phi_sum[i - 1] + phi[i];
 
-    lng ans = 0;
+    i64 ans = 0;
     for (int p : primes)
         ans += phi_sum[n / p] * 2 + 1;
 

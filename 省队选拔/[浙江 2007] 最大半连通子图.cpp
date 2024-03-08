@@ -6,7 +6,7 @@
 #define endl '\n'
 
 using namespace std;
-using lng = long long;
+using i64 = long long;
 
 const int N = 1e5 + 5;
 const int M = 2e6 + 5;
@@ -24,7 +24,7 @@ bool in_stk[N];
 stack<int> stk;
 
 // DAG 上 DP 求最长链
-unordered_set<lng> vis;
+unordered_set<i64> vis;
 int f[N], g[N];
 
 void connect(int u, int v, int* head) {
@@ -62,7 +62,7 @@ void Tarjan(int u) {
 }
 
 // 对边进行哈希用于判重
-lng H(int x, int y) { return (lng)(x - 1) * N + y; }
+i64 H(int x, int y) { return (i64)(x - 1) * N + y; }
 
 int main() {
     ios::sync_with_stdio(false);
@@ -86,7 +86,7 @@ int main() {
     for (int i = 1; i <= n; i++)
         for (int j = head1[i]; ~j; j = nx[j]) {
             int u = scc[i], v = scc[ed[j]];
-            lng h = H(u, v);
+            i64 h = H(u, v);
             if (u != v && vis.insert(h).second)  // 对强连通分量的出边进行判重
                 connect(u, v, head2);
         }

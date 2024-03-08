@@ -3,8 +3,8 @@
 #define x first
 #define y second
 using namespace std;
-using lng = long long;
-using PII = pair<lng, lng>;
+using i64 = long long;
+using PII = pair<i64, i64>;
 
 const int N = 2.5e3 + 10;
 
@@ -43,7 +43,7 @@ int main() {
             pre[i][j] += pre[i - 1][j] + pre[i][j - 1] - pre[i - 1][j - 1];
 
     // 计算答案
-    lng ans = 0;
+    i64 ans = 0;
     for (int i = 1; i <= n; i++)
         for (int j = i; j <= n; j++) {
             int top = min(cow[i].x, cow[j].x);

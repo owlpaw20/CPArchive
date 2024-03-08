@@ -1,7 +1,7 @@
 #include <vector>
 #include <iostream>
 using namespace std;
-using lng = long long;
+using i64 = long long;
 
 namespace FastIO {
     int read() {
@@ -48,7 +48,7 @@ void DFS(int u) {
             one[u]++;
         if (!vis[v]) DFS(v);
         f[u] = (f[u] + f[v]) % MOD;
-        f[u] = (f[u] + (lng)zero[v] * one[u] % MOD) % MOD;
+        f[u] = (f[u] + (i64)zero[v] * one[u] % MOD) % MOD;
         zero[u] = (zero[u] + zero[v]) % MOD;
         one[u] = (one[u] + one[v]) % MOD;
     }

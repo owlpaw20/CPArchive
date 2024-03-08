@@ -5,7 +5,7 @@
 #define endl '\n'
 
 using namespace std;
-using lng = long long;
+using i64 = long long;
 
 const int N = 1e6 + 5;
 const int Q = 1e3 + 5;
@@ -13,7 +13,7 @@ const int Q = 1e3 + 5;
 bool not_prime[N];
 vector<int> prime;
 int phi[N];
-lng phi_sum[N];
+i64 phi_sum[N];
 
 int n;
 int q[Q];

@@ -2,16 +2,16 @@
 #include <iostream>
 
 using namespace std;
-using lng = long long;
+using i64 = long long;
 
 const int N = 1e6 + 10;
 const int M = 8e4 + 10;  // [1, 1e6] 上共有 78498 个素数
 const int MOD = 666623333;
 
-lng l, r;
+i64 l, r;
 bool not_prime[N];
-lng vis[N], phi[N];
-vector<lng> primes;
+i64 vis[N], phi[N];
+vector<i64> primes;
 
 void prep() {
     primes.reserve(M);
@@ -28,22 +28,22 @@ int main() {
     prep();
 
     cin >> l >> r;
-    for (lng i = l; i <= r; i++)
+    for (i64 i = l; i <= r; i++)
         vis[i - l] = i, phi[i - l] = i;
 
-    for (lng p : primes) {
+    for (i64 p : primes) {
         if (p * p > r) break;
-        lng start = l;
+        i64 start = l;
         if (l % p) start = l / p * p + p;
-        for (lng i = start; i <= r; i += p) {
+        for (i64 i = start; i <= r; i += p) {
             phi[i - l] = phi[i - l] / p * (p - 1);
             while (vis[i - l] % p == 0)
                 vis[i - l] /= p;
         }
     }
 
-    lng ans = 0;
-    for (lng i = l; i <= r; i++) {
+    i64 ans = 0;
+    for (i64 i = l; i <= r; i++) {
         if (vis[i - l] > 1)
             phi[i - l] = phi[i - l] / vis[i - l] * (vis[i - l] - 1);
         ans = (ans + (i - phi[i - l]) % MOD) % MOD;

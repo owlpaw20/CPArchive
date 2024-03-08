@@ -4,7 +4,7 @@
 #define endl '\n'
 
 using namespace std;
-using lng = long long;
+using i64 = long long;
 using Matrix = array<array<int, 2>, 2>;
 
 int n, m;
@@ -14,7 +14,7 @@ Matrix operator*(const Matrix& A, const Matrix& B) {
     for (int i = 0; i < 2; i++)
         for (int j = 0; j < 2; j++)
             for (int k = 0; k < 2; k++)
-                C[i][j] = (((lng)C[i][j] + (lng)A[i][k] * B[k][j]) % m + m) % m;
+                C[i][j] = (((i64)C[i][j] + (i64)A[i][k] * B[k][j]) % m + m) % m;
     return C;
 }
 

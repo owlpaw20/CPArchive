@@ -1,7 +1,7 @@
 #include <iostream>
 
 using namespace std;
-using lng = long long;
+using i64 = long long;
 
 const int N = 1e5 + 10;
 
@@ -19,7 +19,7 @@ struct Queue {
 };
 
 int n, k, e[N];
-lng pre[N], f[N], d[N];
+i64 pre[N], f[N], d[N];
 
 int main() {
     ios::sync_with_stdio(false);

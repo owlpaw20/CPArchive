@@ -3,7 +3,7 @@
 #define endl '\n'
 
 using namespace std;
-using lng = long long;
+using i64 = long long;
 
 int n;
 
@@ -23,7 +23,7 @@ int main() {
     cin >> n;
     for (int i = 2; i <= n; i++)
         if (is_prime(i)) {
-            lng fact = i;
+            i64 fact = i;
             int exp = 0;
             while (fact <= n)
                 exp += n / fact, fact *= i;

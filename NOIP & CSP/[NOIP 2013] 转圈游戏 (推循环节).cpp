@@ -4,7 +4,7 @@
 #define endl '\n'
 
 using namespace std;
-using lng = long long;
+using i64 = long long;
 
 int n, m, K, x;
 vector<int> loop;
@@ -24,9 +24,9 @@ int main() {
     int l = K / 10;
     int r = K % 10;
     int len = loop.size();
-    lng q = 1;
+    i64 q = 1;
 
-    for (int i = 1; i <= l; i++) q = q * (lng)1e10 % len;
+    for (int i = 1; i <= l; i++) q = q * (i64)1e10 % len;
     for (int i = 1; i <= r; i++) q = q * 10 % len;
 
     cout << loop[q] << endl;

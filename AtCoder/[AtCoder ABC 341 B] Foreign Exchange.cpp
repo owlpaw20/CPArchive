@@ -3,12 +3,12 @@
 #define endl '\n'
 
 using namespace std;
-using lng = long long;
+using i64 = long long;
 
 const int N = 2e5 + 5;
 
 int n;
-lng a[N], s[N], t[N];
+i64 a[N], s[N], t[N];
 
 int main() {
     ios::sync_with_stdio(false);
@@ -19,7 +19,7 @@ int main() {
     for (int i = 1; i < n; i++) cin >> s[i] >> t[i];
 
     for (int i = 1; i < n; i++) {
-        lng k = a[i] / s[i];
+        i64 k = a[i] / s[i];
         a[i + 1] += t[i] * k;
     }
 

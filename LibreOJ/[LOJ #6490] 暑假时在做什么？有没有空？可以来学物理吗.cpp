@@ -5,14 +5,14 @@
 #define endl '\n'
 
 using namespace std;
-using lng = long long;
+using i64 = long long;
 
 const int N = 1e5 + 5;
 const int M = 20;
 
 struct SparseTable {
-    lng mx[N][M];
-    lng mn[N][M];
+    i64 mx[N][M];
+    i64 mn[N][M];
 
     int log2(int x) {
         int exp = 0;
@@ -21,7 +21,7 @@ struct SparseTable {
         return exp;
     }
 
-    void init(int x, lng* v) {
+    void init(int x, i64* v) {
         for (int i = 0; i <= x; i++)
             mx[i][0] = mn[i][0] = v[i];
         for (int j = 1; 1 << j <= x; j++)
@@ -31,13 +31,13 @@ struct SparseTable {
             }
     }
 
-    lng query_max(int l, int r) {
+    i64 query_max(int l, int r) {
         if (l > r) return INT_MIN;
         int t = log2(r - l + 1);
         return max(mx[l][t], mx[r - (1 << t) + 1][t]);
     }
 
-    lng query_min(int l, int r) {
+    i64 query_min(int l, int r) {
         if (l > r) return INT_MAX;
         int t = log2(r - l + 1);
         return min(mn[l][t], mn[r - (1 << t) + 1][t]);
@@ -46,7 +46,7 @@ struct SparseTable {
 
 int n, L, R;
 int a[N];
-lng ans[N], p[N];
+i64 ans[N], p[N];
 SparseTable ST;
 
 void solve(int l, int r) {
@@ -54,7 +54,7 @@ void solve(int l, int r) {
 
     if (l == r) {
         if (L == 1)
-            ans[l] = max(ans[l], (lng)a[l]);
+            ans[l] = max(ans[l], (i64)a[l]);
         return;
     }
 
@@ -62,7 +62,7 @@ void solve(int l, int r) {
 
     solve(l, mid), solve(mid + 1, r);
 
-    lng pre = LLONG_MIN, suf = LLONG_MIN;
+    i64 pre = LLONG_MIN, suf = LLONG_MIN;
 
     for (int i = l; i <= mid; i++) {
         int x = i + L - 1;

@@ -3,14 +3,14 @@
 #include <unordered_map>
 
 using namespace std;
-using lng = long long;
+using i64 = long long;
 
 int n;
-unordered_map<lng, lng> factors;
+unordered_map<i64, i64> factors;
 
-lng factor(lng x) {
-    lng lmt = sqrt(x), ans = 1;
-    for (lng i = 2; i <= lmt; i++) {
+i64 factor(i64 x) {
+    i64 lmt = sqrt(x), ans = 1;
+    for (i64 i = 2; i <= lmt; i++) {
         int exp = 0;
         while (x % i == 0) exp++, x /= i;
         if (i % 4 == 1) ans *= exp * 2 + 1;

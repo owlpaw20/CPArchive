@@ -4,7 +4,7 @@
 #define endl '\n'
 
 using namespace std;
-using lng = long long;
+using i64 = long long;
 
 const int N = 3e2 + 5;
 
@@ -22,7 +22,7 @@ int main() {
     while (cin >> n >> m, n || m) {
         if (n > m) swap(n, m);
 
-        lng ans = 0;
+        i64 ans = 0;
 
         for (int i = 1; i < n; i++)
             for (int j = 1; j < m; j++) {

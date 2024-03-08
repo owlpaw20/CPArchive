@@ -4,13 +4,13 @@
 #define endl '\n'
 
 using namespace std;
-using lng = long long;
+using i64 = long long;
 using Matrix = vector<vector<int>>;
 
 const int MOD = 1e9 + 7;
 
 int n;
-lng k;
+i64 k;
 Matrix A;
 
 Matrix operator*(const Matrix& A, const Matrix& B) {
@@ -18,11 +18,11 @@ Matrix operator*(const Matrix& A, const Matrix& B) {
     for (int i = 0; i < n; i++)
         for (int j = 0; j < n; j++)
             for (int k = 0; k < n; k++)
-                ret[i][j] = (((lng)ret[i][j] + (lng)A[i][k] * B[k][j]) % MOD + MOD) % MOD;
+                ret[i][j] = (((i64)ret[i][j] + (i64)A[i][k] * B[k][j]) % MOD + MOD) % MOD;
     return ret;
 }
 
-Matrix power(Matrix A, lng k) {
+Matrix power(Matrix A, i64 k) {
     Matrix ret(n, vector<int>(n, 0));
     for (int i = 0; i < n; i++) ret[i][i] = 1;
 

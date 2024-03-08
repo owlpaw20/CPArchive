@@ -7,7 +7,7 @@
 #define endl '\n'
 
 using namespace std;
-using lng = long long;
+using i64 = long long;
 using PII = pair<int, int>;
 using pair_heap = __gnu_pbds::priority_queue<PII, greater<PII>, __gnu_pbds::pairing_heap_tag>;
 
@@ -62,10 +62,10 @@ int main() {
         connect(v, u, w);
     }
 
-    lng ans = INF;
+    i64 ans = INF;
     for (int i = 1; i <= m; i++) {
         Dijkstra(i);
-        lng sum = 0;
+        i64 sum = 0;
         for (int j : where)
             sum += dist[j];
         if (sum >= INF) continue;

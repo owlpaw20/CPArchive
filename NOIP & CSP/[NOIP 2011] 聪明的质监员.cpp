@@ -2,22 +2,22 @@
 #include <iostream>
 
 using namespace std;
-using lng = long long;
+using i64 = long long;
 
 const int N = 2e5 + 10;
 const int INF = 0x7fffffff;
-const lng LINF = 0x7fffffffffffffff;
+const i64 LINF = 0x7fffffffffffffff;
 
 int n, m;
 int w[N], v[N];
 int p[N], q[N];
-lng pn[N], pv[N];
-lng s, ans = LINF;
+i64 pn[N], pv[N];
+i64 s, ans = LINF;
 
-lng absolute(lng x) { return (x < 0 ? -x : x); }
+i64 absolute(i64 x) { return (x < 0 ? -x : x); }
 
 bool check(int x) {
-    lng y = 0;
+    i64 y = 0;
     for (int i = 1; i <= n; i++) {
         pn[i] = pn[i - 1] + (w[i] >= x ? 1 : 0);
         pv[i] = pv[i - 1] + (w[i] >= x ? v[i] : 0);
@@ -26,7 +26,7 @@ bool check(int x) {
     for (int i = 1; i <= m; i++)
         y += (pn[q[i]] - pn[p[i] - 1]) * (pv[q[i]] - pv[p[i] - 1]);
 
-    lng delta = absolute(y - s);
+    i64 delta = absolute(y - s);
     ans = min(ans, delta);
 
     if (y > s) return true;

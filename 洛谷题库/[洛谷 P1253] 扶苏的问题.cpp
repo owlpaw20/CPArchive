@@ -6,12 +6,12 @@
 #define INF LONG_LONG_MIN
 
 using namespace std;
-using lng = long long;
+using i64 = long long;
 
 struct SegTree {
     struct Node {
         int l, r;
-        lng Max, alt, add;
+        i64 Max, alt, add;
     };
 
     vector<int> array;
@@ -61,7 +61,7 @@ struct SegTree {
         maintain(u);
     }
 
-    void alter(int l, int r, lng val, int u = 1) {
+    void alter(int l, int r, i64 val, int u = 1) {
         int tl = tree[u].l, tr = tree[u].r;
         if (tl >= l && tr <= r) {
             tree[u].add = 0LL;
@@ -76,7 +76,7 @@ struct SegTree {
         maintain(u);
     }
 
-    void increase(int l, int r, lng delta, int u = 1) {
+    void increase(int l, int r, i64 delta, int u = 1) {
         int tl = tree[u].l, tr = tree[u].r;
         if (tl >= l && tr <= r) {
             tree[u].add += delta;
@@ -90,13 +90,13 @@ struct SegTree {
         maintain(u);
     }
 
-    lng query(int l, int r, int u = 1) {
+    i64 query(int l, int r, int u = 1) {
         int tl = tree[u].l, tr = tree[u].r;
         if (tl >= l && tr <= r)
             return tree[u].Max;
         propagate(u);
         int mid = (tl + tr) >> 1;
-        lng ret = INF;
+        i64 ret = INF;
         if (l <= mid) ret = max(ret, query(l, r, u << 1));
         if (r > mid) ret = max(ret, query(l, r, u << 1 | 1));
         return ret;

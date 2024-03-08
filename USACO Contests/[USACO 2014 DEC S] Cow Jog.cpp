@@ -3,12 +3,12 @@
 #include <iostream>
 
 using namespace std;
-using lng = long long;
+using i64 = long long;
 using COW = tuple<int, int>;
 
 int n;
-lng T;
-vector<lng> lst;
+i64 T;
+vector<i64> lst;
 vector<COW> cows;
 
 int main() {

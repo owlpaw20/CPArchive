@@ -4,7 +4,7 @@
 #define endl '\n'
 
 using namespace std;
-using lng = long long;
+using i64 = long long;
 
 const int N = 15;
 
@@ -27,7 +27,7 @@ int main() {
         int b_cnt = (1LL << 31) - 1;
 
         for (int j = 1; j <= n; j++) {
-            if ((lng)a[j] * i > qty[j]) {
+            if ((i64)a[j] * i > qty[j]) {
                 flag = false;
                 break;
             }

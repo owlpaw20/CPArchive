@@ -1,20 +1,20 @@
 #include <iostream>
 using namespace std;
-using lng = long long;
+using i64 = long long;
 
 const int N = 1e5 + 5;
 
 int n, m;
 int tr[N];
 
-lng lowbit(lng x) { return x & (-x); }
-void update(lng x, lng delta) {
-    for (lng i = x; i <= n; i += lowbit(i))
+i64 lowbit(i64 x) { return x & (-x); }
+void update(i64 x, i64 delta) {
+    for (i64 i = x; i <= n; i += lowbit(i))
         tr[i] += delta;
 }
-lng query(lng x) {
-    lng ret = 0;
-    for (lng i = x; i; i -= lowbit(i))
+i64 query(i64 x) {
+    i64 ret = 0;
+    for (i64 i = x; i; i -= lowbit(i))
         ret += tr[i];
     return ret % 2LL;
 }

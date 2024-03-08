@@ -3,7 +3,7 @@
 #define endl '\n'
 
 using namespace std;
-using lng = long long;
+using i64 = long long;
 
 const int N = 1e5 + 10;
 
@@ -13,7 +13,7 @@ int a[N];
 struct SegTree {
     struct Node {
         int l, r;
-        lng total, add, mul;
+        i64 total, add, mul;
     } tree[4 * N];
 
     void maintain(int u) {
@@ -54,7 +54,7 @@ struct SegTree {
         maintain(u);
     }
 
-    void multiply(int u, int l, int r, lng mtpr) {
+    void multiply(int u, int l, int r, i64 mtpr) {
         int tl = tree[u].l, tr = tree[u].r;
         if (tl >= l && tr <= r) {
             tree[u].add = tree[u].add * mtpr % p;
@@ -69,7 +69,7 @@ struct SegTree {
         maintain(u);
     }
 
-    void increase(int u, int l, int r, lng delta) {
+    void increase(int u, int l, int r, i64 delta) {
         int tl = tree[u].l, tr = tree[u].r;
         if (tl >= l && tr <= r) {
             tree[u].add = (tree[u].add + delta) % p;
@@ -83,12 +83,12 @@ struct SegTree {
         maintain(u);
     }
 
-    lng query(int u, int l, int r) {
+    i64 query(int u, int l, int r) {
         int tl = tree[u].l, tr = tree[u].r;
         if (tl >= l && tr <= r)
             return tree[u].total;
         propagate(u);
-        lng ret = 0;
+        i64 ret = 0;
         int mid = (tl + tr) >> 1;
         if (l <= mid) ret = (ret + query(2 * u, l, r)) % p;
         if (r > mid) ret = (ret + query(2 * u + 1, l, r)) % p;

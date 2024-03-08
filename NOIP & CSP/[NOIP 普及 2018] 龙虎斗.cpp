@@ -1,12 +1,12 @@
 #include <cstdlib>
 #include <iostream>
 using namespace std;
-using lng = long long;
+using i64 = long long;
 
 const int N = 1e5 + 10;
 
-lng n, m, p1, s1, p2, s2, c[N];
-lng p[N], A, B;
+i64 n, m, p1, s1, p2, s2, c[N];
+i64 p[N], A, B;
 
 int main() {
     ios::sync_with_stdio(false), cin.tie(nullptr);
@@ -14,7 +14,7 @@ int main() {
     for (int i = 1; i <= n; i++) cin >> c[i];
     cin >> m >> p1 >> s1 >> s2;
     c[p1] += s1;
-    lng pos = m;
+    i64 pos = m;
     for (int i = 1; i <= n; i++) {
         p[i] = c[i] * abs(m - i);
         if (i < m)
@@ -22,9 +22,9 @@ int main() {
         else if (i > m)
             B += p[i];
     }
-    lng diff = abs(A - B);
+    i64 diff = abs(A - B);
     for (int i = 1; i <= n; i++) {
-        lng a = A, b = B;
+        i64 a = A, b = B;
         if (i < m)
             a += s2 * abs(i - m);
         else if (i > m)

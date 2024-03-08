@@ -1,44 +1,54 @@
 #include <iostream>
 
-using namespace std;
-using lng = long long;
+#define endl '\n'
 
-const int N = 2e5 + 10;
+using std::cin;
+using std::cout;
 
-lng n, q, s, t, ans;
-lng pre, tmp, d[N];
+using i64 = long long;
 
-lng alt(int x) {
-    if (d[x] > 0) return -d[x] * s;
-    return -d[x] * t;
+const int MAX_N = 2e5 + 5;
+
+int N, Q, S, T;
+i64 delta[MAX_N];
+
+i64 alter(i64 i) {
+    if (delta[i] > 0) return -delta[i] * S;
+    return -delta[i] * T;
 }
 
 int main() {
-    ios::sync_with_stdio(false);
+    std::ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    cin >> n >> q >> s >> t >> pre;
+    int last = 0;
+    i64 ans = 0;
 
-    for (int i = 1; i <= n; i++) {
-        cin >> tmp;
-        d[i] = tmp - pre;
-        pre = tmp;
-        ans += alt(i);
+    cin >> N >> Q >> S >> T >> last;
+
+    for (int i = 1, curr; i <= N; i++) {
+        cin >> curr;
+        delta[i] = curr - last;
+        ans += alter(i);
+        last = curr;
     }
 
-    while (q--) {
-        int l, r, x;
-        cin >> l >> r >> x;
-        ans -= alt(l);
-        d[l] += x;
-        ans += alt(l);
-        if (r < n) {
-            ans -= alt(r + 1);
-            d[r + 1] -= x;
-            ans += alt(r + 1);
+    while (Q--) {
+        int L, R, X;
+        cin >> L >> R >> X;
+
+        ans -= alter(L);
+        delta[L] += X;
+        ans += alter(L);
+
+        if (R < N) {
+            ans -= alter(R + 1);
+            delta[R + 1] -= X;
+            ans += alter(R + 1);
         }
+
         cout << ans << endl;
     }
 
-    return 0;
+    return fflush(stdout), 0;
 }

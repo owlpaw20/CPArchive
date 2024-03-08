@@ -14,14 +14,14 @@
 #define endl '\n'
 
 using namespace std;
-using lng = long long;
-using PII = pair<lng, int>;
+using i64 = long long;
+using PII = pair<i64, int>;
 
 const int N = 1e5 + 5;
 
 int n, m, K;
 int city[N];
-lng dist[N];
+i64 dist[N];
 bool vis[N];
 vector<vector<PII>> graph;
 
@@ -39,7 +39,7 @@ void input() {
     for (int i = 1; i <= K; i++) cin >> city[i];
 }
 
-lng Dijkstra(int st, int fn) {
+i64 Dijkstra(int st, int fn) {
     memset(vis, 0, sizeof vis);
     memset(dist, 0x3F, sizeof dist);
 
@@ -62,7 +62,7 @@ lng Dijkstra(int st, int fn) {
 }
 
 void solve() {
-    lng ans = (1ULL << 63) - 1;
+    i64 ans = (1ULL << 63) - 1;
 
     vector<vector<PII>> tmp(graph);
     int va = n + 1, vb = n + 2;  // 建立两组节点的虚拟源点

@@ -1,21 +1,21 @@
 #include <iostream>
 using namespace std;
-using lng = long long;
+using i64 = long long;
 
 const int N = 2e5 + 10;
 
 int n, m;
-lng a[N];
+i64 a[N];
 
 struct Fenwick {
-    lng tr[N];
+    i64 tr[N];
     int lowbit(int x) { return x & -x; }
-    void update(int x, lng delta) {
+    void update(int x, i64 delta) {
         for (int i = x; i <= n; i += lowbit(i))
             tr[i] += delta;
     }
-    lng query(int x) {
-        lng ret = 0;
+    i64 query(int x) {
+        i64 ret = 0;
         for (int i = x; i; i -= lowbit(i))
             ret += tr[i];
         return ret;
@@ -24,7 +24,7 @@ struct Fenwick {
 
 Fenwick tr1, tr2;
 
-lng prefix(int x) { return tr1.query(x) * (x + 1) - tr2.query(x); }
+i64 prefix(int x) { return tr1.query(x) * (x + 1) - tr2.query(x); }
 
 int main() {
     ios::sync_with_stdio(false);
@@ -33,13 +33,13 @@ int main() {
     cin >> n >> m;
     for (int i = 1; i <= n; i++) {
         cin >> a[i];
-        lng d = a[i] - a[i - 1];
+        i64 d = a[i] - a[i - 1];
         tr1.update(i, d);
         tr2.update(i, d * i);
     }
 
     int opt, l, r;
-    lng d;
+    i64 d;
     while (m--) {
         cin >> opt;
         if (opt == 1) {

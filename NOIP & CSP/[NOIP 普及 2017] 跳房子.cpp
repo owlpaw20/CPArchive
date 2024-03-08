@@ -2,18 +2,18 @@
 #include <iostream>
 
 using namespace std;
-using lng = long long;
+using i64 = long long;
 
 const int N = 500000 + 10;
-const lng NINF = 0xcfcfcfcfcfcfcfcf;
+const i64 NINF = 0xcfcfcfcfcfcfcfcf;
 
 int n, d, k;
-lng x[N], s[N], f[N];
+i64 x[N], s[N], f[N];
 
-bool check(lng g) {
+bool check(i64 g) {
     for (int i = 1; i <= n; i++) f[i] = NINF;
     f[0] = 0;
-    lng l = d - g, r = d + g;
+    i64 l = d - g, r = d + g;
     if (l <= 0) l = 1;
     for (int i = 1; i <= n; i++) {
         for (int j = i - 1; ~j; j--)

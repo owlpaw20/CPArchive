@@ -5,7 +5,7 @@
 #define endl '\n'
 
 using namespace std;
-using lng = long long;
+using i64 = long long;
 using PII = pair<int, int>;
 
 const int N = 1e5 + 5;
@@ -33,7 +33,7 @@ int main() {
         que[p].pop();
 
         int len = num + q * i;
-        int sub1 = (lng)u * len / v;
+        int sub1 = (i64)u * len / v;
         int sub2 = len - sub1;
 
         que[1].push(sub1 - q - q * i);

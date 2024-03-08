@@ -3,7 +3,7 @@
 #define endl '\n'
 
 using namespace std;
-using lng = long long;
+using i64 = long long;
 
 const int N = 2e5 + 5;
 
@@ -13,8 +13,8 @@ int path[N];
 struct SegTree {
     struct {
         int l, r;
-        lng sum, cnt;
-        lng tag_sum, tag_cnt;
+        i64 sum, cnt;
+        i64 tag_sum, tag_cnt;
     } node[N << 2];
 
     void propagate(int u) {
@@ -99,7 +99,7 @@ int main() {
 
     for (int i = 1; i <= m; i++) cin >> path[i];
 
-    lng len = 0;
+    i64 len = 0;
 
     for (int i = 1; i < m; i++) {
         int st = min(path[i], path[i + 1]);
@@ -115,11 +115,11 @@ int main() {
         }
     }
 
-    lng ans = (1ULL << 63) - 1;
+    i64 ans = (1ULL << 63) - 1;
 
     for (int i = 1; i <= n; i++) {
         auto [l, r, sum, cnt, tgs, tgc] = SGT.query(1, i);
-        ans = min(ans, len - sum + (lng)n * cnt - sum);
+        ans = min(ans, len - sum + (i64)n * cnt - sum);
     }
 
     cout << ans << endl;

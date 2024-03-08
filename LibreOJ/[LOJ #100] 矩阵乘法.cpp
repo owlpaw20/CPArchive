@@ -4,7 +4,7 @@
 #define endl '\n'
 
 using namespace std;
-using lng = long long;
+using i64 = long long;
 using Matrix = vector<vector<int>>;
 
 const int MOD = 1e9 + 7;
@@ -17,7 +17,7 @@ Matrix operator*(const Matrix& A, const Matrix& B) {
     for (int i = 0; i < n; i++)
         for (int j = 0; j < p; j++)
             for (int k = 0; k < m; k++)
-                ret[i][k] = (((lng)ret[i][k] + (lng)A[i][j] * B[j][k]) % MOD + MOD) % MOD;
+                ret[i][k] = (((i64)ret[i][k] + (i64)A[i][j] * B[j][k]) % MOD + MOD) % MOD;
     return ret;
 }
 

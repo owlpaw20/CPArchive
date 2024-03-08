@@ -3,7 +3,7 @@
 #define endl '\n'
 
 using namespace std;
-using lng = long long;
+using i64 = long long;
 
 const int N = 50;
 const int M = 95;
@@ -11,7 +11,7 @@ const int MOD = 998244353;
 
 int n, m, K;
 int a[N][N], b[N][N];
-lng f[2][N][N][N][M];
+i64 f[2][N][N][N][M];
 // f[x][y][l][z][p] 表示从 (1, 1) 到 (x, y) 时购买 l 张 L 公司票、z 张 Z 公司票且有 p 元钱的方案数
 
 int main() {
@@ -36,7 +36,7 @@ int main() {
             for (int l = 0; l < n; l++)
                 for (int z = 0; z < m; z++)
                     for (int p = 0; p <= K; p++) {
-                        lng& st = f[cur][y][l][z][p];
+                        i64& st = f[cur][y][l][z][p];
 
                         // 从当前位置的上方转移到当前位置，用一张 L 票
                         if (x > 1) st += f[cur ^ 1][y][l + 1][z][p];

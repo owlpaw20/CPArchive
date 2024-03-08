@@ -1,12 +1,12 @@
 #include <iostream>
 using namespace std;
-using lng = long long;
+using i64 = long long;
 
 const int N = 5e5 + 10;
 
 int n, q, m;
-lng a[N], b[N], c[N], p[N];
-lng pre_b[N], f[N], g[N];
+i64 a[N], b[N], c[N], p[N];
+i64 pre_b[N], f[N], g[N];
 // f[i] 表示使 1 ~ p[i] 的元素从全为 1 改变到满足条件所需的最小代价
 // g[i] 表示使 1 ~ p[i] 的元素从全为 0 改变到满足条件所需的最小代价
 

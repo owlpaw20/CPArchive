@@ -3,7 +3,7 @@
 #define endl '\n'
 
 using namespace std;
-using lng = long long;
+using i64 = long long;
 
 const int primes[] = {2, 3, 5, 7, 11, 13, 17, 19, 23};
 // 2 * 3 * 5 * ... * 23 * 29 > 2e9
@@ -23,7 +23,7 @@ void DFS(int prime_idx, int factor_cnt, int exp, int num) {
 
     // 遍历当前质因子取多少为指数，确保指数不单增
     for (int i = 1; i <= exp; i++) {
-        if ((lng)num * primes[prime_idx] > n) break;
+        if ((i64)num * primes[prime_idx] > n) break;
         num *= primes[prime_idx];  // 计算再乘上质因子之后的数
         DFS(prime_idx + 1, factor_cnt * (i + 1), exp, num);
     }

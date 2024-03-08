@@ -4,11 +4,11 @@
 #define endl '\n'
 
 using namespace std;
-using lng = long long;
+using i64 = long long;
 
 namespace FastIO {
-    lng read() {
-        lng x = 0, f = 1;
+    i64 read() {
+        i64 x = 0, f = 1;
         char ch = getchar();
         while (ch < '0' || ch > '9') {
             if (ch == '-')
@@ -19,7 +19,7 @@ namespace FastIO {
             x = x * 10 + (ch ^ 48), ch = getchar();
         return x * f;
     }
-    void write(lng x) {
+    void write(i64 x) {
         if (x < 0) putchar('-'), x = -x;
         if (x > 9) write(x / 10);
         putchar(x % 10 + '0');
@@ -35,7 +35,7 @@ struct SegTreeBeats {
         int max1, max2, maxt, maxcnt;
         int min1, min2, mint, mincnt;
         int addt;
-        lng sum;
+        i64 sum;
     } node[N << 2];
 
     int n, a[N];
@@ -206,7 +206,7 @@ struct SegTreeBeats {
         maintain(u);
     }
 
-    lng query_sum(int u, int l, int r) {
+    i64 query_sum(int u, int l, int r) {
         int nl = node[u].l, nr = node[u].r;
         if (nl >= l && nr <= r)
             return node[u].sum;
@@ -214,7 +214,7 @@ struct SegTreeBeats {
         propagate(u);
 
         int mid = (nl + nr) >> 1;
-        lng sum = 0;
+        i64 sum = 0;
 
         if (l <= mid) sum += query_sum(u << 1, l, r);
         if (r > mid) sum += query_sum(u << 1 | 1, l, r);

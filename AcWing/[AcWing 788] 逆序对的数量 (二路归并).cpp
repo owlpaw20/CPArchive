@@ -1,15 +1,15 @@
 #include <iostream>
 using namespace std;
-using lng = long long;
+using i64 = long long;
 
 const int N = 1e5 + 10;
 
 int n, a[N], tmp[N];
 
-lng inversions(int l, int r) {
+i64 inversions(int l, int r) {
     if (l >= r) return 0LL;
     int mid = (l + r) >> 1;
-    lng ret = inversions(l, mid) + inversions(mid + 1, r);
+    i64 ret = inversions(l, mid) + inversions(mid + 1, r);
     int lx = l, rx = mid + 1, idx = 0;
     while (lx <= mid && rx <= r)
         if (a[lx] <= a[rx]) {

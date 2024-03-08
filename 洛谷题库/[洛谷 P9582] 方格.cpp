@@ -1,6 +1,6 @@
 #include <iostream>
 using namespace std;
-using lng = long long;
+using i64 = long long;
 
 const int N = 2e3 + 10;
 const int dx[] = {0, 1, -1, 0};
@@ -15,7 +15,7 @@ int main() {
     for (int i = 1; i <= n; i++)
         for (int j = 1; j <= m; j++)
             cin >> mp[i][j], flag[mp[i][j]]++;
-    lng ans = 0;
+    i64 ans = 0;
     for (int i = 1; i <= 9; i++)
         ans += 1ll * flag[i] * (flag[i] - 1);
     for (int i = 1; i <= n; i++)

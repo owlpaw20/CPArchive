@@ -2,7 +2,7 @@
 #include <iostream>
 #include <unordered_map>
 using namespace std;
-using lng = long long;
+using i64 = long long;
 
 int T = 10;
 

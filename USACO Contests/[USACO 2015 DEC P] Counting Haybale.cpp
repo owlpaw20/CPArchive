@@ -2,12 +2,12 @@
 #include <climits>
 #include <iostream>
 using namespace std;
-using lng = long long;
+using i64 = long long;
 
 struct SegTree {
     struct Node {
         int l, r;
-        lng Min, sum, add;
+        i64 Min, sum, add;
     };
     vector<int> array;
     vector<Node> tree;
@@ -44,7 +44,7 @@ struct SegTree {
         build(mid + 1, r, u << 1 | 1);
         maintain(u);
     }
-    void update(int l, int r, lng delta, int u = 1) {
+    void update(int l, int r, i64 delta, int u = 1) {
         int tl = tree[u].l, tr = tree[u].r;
         if (tl >= l && tr <= r) {
             tree[u].add += delta;
@@ -58,23 +58,23 @@ struct SegTree {
         if (r > mid) update(l, r, delta, u << 1 | 1);
         maintain(u);
     }
-    lng get_min(int l, int r, int u = 1) {
+    i64 get_min(int l, int r, int u = 1) {
         int tl = tree[u].l, tr = tree[u].r;
         if (tl >= l && tr <= r)
             return tree[u].Min;
         propagate(u);
-        lng ret = INT_MAX;
+        i64 ret = INT_MAX;
         int mid = (tl + tr) >> 1;
         if (l <= mid) ret = min(ret, get_min(l, r, u << 1));
         if (r > mid) ret = min(ret, get_min(l, r, u << 1 | 1));
         return ret;
     }
-    lng count(int l, int r, int u = 1) {
+    i64 count(int l, int r, int u = 1) {
         int tl = tree[u].l, tr = tree[u].r;
         if (tl >= l && tr <= r)
             return tree[u].sum;
         propagate(u);
-        lng ret = 0;
+        i64 ret = 0;
         int mid = (tl + tr) >> 1;
         if (l <= mid) ret += count(l, r, u << 1);
         if (r > mid) ret += count(l, r, u << 1 | 1);

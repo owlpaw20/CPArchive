@@ -6,7 +6,7 @@
 #define endl '\n'
 
 using namespace std;
-using lng = long long;
+using i64 = long long;
 
 const int N = 1e6 + 10;
 
@@ -16,7 +16,7 @@ struct SegTree {
         int Max;  // 区间最大值
         int sec;  // 区间严格次大值
         int cnt;  // 区间最大值的数量
-        lng sum, tag;
+        i64 sum, tag;
     };
     int a[N];
     Node tree[4 * N];
@@ -41,7 +41,7 @@ struct SegTree {
         }
     }
 
-    void tagging(int u, lng tag) {
+    void tagging(int u, i64 tag) {
         if (tree[u].Max <= tag) return;
         tree[u].sum += (1LL * tag - tree[u].Max) * tree[u].cnt;
         tree[u].Max = tree[u].tag = tag;
@@ -94,13 +94,13 @@ struct SegTree {
         return max(ret1, ret2);
     }
 
-    lng query_sum(int l, int r, int u = 1) {
+    i64 query_sum(int l, int r, int u = 1) {
         int tl = tree[u].l, tr = tree[u].r;
         if (tl >= l && tr <= r)
             return tree[u].sum;
         propagate(u);
         int mid = (tl + tr) >> 1;
-        lng ret = 0;
+        i64 ret = 0;
         if (l <= mid) ret += query_sum(l, r, u << 1);
         if (r > mid) ret += query_sum(l, r, u << 1 | 1);
         return ret;

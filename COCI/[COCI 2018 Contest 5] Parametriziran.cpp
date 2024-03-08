@@ -1,12 +1,12 @@
 #include <iostream>
 #include <unordered_map>
 using namespace std;
-using lng = long long;
+using i64 = long long;
 
 const int P = 31;
 
 int n, m;
-lng ans;
+i64 ans;
 char s[10];
 unordered_map<int, int> mp;
 

@@ -4,12 +4,12 @@
 #define endl '\n'
 
 using namespace std;
-using lng = long long;
+using i64 = long long;
 
 const int N = 1e6 + 10;
 
 int n, m, sz, v[N];
-lng dff[N], sum[N];
+i64 dff[N], sum[N];
 int st[N], ed[N], cnt[N];
 
 bool check(int x) {

@@ -2,13 +2,13 @@
 #include <iostream>
 
 using namespace std;
-using lng = long long;
+using i64 = long long;
 
 struct SegTree {
     struct Node {
         int l, r;
         int rmax;  // 维护区间最大值，优化时间复杂度
-        lng rsum;
+        i64 rsum;
     };
     vector<int> array;
     vector<Node> tree;
@@ -62,12 +62,12 @@ struct SegTree {
         maintain(u);
     }
 
-    lng query(int l, int r, int u = 1) {
+    i64 query(int l, int r, int u = 1) {
         int tl = tree[u].l, tr = tree[u].r;
         if (tl >= l && tr <= r)
             return tree[u].rsum;
         int mid = (tl + tr) >> 1;
-        lng ret = 0;
+        i64 ret = 0;
         if (l <= mid) ret += query(l, r, u << 1);
         if (r > mid) ret += query(l, r, u << 1 | 1);
         return ret;

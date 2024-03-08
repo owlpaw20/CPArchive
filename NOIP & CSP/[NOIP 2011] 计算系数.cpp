@@ -3,7 +3,7 @@
 #define endl '\n'
 
 using namespace std;
-using lng = long long;
+using i64 = long long;
 
 const int N = 1e3 + 10;
 const int MOD = 1e4 + 7;
@@ -15,8 +15,8 @@ int exp_p, exp_x, exp_y;
 int power(int b, int e, int m = MOD) {
     int ret = 1;
     while (e) {
-        if (e & 1) ret = (lng)ret * b % m;
-        b = (lng)b * b % m;
+        if (e & 1) ret = (i64)ret * b % m;
+        b = (i64)b * b % m;
         e >>= 1;
     }
     return ret % m;
@@ -36,9 +36,9 @@ int main() {
         for (int j = 1; j <= i; j++)
             f[i][j] = (f[i - 1][j] + f[i - 1][j - 1]) % MOD;
 
-    int multiplier = (lng)power(coeff_x, exp_x) * power(coeff_y, exp_y) % MOD;
+    int multiplier = (i64)power(coeff_x, exp_x) * power(coeff_y, exp_y) % MOD;
 
-    cout << (lng)f[exp_p][exp_y + 1] * multiplier % MOD << endl;
+    cout << (i64)f[exp_p][exp_y + 1] * multiplier % MOD << endl;
     fflush(stdout);
     return 0;
 }

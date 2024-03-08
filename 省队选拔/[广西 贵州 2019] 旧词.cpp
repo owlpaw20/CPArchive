@@ -8,7 +8,7 @@
 #define endl '\n'
 
 using namespace std;
-using lng = long long;
+using i64 = long long;
 using TUP = tuple<int, int, int>;
 
 const int N = 5e4 + 5;
@@ -71,8 +71,8 @@ namespace TD {
             if (fa.tag) {
                 lc.tag = (lc.tag + fa.tag) % MOD;
                 rc.tag = (rc.tag + fa.tag) % MOD;
-                lc.sum = (lc.sum + (lng)lc.val * fa.tag % MOD) % MOD;
-                rc.sum = (rc.sum + (lng)rc.val * fa.tag % MOD) % MOD;
+                lc.sum = (lc.sum + (i64)lc.val * fa.tag % MOD) % MOD;
+                rc.sum = (rc.sum + (i64)rc.val * fa.tag % MOD) % MOD;
                 fa.tag = 0;
             }
         }
@@ -159,8 +159,8 @@ namespace TD {
 int power(int b, int e, int p = MOD) {
     int ret = 1;
     while (e) {
-        if (e & 1) ret = (lng)ret * b % p;
-        b = (lng)b * b % p;
+        if (e & 1) ret = (i64)ret * b % p;
+        b = (i64)b * b % p;
         e >>= 1;
     }
     return ret % p;

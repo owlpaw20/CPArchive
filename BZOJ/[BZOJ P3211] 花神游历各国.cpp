@@ -3,19 +3,19 @@
 #include <iostream>
 
 using namespace std;
-using lng = long long;
+using i64 = long long;
 using PII = pair<int, int>;
 
 struct SegTree {
     struct Node {
         int l, r;
-        lng sum, maxV;
+        i64 sum, maxV;
     };
 
-    vector<lng> a;
+    vector<i64> a;
     vector<Node> tree;
 
-    lng& operator[](const int idx) { return a[idx]; }
+    i64& operator[](const int idx) { return a[idx]; }
 
     void init(int n) {
         a.clear();
@@ -57,12 +57,12 @@ struct SegTree {
         maintain(u);
     }
 
-    lng queryRangeSum(int l, int r, int u = 1) {
+    i64 queryRangeSum(int l, int r, int u = 1) {
         auto [tl, tr] = PII(tree[u].l, tree[u].r);
         if (tl >= l && tr <= r)
             return tree[u].sum;
         int mid = (tl + tr) >> 1;
-        lng ret = 0;
+        i64 ret = 0;
         if (l <= mid) ret += queryRangeSum(l, r, u << 1);
         if (r > mid) ret += queryRangeSum(l, r, u << 1 | 1);
         return ret;

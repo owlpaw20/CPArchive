@@ -1,14 +1,14 @@
 #include <iostream>
 
 using namespace std;
-using lng = long long;
+using i64 = long long;
 
 const int N = 1e5 + 10;
 const int M = 1e6 + 10;
 
 int n, a[N];
 int vis[M];
-lng ans[M];
+i64 ans[M];
 
 int main() {
     ios::sync_with_stdio(false);

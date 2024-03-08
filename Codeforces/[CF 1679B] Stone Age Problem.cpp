@@ -4,7 +4,7 @@
 #define endl '\n'
 
 using namespace std;
-using lng = long long;
+using i64 = long long;
 
 namespace FastIO {
     using Long = long long;
@@ -31,7 +31,7 @@ using namespace FastIO;
 struct SegTree {
     struct Node {
         int l, r, tag;
-        lng sum;
+        i64 sum;
     };
 
     vector<int> a;
@@ -54,8 +54,8 @@ struct SegTree {
         if (root.tag) {
             left.tag = root.tag;
             right.tag = root.tag;
-            left.sum = (lng)(left.r - left.l + 1) * root.tag;
-            right.sum = (lng)(right.r - right.l + 1) * root.tag;
+            left.sum = (i64)(left.r - left.l + 1) * root.tag;
+            right.sum = (i64)(right.r - right.l + 1) * root.tag;
             root.tag = 0;
         }
     }
@@ -76,7 +76,7 @@ struct SegTree {
         int tl = t[u].l, tr = t[u].r;
         if (tl >= l && tr <= r) {
             t[u].tag = x;
-            t[u].sum = (lng)(tr - tl + 1) * x;
+            t[u].sum = (i64)(tr - tl + 1) * x;
             return;
         }
         propagate(u);
@@ -86,13 +86,13 @@ struct SegTree {
         maintain(u);
     }
 
-    lng query_sum(int l, int r, int u = 1) {
+    i64 query_sum(int l, int r, int u = 1) {
         int tl = t[u].l, tr = t[u].r;
         if (tl >= l && tr <= r)
             return t[u].sum;
         propagate(u);
         int mid = (tl + tr) >> 1;
-        lng ret = 0LL;
+        i64 ret = 0LL;
         if (l <= mid) ret += query_sum(l, r, u << 1);
         if (r > mid) ret += query_sum(l, r, u << 1 | 1);
         return ret;

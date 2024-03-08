@@ -1,11 +1,11 @@
 #include <iostream>
 using namespace std;
-using lng = long long;
+using i64 = long long;
 
-lng n, k;
+i64 n, k;
 
 // 有 N 对括号尚需输出，K 层嵌套尚待构造
-void nest(lng n, lng k) {
+void nest(i64 n, i64 k) {
     if (n == 0)
         return;
 

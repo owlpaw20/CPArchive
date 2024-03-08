@@ -6,13 +6,13 @@
 #define endl '\n'
 
 using namespace std;
-using lng = long long;
+using i64 = long long;
 using PII = pair<int, int>;
 using PLI = pair<long long, int>;
 
 const int N = 1e5 + 5;
 const int SHIFT = N << 2;
-const lng INF = 0x3F3F3F3F3F3F3F3F;
+const i64 INF = 0x3F3F3F3F3F3F3F3F;
 
 int n, q, s, leaf[N];
 vector<PII> graph[N << 3];
@@ -61,7 +61,7 @@ struct SegTree {
     }
 } SGT;
 
-lng dist[N << 3];
+i64 dist[N << 3];
 bool vis[N << 3];
 
 void Dijkstra(int st) {

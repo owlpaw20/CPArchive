@@ -3,14 +3,14 @@
 #define endl '\n'
 
 using namespace std;
-using lng = long long;
+using i64 = long long;
 
 const int MOD = 1e5 + 3;
 
-lng m, n;
+i64 m, n;
 
-lng power(lng b, lng e, lng m = MOD) {
-    lng ret = 1;
+i64 power(i64 b, i64 e, i64 m = MOD) {
+    i64 ret = 1;
     while (e) {
         if (e & 1) ret = ret * b % m;
         b = b * b % m;

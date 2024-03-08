@@ -5,8 +5,8 @@
 #define endl '\n'
 
 using namespace std;
-using lng = long long;
-using PII = pair<lng, int>;
+using i64 = long long;
+using PII = pair<i64, int>;
 
 const int N = 1e3 + 5;
 const int M = 2e4 + 5;
@@ -15,7 +15,7 @@ const int INF = 0x3F3F3F3F;
 int n, m, L, s, t;
 int st[M], ed[M], wt[M], nx[M], head[N], idx;
 bool is_zero[M], vis[N];
-lng dist1[N], dist2[N];
+i64 dist1[N], dist2[N];
 
 void connect(int u, int v, int w, bool z) {
     is_zero[idx] = z;

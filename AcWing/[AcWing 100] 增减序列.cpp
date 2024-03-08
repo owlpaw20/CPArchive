@@ -2,7 +2,7 @@
 #include <iostream>
 
 using namespace std;
-using lng = long long;
+using i64 = long long;
 
 const int N = 1e5 + 10;
 
@@ -14,7 +14,7 @@ int main() {
 
     cin >> n;
 
-    lng sumP = 0, sumN = 0;
+    i64 sumP = 0, sumN = 0;
     for (int i = 1; i <= n; i++) {
         cin >> a[i];
         if (i > 1) {

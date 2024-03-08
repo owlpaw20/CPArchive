@@ -13,36 +13,36 @@
 
 using namespace std;
 using namespace __gnu_pbds;
-using lng = long long;
-using PII = pair<lng, lng>;
+using i64 = long long;
+using PII = pair<i64, i64>;
 
 const int N = 2e5 + 5;
 
 struct Fenwick {
-    lng tr[N];
+    i64 tr[N];
     int n;
 
-    lng lowbit(int x) { return x & -x; }
+    i64 lowbit(int x) { return x & -x; }
     void reset() { memset(tr, 0, sizeof tr); }
 
-    lng query(int x) {
+    i64 query(int x) {
         int ret = 0;
         for (int i = x; i; i -= lowbit(i))
             ret += tr[i];
         return ret;
     }
 
-    void update(int x, lng val) {
+    void update(int x, i64 val) {
         for (int i = x; i <= n; i += lowbit(i))
             tr[i] += val;
     }
 };
 
-lng idx;
+i64 idx;
 PII a[N];
-lng b[N];
+i64 b[N];
 Fenwick tr;
-gp_hash_table<lng, lng> disc;
+gp_hash_table<i64, i64> disc;
 auto cmp = [](PII x, PII y) { return x.second < y.second; };
 
 int main() {
@@ -76,7 +76,7 @@ int main() {
         for (int i = 1; i <= n; i++)
             b[i] = disc[a[i].first];
 
-        lng cnt = 0;
+        i64 cnt = 0;
         for (int i = 1; i <= n; i++) {
             cnt += min(tr.query(n) - tr.query(b[i]), tr.query(b[i] - 1));
             tr.update(b[i], 1);

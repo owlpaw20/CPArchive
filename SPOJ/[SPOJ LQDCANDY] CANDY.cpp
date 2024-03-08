@@ -4,12 +4,12 @@
 #define endl '\n'
 
 using namespace std;
-using lng = long long;
+using i64 = long long;
 
 int T;
 
-lng power(lng b, int e) {
-    lng ret = 1;
+i64 power(i64 b, int e) {
+    i64 ret = 1;
     while (e) {
         if (e & 1) ret = ret * b;
         b = b * b;
@@ -24,9 +24,9 @@ int main() {
 
     cin >> T;
     while (T--) {
-        lng n;
+        i64 n;
         cin >> n;
-        lng ans = 1LL << (int)ceil(log2(n));
+        i64 ans = 1LL << (int)ceil(log2(n));
         cout << ans << ' ';
         while (n % 2 == 0)
             n >>= 1, ans >>= 1;

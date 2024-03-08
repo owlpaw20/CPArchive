@@ -1,18 +1,18 @@
 #include <vector>
 #include <iostream>
 using namespace std;
-using lng = long long;
+using i64 = long long;
 
 struct Fenwick {
     int size;
-    vector<lng> tree;
+    vector<i64> tree;
     int lowbit(int x) { return x & -x; }
-    void update(int x, lng delta) {
+    void update(int x, i64 delta) {
         for (int i = x; i <= size; i += lowbit(i))
             tree[i] += delta;
     }
-    lng query(int x) {
-        lng ret = 0LL;
+    i64 query(int x) {
+        i64 ret = 0LL;
         for (int i = x; i; i -= lowbit(i))
             ret += tree[i];
         return ret;

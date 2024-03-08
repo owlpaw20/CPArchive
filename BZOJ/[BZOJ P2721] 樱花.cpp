@@ -4,7 +4,7 @@
 #define endl '\n'
 
 using namespace std;
-using lng = long long;
+using i64 = long long;
 
 const int N = 1e6 + 5;
 const int MOD = 1e9 + 7;
@@ -41,7 +41,7 @@ int main() {
 
     int ans = 1;
     for (int i = 1; i <= n; i++)
-        ans = (lng)ans * (expo[i] * 2 + 1) % MOD;  // 计算 N^2 的约数个数
+        ans = (i64)ans * (expo[i] * 2 + 1) % MOD;  // 计算 N^2 的约数个数
 
     cout << ans << endl;
     fflush(stdout);

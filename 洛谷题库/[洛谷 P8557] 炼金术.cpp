@@ -9,11 +9,11 @@ const int MOD = 998244353;
 int n, k;
 
 int power(int b, int e, int m = MOD) {
-    using lng = long long;
+    using i64 = long long;
     int ret = 1;
     while (e) {
-        if (e & 1) ret = (lng)ret * b % m;
-        b = (lng)b * b % m;
+        if (e & 1) ret = (i64)ret * b % m;
+        b = (i64)b * b % m;
         e >>= 1;
     }
     return ret % m;

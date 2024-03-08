@@ -1,6 +1,6 @@
 #include <iostream>
 using namespace std;
-using lng = long long;
+using i64 = long long;
 
 const int N = 1e5 + 10;
 
@@ -10,7 +10,7 @@ int a[N];
 struct SegTree {
     struct Node {
         int l, r;
-        lng total, add;
+        i64 total, add;
     } tree[4 * N];
     void maintain(int u) {
         tree[u].total = tree[2 * u].total + tree[2 * u + 1].total;
@@ -36,7 +36,7 @@ struct SegTree {
         build(2 * u + 1, mid + 1, r);
         maintain(u);
     }
-    void update(int u, int l, int r, lng delta) {
+    void update(int u, int l, int r, i64 delta) {
         int tl = tree[u].l, tr = tree[u].r;
         if (tl >= l && tr <= r) {
             tree[u].add += delta;
@@ -49,13 +49,13 @@ struct SegTree {
         if (r > mid) update(2 * u + 1, l, r, delta);
         maintain(u);
     }
-    lng query(int u, int l, int r) {
+    i64 query(int u, int l, int r) {
         int tl = tree[u].l, tr = tree[u].r;
         if (tl >= l && tr <= r)
             return tree[u].total;
         propagate(u);
         int mid = (tl + tr) >> 1;
-        lng ret = 0;
+        i64 ret = 0;
         if (l <= mid) ret += query(2 * u, l, r);
         if (r > mid) ret += query(2 * u + 1, l, r);
         return ret;

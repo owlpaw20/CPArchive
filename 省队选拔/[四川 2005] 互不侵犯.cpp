@@ -2,14 +2,14 @@
 #include <iostream>
 
 using namespace std;
-using lng = long long;
+using i64 = long long;
 
 const int MAX_ROWS = 11;
 const int MAX_STAT = 1 << MAX_ROWS;
 const int MAX_KING = MAX_ROWS << 1;
 
 int n, K, kings_cnt[MAX_STAT];
-lng f[MAX_ROWS][MAX_KING][MAX_STAT];
+i64 f[MAX_ROWS][MAX_KING][MAX_STAT];
 // f[i][j][k] = 前 i 行棋盘放置了 j 个国王且第 i 层状态为 k
 
 vector<int> valid_states;
@@ -52,7 +52,7 @@ int main() {
                     if (j >= kings_cnt[current_state])  // 如果可以从上一个状态转移过来
                         f[i][j][current_state] += f[i - 1][j - kings_cnt[current_state]][prev_state];
 
-    lng ans = 0;
+    i64 ans = 0;
     for (int state : valid_states)
         ans += f[n][K][state];
 

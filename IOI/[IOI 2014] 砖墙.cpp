@@ -5,7 +5,7 @@
 #define endl '\n'
 
 using namespace std;
-using lng = long long;
+using i64 = long long;
 
 struct SegTree {
     struct Node {

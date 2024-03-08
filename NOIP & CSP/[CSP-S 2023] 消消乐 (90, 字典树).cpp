@@ -4,7 +4,7 @@
 #include <iostream>
 
 using namespace std;
-using lng = long long;
+using i64 = long long;
 
 const int N = 2e6 + 10;
 
@@ -77,7 +77,7 @@ int main() {
 
     cin >> n >> s;
 
-    lng ans = 0;
+    i64 ans = 0;
     int len = s.length();
     for (int i = 0; i < len; i++) {
         if (!st.empty() && st.top() == s[i]) {

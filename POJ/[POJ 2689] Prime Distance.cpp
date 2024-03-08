@@ -6,14 +6,14 @@
 #define endl '\n'
 
 using namespace std;
-using lng = long long;
+using i64 = long long;
 
 const int N = 1e6 + 10;
 
-lng L, R;
+i64 L, R;
 bool composite[N];
-vector<lng> primes;
-vector<lng> r_primes;
+vector<i64> primes;
+vector<i64> r_primes;
 
 void prep(int n) {
     for (int i = 2; i <= n; i++) {
@@ -36,8 +36,8 @@ int main() {
         r_primes.clear();
         memset(composite, false, sizeof composite);
 
-        for (lng p : primes)
-            for (lng i = max(p * 2, (L + p - 1) / p * p); i <= R; i += p)
+        for (i64 p : primes)
+            for (i64 i = max(p * 2, (L + p - 1) / p * p); i <= R; i += p)
                 composite[i - L] = true;
 
         for (int i = 0; i <= R - L; i++)

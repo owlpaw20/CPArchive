@@ -4,16 +4,16 @@
 #define endl '\n'
 
 using namespace std;
-using lng = long long;
+using i64 = long long;
 
 const int N = 1e5 + 5;
 const int M = 4e2 + 5;
 
 int n, q, len;
 int a[N];
-lng sum[N], add[N];
+i64 sum[N], add[N];
 
-void update(int l, int r, lng x) {
+void update(int l, int r, i64 x) {
     if (l / len == r / len)
         for (int i = l; i <= r; i++)
             a[i] += x, sum[l / len] += x;
@@ -26,8 +26,8 @@ void update(int l, int r, lng x) {
     }
 }
 
-lng query(int l, int r) {
-    lng ret = 0;
+i64 query(int l, int r) {
+    i64 ret = 0;
 
     if (l / len == r / len)
         for (int i = l; i <= r; i++)

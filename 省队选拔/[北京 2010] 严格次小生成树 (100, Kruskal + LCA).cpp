@@ -9,7 +9,7 @@
 #define endl '\n'
 
 using namespace std;
-using lng = long long;
+using i64 = long long;
 using PII = pair<int, int>;
 using TUP = tuple<int, int, int, int>;
 
@@ -93,8 +93,8 @@ namespace MST {
         }
     }  // namespace UnionFind
 
-    lng Kruskal() {
-        lng ans = 0;
+    i64 Kruskal() {
+        i64 ans = 0;
         int cnt = 0;
         UnionFind::init(n);
 
@@ -131,11 +131,11 @@ int main() {
     MST::edges2 = MST::edges;
     sort(MST::edges.begin(), MST::edges.end());
 
-    lng MST = MST::Kruskal();
+    i64 MST = MST::Kruskal();
 
     LCA::prep(1);
 
-    lng ans = (1ULL << 63) - 1;
+    i64 ans = (1ULL << 63) - 1;
 
     for (int i = 0; i < idx; i++)
         if (!MST::used.count(i)) {

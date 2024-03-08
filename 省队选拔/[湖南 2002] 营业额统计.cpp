@@ -5,11 +5,11 @@
 #define endl '\n'
 
 using namespace std;
-using lng = long long;
-using ITER = set<lng>::iterator;
+using i64 = long long;
+using ITER = set<i64>::iterator;
 
 int n;
-set<lng> tr;
+set<i64> tr;
 
 int main() {
     ios::sync_with_stdio(false);
@@ -20,7 +20,7 @@ int main() {
 
     cin >> n;
 
-    lng ans = 0LL;
+    i64 ans = 0LL;
 
     while (n--) {
         int x;

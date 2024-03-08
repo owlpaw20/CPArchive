@@ -8,7 +8,7 @@
 #define endl '\n'
 
 using namespace std;
-using lng = long long;
+using i64 = long long;
 using TUP = tuple<int, int, int>;
 
 const int N = 1e5 + 5;
@@ -29,8 +29,8 @@ namespace UnionFind {
     }
 }  // namespace UnionFind
 
-lng Kruskal1() {
-    lng ans = 0;
+i64 Kruskal1() {
+    i64 ans = 0;
     int cnt = 0;
     UnionFind::init(n);
 
@@ -45,8 +45,8 @@ lng Kruskal1() {
     return ans;
 }
 
-lng Kruskal2(int excluded) {
-    lng ans = 0;
+i64 Kruskal2(int excluded) {
+    i64 ans = 0;
     int cnt = 0;
     UnionFind::init(n);
 
@@ -78,9 +78,9 @@ int main() {
 
     int MST = Kruskal1();
 
-    lng ans = (1ULL << 63) - 1;
+    i64 ans = (1ULL << 63) - 1;
     for (int edge : used) {
-        lng x = Kruskal2(edge);
+        i64 x = Kruskal2(edge);
         if (x == MST) continue;
         ans = min(ans, x);
     }

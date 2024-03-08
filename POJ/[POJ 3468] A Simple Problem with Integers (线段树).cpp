@@ -3,14 +3,14 @@
 #define endl '\n'
 
 using namespace std;
-using lng = long long;
+using i64 = long long;
 
 const int N = 1e5 + 5;
 
 struct SegTree {
     struct Node {
         int l, r;
-        lng sum, add;
+        i64 sum, add;
     } node[N << 2];
 
     int a[N];
@@ -75,7 +75,7 @@ struct SegTree {
         maintain(u);
     }
 
-    lng query(int u, int l, int r) {
+    i64 query(int u, int l, int r) {
         int nl = node[u].l, nr = node[u].r;
 
         if (nl >= l && nr <= r)
@@ -84,7 +84,7 @@ struct SegTree {
         propagate(u);
 
         int mid = (nl + nr) >> 1;
-        lng ret = 0;
+        i64 ret = 0;
 
         if (l <= mid) ret += query(u << 1, l, r);
         if (r > mid) ret += query(u << 1 | 1, l, r);

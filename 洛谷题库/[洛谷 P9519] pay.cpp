@@ -3,17 +3,17 @@
 #include <iostream>
 #include <unordered_set>
 using namespace std;
-using lng = long long;
+using i64 = long long;
 
 const int N = 1e6 + 10;
 
 int n, m;
 queue<int> q;
-lng a[N], b[N], sum[N];
+i64 a[N], b[N], sum[N];
 
-bool check(lng x) {
+bool check(i64 x) {
     queue<int> q;
-    lng temp = 0;
+    i64 temp = 0;
     fill(sum + 1, sum + n + 1, 0);
 
     // 遍历带薪员工右边的快乐值情况
@@ -53,9 +53,9 @@ int main() {
     for (int i = 1; i <= n; i++) cin >> a[i];
     for (int i = 1; i <= m; i++) cin >> t, b[t] = true;
 
-    lng l = 1, r = 1e10;
+    i64 l = 1, r = 1e10;
     while (l < r) {
-        lng mid = (l + r) >> 1;
+        i64 mid = (l + r) >> 1;
         if (check(mid)) r = mid;
         else l = mid + 1;
     }

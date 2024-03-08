@@ -3,14 +3,14 @@
 #include <ext/pb_ds/priority_queue.hpp>
 #include <ext/pb_ds/assoc_container.hpp>
 using namespace std;
-using lng = long long;
+using i64 = long long;
 using PriorityQueue = __gnu_pbds::priority_queue<int, greater<int>>;
 
 int n, T;
 vector<int> d;
 PriorityQueue heap;
 
-bool check(lng x) {
+bool check(i64 x) {
     heap.clear();
     for (int i = 0; i < n; i++)
         if (i + 1 <= x)
@@ -38,9 +38,9 @@ int main() {
     for (int i = 0; i < n; i++)
         cin >> d[i];
 
-    lng l = 1, r = 1e10;
+    i64 l = 1, r = 1e10;
     while (l < r) {
-        lng mid = (l + r) >> 1;
+        i64 mid = (l + r) >> 1;
         if (check(mid)) r = mid;
         else l = mid + 1;
     }

@@ -4,7 +4,7 @@
 #include <iostream>
 #define endl '\n'
 using namespace std;
-using lng = long long;
+using i64 = long long;
 
 struct Fenwick {
     static const int N = 1e5 + 10;
@@ -81,7 +81,7 @@ int main() {
         seq[i] = trie.query(s);
     }
 
-    lng ans = 0;
+    i64 ans = 0;
     for (int i = 1; i <= n; i++) {
         fenwick.update(seq[i], 1);
         ans += (i - fenwick.query(seq[i]));

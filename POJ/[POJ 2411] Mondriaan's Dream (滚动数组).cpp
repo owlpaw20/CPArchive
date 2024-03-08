@@ -6,12 +6,12 @@
 #define endl '\n'
 
 using namespace std;
-using lng = long long;
+using i64 = long long;
 
 const int N = 1 << 12;
 
 int n, m;
-lng f[2][N];
+i64 f[2][N];
 bool state[N];
 
 void solve(const int& n, const int& m) {
