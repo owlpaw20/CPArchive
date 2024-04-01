@@ -12,13 +12,19 @@ using MAP_II = std::unordered_map<int, int>;
 // 固定的加成数值
 const f64 LOC_BOOST[6] = {1.25, 1.00, 0.75, 0.00, 0.75, 1.00};
 const f64 TYPE_BOOST[3][3] = {{1.0, 0.9, 1.1}, {1.1, 1.0, 0.9}, {0.9, 1.1, 1.0}};
-const f64 ACT_SKL_MUL[3][6] = {{0.00, 0.10, 0.12, 0.15, 0.17, 0.20},
-    {0.00, 0.06, 0.07, 0.08, 0.09, 0.10}, {1.00, 2.10, 2.17, 2.24, 2.32, 2.40}
-};
-const f64 PSV_SKL_MUL[3][6] = {{0.00, 0.013, 0.016, 0.019, 0.022, 0.025},
-    {0.00, 0.01, 0.02, 0.03, 0.04, 0.05}, {0.00, 0.01, 0.02, 0.03, 0.04, 0.05}
-};
 const int PLACE[6] = {5, 3, 1, 2, 4, 6};
+
+const f64 ACT_SKL_MUL[3][6] = {
+    {0.00, 0.10, 0.12, 0.15, 0.17, 0.20},
+    {0.00, 0.06, 0.07, 0.08, 0.09, 0.10},
+    {1.00, 2.10, 2.17, 2.24, 2.32, 2.40}
+};
+
+const f64 PSV_SKL_MUL[3][6] = {
+    {0.00, 0.013, 0.016, 0.019, 0.022, 0.025},
+    {0.00, 0.01, 0.02, 0.03, 0.04, 0.05},
+    {0.00, 0.01, 0.02, 0.03, 0.04, 0.05}
+};
 
 f64 atk_boost[2] = {1, 1};
 f64 def_boost[2] = {1, 1};
@@ -93,8 +99,8 @@ void reapply_passive_skills(int t = -1) {
                 team[t][i].hp = team[t][i].max_hp; // 则将生命值更改为上限
 
             if (tmp != team[t][i].hp) // 如果生命值有所变动，就需要输出
-                printf("%s %d recovered +%d hp -> %d/%d\n", (t ? "North" : "South"), i, heal,
-                    team[t][i].hp, team[t][i].max_hp);
+                printf("%s %d recovered +%d hp -> %d/%d\n",
+                    (t ? "North" : "South"), i, heal, team[t][i].hp, team[t][i].max_hp);
         }
     }
 
@@ -135,8 +141,8 @@ void PLAYER::deal_damage(int t_a, int act, f64 eff) {
         reapply_passive_skills(); // 重新考虑被动技能
     }
 
-    printf("%s %d took %d damage from %s %d -> %d/%d\n", (team_fr ? "North" : "South"), team_id,
-        dmg, (t_a ? "North" : "South"), act, hp, max_hp);
+    printf("%s %d took %d damage from %s %d -> %d/%d\n",
+        (team_fr ? "North" : "South"), team_id, dmg, (t_a ? "North" : "South"), act, hp, max_hp);
 }
 
 /// @brief DoT，即 Damage over Time，处理当前角色受到的 Average 类型的持续伤害
@@ -153,8 +159,8 @@ void PLAYER::DOT() {
             reapply_passive_skills();
         }
 
-        printf("%s %d took %d damage from skill -> %d/%d\n", (team_fr ? "North" : "South"), team_id,
-            dot_dmg, hp, max_hp);
+        printf("%s %d took %d damage from skill -> %d/%d\n",
+            (team_fr ? "North" : "South"), team_id, dot_dmg, hp, max_hp);
     }
 }
 
@@ -177,15 +183,12 @@ void activate_active_skill(int act, int trg, int t_a, int t_b) {
     // 获取技能类型名以便输出
     str skl_type;
 
-    if (team[t_a][act].type == 0)
-        skl_type = "Weak";
-    else if (team[t_a][act].type == 1)
-        skl_type = "Average";
-    else if (team[t_a][act].type == 2)
-        skl_type = "Strong";
+    if (team[t_a][act].type == 0) skl_type = "Weak";
+    else if (team[t_a][act].type == 1) skl_type = "Average";
+    else if (team[t_a][act].type == 2) skl_type = "Strong";
 
-    printf("%s %d applied %s skill to %s %d\n", (t_a ? "North" : "South"), act, skl_type.c_str(),
-        (t_b ? "North" : "South"), trg);
+    printf("%s %d applied %s skill to %s %d\n",
+        (t_a ? "North" : "South"), act, skl_type.c_str(), (t_b ? "North" : "South"), trg);
 
     // 对于 Weak 类型的主动技能
     if (team[t_a][act].type == 0) {
@@ -196,15 +199,14 @@ void activate_active_skill(int act, int trg, int t_a, int t_b) {
             team[t_b][trg].hp = team[t_b][trg].max_hp; // 则将生命值改为上限
 
         if (tmp != team[t_b][trg].hp) // 如果生命值有所变动，就需要输出
-            printf("%s %d recovered +%d hp -> %d/%d\n", (t_b ? "North" : "South"), trg, heal,
-                team[t_b][trg].hp, team[t_b][trg].max_hp);
+            printf("%s %d recovered +%d hp -> %d/%d\n",
+                (t_b ? "North" : "South"), trg, heal, team[t_b][trg].hp, team[t_b][trg].max_hp);
     }
 
     // 对于 Average 类型的主动技能
     else if (team[t_a][act].type == 1) {
         team[t_b][trg].dot_rounds = 3; // 设持续伤害持续 3 层
-        team[t_b][trg].dot_dmg =
-            ACT_SKL_MUL[1][team[t_a][act].act_skl] * team[t_b][trg].max_hp; // 计算持续伤害大小
+        team[t_b][trg].dot_dmg = ACT_SKL_MUL[1][team[t_a][act].act_skl] * team[t_b][trg].max_hp; // 计算持续伤害大小
     }
 
     // 对于 Strong 类型的被动技能
@@ -222,18 +224,19 @@ void activate_active_skill(int act, int trg, int t_a, int t_b) {
 /// @param type 攻击类型，-1 为普通攻击，0~2 为对应的特殊攻击
 void perform_attack(int atk_p, int ddg_p, int act, int trg, int t_a, int t_b, int type = -1) {
     // 由于 G 和 M 类型的种族加成对不同目标有不同的取值，所以预处理时不包含种族加成
-    f64 eff = team[t_a][act].atk * team[t_a][act].weapon_atk * team[t_a][act].skl_boost *
-        atk_boost[t_a] * LOC_BOOST[(atk_p - ddg_p + 6) % 6];
+    f64 eff = team[t_a][act].atk *
+        team[t_a][act].weapon_atk *
+        team[t_a][act].skl_boost *
+        atk_boost[t_a] *
+        LOC_BOOST[(atk_p - ddg_p + 6) % 6];
 
     // 普通攻击
     if (type == -1)
-        return team[t_b][trg].deal_damage(
-                t_a, act, eff * TYPE_BOOST[team[t_a][act].type][team[t_b][trg].type]);
+        return team[t_b][trg].deal_damage(t_a, act, eff * TYPE_BOOST[team[t_a][act].type][team[t_b][trg].type]);
 
     // B 型特殊攻击
     if (type == 0)
-        return team[t_b][trg].deal_damage(
-                t_a, act, 1.25 * eff * TYPE_BOOST[team[t_a][act].type][team[t_b][trg].type]);
+        return team[t_b][trg].deal_damage(t_a, act, 1.25 * eff * TYPE_BOOST[team[t_a][act].type][team[t_b][trg].type]);
 
     // 预处理 G 和 M 类型特殊 AoE 攻击的范围
     int trg_l = -1, trg_r = -1;
@@ -257,26 +260,20 @@ void perform_attack(int atk_p, int ddg_p, int act, int trg, int t_a, int t_b, in
         int cand_cnt = (trg_l != -1) + (trg_r != -1) + 1;
         f64 mul = 1.35 / cand_cnt;
 
-        team[t_b][trg].deal_damage(
-            t_a, act, mul * eff * TYPE_BOOST[team[t_a][act].type][team[t_b][trg].type]);
+        team[t_b][trg].deal_damage(t_a, act, mul * eff * TYPE_BOOST[team[t_a][act].type][team[t_b][trg].type]);
         if (trg_l != -1)
-            team[t_b][trg_l].deal_damage(
-                t_a, act, mul * eff * TYPE_BOOST[team[t_a][act].type][team[t_b][trg_l].type]);
+            team[t_b][trg_l].deal_damage(t_a, act, mul * eff * TYPE_BOOST[team[t_a][act].type][team[t_b][trg_l].type]);
         if (trg_r != -1)
-            team[t_b][trg_r].deal_damage(
-                t_a, act, mul * eff * TYPE_BOOST[team[t_a][act].type][team[t_b][trg_r].type]);
+            team[t_b][trg_r].deal_damage(t_a, act, mul * eff * TYPE_BOOST[team[t_a][act].type][team[t_b][trg_r].type]);
     }
 
     // M 型特殊攻击
     else if (type == 2) {
-        team[t_b][trg].deal_damage(
-            t_a, act, 1.15 * eff * TYPE_BOOST[team[t_a][act].type][team[t_b][trg].type]);
+        team[t_b][trg].deal_damage(t_a, act, 1.15 * eff * TYPE_BOOST[team[t_a][act].type][team[t_b][trg].type]);
         if (trg_l != -1)
-            team[t_b][trg_l].deal_damage(
-                t_a, act, 0.23 * eff * TYPE_BOOST[team[t_a][act].type][team[t_b][trg_l].type]);
+            team[t_b][trg_l].deal_damage(t_a, act, 0.23 * eff * TYPE_BOOST[team[t_a][act].type][team[t_b][trg_l].type]);
         if (trg_r != -1)
-            team[t_b][trg_r].deal_damage(
-                t_a, act, 0.23 * eff * TYPE_BOOST[team[t_a][act].type][team[t_b][trg_r].type]);
+            team[t_b][trg_r].deal_damage(t_a, act, 0.23 * eff * TYPE_BOOST[team[t_a][act].type][team[t_b][trg_r].type]);
     }
 }
 
@@ -336,7 +333,8 @@ int main() {
             activate_active_skill(active, trg, t_a, (team[t_a][active].type == 1 ? t_b : t_a));
 
         // 对防守方队伍中所有收到持续伤害的队员结算持续伤害（同队施放的持续伤害只在同队为攻击方的回合内生效）
-        for (int i = 1; i <= member_cnt[t_b]; ++i) team[t_b][i].DOT();
+        for (int i = 1; i <= member_cnt[t_b]; ++i)
+            team[t_b][i].DOT();
 
         // 先输出北队，再输出南队
         for (int t = 1; ~t; --t) {
@@ -355,7 +353,8 @@ int main() {
 
     for (int t = 0; t < 2; ++t)
         for (int i = 1; i <= member_cnt[t]; ++i)
-            if (team[t][i].status || team[t][i].hp) ++alive_cnt[t];
+            if (team[t][i].status || team[t][i].hp)
+                ++alive_cnt[t];
 
     if (!alive_cnt[0])
         puts("Team North won.");
