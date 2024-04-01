@@ -1,31 +1,60 @@
+#include <queue>
+#include <cstdint>
 #include <iostream>
-#include <ext/pb_ds/assoc_container.hpp>
-#include <ext/pb_ds/priority_queue.hpp>
 
-using namespace std;
-using Long = long long;
-using PLI = pair<Long, int>;
-using pair_heap = __gnu_pbds::priority_queue<PLI>;
-// first = index, second = value
+namespace FastIO {
+    const int MAX_BUF = 1 << 20;
+    char buf[MAX_BUF], *p1, *p2;
 
-const int N = 5e5 + 10;
+#define getchar() \
+    (p1 == p2 && (p2 = (p1 = buf) + fread(buf, 1, 1 << 20, stdin), p1 == p2) ? EOF : *p1++)
 
-struct PrefixTree {
-    Long t[32 * N][2] = {0}, cnt[32 * N] = {0}, idx = 0;
-    void insert(Long x) {
-        int p = 0;
-        for (int i = 31; i >= 0; i--) {
-            Long c = (x >> i) & 1;
+    template <typename T>
+    T read() {
+        T x = 0, f = 1;
+        char ch = getchar();
+        while (ch < '0' || ch > '9') {
+            if (ch == '-') f = -f;
+            ch = getchar();
+        }
+        while (ch >= '0' && ch <= '9') x = x * 10 + ch - 48, ch = getchar();
+        return x * f;
+    }
+
+    template <typename T>
+    void write(T x) {
+        if (x < 0) putchar('-'), x = -x;
+        if (x > 9) write(x / 10);
+        putchar(x % 10 + '0');
+    }
+}  // namespace FastIO
+using namespace FastIO;
+
+using std::priority_queue;
+
+using u32 = uint32_t;
+using u64 = uint64_t;
+using PII = std::pair<u64, u32>;
+
+const u32 MAX_N = 5e5 + 10;
+
+struct TRIE {
+    u64 t[32 * MAX_N][2];
+    u32 cnt[32 * MAX_N], idx;
+
+    void insert(const u64 x) {
+        for (int i = 31, p = 0; i >= 0; --i) {
+            u64 c = (x >> i) & 1;
             if (!t[p][c]) t[p][c] = ++idx;
             p = t[p][c];
             cnt[p]++;
         }
     }
-    Long find(Long x, int rank) {
-        int p = 0;
-        Long res = 0;
-        for (int i = 31; i >= 0; i--) {
-            int c = (x >> i) & 1;
+
+    u64 find(const u64 x, u32 rank) {
+        u64 res = 0;
+        for (int i = 31, p = 0; i >= 0; --i) {
+            u32 c = (x >> i) & 1;
             if (!t[p][!c])
                 p = t[p][c];
             else if (rank <= cnt[t[p][!c]])  // 如果反着走能够找到足够多的数
@@ -35,37 +64,37 @@ struct PrefixTree {
         }
         return res;
     }
-};
+} trie;
 
-Long p[N];
-int n, k, current_rank[N];
-PrefixTree trie;
-pair_heap heap;
+u64 pxor[MAX_N];
+u32 N, K, cur_rnk[MAX_N];
+priority_queue<PII> heap;
 
 int main() {
-    ios::sync_with_stdio(false), cin.tie(nullptr);
-    cin >> n >> k;
-    k <<= 1;
-    trie.insert(p[0] = 0);
-    for (int i = 1; i <= n; i++) {
-        Long t;
-        cin >> t;
-        p[i] = p[i - 1] ^ t;
-        trie.insert(p[i]);
+    N = read<u32>();
+    K = read<u32>() << 1;
+
+    trie.insert(pxor[0] = 0);
+
+    for (int i = 1; i <= N; i++) {
+        pxor[i] = pxor[i - 1] ^ read<u64>();
+        trie.insert(pxor[i]);
     }
-    for (int i = 0; i <= n; i++) {
-        Long t = trie.find(p[i], current_rank[i] = 1);
-        heap.push({t, i});
+
+    for (int i = 0; i <= N; i++) {
+        u64 t = trie.find(pxor[i], cur_rnk[i] = 1);
+        heap.emplace(t, i);
     }
-    Long ans = 0;
-    while (k--) {
-        PLI t = heap.top();
+
+    u64 ans = 0;
+
+    do {
+        auto [sum, idx] = heap.top();
         heap.pop();
-        int idx = t.second;
-        ans += t.first;
-        Long tmp = trie.find(p[idx], ++current_rank[idx]);
-        heap.push({tmp, idx});
-    }
-    cout << (ans >> 1) << endl;
-    return 0;
+        ans += sum;
+        heap.emplace(trie.find(pxor[idx], ++cur_rnk[idx]), idx);
+    } while (--K);
+
+    write(ans >> 1), putchar('\n');
+    return fflush(stdout), 0;
 }
