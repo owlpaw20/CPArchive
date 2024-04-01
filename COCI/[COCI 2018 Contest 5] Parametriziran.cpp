@@ -10,7 +10,7 @@ i64 ans;
 char s[10];
 unordered_map<int, int> mp;
 
-void insert(char *s, int i, int k) {
+void insert(char* s, int i, int k) {
     if (i == m) {
         mp[k] += 1;
         return;
@@ -23,7 +23,7 @@ void insert(char *s, int i, int k) {
         insert(s, i + 1, mul + 27);
 }
 
-int query(char *s, int i, int k) {
+int query(char* s, int i, int k) {
     if (i == m) {
         if (mp.count(k))
             return mp[k];

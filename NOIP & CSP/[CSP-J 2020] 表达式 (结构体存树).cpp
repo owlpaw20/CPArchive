@@ -10,17 +10,29 @@ template <class Type>
 struct stack {
     Type data[N];
     int t;
-    void push(Type x) { data[++t] = x; }
-    Type top() { return data[t]; }
-    Type extract() { return data[t--]; }
-    bool empty() { return !t; }
+    void push(Type x) {
+        data[++t] = x;
+    }
+    Type top() {
+        return data[t];
+    }
+    Type extract() {
+        return data[t--];
+    }
+    bool empty() {
+        return !t;
+    }
     stack() : t(0) {}
 };
 
 struct TreeNode {
     int l, r;
-    void build(int tl) { l = tl; }
-    void build(int tl, int tr) { l = tl, r = tr; }
+    void build(int tl) {
+        l = tl;
+    }
+    void build(int tl, int tr) {
+        l = tl, r = tr;
+    }
 };
 
 string s;
@@ -63,16 +75,16 @@ int main() {
     for (int i = 0; i < len; i++) {
         if (s[i] == 'x') {
             int var_num = 0;
-            while (isdigit(s[++i]))  // 加入变量
+            while (isdigit(s[++i])) // 加入变量
                 var_num = var_num * 10 + s[i] - '0';
             st.push(var_num);
         } else if (s[i] == '!') {
             opt[++m] = s[i++];
-            tr[m].build(st.extract());  // 建立单目运算符的子树
+            tr[m].build(st.extract()); // 建立单目运算符的子树
             st.push(m);
         } else if (s[i] == '&' or s[i] == '|') {
             opt[++m] = s[i++];
-            tr[m].build(st.extract(), st.extract());  // 建立双目运算符的子树
+            tr[m].build(st.extract(), st.extract()); // 建立双目运算符的子树
             st.push(m);
         }
     }

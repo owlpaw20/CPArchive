@@ -24,7 +24,9 @@ struct SegTree {
             a[i] = b[i];
     }
 
-    void maintain(int u) { node[u].sum = (node[u << 1].sum + node[u << 1 | 1].sum) % mod; }
+    void maintain(int u) {
+        node[u].sum = (node[u << 1].sum + node[u << 1 | 1].sum) % mod;
+    }
 
     void propagate(int u) {
         Node& root = node[u];
@@ -102,35 +104,35 @@ namespace TreeDecomp {
 
     // 通过第一遍 DFS 来获取所有节点的深度、父节点、子树大小以及重子节点
     void DFS1(int u, int f) {
-        fa[u] = f;                // 更新子节点的父节点
-        size[u] = 1;              // 初始化当前节点韦为根的子树
-        depth[u] = depth[f] + 1;  // 更新子节点深度
+        fa[u] = f; // 更新子节点的父节点
+        size[u] = 1; // 初始化当前节点韦为根的子树
+        depth[u] = depth[f] + 1; // 更新子节点深度
 
         for (int i = head[u]; ~i; i = nx[i]) {
             int v = ed[i];
             if (v == f) continue;
 
-            DFS1(v, u);          // 向子节点递归
-            size[u] += size[v];  // 将子树中节点的总数累加至当前节点上
+            DFS1(v, u); // 向子节点递归
+            size[u] += size[v]; // 将子树中节点的总数累加至当前节点上
 
-            if (pref[u] == 0 ||           // 如果当前节点还没有重子节点
-                size[pref[u]] < size[v])  // 或者此前确定的重子节点需要更新
-                pref[u] = v;              // 则将其更新为当前子节点
+            if (pref[u] == 0 || // 如果当前节点还没有重子节点
+                size[pref[u]] < size[v]) // 或者此前确定的重子节点需要更新
+                pref[u] = v; // 则将其更新为当前子节点
         }
     }
 
     // 通过第二遍 DFS 来确定各个节点所属的重链及其子节点
     void DFS2(int u, int path_top) {
-        top[u] = path_top;           // 通过递归传值记录各个节点所在重链的链头
-        dfn[u] = ++timestamp;        // 更新节点的 DFS 序
-        newval[timestamp] = val[u];  // 并标记该节点处的权值
+        top[u] = path_top; // 通过递归传值记录各个节点所在重链的链头
+        dfn[u] = ++timestamp; // 更新节点的 DFS 序
+        newval[timestamp] = val[u]; // 并标记该节点处的权值
 
-        if (pref[u] == 0) return;  // 如果当前节点为叶子节点则退出
+        if (pref[u] == 0) return; // 如果当前节点为叶子节点则退出
 
-        DFS2(pref[u], path_top);  // 向重子节点递归
+        DFS2(pref[u], path_top); // 向重子节点递归
         for (int i = head[u]; ~i; i = nx[i])
             if (ed[i] != fa[u] && ed[i] != pref[u])
-                DFS2(ed[i], ed[i]);  // 向所有轻子节点递归
+                DFS2(ed[i], ed[i]); // 向所有轻子节点递归
     }
 
     // 更新路径上节点的权值
@@ -139,13 +141,13 @@ namespace TreeDecomp {
 
         // 如果两个节点不在同一重链上
         while (top[u] != top[v]) {
-            if (depth[top[u]] < depth[top[v]]) swap(u, v);  // 选择其中所在重链深度较大的节点
-            SGT.inc(1, dfn[top[u]], dfn[u], x);             // 跳到该重链的顶端并维护向上跳的部分
-            u = fa[top[u]];                                 // 跳到重链顶端节点的父节点
-        }                                                   // 直到 u 和 v 到达同一重链上
+            if (depth[top[u]] < depth[top[v]]) swap(u, v); // 选择其中所在重链深度较大的节点
+            SGT.inc(1, dfn[top[u]], dfn[u], x); // 跳到该重链的顶端并维护向上跳的部分
+            u = fa[top[u]]; // 跳到重链顶端节点的父节点
+        } // 直到 u 和 v 到达同一重链上
 
         if (depth[u] > depth[v]) swap(u, v);
-        SGT.inc(1, dfn[u], dfn[v], x);  // 维护同一重链上 u 和 v 之间的这一部分
+        SGT.inc(1, dfn[u], dfn[v], x); // 维护同一重链上 u 和 v 之间的这一部分
     }
 
     // 查询路径上节点的权值和（同上）
@@ -171,8 +173,10 @@ namespace TreeDecomp {
     }
 
     // 查询子树的权值和（同上）
-    int query_subtree_sum(int u) { return SGT.sum(1, dfn[u], dfn[u] + size[u] - 1); }
-}  // namespace TreeDecomp
+    int query_subtree_sum(int u) {
+        return SGT.sum(1, dfn[u], dfn[u] + size[u] - 1);
+    }
+} // namespace TreeDecomp
 using namespace TreeDecomp;
 
 int main() {

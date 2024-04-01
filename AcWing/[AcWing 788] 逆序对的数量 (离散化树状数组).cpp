@@ -17,7 +17,9 @@ int find(int x) {
 
 struct Fenwick {
     int tr[N];
-    int lowbit(int x) { return x & -x; }
+    int lowbit(int x) {
+        return x & -x;
+    }
     int query(int x) {
         int ret = 0;
         for (int i = x; i; i -= lowbit(i))
@@ -28,7 +30,9 @@ struct Fenwick {
         for (int i = x; i <= N; i += lowbit(i))
             tr[i] += delta;
     }
-    Fenwick() { memset(tr, 0, sizeof tr); }
+    Fenwick() {
+        memset(tr, 0, sizeof tr);
+    }
 } tree;
 
 int main() {

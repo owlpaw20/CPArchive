@@ -11,7 +11,9 @@ const int INF = 0x3f3f3f3f;
 
 struct Waste {
     int t, f, h;
-    bool operator<(const Waste& o) const { return t < o.t; }
+    bool operator<(const Waste& o) const {
+        return t < o.t;
+    }
 };
 
 // f[i][j] 表示处理完前 i 个垃圾后还剩余 j 生命时垃圾的最大高度
@@ -42,8 +44,8 @@ int main() {
         for (int j = maxlife; j >= 0; j--) {
             // check 数组用于判断当前状态是否有出现的可能
             if (check[i - 1][j + a[i].t - a[i - 1].t]) {
-                f[i][j] = max(f[i][j], f[i - 1][j + a[i].t - a[i - 1].t] + a[i].h);           // 用于堆放
-                f[i][j + a[i].f] = max(f[i][j + a[i].f], f[i - 1][j + a[i].t - a[i - 1].t]);  // 用于维生
+                f[i][j] = max(f[i][j], f[i - 1][j + a[i].t - a[i - 1].t] + a[i].h); // 用于堆放
+                f[i][j + a[i].f] = max(f[i][j + a[i].f], f[i - 1][j + a[i].t - a[i - 1].t]); // 用于维生
                 check[i][j] = check[i][j + a[i].f] = true;
             }
 

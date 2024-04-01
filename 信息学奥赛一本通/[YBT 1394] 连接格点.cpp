@@ -19,12 +19,14 @@ namespace UnionFind {
         if (x == y) return false;
         return fa[x] = y, true;
     }
-}  // namespace UnionFind
+} // namespace UnionFind
 using namespace UnionFind;
 
 int n, m;
 
-int H(int x, int y) { return (x - 1) * m + y; }
+int H(int x, int y) {
+    return (x - 1) * m + y;
+}
 
 int main() {
     ios::sync_with_stdio(false);

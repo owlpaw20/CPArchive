@@ -4,7 +4,7 @@ using i64 = long long;
 
 namespace FastIO {
     const int MAX_BUF = 1 << 20;
-    char buf[MAX_BUF], *p1, *p2;
+    char buf[MAX_BUF], * p1, * p2;
 
 #define getchar() \
     (p1 == p2 && (p2 = (p1 = buf) + fread(buf, 1, 1 << 20, stdin), p1 == p2) ? EOF : *p1++)
@@ -27,7 +27,7 @@ namespace FastIO {
         if (x > 9) write(x / 10);
         putchar(x % 10 + '0');
     }
-}  // namespace FastIO
+} // namespace FastIO
 using namespace FastIO;
 
 const int MAX_N = 1e6 + 5;

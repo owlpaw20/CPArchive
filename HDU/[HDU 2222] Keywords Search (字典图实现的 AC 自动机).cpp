@@ -47,9 +47,9 @@ struct AhoCorasick {
             for (int i = 0; i < 26; i++) {
                 int p = trie[u][i];
                 if (!p)
-                    trie[u][i] = trie[fail[u]][i];  // 把不存在的字符跳回最初的位置
+                    trie[u][i] = trie[fail[u]][i]; // 把不存在的字符跳回最初的位置
                 else {
-                    fail[p] = trie[fail[u]][i];  // 把存在的字符直接跳到目标位置
+                    fail[p] = trie[fail[u]][i]; // 把存在的字符直接跳到目标位置
                     q.push(p);
                 }
             }
@@ -60,7 +60,7 @@ struct AhoCorasick {
         int ans = 0;
         for (int i = 0, j = 0; s[i]; i++) {
             int c = s[i] - 'a';
-            int p = j = trie[j][c];  // 直接跳到最长前缀的位置
+            int p = j = trie[j][c]; // 直接跳到最长前缀的位置
             while (p) {
                 ans += cnt[p];
                 cnt[p] = 0;

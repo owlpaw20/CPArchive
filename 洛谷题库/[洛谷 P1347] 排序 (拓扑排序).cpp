@@ -41,13 +41,13 @@ int topological_sort() {
         }
     }
 
-    if ((int)topo.size() < n)  // 如果拓扑没有遍历完全
-        return 0;              // 说明图中存在环
+    if ((int)topo.size() < n) // 如果拓扑没有遍历完全
+        return 0; // 说明图中存在环
 
-    if (flag)      // 如果队列中同时出现有多个元素
-        return 1;  // 说明拓扑序完全但不稳定
+    if (flag) // 如果队列中同时出现有多个元素
+        return 1; // 说明拓扑序完全但不稳定
 
-    return 2;  // 如果所有节点的入度都为 0，说明拓扑序完全且稳定
+    return 2; // 如果所有节点的入度都为 0，说明拓扑序完全且稳定
 }
 
 int main() {

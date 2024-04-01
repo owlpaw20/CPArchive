@@ -10,7 +10,9 @@ const int N = 1e5 + 10;
 
 int n, a[N], c[N], ans[N];
 
-int lowbit(int x) { return x & -x; }
+int lowbit(int x) {
+    return x & -x;
+}
 
 int query(int x) {
     int ret = 0;

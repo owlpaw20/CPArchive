@@ -36,7 +36,9 @@ int main() {
     }
 
     // 二维前缀和
-    auto cmp = [&](PII a, PII b) { return a.y < b.y; };
+    auto cmp = [&](PII a, PII b) {
+        return a.y < b.y;
+    };
     sort(cow + 1, cow + n + 1, cmp);
     for (int i = 1; i <= n; i++)
         for (int j = 1; j <= n; j++)

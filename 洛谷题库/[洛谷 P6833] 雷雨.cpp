@@ -18,7 +18,7 @@ int g[N][N];
 i64 d[3][N][N];
 bool vis[N][N];
 
-void BFS(int wh, int sx, int sy) {  // 其实也可以看成是堆优化的 Dijkstra
+void BFS(int wh, int sx, int sy) { // 其实也可以看成是堆优化的 Dijkstra
     memset(vis, 0, sizeof vis);
 
     priority_queue<TPL, vector<TPL>, greater<TPL>> heap;

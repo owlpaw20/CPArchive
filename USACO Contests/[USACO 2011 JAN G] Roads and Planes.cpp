@@ -11,12 +11,24 @@ template <class T>
 struct Queue {
     vector<T> data;
     int head, rear;
-    void push(T x) { data[++rear] = x; }
-    void pop() { head++; }
-    T extract() { return data[head++]; }
-    T front() { return data[head]; }
-    T back() { return data[rear]; }
-    bool empty() { return head > rear; }
+    void push(T x) {
+        data[++rear] = x;
+    }
+    void pop() {
+        head++;
+    }
+    T extract() {
+        return data[head++];
+    }
+    T front() {
+        return data[head];
+    }
+    T back() {
+        return data[rear];
+    }
+    bool empty() {
+        return head > rear;
+    }
     void init(int n) {
         head = 0;
         rear = -1;
@@ -24,7 +36,9 @@ struct Queue {
         data.resize(n);
     }
     Queue() {}
-    Queue(int n) { init(n); }
+    Queue(int n) {
+        init(n);
+    }
 };
 
 const int N = 2.5e4 + 10;
@@ -54,7 +68,7 @@ void DFS(int u) {
 
     for (int v = head[u]; ~v; v = nx[v]) {
         int j = ed[v];
-        if (!belong[j])  // 避免因为双向边重复搜索造成无限递归
+        if (!belong[j]) // 避免因为双向边重复搜索造成无限递归
             DFS(j);
     }
 }
@@ -76,7 +90,7 @@ void Dijkstra(int st) {
             int j = ed[v];
             if (dist[j] > dist[u] + wt[v]) {
                 dist[j] = dist[u] + wt[v];
-                if (belong[j] == st)  // 只更新连通块之内的
+                if (belong[j] == st) // 只更新连通块之内的
                     heap.push({dist[j], j});
             }
 
@@ -94,20 +108,20 @@ void topological_sort(int st) {
     memset(dist, 0x3F, sizeof dist);
     dist[st] = 0;
 
-    /* 由于每个连通块内的所有有向边均符合有向无环图
-     * 所以连通块内部的点之间不可能存在负权边，否则就会出现环
-     * 由于 Dijkstra 算法无法处理负权边
-     * 所以使用可以处理负权边的拓扑排序进行预处理
-     * 将 Dijkstra 应用于不存在负权边的每一个连通块内
-     * 最终实现全局最短路的计算 */
+    /*  由于每个连通块内的所有有向边均符合有向无环图
+        所以连通块内部的点之间不可能存在负权边，否则就会出现环
+        由于 Dijkstra 算法无法处理负权边
+        所以使用可以处理负权边的拓扑排序进行预处理
+        将 Dijkstra 应用于不存在负权边的每一个连通块内
+        最终实现全局最短路的计算 */
 
-    q.init(block_idx + 5);  // 用队列记录连通块的拓扑序
+    q.init(block_idx + 5); // 用队列记录连通块的拓扑序
     for (int i = 1; i <= block_idx; i++)
         if (indeg[i] == 0)
             q.push(i);
 
-    while (!q.empty())          // 按照拓扑序
-        Dijkstra(q.extract());  // 在当前连通块内求最短路
+    while (!q.empty()) // 按照拓扑序
+        Dijkstra(q.extract()); // 在当前连通块内求最短路
 }
 
 int main() {

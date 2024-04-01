@@ -7,10 +7,18 @@ template <class Type>
 struct Queue {
     vector<Type> e;
     int head, rear;
-    void push(Type x) { e[++rear] = x; }
-    Type extract() { return e[head++]; }
-    bool empty() { return head > rear; }
-    Queue(int n) : head(0), rear(-1) { e.resize(n); }
+    void push(Type x) {
+        e[++rear] = x;
+    }
+    Type extract() {
+        return e[head++];
+    }
+    bool empty() {
+        return head > rear;
+    }
+    Queue(int n) : head(0), rear(-1) {
+        e.resize(n);
+    }
 };
 
 const int N = 1e2 + 10;

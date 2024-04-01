@@ -7,12 +7,12 @@ const int MAX_N = 1e5 + 5;
 
 namespace FastIO {
     const int MAX_BUF = 1 << 20;
-    char buf[MAX_BUF], *p1, *p2;
+    char buf[MAX_BUF], * p1, * p2;
 
-#define getchar()                                                            \
+#define getchar() \
     (p1 == p2 && (p2 = (p1 = buf) + fread(buf, 1, 1 << 20, stdin), p1 == p2) \
-            ? EOF                                                            \
-            : *p1++)
+        ? EOF \
+        : *p1++)
 
     int read() {
         int x = 0, f = 1;
@@ -29,7 +29,7 @@ namespace FastIO {
         if (x > 9) write(x / 10);
         putchar(x % 10 + '0');
     }
-}  // namespace FastIO
+} // namespace FastIO
 using namespace FastIO;
 
 struct SegTree {
@@ -81,7 +81,8 @@ struct SegTree {
 
         Node() {}
         Node(int l, int r) : l(l), r(r), alt(-1), inv(0) {}
-        Node(int l, int r, bool x) : l(l), r(r), cnt0(!x), cnt1(x), lmax0(!x), lmax1(x), rmax0(!x), rmax1(x), mmax0(!x), mmax1(x), alt(-1), inv(0) {}
+        Node(int l, int r, bool x) : l(l), r(r), cnt0(!x), cnt1(x), lmax0(!x), lmax1(x), rmax0(!x), rmax1(x), mmax0(!x),
+            mmax1(x), alt(-1), inv(0) {}
 
     } node[MAX_N << 2];
 

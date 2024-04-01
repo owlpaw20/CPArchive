@@ -12,16 +12,26 @@ const int MOD = 1e4 + 7;
 
 template <class Type>
 class Stack {
-  private:
-    Type data[N];
-    int t = 0;
+    private:
+        Type data[N];
+        int t = 0;
 
-  public:
-    void push(Type x) { data[++t] = x; }
-    void pop() { t--; }
-    Type top() { return data[t]; }
-    Type extract() { return data[t--]; }
-    bool empty() { return !t; }
+    public:
+        void push(Type x) {
+            data[++t] = x;
+        }
+        void pop() {
+            t--;
+        }
+        Type top() {
+            return data[t];
+        }
+        Type extract() {
+            return data[t--];
+        }
+        bool empty() {
+            return !t;
+        }
 };
 
 int n;
@@ -35,10 +45,10 @@ void evaluate() {
     vect a = num.extract();
     if (c == '+')
         num.push({(a[0] * b[0]) % MOD,
-            (a[0] * b[1] + a[1] * b[0] + a[1] * b[1]) % MOD});
+                    (a[0] * b[1] + a[1] * b[0] + a[1] * b[1]) % MOD});
     else if (c == '*')
         num.push({(a[0] * b[0] + a[0] * b[1] + a[1] * b[0]) % MOD,
-            (a[1] * b[1]) % MOD});
+                    (a[1] * b[1]) % MOD});
 }
 
 int main() {
@@ -51,9 +61,10 @@ int main() {
     while (n--) {
         char c;
         cin >> c;
-        if (c == '(') {
+        if (c == '(')
             opt.push(c);
-        } else if (c == '+' || c == '*') {
+
+        else if (c == '+' || c == '*') {
             while (!opt.empty() && pr[opt.top()] >= pr[c]) evaluate();
             num.push({1, 1});
             opt.push(c);

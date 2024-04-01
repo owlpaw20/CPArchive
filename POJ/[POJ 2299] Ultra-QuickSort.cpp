@@ -24,7 +24,7 @@ i64 inversions(int l, int r) {
             tmp[idx++] = a[rx++];
     while (lx <= mid)
         tmp[idx++] = a[lx++],
-        ret += r - mid;
+            ret += r - mid;
     while (rx <= r)
         tmp[idx++] = a[rx++];
     for (int i = l, j = 0; i <= r; i++, j++) a[i] = tmp[j];

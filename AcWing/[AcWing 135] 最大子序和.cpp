@@ -23,7 +23,7 @@ int main() {
         s[i] = s[i - 1] + t;
     }
 
-    seg.push_back(0);  // !!!
+    seg.push_back(0); // !!!
 
     for (int i = 1; i <= n; i++) {
         while (!seg.empty() && i - m > seg.front()) seg.pop_front();

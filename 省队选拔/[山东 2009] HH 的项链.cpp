@@ -10,12 +10,12 @@ using std::get;
 
 namespace FastIO {
     const int MAX_BUF = 1 << 20;
-    char buf[MAX_BUF], *p1, *p2;
+    char buf[MAX_BUF], * p1, * p2;
 
-#define getchar()                                                            \
+#define getchar() \
     (p1 == p2 && (p2 = (p1 = buf) + fread(buf, 1, 1 << 20, stdin), p1 == p2) \
-            ? EOF                                                            \
-            : *p1++)
+        ? EOF \
+        : *p1++)
 
     int read() {
         int x = 0, f = 1;
@@ -32,7 +32,7 @@ namespace FastIO {
         if (x > 9) write(x / 10);
         putchar(x % 10 + '0');
     }
-}  // namespace FastIO
+} // namespace FastIO
 using namespace FastIO;
 
 using i64 = long long;
@@ -69,7 +69,9 @@ int main() {
     for (int i = 1; i <= M; ++i)
         qry[i] = {read(), read(), i};
 
-    auto cmp = [&](TUP x, TUP y) { return get<1>(x) < get<1>(y); };
+    auto cmp = [&](TUP x, TUP y) {
+        return get<1>(x) < get<1>(y);
+    };
     std::sort(qry + 1, qry + M + 1, cmp);
 
     for (int i = 1, nx = 1; i <= M; ++i) {

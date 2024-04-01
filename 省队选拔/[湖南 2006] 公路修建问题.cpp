@@ -54,12 +54,20 @@ int main() {
     for (int i = 1; i < m; i++) {
         int u, v, w1, w2;
         cin >> u >> v >> w1 >> w2;
-        g.push_back((Edge){u, v, w1, w2, i});
+        g.push_back((Edge) {
+            u, v, w1, w2, i
+        });
     }
 
-    auto cmp1 = [&](Edge x, Edge y) { return x.w1 < y.w1; };
-    auto cmp2 = [&](Edge x, Edge y) { return x.w2 < y.w2; };
-    auto cmp3 = [&](PII x, PII y) { return x.first < y.first; };
+    auto cmp1 = [&](Edge x, Edge y) {
+        return x.w1 < y.w1;
+    };
+    auto cmp2 = [&](Edge x, Edge y) {
+        return x.w2 < y.w2;
+    };
+    auto cmp3 = [&](PII x, PII y) {
+        return x.first < y.first;
+    };
 
     int ans = 0;
     sort(g.begin(), g.end(), cmp1);

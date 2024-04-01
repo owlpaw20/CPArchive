@@ -6,7 +6,9 @@ using i64 = long long;
 struct Fenwick {
     int size;
     vector<i64> tree;
-    int lowbit(int x) { return x & -x; }
+    int lowbit(int x) {
+        return x & -x;
+    }
     void update(int x, i64 delta) {
         for (int i = x; i <= size; i += lowbit(i))
             tree[i] += delta;

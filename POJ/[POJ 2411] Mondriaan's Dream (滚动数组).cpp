@@ -15,7 +15,7 @@ i64 f[2][N];
 bool state[N];
 
 void solve(const int& n, const int& m) {
-    memset(f, 0, sizeof f);  // !!!
+    memset(f, 0, sizeof f); // !!!
     for (int i = 0; i < (1 << m); i++) {
         int zero_cnt = 0;
         bool is_even = true;

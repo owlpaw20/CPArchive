@@ -18,7 +18,9 @@ int main() {
         cin >> k >> c >> t;
         if (k == 0) {
             ans += c;
-            cp[++rear] = (Coupon){c, t + 45, false};
+            cp[++rear] = (Coupon) {
+                c, t + 45, false
+            };
         } else {
             while (head <= rear && cp[head].lmt < t) head++;
             bool flag = false;

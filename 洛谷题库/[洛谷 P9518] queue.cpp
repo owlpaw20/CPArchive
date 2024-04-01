@@ -19,12 +19,24 @@ unordered_map<string, int> latest;
 struct Queue {
     PSI name[N];
     int head = 0, tail = -1;
-    int size() { return tail - head + 1; }
-    PSI front() { return name[head]; }
-    PSI back() { return name[tail]; }
-    bool empty() { return head > tail; }
-    void push(string s) { name[++tail] = {s, latest[s]}; }
-    void pop() { head++; }
+    int size() {
+        return tail - head + 1;
+    }
+    PSI front() {
+        return name[head];
+    }
+    PSI back() {
+        return name[tail];
+    }
+    bool empty() {
+        return head > tail;
+    }
+    void push(string s) {
+        name[++tail] = {s, latest[s]};
+    }
+    void pop() {
+        head++;
+    }
     void clean_up() {
         while ((status[front().first] == 0 || front().second != latest[front().first]) && !empty())
             pop();
@@ -72,9 +84,10 @@ int main() {
     cin >> n;
     while (n--) {
         cin >> s;
-        if (s == "start") {
+        if (s == "start")
             cout << game_start() << endl;
-        } else if (s == "arrive") {
+
+        else if (s == "arrive") {
             cin >> t;
             cout << arrival(t) << endl;
         } else if (s == "leave") {

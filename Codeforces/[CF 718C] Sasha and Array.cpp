@@ -48,14 +48,16 @@ namespace Matrix {
         }
         return Z;
     }
-}  // namespace Matrix
+} // namespace Matrix
 using namespace Matrix;
 
 struct SEGTREE {
     struct NODE {
         MATRIX val, tag;
 
-        void pull(const NODE x, const NODE y) { val = x.val + y.val; }
+        void pull(const NODE x, const NODE y) {
+            val = x.val + y.val;
+        }
         void push(NODE& x, NODE& y) {
             x.val = x.val * tag;
             x.tag = x.tag * tag;

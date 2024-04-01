@@ -19,7 +19,7 @@ namespace FastIO {
         y = read();
         z = read();
     }
-}  // namespace FastIO
+} // namespace FastIO
 using namespace FastIO;
 
 const int N = 6e4 + 10;

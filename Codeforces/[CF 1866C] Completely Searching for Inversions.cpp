@@ -21,7 +21,7 @@ namespace FastIO {
         if (x > 9) write(x / 10);
         putchar(x % 10 + '0');
     }
-}  // namespace FastIO
+} // namespace FastIO
 using namespace FastIO;
 
 struct Edges {
@@ -60,7 +60,9 @@ int main() {
         t = read();
         for (int j = 1; j <= t; j++) {
             x = read(), y = read();
-            ver[i].emplace_back((Edges){x, y});
+            ver[i].emplace_back((Edges) {
+                x, y
+            });
         }
     }
     DFS(1);

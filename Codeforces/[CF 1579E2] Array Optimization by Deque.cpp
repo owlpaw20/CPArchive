@@ -22,8 +22,12 @@ struct Fenwick {
     i64 tr[N];
     int n;
 
-    i64 lowbit(int x) { return x & -x; }
-    void reset() { memset(tr, 0, sizeof tr); }
+    i64 lowbit(int x) {
+        return x & -x;
+    }
+    void reset() {
+        memset(tr, 0, sizeof tr);
+    }
 
     i64 query(int x) {
         int ret = 0;
@@ -43,7 +47,9 @@ PII a[N];
 i64 b[N];
 Fenwick tr;
 gp_hash_table<i64, i64> disc;
-auto cmp = [](PII x, PII y) { return x.second < y.second; };
+auto cmp = [](PII x, PII y) {
+    return x.second < y.second;
+};
 
 int main() {
     ios::sync_with_stdio(false);

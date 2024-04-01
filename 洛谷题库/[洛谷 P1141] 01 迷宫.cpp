@@ -33,7 +33,9 @@ int n, m;
 bool g[N][N];
 DisjointSet DSU;
 
-int H(int x, int y) { return (x - 1) * n + y; }
+int H(int x, int y) {
+    return (x - 1) * n + y;
+}
 
 int main() {
     ios::sync_with_stdio(false);

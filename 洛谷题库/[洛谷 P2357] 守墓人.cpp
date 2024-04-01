@@ -9,7 +9,9 @@ i64 a[N];
 
 struct Fenwick {
     i64 tr[N];
-    int lowbit(int x) { return x & -x; }
+    int lowbit(int x) {
+        return x & -x;
+    }
     void update(int x, i64 delta) {
         for (int i = x; i <= n; i += lowbit(i))
             tr[i] += delta;
@@ -24,7 +26,9 @@ struct Fenwick {
 
 Fenwick tr1, tr2;
 
-i64 prefix(int x) { return tr1.query(x) * (x + 1) - tr2.query(x); }
+i64 prefix(int x) {
+    return tr1.query(x) * (x + 1) - tr2.query(x);
+}
 
 int main() {
     ios::sync_with_stdio(false);

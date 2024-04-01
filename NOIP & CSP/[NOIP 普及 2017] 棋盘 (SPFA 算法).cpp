@@ -9,7 +9,7 @@ const int DX[] = {0, 1, 0, -1};
 const int DY[] = {1, 0, -1, 0};
 
 int n, m;
-int g[SIZE][SIZE];  // 邻接数组存图
+int g[SIZE][SIZE]; // 邻接数组存图
 int dist[SIZE][SIZE][2];
 bool vis[SIZE][SIZE][2];
 
@@ -33,13 +33,13 @@ int SPFA(int sx, int sy) {
             if (tx > 0 && ty > 0 && tx <= n && ty <= n) {
                 int cur = g[x][y], nxt = g[tx][ty];
                 int delta = 0, tc = 0;
-                if (nxt != -1) {  // 如果目标点有色
+                if (nxt != -1) { // 如果目标点有色
                     if (color == nxt)
                         delta = 0;
                     else
                         delta = 1;
                     tc = nxt;
-                } else if (cur != -1) {  // 如果当前点有色、目标点无色
+                } else if (cur != -1) { // 如果当前点有色、目标点无色
                     delta = 2;
                     tc = cur;
                 } else

@@ -25,7 +25,7 @@ flt pd[N], ad[N];
 
 flt dist(PII a, PII b) {
     return sqrt((a.x - b.x) * (a.x - b.x) +
-                (a.y - b.y) * (a.y - b.y));
+            (a.y - b.y) * (a.y - b.y));
 }
 
 void DFS(int u, int idx) {
@@ -75,7 +75,7 @@ int main() {
         for (int j = i + 1; j <= n; j++)
             if (belong[i] != belong[j])
                 ans = min(ans, max({ad[belong[i]], ad[belong[j]],
-                                   pd[i] + pd[j] + dist(p[i], p[j])}));
+                                pd[i] + pd[j] + dist(p[i], p[j])}));
 
     cout << fixed << ans << endl;
     fflush(stdout);

@@ -23,7 +23,9 @@ struct SegTree {
         int tag, max;
     } node[MAX_N << 3];
 
-    void pushup(int u) { node[u].max = std::max(node[u << 1].max, node[u << 1 | 1].max); }
+    void pushup(int u) {
+        node[u].max = std::max(node[u << 1].max, node[u << 1 | 1].max);
+    }
 
     void pushdown(int u) {
         if (node[u].tag) {
@@ -75,7 +77,9 @@ int main() {
         disc.push_back(seg[i].second);
     }
 
-    auto cmp = [&](PII x, PII y) { return x.second - x.first < y.second - y.first; };
+    auto cmp = [&](PII x, PII y) {
+        return x.second - x.first < y.second - y.first;
+    };
     std::sort(seg + 1, seg + N + 1, cmp);
     std::sort(disc.begin(), disc.end());
     disc.erase(std::unique(disc.begin(), disc.end()), disc.end());
@@ -88,7 +92,9 @@ int main() {
     SGT.build(1, disc.size());
 
     int ans = std::numeric_limits<int>::max();
-    auto len = [&](int x) { return disc[seg[x].second - 1] - disc[seg[x].first - 1]; };
+    auto len = [&](int x) {
+        return disc[seg[x].second - 1] - disc[seg[x].first - 1];
+    };
 
     for (int i = 1, l = 1; i <= N; i++) {
         SGT.update(seg[i].first, seg[i].second);

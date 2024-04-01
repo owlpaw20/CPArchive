@@ -20,8 +20,10 @@ struct DisjointSet {
         p[rx] = ry;
         return true;
     }
-    DisjointSet(){};
-    DisjointSet(int n) { init(n); }
+    DisjointSet() {};
+    DisjointSet(int n) {
+        init(n);
+    }
 };
 
 const int N = 3e3 + 10;

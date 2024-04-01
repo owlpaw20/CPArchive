@@ -10,10 +10,18 @@ template <class Type>
 struct stack {
     Type data[N];
     int t;
-    void push(Type x) { data[++t] = x; }
-    Type top() { return data[t]; }
-    Type extract() { return data[t--]; }
-    bool empty() { return !t; }
+    void push(Type x) {
+        data[++t] = x;
+    }
+    Type top() {
+        return data[t];
+    }
+    Type extract() {
+        return data[t--];
+    }
+    bool empty() {
+        return !t;
+    }
     stack() : t(0) {}
 };
 
@@ -113,7 +121,7 @@ int main() {
     int root = st.top();
     bool expr_res = evaluate(root);
 
-    vary(root);  // 判断有哪些变量在修改后会导致结果被改变
+    vary(root); // 判断有哪些变量在修改后会导致结果被改变
 
     int q;
     cin >> q;

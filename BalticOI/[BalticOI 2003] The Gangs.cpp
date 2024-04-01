@@ -22,7 +22,9 @@ struct DisjointSet {
         return true;
     }
     DisjointSet() {}
-    DisjointSet(int n) { init(n); }
+    DisjointSet(int n) {
+        init(n);
+    }
 };
 
 int n, m;
@@ -43,8 +45,8 @@ int main() {
         if (opt == 'F')
             dsu.merge(p, q);
         else if (opt == 'E') {
-            dsu.merge(p + n, q);  // 注意连边的方向
-            dsu.merge(q + n, p);  // p + n --> q 表示 p 的敌人是 q
+            dsu.merge(p + n, q); // 注意连边的方向
+            dsu.merge(q + n, p); // p + n --> q 表示 p 的敌人是 q
         }
     }
 

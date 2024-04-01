@@ -11,13 +11,27 @@ template <class T>
 struct queue {
     vector<T> data;
     int head, rear;
-    void push(T x) { data[++rear] = x; }
-    void pop() { head++; }
-    T extract() { return data[head++]; }
-    T front() { return data[head]; }
-    T back() { return data[rear]; }
-    bool empty() { return head > rear; }
-    queue(int n) : head(0), rear(-1) { data.resize(n + 10); }
+    void push(T x) {
+        data[++rear] = x;
+    }
+    void pop() {
+        head++;
+    }
+    T extract() {
+        return data[head++];
+    }
+    T front() {
+        return data[head];
+    }
+    T back() {
+        return data[rear];
+    }
+    bool empty() {
+        return head > rear;
+    }
+    queue(int n) : head(0), rear(-1) {
+        data.resize(n + 10);
+    }
 };
 
 int n;

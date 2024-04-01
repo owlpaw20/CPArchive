@@ -26,14 +26,16 @@ namespace FastIO {
         if (x > 9) write(x / 10);
         putchar(x % 10 + '0');
     }
-}  // namespace FastIO
+} // namespace FastIO
 using namespace FastIO;
 
 struct Edge {
     int fr, to, wt;
     Edge() {}
     Edge(int x, int y, int z) : fr(x), to(y), wt(z) {}
-    bool operator<(const Edge& t) const { return wt < t.wt; }
+    bool operator<(const Edge& t) const {
+        return wt < t.wt;
+    }
 };
 
 struct DisjointSet {
@@ -57,7 +59,9 @@ struct DisjointSet {
     }
 
     DisjointSet() {}
-    DisjointSet(int n) { init(n); }
+    DisjointSet(int n) {
+        init(n);
+    }
 };
 
 int n;

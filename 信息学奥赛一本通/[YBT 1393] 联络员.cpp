@@ -58,7 +58,9 @@ int main() {
             edges.emplace_back(u, v, w);
     }
 
-    auto cmp = [](EDGE a, EDGE b) { return get<2>(a) < get<2>(b); };
+    auto cmp = [](EDGE a, EDGE b) {
+        return get<2>(a) < get<2>(b);
+    };
     sort(edges.begin(), edges.end(), cmp);
 
     cout << mandatory_cost + Kruskal() << endl;

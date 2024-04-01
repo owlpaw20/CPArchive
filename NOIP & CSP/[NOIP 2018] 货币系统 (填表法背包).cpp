@@ -18,12 +18,12 @@ void solve() {
     for (int i = 1; i <= n; i++) cin >> coin[i];
     sort(coin + 1, coin + n + 1);
 
-    f[0] = true;  // 0 肯定可以表示出来
+    f[0] = true; // 0 肯定可以表示出来
     for (int i = 1; i <= n; i++) {
-        if (f[coin[i]] == true) continue;  // 如果已可以表示则删除
-        ans += 1;                          // 如果尚不能表示就增加
+        if (f[coin[i]] == true) continue; // 如果已可以表示则删除
+        ans += 1; // 如果尚不能表示就增加
         for (int j = coin[i]; j <= coin[n]; j++)
-            f[j] = (f[j] || f[j - coin[i]]);  // 能表示的都表示出来
+            f[j] = (f[j] || f[j - coin[i]]); // 能表示的都表示出来
     }
     cout << ans << endl;
 }

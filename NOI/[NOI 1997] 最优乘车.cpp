@@ -20,7 +20,7 @@ int main() {
     cin >> m >> n;
 
     string line;
-    getline(cin, line);  // 读入上一行的换行符
+    getline(cin, line); // 读入上一行的换行符
     while (m--) {
         getline(cin, line);
         stringstream ssin(line);

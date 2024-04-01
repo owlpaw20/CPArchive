@@ -62,7 +62,9 @@ void Tarjan(int u) {
 }
 
 // 对边进行哈希用于判重
-i64 H(int x, int y) { return (i64)(x - 1) * N + y; }
+i64 H(int x, int y) {
+    return (i64)(x - 1) * N + y;
+}
 
 int main() {
     ios::sync_with_stdio(false);
@@ -87,7 +89,7 @@ int main() {
         for (int j = head1[i]; ~j; j = nx[j]) {
             int u = scc[i], v = scc[ed[j]];
             i64 h = H(u, v);
-            if (u != v && vis.insert(h).second)  // 对强连通分量的出边进行判重
+            if (u != v && vis.insert(h).second) // 对强连通分量的出边进行判重
                 connect(u, v, head2);
         }
 
@@ -96,24 +98,24 @@ int main() {
 
     // 对所有强连通分量进行 DAG 上拓扑序 DP 求最长链并统计方案数
     for (int i = scc_cnt; i != 0; i--) {
-        if (!f[i]) {          // 如果该强连通分量没有被遍历过
-            f[i] = sizes[i];  // 则初始化 f[i] 为其大小（强连通分量自身也是半连通的）
-            g[i] = 1;         // 并初始化方案数 g[i]
+        if (!f[i]) { // 如果该强连通分量没有被遍历过
+            f[i] = sizes[i]; // 则初始化 f[i] 为其大小（强连通分量自身也是半连通的）
+            g[i] = 1; // 并初始化方案数 g[i]
         }
-        for (int j = head2[i]; ~j; j = nx[j]) {  // 遍历该强连通分量的所有出边
-            int v = ed[j];                       // 获取出边的终点
-            if (f[v] < f[i] + sizes[v]) {        // 如果把出边所在强连通分量加入当前的链可以使答案更优
-                f[v] = f[i] + sizes[v];          // -- 更新当前链并保存链更新后的长度
-                g[v] = g[i];                     // -- 保存链更新之后的可选方案数
-            } else if (f[v] == f[i] + sizes[v])  // 否则如果加入该强连通分量后链的长度相等
-                g[v] = (g[v] + g[i]) % x;        // -- 则只更新可选方案数
+        for (int j = head2[i]; ~j; j = nx[j]) { // 遍历该强连通分量的所有出边
+            int v = ed[j]; // 获取出边的终点
+            if (f[v] < f[i] + sizes[v]) { // 如果把出边所在强连通分量加入当前的链可以使答案更优
+                f[v] = f[i] + sizes[v]; // -- 更新当前链并保存链更新后的长度
+                g[v] = g[i]; // -- 保存链更新之后的可选方案数
+            } else if (f[v] == f[i] + sizes[v]) // 否则如果加入该强连通分量后链的长度相等
+                g[v] = (g[v] + g[i]) % x; // -- 则只更新可选方案数
         }
     }
 
     int maxf = 0, sum = 0;
     for (int i = 1; i <= scc_cnt; i++)
         if (f[i] > maxf)
-            maxf = f[i], sum = g[i];  // 求最长链并保存最长链的方案数
+            maxf = f[i], sum = g[i]; // 求最长链并保存最长链的方案数
         else if (f[i] == maxf)
             sum = (sum + g[i]) % x;
 

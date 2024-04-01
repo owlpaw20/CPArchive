@@ -41,14 +41,16 @@ namespace FastIO {
         if (x > 9) write64(x / 10);
         putchar(x % 10 + '0');
     }
-}  // namespace FastIO
+} // namespace FastIO
 using namespace FastIO;
 
 Long n, sum[N], ans[N];
 
 struct FenwickTree {
     Long c[N];
-    Long lowbit(Long x) { return x & -x; }
+    Long lowbit(Long x) {
+        return x & -x;
+    }
     Long query(Long x) {
         Long ret = 0;
         for (Long i = x; i; i -= lowbit(i))
@@ -59,7 +61,9 @@ struct FenwickTree {
         for (Long i = x; i <= n; i += lowbit(i))
             c[i] += delta;
     }
-    FenwickTree() { memset(c, 0, sizeof c); }
+    FenwickTree() {
+        memset(c, 0, sizeof c);
+    }
 } tr;
 
 int main() {

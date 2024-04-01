@@ -13,7 +13,9 @@ int n;
 string tmp;
 unordered_map<string, PSB> macro;
 
-bool check(char ch) { return isalnum(ch) || ch == '_'; }
+bool check(char ch) {
+    return isalnum(ch) || ch == '_';
+}
 
 string expand(string s) {
     string ret;

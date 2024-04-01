@@ -42,19 +42,21 @@ void init() {
             else
                 up[i][j] = len = 0;
 
-    /* 对每个点能够向右延伸的最大距离求前缀和
-     *
-     * 计算答案时，需要从 rght[i - upable][j]
-     * 一直累加到 rght[i - 2][j]，非常浪费时间
-     * 可以使用前缀和在常数复杂度内求出上述区间的和
-     * 这样一来算法的总复杂度就降到了O(n^2) */
+    /*  对每个点能够向右延伸的最大距离求前缀和
+
+        计算答案时，需要从 rght[i - upable][j]
+        一直累加到 rght[i - 2][j]，非常浪费时间
+        可以使用前缀和在常数复杂度内求出上述区间的和
+        这样一来算法的总复杂度就降到了O(n^2) */
 
     for (int i = 1; i <= n; i++)
         for (int j = 1; j <= m; j++)
             if (!map[i][j]) sum[i][j] = sum[i - 1][j] + rght[i][j];
 }
 
-long long pre(int l, int r, int j) { return sum[r][j] - sum[l - 1][j]; }
+long long pre(int l, int r, int j) {
+    return sum[r][j] - sum[l - 1][j];
+}
 
 void solve() {
     cin >> n >> m >> c >> f;
@@ -72,7 +74,7 @@ void solve() {
             if (down[i][j] < 1) continue;
             ans_f = (ans_f + pre(i - upable, i - 2, j) % MOD * rght[i][j] % MOD * down[i][j] % MOD) % MOD;
         }
-    cout << c * ans_c % MOD << " " << f * ans_f % MOD << endl;
+    cout << c* ans_c % MOD << " " << f* ans_f % MOD << endl;
 }
 
 int main() {

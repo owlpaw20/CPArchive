@@ -24,7 +24,9 @@ int main() {
             maxr = max(maxr, rail[i].r), flag[rail[i].r] = true;
 
     int minl = x;
-    auto cmp = [&](PII a, PII b) { return a.r > b.r; };
+    auto cmp = [&](PII a, PII b) {
+        return a.r > b.r;
+    };
     sort(rail + 1, rail + m + 1, cmp);
     for (int i = 1; i <= m && rail[i].r >= minl; i++)
         if (rail[i].l < x)

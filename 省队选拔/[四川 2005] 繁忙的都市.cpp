@@ -7,7 +7,9 @@ const int N = 3e2 + 10;
 const int M = 1e5 + 10;
 struct Edge {
     int u, v, w;
-    inline bool operator<(const Edge& other) const { return w < other.w; }
+    inline bool operator<(const Edge& other) const {
+        return w < other.w;
+    }
 };
 
 int n, m, tot, p[N];

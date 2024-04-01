@@ -14,7 +14,9 @@ Long n, pos, a[N], t[N], c[N];
 Long idx, Left[N], Right[N];
 unordered_map<Long, int> disc;
 
-Long lowbit(Long x) { return x & -x; }
+Long lowbit(Long x) {
+    return x & -x;
+}
 void increase(Long x, Long delta) {
     for (Long i = x; i <= n; i += lowbit(i))
         c[i] += delta;

@@ -16,7 +16,9 @@ struct SegTree {
         bool tag;
     } node[N << 2];
 
-    void maintain(int u) { node[u].sum = node[u << 1].sum + node[u << 1 | 1].sum; }
+    void maintain(int u) {
+        node[u].sum = node[u << 1].sum + node[u << 1 | 1].sum;
+    }
 
     void propagate(int u) {
         auto& root = node[u];

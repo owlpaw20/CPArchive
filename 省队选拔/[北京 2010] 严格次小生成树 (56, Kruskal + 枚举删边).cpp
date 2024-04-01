@@ -20,14 +20,18 @@ unordered_set<int> used;
 
 namespace UnionFind {
     int fa[N];
-    void init(int n) { iota(fa, fa + n + 1, 0); }
-    int find(int x) { return x == fa[x] ? x : (fa[x] = find(fa[x])); }
+    void init(int n) {
+        iota(fa, fa + n + 1, 0);
+    }
+    int find(int x) {
+        return x == fa[x] ? x : (fa[x] = find(fa[x]));
+    }
     bool merge(int x, int y) {
         x = find(x), y = find(y);
         if (x == y) return false;
         return fa[x] = y, true;
     }
-}  // namespace UnionFind
+} // namespace UnionFind
 
 i64 Kruskal1() {
     i64 ans = 0;

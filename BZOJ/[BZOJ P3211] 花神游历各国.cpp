@@ -15,7 +15,9 @@ struct SegTree {
     vector<i64> a;
     vector<Node> tree;
 
-    i64& operator[](const int idx) { return a[idx]; }
+    i64& operator[](const int idx) {
+        return a[idx];
+    }
 
     void init(int n) {
         a.clear();

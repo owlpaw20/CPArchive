@@ -35,7 +35,9 @@ f64 DAC(const int l, const int r) {
         if (fabs(pt[mid].first - pt[i].first) < ret)
             tmp[cnt++] = pt[i];
 
-    std::sort(tmp, tmp + cnt, [&](PFF a, PFF b) { return a.second < b.second; });
+    std::sort(tmp, tmp + cnt, [&](PFF a, PFF b) {
+        return a.second < b.second;
+    });
 
     for (int i = 0; i < cnt; ++i)
         for (int j = i + 1; j < cnt; ++j)

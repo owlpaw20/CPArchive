@@ -8,7 +8,7 @@ const int DX[] = {0, 1, 0, -1};
 const int DY[] = {1, 0, -1, 0};
 
 int n, m, minn = INF;
-int g[SIZE][SIZE];  // 0 = 无色, 1 = 红色, 2 = 黄色
+int g[SIZE][SIZE]; // 0 = 无色, 1 = 红色, 2 = 黄色
 int cost[SIZE][SIZE];
 bool vis[SIZE][SIZE];
 
@@ -20,15 +20,15 @@ void DFS(int x, int y, int curr, int color) {
     for (int i = 0; i < 4; i++) {
         int tx = x + DX[i], ty = y + DY[i];
         if (tx <= n && tx > 0 && ty <= n && ty > 0 && !vis[tx][ty]) {
-            if (g[x][y] == 0 && g[tx][ty] == 0) continue;  // 魔法不能连续使用
-            if (g[tx][ty] == 0) {                          // 如果目标点无色
+            if (g[x][y] == 0 && g[tx][ty] == 0) continue; // 魔法不能连续使用
+            if (g[tx][ty] == 0) { // 如果目标点无色
                 if (curr + 2 < cost[tx][ty]) {
                     vis[tx][ty] = true;
                     cost[tx][ty] = curr + 2;
                     DFS(tx, ty, curr + 2, color);
                     vis[tx][ty] = false;
                 }
-            } else {  // 如果目标点有色
+            } else { // 如果目标点有色
                 if (color == g[tx][ty] && curr < cost[tx][ty]) {
                     vis[tx][ty] = true;
                     cost[tx][ty] = curr;

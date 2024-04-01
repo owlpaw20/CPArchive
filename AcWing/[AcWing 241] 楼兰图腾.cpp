@@ -12,7 +12,9 @@ Long n, a[N];
 Long hi[N], lo[N], tr[N];
 Long ans1, ans2;
 
-Long lowbit(Long x) { return x & -x; }
+Long lowbit(Long x) {
+    return x & -x;
+}
 
 void add(Long x, Long delta) {
     for (Long i = x; i <= n; i += lowbit(i))

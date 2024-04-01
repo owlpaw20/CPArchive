@@ -5,7 +5,9 @@ using i64 = long long;
 
 int c;
 
-i64 pow2(i64 x) { return x * x; }
+i64 pow2(i64 x) {
+    return x * x;
+}
 
 int main() {
     ios::sync_with_stdio(false), cin.tie(nullptr);

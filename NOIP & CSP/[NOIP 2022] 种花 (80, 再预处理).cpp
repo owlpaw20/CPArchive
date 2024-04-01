@@ -52,21 +52,21 @@ void solve() {
     init();
 
     // 只需要枚举 C 的两个角了
-    for (int i = 3; i <= n; i++)          // 枚举 C 左下角的横坐标
-        for (int j = 1; j < m; j++) {     // 枚举 C 左下角的纵坐标
-            int upable = up[i][j];        // 记录 C 的左下角最多能向上延伸的长度
-            if (map[i][j] || upable < 2)  // 如果当前左下角合法且留给右上角的位置足够大
+    for (int i = 3; i <= n; i++) // 枚举 C 左下角的横坐标
+        for (int j = 1; j < m; j++) { // 枚举 C 左下角的纵坐标
+            int upable = up[i][j]; // 记录 C 的左下角最多能向上延伸的长度
+            if (map[i][j] || upable < 2) // 如果当前左下角合法且留给右上角的位置足够大
                 continue;
 
-            for (int k = i - upable; k <= i - 2; k++) {                 // 枚举 C 右上角的横坐标
-                ans_c = (ans_c + rght[k][j] * rght[i][j] % MOD) % MOD;  // 对 C 进行计数
-                if (!down[i][j]) continue;                              // 判断下方有没有给 F 的出边留空间
+            for (int k = i - upable; k <= i - 2; k++) { // 枚举 C 右上角的横坐标
+                ans_c = (ans_c + rght[k][j] * rght[i][j] % MOD) % MOD; // 对 C 进行计数
+                if (!down[i][j]) continue; // 判断下方有没有给 F 的出边留空间
 
                 // 对 F 进行计数
                 ans_f = (ans_f + rght[k][j] * rght[i][j] * down[i][j] % MOD) % MOD;
             }
 
-            cout << c * ans_c % MOD << " " << f * ans_f % MOD << endl;
+            cout << c* ans_c % MOD << " " << f* ans_f % MOD << endl;
         }
 }
 

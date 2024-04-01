@@ -56,7 +56,9 @@ int main() {
         wt_sum += c;
     }
 
-    auto cmp = [](EDGE x, EDGE y) { return get<2>(x) < get<2>(y); };
+    auto cmp = [](EDGE x, EDGE y) {
+        return get<2>(x) < get<2>(y);
+    };
     sort(edges.begin(), edges.end(), cmp);
 
     cout << wt_sum - Kruskal() << endl;

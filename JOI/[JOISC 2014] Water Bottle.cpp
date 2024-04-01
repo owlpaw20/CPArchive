@@ -29,7 +29,9 @@ std::vector<PII> graph2[MAX_N * MAX_N];
 struct UnionFind {
     int fa[MAX_P];
 
-    void init(int x) { std::iota(fa, fa + x + 1, 0); }
+    void init(int x) {
+        std::iota(fa, fa + x + 1, 0);
+    }
 
     int find(int x) {
         if (fa[x] == x) return x;
@@ -95,7 +97,7 @@ namespace LCA {
         mxw = std::max({mxw, mx[u][0], mx[v][0]});
         return mxw;
     }
-}  // namespace LCA
+} // namespace LCA
 
 int main() {
     std::ios::sync_with_stdio(false);

@@ -38,7 +38,9 @@ int main() {
     for (int i = 1; i <= m; i++)
         cin >> rel[i].a >> rel[i].b >> rel[i].c;
 
-    auto cmp = [&](Pair x, Pair y) { return x.c > y.c; };
+    auto cmp = [&](Pair x, Pair y) {
+        return x.c > y.c;
+    };
     sort(rel + 1, rel + m + 1, cmp);
 
     for (int i = 1; i <= m; i++) {

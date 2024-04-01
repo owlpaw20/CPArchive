@@ -9,12 +9,24 @@ template <class Type>
 struct Queue {
     Type data[N];
     int head, rear;
-    void push(Type x) { data[++rear] = x; }
-    void pop_front() { head++; }
-    void pop_back() { rear--; }
-    Type front() { return data[head]; }
-    Type back() { return data[rear]; }
-    bool empty() { return head > rear; }
+    void push(Type x) {
+        data[++rear] = x;
+    }
+    void pop_front() {
+        head++;
+    }
+    void pop_back() {
+        rear--;
+    }
+    Type front() {
+        return data[head];
+    }
+    Type back() {
+        return data[rear];
+    }
+    bool empty() {
+        return head > rear;
+    }
     Queue() : head(0), rear(0) {}
 };
 

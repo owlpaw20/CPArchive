@@ -10,12 +10,24 @@ template <class T>
 struct Queue {
     vector<T> data;
     int head, rear;
-    void push(T x) { data[++rear] = x; }
-    void pop() { head++; }
-    T extract() { return data[head++]; }
-    T front() { return data[head]; }
-    T back() { return data[rear]; }
-    bool empty() { return head > rear; }
+    void push(T x) {
+        data[++rear] = x;
+    }
+    void pop() {
+        head++;
+    }
+    T extract() {
+        return data[head++];
+    }
+    T front() {
+        return data[head];
+    }
+    T back() {
+        return data[rear];
+    }
+    bool empty() {
+        return head > rear;
+    }
     void init(int n) {
         head = 0;
         rear = -1;
@@ -23,7 +35,9 @@ struct Queue {
         data.resize(n);
     }
     Queue() {}
-    Queue(int n) { init(n); }
+    Queue(int n) {
+        init(n);
+    }
 };
 
 const int N = 5e5 + 10;
@@ -53,14 +67,14 @@ void BFS(int root) {
     depth[root] = 1;
 
     while (!q.empty()) {
-        int u = q.extract();                    // 取出当前遍历到的子树的根节点 U
-        for (int i = head[u]; ~i; i = nx[i]) {  // 遍历 U 的所有子节点
+        int u = q.extract(); // 取出当前遍历到的子树的根节点 U
+        for (int i = head[u]; ~i; i = nx[i]) { // 遍历 U 的所有子节点
             int v = ed[i];
             if (depth[v]) continue;
 
-            depth[v] = depth[u] + 1;            // 保存当前节点的深度
-            anc[v][0] = u;                      // 节点 V 的父节点为 U
-            for (int j = 1; j <= log2(n); j++)  // 递推地预处理出 V 的所有祖先节点
+            depth[v] = depth[u] + 1; // 保存当前节点的深度
+            anc[v][0] = u; // 节点 V 的父节点为 U
+            for (int j = 1; j <= log2(n); j++) // 递推地预处理出 V 的所有祖先节点
                 anc[v][j] = anc[anc[v][j - 1]][j - 1];
 
             q.push(v);
@@ -77,14 +91,14 @@ int query_LCA(int u, int v) {
         if (depth[anc[v][i]] >= depth[u])
             v = anc[v][i];
 
-    if (u == v)    // 如果 U 就是 V 的祖先
-        return u;  // 那么直接返回即可
+    if (u == v) // 如果 U 就是 V 的祖先
+        return u; // 那么直接返回即可
 
     // 将 U 和 V 同时向上移动，直到二者移动到同一节点的子节点处
     for (int i = log2(n); i >= 0; i--)
         if (anc[v][i] != anc[u][i])
             u = anc[u][i], v = anc[v][i];
-    return anc[u][0];  // 即可找到最近公共祖先
+    return anc[u][0]; // 即可找到最近公共祖先
 }
 
 int main() {

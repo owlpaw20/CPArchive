@@ -70,7 +70,9 @@ int main() {
             for (int j(i + 1); j <= n; j++)
                 edges.emplace_back(i, j, calc_dist(i, j));
 
-        auto cmp = [&](EDGE x, EDGE y) { return get<2>(x) < get<2>(y); };
+        auto cmp = [&](EDGE x, EDGE y) {
+            return get<2>(x) < get<2>(y);
+        };
         sort(edges.begin(), edges.end(), cmp);
 
         cout << fixed << Kruskal() << '\n';

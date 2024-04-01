@@ -8,7 +8,9 @@ using namespace std;
 const double eps = 1e-4;
 double a, b, c, d, l, r, mid;
 
-double f(double x) { return a * pow(x, 3) + b * pow(x, 2) + c * x + d; }
+double f(double x) {
+    return a * pow(x, 3) + b * pow(x, 2) + c * x + d;
+}
 
 int main() {
     ios::sync_with_stdio(false);

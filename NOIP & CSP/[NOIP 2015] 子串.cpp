@@ -13,12 +13,12 @@ int f[M][M];
 int sum[M][M];
 char a[N], b[M];
 
-/* f[i][j][k] = a[1 ~ i] 中选取 k 段，可以匹配 b[1 ~ j] 的方案数
- * f[i][j][k] = f[i - 1][j][k]               不选 a[i] 的方案数
- *            + sum(f[i - t][j - t][k - 1])  所有选 a[i-t+1 ~ i] 这一段的方案数之和
- * 在转移过程中对 sum 进行预处理节省空间，并使用滚动数组优化空间
- * sum[i][j][k] = sum[i - 1][j - 1][k] + f[i - 1][j - 1][k - 1] (a[i] == b[j])
- *              = 0                                             (a[i] != b[j]) */
+/*  f[i][j][k] = a[1 ~ i] 中选取 k 段，可以匹配 b[1 ~ j] 的方案数
+    f[i][j][k] = f[i - 1][j][k]               不选 a[i] 的方案数
+              + sum(f[i - t][j - t][k - 1])  所有选 a[i-t+1 ~ i] 这一段的方案数之和
+    在转移过程中对 sum 进行预处理节省空间，并使用滚动数组优化空间
+    sum[i][j][k] = sum[i - 1][j - 1][k] + f[i - 1][j - 1][k - 1] (a[i] == b[j])
+                = 0                                             (a[i] != b[j]) */
 
 int main() {
     ios::sync_with_stdio(false);

@@ -48,14 +48,14 @@ struct AhoCorasick {
             int u = q.front();
             q.pop();
 
-            for (int i = 0; i < 26; i++) {  // 枚举当前节点的所有子节点
+            for (int i = 0; i < 26; i++) { // 枚举当前节点的所有子节点
                 int p = trie[u][i];
-                if (p) {                                   // 如果存在该字符
-                    int j = fail[u];                       // 则定位到当前节点的 fail 指针
-                    while (j && !trie[j][i]) j = fail[j];  // 并根据 fail 指针不断向前跳
-                    if (trie[j][i]) j = trie[j][i];        // 直到回到根节点或者找到匹配的字符
-                    fail[p] = j;                           // 找到合法最长前缀
-                    q.push(p);                             // 将该节点加入队列中准备搜索
+                if (p) { // 如果存在该字符
+                    int j = fail[u]; // 则定位到当前节点的 fail 指针
+                    while (j && !trie[j][i]) j = fail[j]; // 并根据 fail 指针不断向前跳
+                    if (trie[j][i]) j = trie[j][i]; // 直到回到根节点或者找到匹配的字符
+                    fail[p] = j; // 找到合法最长前缀
+                    q.push(p); // 将该节点加入队列中准备搜索
                 }
             }
         }
@@ -65,15 +65,15 @@ struct AhoCorasick {
     int query(string s) {
         int ans = 0;
         int len = s.length();
-        for (int i = 0, j = 0; i < len; i++) {     // 用 i 指针遍历待匹配串
-            int c = s[i] - 'a';                    // 获取当前字符
-            while (j && !trie[j][c]) j = fail[j];  // 跳到最高层的 fail 指针
-            if (trie[j][c]) j = trie[j][c];        // 进入下一个字符
+        for (int i = 0, j = 0; i < len; i++) { // 用 i 指针遍历待匹配串
+            int c = s[i] - 'a'; // 获取当前字符
+            while (j && !trie[j][c]) j = fail[j]; // 跳到最高层的 fail 指针
+            if (trie[j][c]) j = trie[j][c]; // 进入下一个字符
             int p = j;
-            while (p) {         // 如果找到合法匹配
-                ans += cnt[p];  // 则累加当前单词被重复的次数（上跳后还要计算是为了统计包含在当前模式串中的其他子模式串的出现）
-                cnt[p] = 0;     // 并将该单词的计数归零避免重复统计（本题要求）
-                p = fail[p];    // 向上跳
+            while (p) { // 如果找到合法匹配
+                ans += cnt[p]; // 则累加当前单词被重复的次数（上跳后还要计算是为了统计包含在当前模式串中的其他子模式串的出现）
+                cnt[p] = 0; // 并将该单词的计数归零避免重复统计（本题要求）
+                p = fail[p]; // 向上跳
             }
         }
         return ans;

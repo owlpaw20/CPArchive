@@ -63,7 +63,9 @@ int main() {
     for (int i = 0; i < M; ++i) get<2>(queries[i]) = i;
 
     std::sort(queries.begin(), queries.end(),
-        [&](const TUP a, const TUP b) { return get<1>(a) < get<1>(b); });
+    [&](const TUP a, const TUP b) {
+        return get<1>(a) < get<1>(b);
+    });
 
     for (int i = 1, j = 0; i <= N; ++i) {
         if (a[i] <= N) SGT.update(a[i], i);

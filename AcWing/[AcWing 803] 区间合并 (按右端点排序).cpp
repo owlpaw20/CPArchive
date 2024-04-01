@@ -18,7 +18,9 @@ int main() {
     for (int i = 0; i < n; i++)
         cin >> intvl[i].left >> intvl[i].right;
 
-    auto cmp = [&](PII a, PII b) { return a.right > b.right; };
+    auto cmp = [&](PII a, PII b) {
+        return a.right > b.right;
+    };
     sort(intvl.begin(), intvl.end(), cmp);
 
     int L = INF, R = INF, ans = 0;

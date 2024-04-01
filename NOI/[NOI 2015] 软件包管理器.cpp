@@ -15,7 +15,9 @@ struct SegTree {
         int sum, alt;
     } node[N << 2];
 
-    void maintain(int u) { node[u].sum = node[u << 1].sum + node[u << 1 | 1].sum; }
+    void maintain(int u) {
+        node[u].sum = node[u << 1].sum + node[u << 1 | 1].sum;
+    }
 
     void propagate(int u) {
         auto& root = node[u];
@@ -137,9 +139,13 @@ namespace Decomp {
         SGT.overwrite(1, dfn[u], dfn[v], flag);
     }
 
-    void update_subtree_val(int u, bool v = false) { SGT.overwrite(1, dfn[u], dfn[u] + size[u] - 1, v); }
-    int query_subtree_sum(int u) { return SGT.query(1, dfn[u], dfn[u] + size[u] - 1); }
-}  // namespace Decomp
+    void update_subtree_val(int u, bool v = false) {
+        SGT.overwrite(1, dfn[u], dfn[u] + size[u] - 1, v);
+    }
+    int query_subtree_sum(int u) {
+        return SGT.query(1, dfn[u], dfn[u] + size[u] - 1);
+    }
+} // namespace Decomp
 
 int main() {
     ios::sync_with_stdio(false);

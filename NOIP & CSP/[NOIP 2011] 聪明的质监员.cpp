@@ -14,7 +14,9 @@ int p[N], q[N];
 i64 pn[N], pv[N];
 i64 s, ans = LINF;
 
-i64 absolute(i64 x) { return (x < 0 ? -x : x); }
+i64 absolute(i64 x) {
+    return (x < 0 ? -x : x);
+}
 
 bool check(int x) {
     i64 y = 0;

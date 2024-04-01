@@ -49,7 +49,7 @@ struct SegTree {
         node[u].len = r - l + 1;
 
         if (l == r) {
-            node[u].sum = 1;  // 初始时全部为脑组织
+            node[u].sum = 1; // 初始时全部为脑组织
             node[u].lmax = node[u].rmax = node[u].mmax = 0;
             return;
         }
@@ -103,21 +103,21 @@ struct SegTree {
 
         // 已经定位到当前区间并且剩下的脑组织总数足以填入区间内的所有脑洞
         if (node[u].l >= l && node[u].r <= r && node[u].len - node[u].sum <= left) {
-            int tmp = node[u].len - node[u].sum;  // 保存脑洞的数量
-            node[u].tag = 1;                      // 将该区间修改为 1
+            int tmp = node[u].len - node[u].sum; // 保存脑洞的数量
+            node[u].tag = 1; // 将该区间修改为 1
             node[u].sum = node[u].len;
             node[u].lmax = node[u].rmax = node[u].mmax = 0;
-            return left - tmp;  // 返回剩下的脑组织数量
+            return left - tmp; // 返回剩下的脑组织数量
         }
 
         pushdown(u);
 
         int ret = 0;
-        if (node[u << 1].r < l)                        // 如果当前区间左子区间的右端点在起点的左边
-            ret = range_fill(l, r, left, u << 1 | 1);  // 就从右子区间开始填
-        else if (node[u << 1 | 1].l > r)               // 如果当前区间右子区间的左端点在终点的右边
-            ret = range_fill(l, r, left, u << 1);      // 就从左子区间开始填
-        else                                           // 否则先填左边再填右边
+        if (node[u << 1].r < l) // 如果当前区间左子区间的右端点在起点的左边
+            ret = range_fill(l, r, left, u << 1 | 1); // 就从右子区间开始填
+        else if (node[u << 1 | 1].l > r) // 如果当前区间右子区间的左端点在终点的右边
+            ret = range_fill(l, r, left, u << 1); // 就从左子区间开始填
+        else // 否则先填左边再填右边
             ret = range_fill(l, r, range_fill(l, r, left, u << 1), u << 1 | 1);
 
         pushup(u);
@@ -132,15 +132,15 @@ struct SegTree {
 
         pushdown(u);
 
-        if (node[u << 1].r < l)  // 同上
+        if (node[u << 1].r < l) // 同上
             return query_max_zero_length(l, r, u << 1 | 1);
         if (node[u << 1 | 1].l > r)
             return query_max_zero_length(l, r, u << 1);
 
-        return max({query_max_zero_length(l, r, u << 1),      // 左子区间的最长脑洞
-            query_max_zero_length(l, r, u << 1 | 1),          // 右子区间的最长脑洞
-            min(node[u << 1].rmax, node[u << 1 | 1].l - l) +  // 跨左右区间范围内的最长脑洞
-                min(node[u << 1 | 1].lmax, r - node[u << 1].r)});
+        return max({query_max_zero_length(l, r, u << 1), // 左子区间的最长脑洞
+                    query_max_zero_length(l, r, u << 1 | 1), // 右子区间的最长脑洞
+                    min(node[u << 1].rmax, node[u << 1 | 1].l - l) + // 跨左右区间范围内的最长脑洞
+                    min(node[u << 1 | 1].lmax, r - node[u << 1].r)});
     }
 } SGT;
 
@@ -162,9 +162,9 @@ int main() {
             cout << SGT.query_max_zero_length(l1, r1) << endl;
         else {
             cin >> l2 >> r2;
-            int tissue = SGT.query_range_sum(l1, r1);  // 获取 [l1, r1] 内可用脑组织的数量
-            SGT.range_assign(l1, r1);                  // 将 [l1, r1] 区间覆盖为 0
-            SGT.range_fill(l2, r2, tissue);            // 将脑组织填充到脑洞里
+            int tissue = SGT.query_range_sum(l1, r1); // 获取 [l1, r1] 内可用脑组织的数量
+            SGT.range_assign(l1, r1); // 将 [l1, r1] 区间覆盖为 0
+            SGT.range_fill(l2, r2, tissue); // 将脑组织填充到脑洞里
         }
     }
 

@@ -22,7 +22,9 @@ struct SegTree {
         t.resize(n * 4 + 20);
     }
 
-    void maintain(int u) { t[u].mx = max(t[u << 1].mx, t[u << 1 | 1].mx); }
+    void maintain(int u) {
+        t[u].mx = max(t[u << 1].mx, t[u << 1 | 1].mx);
+    }
 
     void build(int l, int r, int u = 1) {
         t[u].l = l;

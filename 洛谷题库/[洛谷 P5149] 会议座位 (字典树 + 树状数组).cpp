@@ -11,8 +11,12 @@ struct Fenwick {
     int fenwick[N];
     int n;
 
-    void init(int _n) { n = _n; }
-    int lowbit(int x) { return x & -x; }
+    void init(int _n) {
+        n = _n;
+    }
+    int lowbit(int x) {
+        return x & -x;
+    }
     int query(int x) {
         int ret = 0;
         for (int i = x; i; i -= lowbit(i))

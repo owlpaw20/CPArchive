@@ -7,9 +7,15 @@ const int N = 4e6 + 10;
 
 struct Queue {
     int e[N], head, rear;
-    void push(int x) { e[++rear] = x; }
-    void pop() { head++; }
-    bool empty() { return head > rear; }
+    void push(int x) {
+        e[++rear] = x;
+    }
+    void pop() {
+        head++;
+    }
+    bool empty() {
+        return head > rear;
+    }
     Queue() : head(0), rear(-1) {
         memset(e, 0, sizeof e);
     }

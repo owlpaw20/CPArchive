@@ -39,7 +39,9 @@ void solve(Flight* f, int total, int* used) {
             int b = bridges.top();
             bridges.pop();
             used[b]++;
-            flights.push((Flight){f[i].deprt, b});
+            flights.push((Flight) {
+                f[i].deprt, b
+            });
         }
     }
 

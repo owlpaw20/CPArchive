@@ -22,12 +22,12 @@ void connect(int u, int v, int w) {
 bool DFS(int u, int c, int limit) {
     color[u] = c;
     for (int i = head[u]; ~i; i = nx[i]) {
-        if (wt[i] <= limit) continue;  // 只考虑较大的怨气值
+        if (wt[i] <= limit) continue; // 只考虑较大的怨气值
         int j = ed[i];
         if (color[j]) {
-            if (color[j] == c)             // 如果出现颜色冲突
-                return false;              // 则不是二分图
-        } else if (!DFS(j, 3 - c, limit))  // 则不是二分图
+            if (color[j] == c) // 如果出现颜色冲突
+                return false; // 则不是二分图
+        } else if (!DFS(j, 3 - c, limit)) // 则不是二分图
             return false;
     }
     return true;

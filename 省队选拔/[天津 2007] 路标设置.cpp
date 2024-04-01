@@ -11,9 +11,10 @@ bool check(int x) {
     int pos = 0;
     for (int i = 2; i <= n; i++) {
         if (emptiness < 0) break;
-        if (signs[i] - pos <= x) {
+        if (signs[i] - pos <= x)
             pos = signs[i];
-        } else {
+
+        else {
             pos += x;
             i--, emptiness--;
         }

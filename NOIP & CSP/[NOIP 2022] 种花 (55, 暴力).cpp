@@ -38,21 +38,21 @@ void solve() {
                 if (flag) continue;
 
                 // 对 C 与 F 计数
-                for (int i = col + 1; i <= m; i++) {  // 向右延伸 C 的上边
-                    if (map[nw][i]) break;            // 直到被阻挡
+                for (int i = col + 1; i <= m; i++) { // 向右延伸 C 的上边
+                    if (map[nw][i]) break; // 直到被阻挡
 
-                    for (int j = col + 1; j <= m; j++) {  // 向右延伸 C 的下边
-                        if (map[sw][j]) break;            // 直到被阻挡
-                        ans_c = (ans_c + 1) % MOD;        // 对 C 计数
+                    for (int j = col + 1; j <= m; j++) { // 向右延伸 C 的下边
+                        if (map[sw][j]) break; // 直到被阻挡
+                        ans_c = (ans_c + 1) % MOD; // 对 C 计数
 
-                        for (int k = sw + 1; k <= n; k++) {  // 向下延伸 F 的出边
-                            if (map[k][col]) break;          // 直到被阻挡
-                            ans_f = (ans_f + 1) % MOD;       // 对 F 计数
+                        for (int k = sw + 1; k <= n; k++) { // 向下延伸 F 的出边
+                            if (map[k][col]) break; // 直到被阻挡
+                            ans_f = (ans_f + 1) % MOD; // 对 F 计数
                         }
                     }
                 }
             }
-    cout << c * ans_c % MOD << " " << f * ans_f % MOD << endl;
+    cout << c* ans_c % MOD << " " << f* ans_f % MOD << endl;
 }
 
 int main() {

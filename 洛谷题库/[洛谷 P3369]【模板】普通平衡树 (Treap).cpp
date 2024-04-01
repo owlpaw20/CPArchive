@@ -5,13 +5,13 @@
 
 using namespace std;
 
-const int SIZE = 1e5 + 10;  // 平衡树的空间复杂度是线性的
+const int SIZE = 1e5 + 10; // 平衡树的空间复杂度是线性的
 
 struct Treap {
     struct Node {
-        int l, r;       // 左右子节点在数组中的下标
-        int key, pri;   // 当前节点的权值和优先级
-        int cnt, size;  // 当前节点的数的出现次数和当前节点为根节点的子树里数的总个数
+        int l, r; // 左右子节点在数组中的下标
+        int key, pri; // 当前节点的权值和优先级
+        int cnt, size; // 当前节点的数的出现次数和当前节点为根节点的子树里数的总个数
     } tr[SIZE];
 
     int idx, root;
@@ -182,8 +182,8 @@ int main() {
         else if (opt == 2) treap.remove(treap.root, x);
         else if (opt == 3)
             treap.insert(treap.root, x),
-                cout << treap.get_rank_of_key(treap.root, x) - 1 << endl,
-                treap.remove(treap.root, x);
+                         cout << treap.get_rank_of_key(treap.root, x) - 1 << endl,
+                         treap.remove(treap.root, x);
         else if (opt == 4) cout << treap.get_key_at_rank(treap.root, x + 1) << endl;
         else if (opt == 5) cout << treap.get_predecessor(x) << endl;
         else if (opt == 6) cout << treap.get_successor(x) << endl;

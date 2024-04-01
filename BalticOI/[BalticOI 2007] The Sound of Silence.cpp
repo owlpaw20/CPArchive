@@ -29,7 +29,7 @@ struct SparseTable {
         for (int j = 1; j <= limit; j++)
             for (int i = 1; i + (1 << j) - 1 <= n; i++)
                 ST[0][i][j] = max(ST[0][i][j - 1], ST[0][i + (1 << (j - 1))][j - 1]),
-                ST[1][i][j] = min(ST[1][i][j - 1], ST[1][i + (1 << (j - 1))][j - 1]);
+                    ST[1][i][j] = min(ST[1][i][j - 1], ST[1][i + (1 << (j - 1))][j - 1]);
     }
     PII query(int l, int r) {
         int t = log2(r - l + 1);

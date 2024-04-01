@@ -55,7 +55,7 @@ void solve() {
                 ans_c = (ans_c + rght[nw][j] * rght[sw][j] % MOD) % MOD;
                 ans_f = (ans_f + rght[nw][j] * rght[sw][j] * down[sw][j] % MOD) % MOD;
             }
-    cout << c * ans_c % MOD << " " << f * ans_f % MOD << endl;
+    cout << c* ans_c % MOD << " " << f* ans_f % MOD << endl;
 }
 
 int main() {

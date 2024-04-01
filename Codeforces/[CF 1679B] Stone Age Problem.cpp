@@ -25,7 +25,7 @@ namespace FastIO {
         if (x > 9) write(x / 10);
         putchar(x % 10 + '0');
     }
-}  // namespace FastIO
+} // namespace FastIO
 using namespace FastIO;
 
 struct SegTree {
@@ -45,7 +45,9 @@ struct SegTree {
         t.resize(n << 2);
     }
 
-    void maintain(int u) { t[u].sum = t[u << 1].sum + t[u << 1 | 1].sum; }
+    void maintain(int u) {
+        t[u].sum = t[u << 1].sum + t[u << 1 | 1].sum;
+    }
 
     void propagate(int u) {
         Node& root = t[u];

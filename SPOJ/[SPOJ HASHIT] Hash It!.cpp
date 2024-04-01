@@ -10,7 +10,9 @@ const int MOD = 101;
 struct HashTable {
     vector<string> tb;
     set<string> flg;
-    void init() { tb.resize(N); }
+    void init() {
+        tb.resize(N);
+    }
     int hash(string s) {
         int len = s.length(), sum = 0;
         for (int i = 0; i < len; i++)
@@ -39,14 +41,18 @@ struct HashTable {
         tb[addr] = "";
         flg.erase(s);
     }
-    int size() { return flg.size(); }
+    int size() {
+        return flg.size();
+    }
     void print() {
         cout << size() << endl;
         for (int i = 0; i < tb.size(); i++)
             if (tb[i] != "" && flg.count(tb[i]))
                 cout << i << ":" << tb[i] << endl;
     }
-    HashTable() { init(); }
+    HashTable() {
+        init();
+    }
 };
 
 int T;

@@ -45,7 +45,7 @@ int main() {
     }
 
     cout << ans1 << endl
-         << ans2 << endl;
+        << ans2 << endl;
     fflush(stdout);
     return 0;
 }

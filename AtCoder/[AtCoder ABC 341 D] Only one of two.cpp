@@ -15,7 +15,9 @@ int main() {
     cin >> n >> m >> K;
 
     i64 LCM = lcm(n, m);
-    auto check = [&](i64 x) { return x / n + x / m - 2 * (x / LCM) < K; };
+    auto check = [&](i64 x) {
+        return x / n + x / m - 2 * (x / LCM) < K;
+    };
 
     i64 l = 0, r = 2e18;
 

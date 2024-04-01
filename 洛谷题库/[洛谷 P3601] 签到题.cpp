@@ -5,7 +5,7 @@ using namespace std;
 using i64 = long long;
 
 const int N = 1e6 + 10;
-const int M = 8e4 + 10;  // [1, 1e6] 上共有 78498 个素数
+const int M = 8e4 + 10; // [1, 1e6] 上共有 78498 个素数
 const int MOD = 666623333;
 
 i64 l, r;

@@ -11,14 +11,24 @@ template <class Type>
 struct Stack {
     vector<Type> data;
     Stack() {}
-    Stack(int n) { data.reserve(n); }
-    void push(const Type expr) { data.push_back(expr); }
-    void pop() { data.pop_back(); }
-    bool empty() { return data.empty(); }
+    Stack(int n) {
+        data.reserve(n);
+    }
+    void push(const Type expr) {
+        data.push_back(expr);
+    }
+    void pop() {
+        data.pop_back();
+    }
+    bool empty() {
+        return data.empty();
+    }
     void clear() {
         while (!empty()) pop();
     }
-    const Type top() { return data.back(); }
+    const Type top() {
+        return data.back();
+    }
     const Type extract() {
         Type t = data.back();
         data.pop_back();

@@ -35,7 +35,9 @@ int T;
 UnionFind DS;
 vector<TPL> edges;
 
-auto cmp = [](TPL x, TPL y) { return get<2>(x) < get<2>(y); };
+auto cmp = [](TPL x, TPL y) {
+    return get<2>(x) < get<2>(y);
+};
 
 int main() {
     ios::sync_with_stdio(false);

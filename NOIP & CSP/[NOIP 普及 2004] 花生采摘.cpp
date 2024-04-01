@@ -11,7 +11,9 @@ const int N = 25;
 struct Point {
     int x, y, num;
     Point(int a, int b, int c) : x(a), y(b), num(c) {}
-    bool operator<(const Point& t) const { return num > t.num; }
+    bool operator<(const Point& t) const {
+        return num > t.num;
+    }
 };
 
 int m, n, k;

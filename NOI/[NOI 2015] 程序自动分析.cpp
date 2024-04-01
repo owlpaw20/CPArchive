@@ -10,7 +10,9 @@ const int N = 1e5 + 10;
 struct Operation {
     bool equality;
     int first_var, second_var;
-    bool operator<(const Operation& t) const { return equality > t.equality; }
+    bool operator<(const Operation& t) const {
+        return equality > t.equality;
+    }
 };
 
 int T, n, idx, p[N * 2];
@@ -45,7 +47,9 @@ int main() {
         for (int i = 1; i <= n; i++) {
             int a, b, c;
             cin >> a >> b >> c;
-            opt[i] = (Operation){(bool)c, address(a), address(b)};
+            opt[i] = (Operation) {
+                (bool)c, address(a), address(b)
+            };
         }
 
         for (int i = 1; i <= idx; i++)

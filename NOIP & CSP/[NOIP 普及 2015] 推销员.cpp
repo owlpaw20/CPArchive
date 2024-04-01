@@ -8,7 +8,9 @@ int n, p[N], g[N], h[N];
 
 struct House {
     int s, a;
-    bool operator<(const House& t) const { return a > t.a; }
+    bool operator<(const House& t) const {
+        return a > t.a;
+    }
 } v[N];
 
 int main() {

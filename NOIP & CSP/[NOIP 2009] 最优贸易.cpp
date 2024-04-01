@@ -78,7 +78,9 @@ int main() {
     G.BFS(1), H.BFS(n);
 
     for (int i = 1; i <= n; i++) seq[i] = i;
-    sort(seq + 1, seq + n + 1, [&](int x, int y) { return c[x] < c[y]; });
+    sort(seq + 1, seq + n + 1, [&](int x, int y) {
+        return c[x] < c[y];
+    });
 
     for (int i = 1; i <= n; i++)
         if (!mindist[seq[i]] && G.access[seq[i]] == true)

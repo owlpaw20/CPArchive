@@ -5,7 +5,7 @@
 #include <unordered_map>
 
 using namespace std;
-using lng = unsigned long long;  // 自然溢出
+using lng = unsigned long long; // 自然溢出
 using POLY = unordered_map<lng, lng>;
 
 namespace PolynomialCalculation {
@@ -38,16 +38,24 @@ namespace PolynomialCalculation {
                 return false;
         return true;
     }
-}  // namespace PolynomialCalculation
+} // namespace PolynomialCalculation
 using namespace PolynomialCalculation;
 
 template <class Type>
 struct Stack {
     vector<Type> data;
-    void push(Type x) { data.push_back(x); }
-    void pop() { data.pop_back(); }
-    Type top() { return data.back(); }
-    bool empty() { return data.empty(); }
+    void push(Type x) {
+        data.push_back(x);
+    }
+    void pop() {
+        data.pop_back();
+    }
+    Type top() {
+        return data.back();
+    }
+    bool empty() {
+        return data.empty();
+    }
     Type extract() {
         Type t = data.back();
         data.pop_back();
@@ -107,11 +115,12 @@ POLY to_polynomial(string s) {
             POLY base = num.extract(), res = {{0, 1}};
             while (x--) res = base * res;
             num.push(res);
-        } else if (ch == '(') {
+        } else if (ch == '(')
             opt.push(ch);
-        } else if (ch == ')') {
+
+        else if (ch == ')') {
             for (char o : opt.data)
-                if (o == '(') {  // 处理右括号不匹配的情况
+                if (o == '(') { // 处理右括号不匹配的情况
                     while (!opt.empty() && opt.top() != '(')
                         evaluate();
                     opt.pop();
@@ -128,7 +137,7 @@ POLY to_polynomial(string s) {
     }
 
     while (!opt.empty()) {
-        while (opt.top() == '(') opt.pop();  // 处理左括号不匹配的情况
+        while (opt.top() == '(') opt.pop(); // 处理左括号不匹配的情况
         if (!opt.empty()) evaluate();
     }
 

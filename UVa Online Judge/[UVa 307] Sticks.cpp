@@ -13,18 +13,18 @@ vector<int> length;
 vector<bool> vis;
 
 bool DFS(int group, int now_len, int now_idx) {
-    if (group * len == sum)  // 如果已经到达了总长度
-        return true;         // 则退出搜索并返回成功
+    if (group * len == sum) // 如果已经到达了总长度
+        return true; // 则退出搜索并返回成功
 
-    if (now_len == len)               // 如果当前木棒已经拼接完成
-        return DFS(group + 1, 0, 0);  // 则进入新的一根木棒
+    if (now_len == len) // 如果当前木棒已经拼接完成
+        return DFS(group + 1, 0, 0); // 则进入新的一根木棒
 
     for (int i = now_idx; i < n; i++) {
-        if (vis[i] || now_len + length[i] > len)  // 如果不能加上这一根
-            continue;                             // 跳出循环
+        if (vis[i] || now_len + length[i] > len) // 如果不能加上这一根
+            continue; // 跳出循环
 
-        vis[i] = true;                               // 否则这一根合法
-        if (DFS(group, now_len + length[i], i + 1))  // 加上这一根并递归搜索
+        vis[i] = true; // 否则这一根合法
+        if (DFS(group, now_len + length[i], i + 1)) // 加上这一根并递归搜索
             return true;
         vis[i] = false;
 
@@ -53,15 +53,15 @@ void solve(int n) {
     for (int i = 0; i < n; i++) {
         cin >> length[i];
         sum += length[i];
-        len = max(len, length[i]);  // 从最长一根木棍的长度开始，减少搜索量
+        len = max(len, length[i]); // 从最长一根木棍的长度开始，减少搜索量
     }
 
     // 降序排序，优化搜索顺序
     sort(length.begin(), length.end(), greater<int>());
 
     for (; len <= sum; len++)
-        if (sum % len == 0 && DFS(0, 0, 0))      // 如果当前长度合法并搜索成功
-            return (void)(cout << len << endl);  // 则输出最短长度
+        if (sum % len == 0 && DFS(0, 0, 0)) // 如果当前长度合法并搜索成功
+            return (void)(cout << len << endl); // 则输出最短长度
 }
 
 int main() {

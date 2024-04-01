@@ -10,7 +10,9 @@ const int INF = 0x3f3f3f3f;
 int n, m, a[N], p[N];
 int mx[N][N][M], mn[N][N][M];
 
-int mod(int x) { return (x % 10 + 10) % 10; }
+int mod(int x) {
+    return (x % 10 + 10) % 10;
+}
 
 int main() {
     ios::sync_with_stdio(false);
@@ -46,6 +48,6 @@ int main() {
     }
 
     cout << mnv << endl
-         << mxv << endl;
+        << mxv << endl;
     return 0;
 }

@@ -6,9 +6,15 @@ template <class T>
 struct Queue {
     vector<T> data;
     int head, rear;
-    void push(T x) { data[++rear] = x; }
-    void pop() { head++; }
-    bool empty() { return head > rear; }
+    void push(T x) {
+        data[++rear] = x;
+    }
+    void pop() {
+        head++;
+    }
+    bool empty() {
+        return head > rear;
+    }
     void init(int n) {
         head = 0;
         rear = -1;
@@ -16,7 +22,9 @@ struct Queue {
         data.resize(n);
     }
     Queue() {}
-    Queue(int n) { init(n); }
+    Queue(int n) {
+        init(n);
+    }
 };
 
 const int N = 1e5 + 10;

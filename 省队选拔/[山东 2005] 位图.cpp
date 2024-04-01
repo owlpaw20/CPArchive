@@ -16,9 +16,15 @@ template <class Type>
 struct queue {
     Type data[M];
     int head, rear;
-    void push(Type x) { data[++rear] = x; }
-    Type extract() { return data[head++]; }
-    bool empty() { return head > rear; }
+    void push(Type x) {
+        data[++rear] = x;
+    }
+    Type extract() {
+        return data[head++];
+    }
+    bool empty() {
+        return head > rear;
+    }
     queue() : head(0), rear(-1) {}
 };
 

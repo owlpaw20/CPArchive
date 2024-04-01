@@ -29,10 +29,10 @@ struct PrstSegTree {
     // 可持久化线段树插入元素操作
     int insert(int u, int l, int r, int x) {
         tree.push_back(tree[u]);
-        int v = tree.size() - 1;  // 复制一个节点
+        int v = tree.size() - 1; // 复制一个节点
 
-        if (l == r) {       // 如果找到了叶子节点
-            tree[v].cnt++;  // 当前位置的元素个数 + 1
+        if (l == r) { // 如果找到了叶子节点
+            tree[v].cnt++; // 当前位置的元素个数 + 1
             return v;
         }
 
@@ -46,13 +46,13 @@ struct PrstSegTree {
 
     // 可持久化线段树查找 [L, R] 中第 K 小元素的下标
     int query(int u, int v, int l, int r, int k) {
-        if (l == r) return l;  // 如果找到了目标位置就直接返回
+        if (l == r) return l; // 如果找到了目标位置就直接返回
         int cnt = tree[tree[u].l].cnt - tree[tree[v].l].cnt;
 
         int mid = (l + r) >> 1;
 
         if (k <= cnt) return query(tree[u].l, tree[v].l, l, mid, k);
-        return query(tree[u].r, tree[v].r, mid + 1, r, k - cnt);  // 剔除掉左子树中比目标元素要大的
+        return query(tree[u].r, tree[v].r, mid + 1, r, k - cnt); // 剔除掉左子树中比目标元素要大的
     }
 };
 

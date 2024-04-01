@@ -14,7 +14,9 @@ struct Edge {
     Edge(int _u, int _v, int _w)
         : u(_u), v(_v), w(_w) {}
 
-    bool operator<(const Edge& t) const { return w < t.w; }
+    bool operator<(const Edge& t) const {
+        return w < t.w;
+    }
 };
 
 struct DisjointSet {
