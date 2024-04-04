@@ -21,7 +21,7 @@ struct SparseTable {
         return exp;
     }
 
-    void init(int x, i64* v) {
+    void init(int x, i64 *v) {
         for (int i = 0; i <= x; i++)
             mx[i][0] = mn[i][0] = v[i];
         for (int j = 1; 1 << j <= x; j++)

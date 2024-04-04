@@ -14,7 +14,7 @@ using HASH = unordered_map<str, int>;
 string C, D, a, b;
 vector<str> ci, de;
 
-int process(queue<str>& q, HASH& d_st, HASH& d_ed, DICT& fr, DICT& to) {
+int process(queue<str> &q, HASH &d_st, HASH &d_ed, DICT &fr, DICT &to) {
     int depth = d_st[q.front()];
     while (!q.empty() && d_st[q.front()] == depth) {
         string t = q.front();

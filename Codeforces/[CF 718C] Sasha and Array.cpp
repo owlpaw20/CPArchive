@@ -58,7 +58,7 @@ struct SEGTREE {
         void pull(const NODE x, const NODE y) {
             val = x.val + y.val;
         }
-        void push(NODE& x, NODE& y) {
+        void push(NODE &x, NODE &y) {
             x.val = x.val * tag;
             x.tag = x.tag * tag;
             y.val = y.val * tag;

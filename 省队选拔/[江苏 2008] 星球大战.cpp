@@ -62,7 +62,7 @@ int main() {
         cap[t] = i;
     }
 
-    for (Edge& e : g)
+    for (Edge &e : g)
         e.id = max(cap[e.u], cap[e.v]);
 
     sort(g.begin(), g.end());

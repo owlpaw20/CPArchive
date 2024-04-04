@@ -22,9 +22,9 @@ struct SegTree {
     Node tree[4 * N];
 
     void maintain(int u) {
-        Node& root = tree[u];
-        Node& left = tree[u << 1];
-        Node& right = tree[u << 1 | 1];
+        Node &root = tree[u];
+        Node &left = tree[u << 1];
+        Node &right = tree[u << 1 | 1];
         root.sum = left.sum + right.sum;
         if (left.Max == right.Max) {
             root.Max = left.Max;

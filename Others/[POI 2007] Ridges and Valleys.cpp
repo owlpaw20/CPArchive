@@ -39,7 +39,7 @@ int mat[N][N];
 bool vis[N][N];
 queue<PII> q(1e6 + 10);
 
-void BFS(int sx, int sy, bool& hi, bool& lo) {
+void BFS(int sx, int sy, bool &hi, bool &lo) {
     vis[sx][sy] = true;
     q.push({sx, sy});
     while (!q.empty()) {

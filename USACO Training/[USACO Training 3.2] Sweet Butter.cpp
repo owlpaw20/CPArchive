@@ -53,7 +53,7 @@ int main() {
 
     cin >> n >> m >> p;
     where.resize(n);
-    for (int& i : where) cin >> i;
+    for (int &i : where) cin >> i;
 
     while (p--) {
         int u, v, w;

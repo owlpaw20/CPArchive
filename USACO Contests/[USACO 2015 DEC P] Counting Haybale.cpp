@@ -22,9 +22,9 @@ struct SegTree {
         tree[u].sum = tree[u << 1].sum + tree[u << 1 | 1].sum;
     }
     void propagate(int u) {
-        Node& root = tree[u];
-        Node& left = tree[u << 1];
-        Node& right = tree[u << 1 | 1];
+        Node &root = tree[u];
+        Node &left = tree[u << 1];
+        Node &right = tree[u << 1 | 1];
         if (root.add) {
             left.add += root.add;
             left.Min += root.add;

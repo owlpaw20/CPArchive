@@ -50,9 +50,9 @@ struct SegTree {
     }
 
     void propagate(int u) {
-        Node& root = t[u];
-        Node& left = t[u << 1];
-        Node& right = t[u << 1 | 1];
+        Node &root = t[u];
+        Node &left = t[u << 1];
+        Node &right = t[u << 1 | 1];
         if (root.tag) {
             left.tag = root.tag;
             right.tag = root.tag;

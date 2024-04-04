@@ -27,7 +27,7 @@ bool check(int x) {
 }
 
 void DFS(int u) {
-    for (int& i = head[u]; ~i;) {
+    for (int &i = head[u]; ~i;) {
         if (vis[i]) { // 如果这条边已经删过
             i = nx[i]; // 则直接跳到下一条边
             continue;

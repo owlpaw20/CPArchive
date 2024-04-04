@@ -26,14 +26,14 @@ int head[N], rhead[N], idx;
 int ed[M], nx[M], wt[M], dist[N], Rank[N];
 bool vis[N];
 
-void connect(int u, int v, int w, int* head) {
+void connect(int u, int v, int w, int *head) {
     ed[idx] = v;
     wt[idx] = w;
     nx[idx] = head[u];
     head[u] = idx++;
 }
 
-void Dijkstra(int st, int* head) {
+void Dijkstra(int st, int *head) {
     priority_queue<PII, vector<PII>, greater<PII>> heap;
     memset(dist, 0x3F, sizeof dist);
     heap.emplace(dist[st] = 0, st);

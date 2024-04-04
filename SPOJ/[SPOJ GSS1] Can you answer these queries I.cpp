@@ -14,9 +14,9 @@ struct SegTree {
     } node[N << 2];
 
     void maintain(int u) {
-        Node& root = node[u];
-        Node& left = node[u << 1];
-        Node& right = node[u << 1 | 1];
+        Node &root = node[u];
+        Node &left = node[u << 1];
+        Node &right = node[u << 1 | 1];
 
         root.sum = left.sum + right.sum;
         root.lmax = max(left.lmax, left.sum + right.lmax);

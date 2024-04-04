@@ -36,7 +36,7 @@ int main() {
             for (int l = 0; l < n; l++)
                 for (int z = 0; z < m; z++)
                     for (int p = 0; p <= K; p++) {
-                        i64& st = f[cur][y][l][z][p];
+                        i64 &st = f[cur][y][l][z][p];
 
                         // 从当前位置的上方转移到当前位置，用一张 L 票
                         if (x > 1) st += f[cur ^ 1][y][l + 1][z][p];

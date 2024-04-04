@@ -7,7 +7,7 @@ const int M = 2e5 + 10;
 
 struct Comp {
     int s, w, id;
-    bool operator<(const Comp& t) const {
+    bool operator<(const Comp &t) const {
         if (s != t.s) return s > t.s;
         return id < t.id;
     }

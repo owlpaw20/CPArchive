@@ -36,7 +36,7 @@ struct SEGTREE {
             time += rt.time;
         }
 
-        void push(NODE& x, NODE& y) {
+        void push(NODE &x, NODE &y) {
             x.modify(NODE(add, hadd, time)), y.modify(NODE(add, hadd, time));
             add = hadd = time = 0;
         }

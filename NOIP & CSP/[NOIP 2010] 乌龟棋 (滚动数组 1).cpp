@@ -32,7 +32,7 @@ int main() {
             for (int k = 0; k <= b[3]; k++)
                 for (int o = 0; o <= b[4]; o++) {
                     int score = 1 + i + j * 2 + k * 3 + o * 4;
-                    int& abcd = f[cur][j][k][o];
+                    int &abcd = f[cur][j][k][o];
                     if (i) abcd = max(abcd, f[pre][j][k][o] + a[score]);
                     if (j) abcd = max(abcd, f[cur][j - 1][k][o] + a[score]);
                     if (k) abcd = max(abcd, f[cur][j][k - 1][o] + a[score]);

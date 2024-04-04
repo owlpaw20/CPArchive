@@ -9,7 +9,7 @@ int n, m;
 i64 f[N][M];
 bool state[M];
 
-void solve(const int& n, const int& m) {
+void solve(const int &n, const int &m) {
     for (int i = 0; i < (1 << m); i++) {
         int zero_cnt = 0; // 连续的 0 的个数
         bool is_even = true; // 某个状态如果有奇数个连续的零，说明不合法

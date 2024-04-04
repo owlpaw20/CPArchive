@@ -74,7 +74,7 @@ void solve() {
             if (down[i][j] < 1) continue;
             ans_f = (ans_f + pre(i - upable, i - 2, j) % MOD * rght[i][j] % MOD * down[i][j] % MOD) % MOD;
         }
-    cout << c* ans_c % MOD << " " << f* ans_f % MOD << endl;
+    cout << c *ans_c % MOD << " " << f *ans_f % MOD << endl;
 }
 
 int main() {

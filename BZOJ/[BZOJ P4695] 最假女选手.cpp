@@ -40,16 +40,16 @@ struct SegTreeBeats {
 
     int n, a[N];
 
-    void init(int l, int* x) {
+    void init(int l, int *x) {
         n = l;
         for (int i = 1; i <= l; i++)
             a[i] = x[i];
     }
 
     void maintain(int u) {
-        Node& root = node[u];
-        Node& left = node[u << 1];
-        Node& right = node[u << 1 | 1];
+        Node &root = node[u];
+        Node &left = node[u << 1];
+        Node &right = node[u << 1 | 1];
 
         root.sum = left.sum + right.sum;
 

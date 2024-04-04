@@ -54,7 +54,7 @@ struct Treap {
     }
 
     // 右旋：右旋拎左右挂左
-    void rotate_right(int& fa) {
+    void rotate_right(int &fa) {
         int ls = tr[fa].l;
         tr[fa].l = tr[ls].r;
         tr[ls].r = fa;
@@ -64,7 +64,7 @@ struct Treap {
     }
 
     // 左旋：左旋拎右左挂右
-    void rotate_left(int& fa) {
+    void rotate_left(int &fa) {
         int rs = tr[fa].r;
         tr[fa].r = tr[rs].l;
         tr[rs].l = fa;
@@ -74,7 +74,7 @@ struct Treap {
     }
 
     // 向 Treap 中插入数值
-    void insert(int& u, int key) {
+    void insert(int &u, int key) {
         if (u == 0)
             return (void)(u = create_node(key));
 
@@ -137,7 +137,7 @@ struct Treap {
     }
 
     // 在 Treap 中删除数值
-    void remove(int& u, int key) {
+    void remove(int &u, int key) {
         if (u == 0) return;
 
         if (key == tr[u].key) {

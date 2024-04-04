@@ -46,7 +46,7 @@ struct SEGTREE {
             alt = palt;
         }
 
-        void push(NODE& x, NODE& y) {
+        void push(NODE &x, NODE &y) {
             if (add || hadd) {
                 x.modify_add(add, hadd);
                 y.modify_add(add, hadd);

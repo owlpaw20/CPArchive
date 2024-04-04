@@ -15,7 +15,7 @@ int m;
 PII fracs[N];
 map<PII, int> vis;
 
-void reduce(PII& frac) {
+void reduce(PII &frac) {
     int div = gcd(frac.first, frac.second);
     frac.first /= div, frac.second /= div;
 }

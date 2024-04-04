@@ -11,9 +11,9 @@ struct SegTree {
         int sum, tag;
     } tree[4 * N];
     void propagate(int u) {
-        Node& root = tree[u];
-        Node& left = tree[2 * u];
-        Node& right = tree[2 * u + 1];
+        Node &root = tree[u];
+        Node &left = tree[2 * u];
+        Node &right = tree[2 * u + 1];
         if (root.tag) {
             left.tag ^= 1;
             right.tag ^= 1;

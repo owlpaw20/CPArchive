@@ -52,7 +52,7 @@ void solve() {
                     }
                 }
             }
-    cout << c* ans_c % MOD << " " << f* ans_f % MOD << endl;
+    cout << c *ans_c % MOD << " " << f *ans_f % MOD << endl;
 }
 
 int main() {

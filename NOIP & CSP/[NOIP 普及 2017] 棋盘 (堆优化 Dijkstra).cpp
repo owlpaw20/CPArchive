@@ -16,7 +16,7 @@ bool vis[SIZE][SIZE][2];
 struct Node {
     int x, y, curr, color;
     Node(int _x, int _y, int _curr, int _color) : x(_x), y(_y), curr(_curr), color(_color) {}
-    bool operator<(const Node& t) const {
+    bool operator<(const Node &t) const {
         return curr > t.curr;
     }
 };

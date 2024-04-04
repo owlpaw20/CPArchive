@@ -39,7 +39,7 @@ struct Graph {
         }
     }
 
-    void mark(int st, int* arr, int wt) {
+    void mark(int st, int *arr, int wt) {
         arr[st] = wt;
         q.push(st);
         while (!q.empty()) {

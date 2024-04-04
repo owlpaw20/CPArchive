@@ -7,7 +7,7 @@ const int N = 15;
 int n, mod[N], rem[N];
 ll prod = 1, Mi, ans;
 
-void extend_gcd(ll a, ll b, ll& x, ll& y) {
+void extend_gcd(ll a, ll b, ll &x, ll &y) {
     if (b == 0) {
         x = 1, y = 0;
         return;

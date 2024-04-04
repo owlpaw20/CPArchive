@@ -53,7 +53,7 @@ int main() {
         que[p].pop();
 
         if (i % t == 0)
-            cout << num + q* m << ' ';
+            cout << num + q * m << ' ';
     }
 
     cout << endl;

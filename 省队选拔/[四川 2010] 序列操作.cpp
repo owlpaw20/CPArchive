@@ -7,7 +7,7 @@ const int MAX_N = 1e5 + 5;
 
 namespace FastIO {
     const int MAX_BUF = 1 << 20;
-    char buf[MAX_BUF], * p1, * p2;
+    char buf[MAX_BUF], *p1, *p2;
 
 #define getchar() \
     (p1 == p2 && (p2 = (p1 = buf) + fread(buf, 1, 1 << 20, stdin), p1 == p2) \
@@ -74,7 +74,7 @@ struct SegTree {
             }
         }
 
-        void push(Node& a, Node& b) {
+        void push(Node &a, Node &b) {
             if (alt != -1) a.modify(alt), b.modify(alt), alt = -1;
             if (inv != 0) a.modify(2), b.modify(2), inv = 0;
         }

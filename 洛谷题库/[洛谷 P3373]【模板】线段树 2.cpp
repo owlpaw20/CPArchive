@@ -16,9 +16,9 @@ struct SegTree {
         tree[u].total = (tree[2 * u].total + tree[2 * u + 1].total) % p;
     }
     void propagate(int u) {
-        Node& root = tree[u];
-        Node& left = tree[2 * u];
-        Node& right = tree[2 * u + 1];
+        Node &root = tree[u];
+        Node &left = tree[2 * u];
+        Node &right = tree[2 * u + 1];
         if (root.mul != 1) {
             left.add = left.add * root.mul % p;
             left.mul = left.mul * root.mul % p;

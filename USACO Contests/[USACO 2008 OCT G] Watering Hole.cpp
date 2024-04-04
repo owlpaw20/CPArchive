@@ -33,7 +33,7 @@ struct Edge {
     int fr, to, wt;
     Edge() {}
     Edge(int x, int y, int z) : fr(x), to(y), wt(z) {}
-    bool operator<(const Edge& t) const {
+    bool operator<(const Edge &t) const {
         return wt < t.wt;
     }
 };

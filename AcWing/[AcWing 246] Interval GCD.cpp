@@ -21,7 +21,7 @@ struct SegmentTree {
         Long sum, gcd;
     } tree[4 * N];
 
-    void pushup(Node& u, Node& l, Node& r) {
+    void pushup(Node &u, Node &l, Node &r) {
         u.sum = l.sum + r.sum;
         u.gcd = GCD(l.gcd, r.gcd);
     }

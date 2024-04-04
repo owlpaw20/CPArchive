@@ -17,7 +17,7 @@ struct SegTree {
     } node[N << 2];
 
     void pushup(int u) {
-        Node& rt = node[u];
+        Node &rt = node[u];
         Node lc = node[u << 1];
         Node rc = node[u << 1 | 1];
 
@@ -28,9 +28,9 @@ struct SegTree {
     }
 
     void pushdown(int u) {
-        Node& rt = node[u];
-        Node& lc = node[u << 1];
-        Node& rc = node[u << 1 | 1];
+        Node &rt = node[u];
+        Node &lc = node[u << 1];
+        Node &rc = node[u << 1 | 1];
 
         if (rt.tag != -1) {
             lc.tag = rc.tag = rt.tag;

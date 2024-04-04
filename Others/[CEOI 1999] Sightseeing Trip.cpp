@@ -6,7 +6,7 @@ using namespace std;
 
 const int N = 1e2 + 10;
 const int INF = 0x1F1F1F1F;
-const char* VOID = "No solution.";
+const char *VOID = "No solution.";
 
 int n, m;
 int mid[N][N];

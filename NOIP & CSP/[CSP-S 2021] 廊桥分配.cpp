@@ -10,7 +10,7 @@ const int N = 1e5 + 10;
 
 struct Flight {
     int arrvl, deprt;
-    bool operator<(const Flight& t) const {
+    bool operator<(const Flight &t) const {
         if (arrvl != t.arrvl) return arrvl > t.arrvl;
         return deprt > t.deprt;
     }
@@ -25,7 +25,7 @@ bool cmp(Flight x, Flight y) {
     return x.deprt < y.deprt;
 }
 
-void solve(Flight* f, int total, int* used) {
+void solve(Flight *f, int total, int *used) {
     priority_queue<Flight> flights;
     priority_queue<int, vector<int>, greater<int>> bridges;
 

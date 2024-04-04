@@ -12,7 +12,7 @@ const int INF = 0x3f3f3f3f;
 int n, ans(INF);
 vector<int> p(N);
 
-int find(int x, int& len) {
+int find(int x, int &len) {
     len += 1;
     if (p[x] == x) return x;
     return find(p[x], len);

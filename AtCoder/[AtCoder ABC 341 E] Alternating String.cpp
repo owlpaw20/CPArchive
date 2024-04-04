@@ -21,9 +21,9 @@ struct SegTree {
     }
 
     void propagate(int u) {
-        auto& root = node[u];
-        auto& left = node[u << 1];
-        auto& right = node[u << 1 | 1];
+        auto &root = node[u];
+        auto &left = node[u << 1];
+        auto &right = node[u << 1 | 1];
 
         if (root.tag) {
             left.tag ^= 1;

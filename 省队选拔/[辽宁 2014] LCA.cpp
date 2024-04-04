@@ -62,9 +62,9 @@ namespace TD {
         }
 
         void pushdown(int u) {
-            auto& fa = node[u];
-            auto& lc = node[u << 1];
-            auto& rc = node[u << 1 | 1];
+            auto &fa = node[u];
+            auto &lc = node[u << 1];
+            auto &rc = node[u << 1 | 1];
 
             if (fa.tag) {
                 lc.tag = (lc.tag + fa.tag) % MOD;

@@ -73,7 +73,7 @@ void defineClass() {
     members[idx].resize(memberCnt);
 
     // 输入新类中的各个成员
-    for (Member& obj : members[idx]) {
+    for (Member &obj : members[idx]) {
         str memberType, memberName;
         cin >> memberType >> memberName;
         obj = Member(typeMap[memberType], memberName);

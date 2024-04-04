@@ -32,7 +32,7 @@ int depth[N], anc[N][20], diff[N];
 
 int log2(int x) {
     float t = (float)n;
-    return (*(int*)&t) >> 23 & 31;
+    return (*(int *)&t) >> 23 & 31;
 }
 
 void connect(int u, int v) {

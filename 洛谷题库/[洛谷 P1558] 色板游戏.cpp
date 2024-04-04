@@ -31,9 +31,9 @@ struct SegTree {
         tree[u].colors = tree[u << 1].colors | tree[u << 1 | 1].colors;
     }
     void propagate(int u) {
-        Node& root = tree[u];
-        Node& left = tree[u << 1];
-        Node& right = tree[u << 1 | 1];
+        Node &root = tree[u];
+        Node &left = tree[u << 1];
+        Node &right = tree[u << 1 | 1];
         if (root.alt) {
             left.alt = root.alt;
             left.colors.reset();

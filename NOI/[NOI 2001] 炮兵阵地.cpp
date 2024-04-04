@@ -16,7 +16,7 @@ int f[M][P]; // 2 = 当前位置为炮塔，1 = 当前位置在炮塔下方一�
 int prv[N], now[N];
 
 // 三进制转十进制
-int to_dec(int* ter) {
+int to_dec(int *ter) {
     int ret = 0;
     for (int i = 1; i <= m; i++)
         ret += pb3[i - 1] * ter[i];
@@ -24,7 +24,7 @@ int to_dec(int* ter) {
 }
 
 // 十进制转三进制
-void to_ter(int x, int* ter) {
+void to_ter(int x, int *ter) {
     for (int i = 1; i <= m; i++)
         ter[i] = x % 3, x /= 3;
 }

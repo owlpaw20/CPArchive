@@ -11,7 +11,7 @@ const int INF = 0x3f3f3f3f;
 
 struct Waste {
     int t, f, h;
-    bool operator<(const Waste& o) const {
+    bool operator<(const Waste &o) const {
         return t < o.t;
     }
 };

@@ -11,7 +11,7 @@ bool vis[N];
 int n, ans = 10;
 int a[N], group[N][N];
 
-bool check(int* arr, int x, int start) {
+bool check(int *arr, int x, int start) {
     for (int i = 0; i < start; i++)
         if (gcd(arr[i], x) > 1)
             return false;

@@ -8,7 +8,7 @@ const int N = 40;
 struct Block {
     int x, y, z;
     Block(int a, int b, int c) : x(a), y(b), z(c) {}
-    bool operator<(const Block& t) const {
+    bool operator<(const Block &t) const {
         return (x > t.x && y > t.y) || (x > t.y && y > t.x);
     }
 };

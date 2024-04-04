@@ -9,7 +9,7 @@ int n, x, y;
 string s1, s2;
 vector<int> pile[N];
 
-void block(int target, int& p, int& h) {
+void block(int target, int &p, int &h) {
     for (p = 0; p < n; p++)
         for (h = 0; h < pile[p].size(); h++)
             if (pile[p][h] == target)

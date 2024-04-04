@@ -9,7 +9,7 @@ using i64 = long long;
 
 int x, y, m, n, L;
 
-int extend_gcd(int a, int b, i64& x, i64& y) {
+int extend_gcd(int a, int b, i64 &x, i64 &y) {
     if (b == 0) return x = 1, y = 0, a;
     int d = extend_gcd(b, a % b, y, x);
     y -= a / b * x;

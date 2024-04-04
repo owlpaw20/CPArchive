@@ -31,7 +31,7 @@ struct FHQTreap {
 
     // FHQ Treap 分裂
     // `L` 与 `R` 分别代表分裂后的左右两个 Treap 的根节点
-    void split(int u, int key, int& L, int& R) {
+    void split(int u, int key, int &L, int &R) {
         if (u == 0) // 新建节点时初始化左右子树为 0 号节点
             return (void)(L = R = 0); // 表示没有左右子树，即到达了递归的终点
 

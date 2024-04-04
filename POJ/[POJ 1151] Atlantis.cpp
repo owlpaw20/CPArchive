@@ -9,7 +9,7 @@ using namespace std;
 struct SegmentBounds {
     double x, y1, y2;
     int diff;
-    bool operator<(const SegmentBounds& t) const {
+    bool operator<(const SegmentBounds &t) const {
         return x < t.x;
     }
     SegmentBounds(double _x, double _y1, double _y2, int _diff)
@@ -26,7 +26,7 @@ struct SegmentTree {
     vector<Node> tree;
     vector<double> y_axis;
 
-    void init(int n, vector<double>& arr) {
+    void init(int n, vector<double> &arr) {
         y_axis = arr;
         tree.clear();
         tree.resize(n * 8 + 100);

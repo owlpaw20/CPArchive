@@ -87,7 +87,7 @@ int main() {
     cout << scc.size() << endl;
 
     // 对所有强联通分量内部进行排序
-    for (vector<int>& s : scc)
+    for (vector<int> &s : scc)
         sort(s.begin(), s.end());
 
     // 输出所有强联通分量

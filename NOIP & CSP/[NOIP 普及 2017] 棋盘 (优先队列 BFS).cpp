@@ -15,7 +15,7 @@ int cost[SIZE][SIZE];
 struct Node {
     int x, y, curr, color;
     Node(int a, int b, int c, int d) : x(a), y(b), curr(c), color(d) {}
-    bool operator<(const Node& t) const {
+    bool operator<(const Node &t) const {
         return curr > t.curr;
     }
 };

@@ -15,7 +15,7 @@ struct SegTree {
     vector<int> x;
     vector<Node> tr;
 
-    int& operator[](cint idx) {
+    int &operator[](cint idx) {
         return x[idx];
     }
 

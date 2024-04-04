@@ -13,7 +13,7 @@ int n;
 i64 k;
 Matrix A;
 
-Matrix operator*(const Matrix& A, const Matrix& B) {
+Matrix operator*(const Matrix &A, const Matrix &B) {
     Matrix ret(n, vector<int>(n, 0));
     for (int i = 0; i < n; i++)
         for (int j = 0; j < n; j++)
@@ -42,8 +42,8 @@ int main() {
     cin >> n >> k;
     A.resize(n, vector<int>(n, 0));
 
-    for (vector<int>& row : A)
-        for (int& num : row)
+    for (vector<int> &row : A)
+        for (int &num : row)
             cin >> num;
 
     Matrix Ak = power(A, k);

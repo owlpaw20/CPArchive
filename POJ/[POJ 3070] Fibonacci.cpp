@@ -8,7 +8,7 @@ using Matrix = array<array<int, 2>, 2>;
 
 const int MOD = 1e4;
 
-Matrix operator*(const Matrix& A, const Matrix& B) {
+Matrix operator*(const Matrix &A, const Matrix &B) {
     Matrix C = {0, 0, 0, 0};
     for (int i = 0; i < 2; i++)
         for (int j = 0; j < 2; j++)

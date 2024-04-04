@@ -29,9 +29,9 @@ struct SegTree {
     }
 
     void propagate(int u) {
-        Node& root = node[u];
-        Node& left = node[u << 1];
-        Node& right = node[u << 1 | 1];
+        Node &root = node[u];
+        Node &left = node[u << 1];
+        Node &right = node[u << 1 | 1];
 
         if (root.add) {
             left.add = (left.add + root.add) % mod;

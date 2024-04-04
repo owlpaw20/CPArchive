@@ -69,7 +69,7 @@ Stack<char> opt;
 Stack<POLY> num;
 unordered_map<char, int> pr = {{'+', 1}, {'-', 1}, {'*', 2}};
 
-void cleanse_string(string& s) {
+void cleanse_string(string &s) {
     string ret;
     for (char ch : s)
         if (!isblank(ch) && ch != '\r')

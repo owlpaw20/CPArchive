@@ -13,7 +13,7 @@ int n;
 vector<bool> vis;
 vector<vector<int>> edges;
 
-void DFS(int u, vector<int>& seq) {
+void DFS(int u, vector<int> &seq) {
     vis[u] = true;
     for (int v : edges[u])
         if (!vis[v])

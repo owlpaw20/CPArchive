@@ -12,7 +12,7 @@ const int MOD = 1e9 + 7;
 int n, p, m;
 Matrix A, B;
 
-Matrix operator*(const Matrix& A, const Matrix& B) {
+Matrix operator*(const Matrix &A, const Matrix &B) {
     Matrix ret(n, vector<int>(m, 0));
     for (int i = 0; i < n; i++)
         for (int j = 0; j < p; j++)
@@ -29,12 +29,12 @@ int main() {
     A.resize(n, vector<int>(p, 0));
     B.resize(p, vector<int>(m, 0));
 
-    for (vector<int>& row : A)
-        for (int& num : row)
+    for (vector<int> &row : A)
+        for (int &num : row)
             cin >> num;
 
-    for (vector<int>& row : B)
-        for (int& num : row)
+    for (vector<int> &row : B)
+        for (int &num : row)
             cin >> num;
 
     Matrix C = A * B;

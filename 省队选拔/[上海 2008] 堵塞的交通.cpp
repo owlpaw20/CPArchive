@@ -21,7 +21,7 @@ struct SEGTREE {
         NODE(int _l, int _r, bool a, bool b, bool c, bool d, bool e, bool f) :
             l(_l), r(_r), upper(a), lower(b), left(c), right(d), pdgnl(e), sdgnl(f) {}
 
-        NODE pull(const NODE& L, const NODE& R) {
+        NODE pull(const NODE &L, const NODE &R) {
             return NODE(l = L.l, r = R.r,
                     upper = (L.upper && flag[L.r][0] && R.upper) ||
                         (L.pdgnl && flag[L.r][1] && R.sdgnl),

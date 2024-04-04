@@ -10,7 +10,7 @@ const int N = 1e5 + 10;
 struct Operation {
     bool equality;
     int first_var, second_var;
-    bool operator<(const Operation& t) const {
+    bool operator<(const Operation &t) const {
         return equality > t.equality;
     }
 };

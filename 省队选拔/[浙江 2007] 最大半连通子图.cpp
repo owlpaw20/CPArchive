@@ -27,7 +27,7 @@ stack<int> stk;
 unordered_set<i64> vis;
 int f[N], g[N];
 
-void connect(int u, int v, int* head) {
+void connect(int u, int v, int *head) {
     ed[idx] = v;
     nx[idx] = head[u];
     head[u] = idx++;

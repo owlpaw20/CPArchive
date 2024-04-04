@@ -31,7 +31,7 @@ vector<Edge> g;
 vector<PII> road;
 DisjointSet dsu;
 
-void Kruskal(int which, int& ans) {
+void Kruskal(int which, int &ans) {
     for (Edge e : g) {
         if (which == 1 && road.size() == K) break;
         if (which == 2 && road.size() == n - 1) break;

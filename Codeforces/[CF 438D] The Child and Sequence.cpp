@@ -13,7 +13,7 @@ struct SegTree {
     vector<int> array;
     vector<Node> tree;
 
-    void init(int n, const vector<int>& arr) {
+    void init(int n, const vector<int> &arr) {
         array = arr;
         tree.clear();
         tree.resize(n * 4 + 50);

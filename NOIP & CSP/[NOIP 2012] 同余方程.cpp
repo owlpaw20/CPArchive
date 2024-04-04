@@ -7,7 +7,7 @@ using i64 = long long;
 
 int a, b;
 
-void extend_gcd(i64 a, i64 b, i64& x, i64& y) {
+void extend_gcd(i64 a, i64 b, i64 &x, i64 &y) {
     if (b == 0) return (void)(x = 1, y = 0);
     extend_gcd(b, a % b, y, x);
     y -= a / b * x;

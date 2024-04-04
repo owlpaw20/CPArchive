@@ -21,9 +21,9 @@ struct SegTree {
     }
 
     void propagate(int u) {
-        Node& root = tree[u];
-        Node& left = tree[u << 1];
-        Node& right = tree[u << 1 | 1];
+        Node &root = tree[u];
+        Node &left = tree[u << 1];
+        Node &right = tree[u << 1 | 1];
 
         if (root.Max != 0) {
             left.Min = max(left.Min, root.Max);

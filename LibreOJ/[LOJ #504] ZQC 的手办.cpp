@@ -18,18 +18,18 @@ struct SegTree {
     } node[N << 2];
 
     void pushup(int u) {
-        auto& rt = node[u];
-        auto& lc = node[u << 1];
-        auto& rc = node[u << 1 | 1];
+        auto &rt = node[u];
+        auto &lc = node[u << 1];
+        auto &rc = node[u << 1 | 1];
 
         rt.rmin = min(lc.rmin, rc.rmin);
         rt.rmin_pos = lc.rmin <= rc.rmin ? lc.rmin_pos : rc.rmin_pos;
     }
 
     void pushdown(int u) {
-        auto& rt = node[u];
-        auto& lc = node[u << 1];
-        auto& rc = node[u << 1 | 1];
+        auto &rt = node[u];
+        auto &lc = node[u << 1];
+        auto &rc = node[u << 1 | 1];
 
         if (rt.tag_max != -1) {
             lc.rmin = max(lc.rmin, rt.tag_max);

@@ -14,7 +14,7 @@ namespace FastIO {
             x = x * 10 + (ch ^ 48), ch = getchar();
         return x * f;
     }
-    void read3(int& x, int& y, int& z) {
+    void read3(int &x, int &y, int &z) {
         x = read();
         y = read();
         z = read();
@@ -35,9 +35,9 @@ struct SegmentTree {
         tree[u].sum = max(tree[2 * u].sum, tree[2 * u + 1].sum);
     }
     void pushdown(int u) {
-        Node& root = tree[u];
-        Node& left = tree[2 * u];
-        Node& right = tree[2 * u + 1];
+        Node &root = tree[u];
+        Node &left = tree[2 * u];
+        Node &right = tree[2 * u + 1];
         if (root.tag) {
             left.sum += root.tag;
             right.sum += root.tag;

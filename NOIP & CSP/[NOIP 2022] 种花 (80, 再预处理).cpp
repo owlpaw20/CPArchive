@@ -66,7 +66,7 @@ void solve() {
                 ans_f = (ans_f + rght[k][j] * rght[i][j] * down[i][j] % MOD) % MOD;
             }
 
-            cout << c* ans_c % MOD << " " << f* ans_f % MOD << endl;
+            cout << c *ans_c % MOD << " " << f *ans_f % MOD << endl;
         }
 }
 
