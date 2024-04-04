@@ -54,7 +54,7 @@ int main() {
                 ans += Hungary(PII(i, j));
             }
 
-    cout << n *m - b - ans << endl;
+    cout << n * m - b - ans << endl;
 
     /*  选出最多的点构成独立集
         等价于：在图中去掉最少的点，使得剩下的点之间没有边
