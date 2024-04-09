@@ -10,7 +10,7 @@ using flt = double;
 using PFF = pair<flt, flt>;
 
 const int N = 20;
-const flt EPS = 1e-8;
+const flt EPS = 1e-10;
 const int INF = INT_MIN;
 const PFF NaN = PFF(INF, INF);
 
