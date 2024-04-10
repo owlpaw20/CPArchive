@@ -1,6 +1,7 @@
 #pragma GCC optimize("O2,unroll-loops")
 
 #include <array>
+#include <cstdint>
 #include <iostream>
 
 #define endl '\n'
@@ -10,19 +11,21 @@ using std::cin;
 using std::cout;
 
 using i64 = int64_t;
-using MATRIX = array<array<int, 2>, 2>;
 
 const int MAX_N = 1e5 + 5;
 const int MOD = 1e9 + 7;
-const MATRIX ZERO = {0, 0, 0, 0};
-const MATRIX UNIT = {1, 0, 0, 1};
-const MATRIX BASE = {1, 1, 1, 0};
-const MATRIX COEF = {1, 0, 1, 0};
 
 int N, M;
 int a[MAX_N];
 
 namespace Matrix {
+    using MATRIX = array<array<int, 2>, 2>;
+    
+    const MATRIX ZERO = {0, 0, 0, 0};
+    const MATRIX UNIT = {1, 0, 0, 1};
+    const MATRIX BASE = {1, 1, 1, 0};
+    const MATRIX COEF = {1, 0, 1, 0};
+
     MATRIX operator*(const MATRIX X, const MATRIX Y) {
         MATRIX Z = ZERO;
         for (int i = 0; i < 2; ++i)
