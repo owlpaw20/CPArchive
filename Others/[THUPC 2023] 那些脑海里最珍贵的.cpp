@@ -83,8 +83,7 @@ void reapply_passive_skills(int t = -1) {
     if (t != -1) { // 如果是开局，则需要使 Weak 类型的被动效果生效
         f64 weak = 0; // 统计 Weak 被动叠加效果层数
         for (int i = 1; i <= member_cnt[t]; ++i)
-            if (team[t][i].status &&
-                team[t][i].type == 0) // 对于当前队伍中所有还活着的 Weak 类型角色
+            if (team[t][i].status && team[t][i].type == 0) // 对于当前队伍中所有还活着的 Weak 类型角色
                 weak += PSV_SKL_MUL[0][team[t][i].psv_skl]; // 根据其等级叠加效果加成
 
         weak = std::min(weak, 0.05); // 考虑效果加成上限
@@ -209,7 +208,7 @@ void activate_active_skill(int act, int trg, int t_a, int t_b) {
         team[t_b][trg].dot_dmg = ACT_SKL_MUL[1][team[t_a][act].act_skl] * team[t_b][trg].max_hp; // 计算持续伤害大小
     }
 
-    // 对于 Strong 类型的被动技能
+    // 对于 Strong 类型的主动技能
     else if (team[t_a][act].type == 2)
         team[t_b][trg].skl_boost = ACT_SKL_MUL[2][team[t_a][act].act_skl]; // 更改角色的技能加成
 }
@@ -261,19 +260,19 @@ void perform_attack(int atk_p, int ddg_p, int act, int trg, int t_a, int t_b, in
         f64 mul = 1.35 / cand_cnt;
 
         team[t_b][trg].deal_damage(t_a, act, mul * eff * TYPE_BOOST[team[t_a][act].type][team[t_b][trg].type]);
-        if (trg_l != -1)
-            team[t_b][trg_l].deal_damage(t_a, act, mul * eff * TYPE_BOOST[team[t_a][act].type][team[t_b][trg_l].type]);
-        if (trg_r != -1)
-            team[t_b][trg_r].deal_damage(t_a, act, mul * eff * TYPE_BOOST[team[t_a][act].type][team[t_b][trg_r].type]);
+        if (trg_l != -1) team[t_b][trg_l].deal_damage(t_a, act,
+                mul * eff * TYPE_BOOST[team[t_a][act].type][team[t_b][trg_l].type]);
+        if (trg_r != -1) team[t_b][trg_r].deal_damage(t_a, act,
+                mul * eff * TYPE_BOOST[team[t_a][act].type][team[t_b][trg_r].type]);
     }
 
     // M 型特殊攻击
     else if (type == 2) {
         team[t_b][trg].deal_damage(t_a, act, 1.15 * eff * TYPE_BOOST[team[t_a][act].type][team[t_b][trg].type]);
-        if (trg_l != -1)
-            team[t_b][trg_l].deal_damage(t_a, act, 0.23 * eff * TYPE_BOOST[team[t_a][act].type][team[t_b][trg_l].type]);
-        if (trg_r != -1)
-            team[t_b][trg_r].deal_damage(t_a, act, 0.23 * eff * TYPE_BOOST[team[t_a][act].type][team[t_b][trg_r].type]);
+        if (trg_l != -1) team[t_b][trg_l].deal_damage(t_a, act,
+                0.23 * eff * TYPE_BOOST[team[t_a][act].type][team[t_b][trg_l].type]);
+        if (trg_r != -1) team[t_b][trg_r].deal_damage(t_a, act,
+                0.23 * eff * TYPE_BOOST[team[t_a][act].type][team[t_b][trg_r].type]);
     }
 }
 
@@ -298,7 +297,7 @@ int main() {
 
     for (int RND = 1; RND <= round_cnt; ++RND) {
         int t_a = (RND % 2) ^ 1; // 计算攻击方队伍
-        int t_b = (RND % 2); // 计算防御方对于
+        int t_b = (RND % 2); // 计算防御方队伍
 
         // 对攻击方队伍施放 Weak 类型被动技能
         reapply_passive_skills(t_a);
