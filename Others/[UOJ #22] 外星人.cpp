@@ -15,7 +15,7 @@ const u32 MOD = 998244353;
 
 u32 n, x;
 u32 a[MAX_N];
-u32 f[MAX_X][MAX_X]; // f[i][j] = 考虑了前 i 个数后，x 被模成了 j 的方案数
+u32 f[MAX_X][MAX_X];  // f[i][j] = 考虑了前 i 个数后，x 被模成了 j 的方案数
 
 inline u32 mod(cu32 x, cu32 y = MOD) { return (x < y) ? (x) : (x - x / y * y); }
 inline u32 mod(cu64 x, cu32 y = MOD) { return (x < y) ? (x) : (x - x / y * y); }
@@ -46,7 +46,8 @@ int main() {
 
     for (int i = x; ~i; --i)
         if (f[n][i]) {
-            std::cout << i << endl << f[n][i] << endl;
+            std::cout << i << endl
+                      << f[n][i] << endl;
             break;
         }
 

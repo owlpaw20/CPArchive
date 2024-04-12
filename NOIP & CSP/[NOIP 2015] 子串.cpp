@@ -31,8 +31,10 @@ int main() {
     for (int i = 1; i <= n; i++)
         for (int j = m; j > 0; j--)
             for (int k = K; k > 0; k--) {
-                if (a[i] != b[j]) sum[j][k] = 0;
-                else sum[j][k] = (sum[j - 1][k] + f[j - 1][k - 1]) % MOD;
+                if (a[i] != b[j])
+                    sum[j][k] = 0;
+                else
+                    sum[j][k] = (sum[j - 1][k] + f[j - 1][k - 1]) % MOD;
                 f[j][k] = (f[j][k] + sum[j][k]) % MOD;
             }
 

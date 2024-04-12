@@ -93,8 +93,10 @@ struct SegTree {
 
         int mid = (node[u].l + node[u].r) >> 1;
 
-        if (x <= mid) update(x, v, u << 1);
-        else update(x, v, u << 1 | 1);
+        if (x <= mid)
+            update(x, v, u << 1);
+        else
+            update(x, v, u << 1 | 1);
 
         node[u] = pushup(node[u << 1], node[u << 1 | 1]);
     }
@@ -127,8 +129,10 @@ int main() {
         int type, x, y;
         cin >> type >> x >> y;
 
-        if (type == 1) SGT.update(x, y);
-        else cout << SGT.query(x, y).maxcnt2 << endl;
+        if (type == 1)
+            SGT.update(x, y);
+        else
+            cout << SGT.query(x, y).maxcnt2 << endl;
     }
 
     return fflush(stdout), 0;

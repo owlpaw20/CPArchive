@@ -23,13 +23,13 @@ int main() {
     cin >> x >> y >> m >> n >> L;
 
     i64 xx = 0, yy = 0;
-    int d = extend_gcd(m - n, L, xx, yy); // 计算出方程的解并求得 gcd(x, y)
+    int d = extend_gcd(m - n, L, xx, yy);  // 计算出方程的解并求得 gcd(x, y)
 
-    if ((y - x) % d) // 方程无解
+    if ((y - x) % d)  // 方程无解
         puts("Impossible");
-    else { // 方程有解，但当前得出的 x 不一定是最小非负整数解
-        xx = (y - x) / d * xx; // 按比例扩大
-        i64 t = abs(L / d); // xx_min = xx mod (L / gcd(m - n, L))
+    else {                      // 方程有解，但当前得出的 x 不一定是最小非负整数解
+        xx = (y - x) / d * xx;  // 按比例扩大
+        i64 t = abs(L / d);     // xx_min = xx mod (L / gcd(m - n, L))
         cout << (xx % t + t) % t << endl;
     }
 

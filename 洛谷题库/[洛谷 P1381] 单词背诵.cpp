@@ -30,9 +30,12 @@ int main() {
         if (flag[a[i]]) p[a[i]]++;
         if (p[a[i]] == 1) ans1++, ans2 = i - l + 1;
         while (l <= i)
-            if (!flag[a[l]]) l++;
-            else if (p[a[l]] > 1) p[a[l]]--, l++;
-            else break;
+            if (!flag[a[l]])
+                l++;
+            else if (p[a[l]] > 1)
+                p[a[l]]--, l++;
+            else
+                break;
         ans2 = min(ans2, i - l + 1);
     }
 

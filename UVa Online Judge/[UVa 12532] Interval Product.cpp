@@ -44,8 +44,10 @@ struct SegTree {
         if (tr[u].l == tr[u].r)
             return (void)(tr[u].prod = v);
         int mid = (tr[u].l + tr[u].r) >> 1;
-        if (i <= mid) update(i, v, u << 1);
-        else update(i, v, u << 1 | 1);
+        if (i <= mid)
+            update(i, v, u << 1);
+        else
+            update(i, v, u << 1 | 1);
         maintain(u);
     }
 

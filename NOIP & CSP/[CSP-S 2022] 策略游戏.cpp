@@ -79,8 +79,8 @@ int main() {
         // tuple<3> = 区间非负最小值
 
         i64 ans = max(
-                min(get<0>(qa) * get<1>(qb), get<0>(qa) * get<0>(qb)),
-                min(get<1>(qa) * get<0>(qb), get<1>(qa) * get<1>(qb)));
+            min(get<0>(qa) * get<1>(qb), get<0>(qa) * get<0>(qb)),
+            min(get<1>(qa) * get<0>(qb), get<1>(qa) * get<1>(qb)));
         if (get<2>(qa) > -INF) ans = max(ans, get<2>(qa) * get<0>(qb));
         if (get<3>(qa) < INF) ans = max(ans, get<3>(qa) * get<1>(qb));
         cout << ans << endl;

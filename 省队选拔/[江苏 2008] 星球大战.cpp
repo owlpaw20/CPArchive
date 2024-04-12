@@ -32,7 +32,8 @@ struct DisjointSet {
 
 struct Edge {
     int u, v, id;
-    Edge(int x, int y) : u(x), v(y), id(0) {}
+    Edge(int x, int y) :
+        u(x), v(y), id(0) {}
     bool operator<(const Edge t) const {
         return id < t.id;
     }

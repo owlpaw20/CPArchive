@@ -30,7 +30,7 @@ namespace FastIO {
         if (x > 9) write(x / 10);
         putchar(x % 10 + '0');
     }
-} // namespace FastIO
+}  // namespace FastIO
 using namespace FastIO;
 
 using i64 = int64_t;
@@ -71,8 +71,10 @@ void solve() {
             if (p[N] > 0) {
                 if (p[i] < xx + yy)
                     l[i] = std::max(l[i], ceil(xx + yy - p[i], p[N]));
-            } else if (p[i] < xx + yy) r[i] = std::numeric_limits<i64>::min();
-            else r[i] = std::min(r[i], (xx + yy - p[i]) / p[N]);
+            } else if (p[i] < xx + yy)
+                r[i] = std::numeric_limits<i64>::min();
+            else
+                r[i] = std::min(r[i], (xx + yy - p[i]) / p[N]);
         }
     };
 

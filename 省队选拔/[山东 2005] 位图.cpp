@@ -25,7 +25,8 @@ struct queue {
     bool empty() {
         return head > rear;
     }
-    queue() : head(0), rear(-1) {}
+    queue() :
+        head(0), rear(-1) {}
 };
 
 int n, m, bmp[N][N];

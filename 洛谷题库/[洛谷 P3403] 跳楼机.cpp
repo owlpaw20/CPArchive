@@ -13,7 +13,7 @@ const int N = 2e5 + 5;
 i64 h;
 int x, y, z;
 int ed[N], nx[N], wt[N], head[N], idx;
-i64 dist[N]; // 只使用操作 2 和 3 最低能够到达的楼层，且 dist[i] % x = i
+i64 dist[N];  // 只使用操作 2 和 3 最低能够到达的楼层，且 dist[i] % x = i
 bool vis[N];
 
 void connect(int u, int v, int w) {
@@ -51,20 +51,20 @@ int main() {
     cin >> h;
     cin >> x >> y >> z;
 
-    if (x == 1 || y == 1 || z == 1) // 如果有 1 显然可以到达任意楼层
+    if (x == 1 || y == 1 || z == 1)  // 如果有 1 显然可以到达任意楼层
         return cout << h << endl, 0;
 
-    for (int i = 0; i < x; i++) { // 从 0 开始方便取模
-        connect(i, (i + y) % x, y); // 当前楼层可以通过操作 2 跳到 x 层内的哪一层
-        connect(i, (i + z) % x, z); // 当前楼层可以通过操作 3 跳到 x 层内的哪一层
+    for (int i = 0; i < x; i++) {    // 从 0 开始方便取模
+        connect(i, (i + y) % x, y);  // 当前楼层可以通过操作 2 跳到 x 层内的哪一层
+        connect(i, (i + z) % x, z);  // 当前楼层可以通过操作 3 跳到 x 层内的哪一层
     }
 
     Dijkstra(1);
 
     i64 ans = 0;
     for (int i = 0; i < x; i++)
-        if (h >= dist[i]) // 只统计操作后仍在高度限制内的情况
-            ans += (h - dist[i]) / x + 1; // 将所有跳得到的楼层全部统计下来
+        if (h >= dist[i])                  // 只统计操作后仍在高度限制内的情况
+            ans += (h - dist[i]) / x + 1;  // 将所有跳得到的楼层全部统计下来
 
     cout << ans << endl;
     return fflush(stdout), 0;

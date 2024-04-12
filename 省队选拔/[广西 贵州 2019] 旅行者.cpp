@@ -65,22 +65,24 @@ void solve() {
     i64 ans = (1ULL << 63) - 1;
 
     vector<vector<PII>> tmp(graph);
-    int va = n + 1, vb = n + 2; // 建立两组节点的虚拟源点
+    int va = n + 1, vb = n + 2;  // 建立两组节点的虚拟源点
 
-    for (int i = 0; (1 << i) <= K; i++) { // 枚举第 i 个二进制位
-        for (int j = 1; j <= K; j++) // 对于所有的城市
-            if ((1 << i) & j) // 如果二进制位为 1 则进入 A 组
+    for (int i = 0; (1 << i) <= K; i++) {  // 枚举第 i 个二进制位
+        for (int j = 1; j <= K; j++)       // 对于所有的城市
+            if ((1 << i) & j)              // 如果二进制位为 1 则进入 A 组
                 graph[va].emplace_back(city[j], 0);
-            else // 否则进入 B 组
-                graph[city[j]].emplace_back(vb, 0); // 这里只连一条有向边即可
+            else                                     // 否则进入 B 组
+                graph[city[j]].emplace_back(vb, 0);  // 这里只连一条有向边即可
 
-        ans = min(ans, Dijkstra(va, vb)); // 更新整体最短路
+        ans = min(ans, Dijkstra(va, vb));  // 更新整体最短路
         graph = tmp;
 
         // 由于是有向图，所以还要倒着做一遍
         for (int j = 1; j <= K; j++)
-            if ((1 << i) & j) graph[city[j]].emplace_back(vb, 0);
-            else graph[va].emplace_back(city[j], 0);
+            if ((1 << i) & j)
+                graph[city[j]].emplace_back(vb, 0);
+            else
+                graph[va].emplace_back(city[j], 0);
 
         ans = min(ans, Dijkstra(va, vb));
         graph = tmp;

@@ -34,8 +34,10 @@ struct SparseTable {
         }
         for (int j = 1; j <= lmt; j++)
             for (int i = 1, x, y; i + (1 << j) - 1 <= n; i++)
-                if (a[x = tb[i][j - 1]] >= a[y = tb[i + (1 << (j - 1))][j - 1]]) tb[i][j] = x;
-                else tb[i][j] = y;
+                if (a[x = tb[i][j - 1]] >= a[y = tb[i + (1 << (j - 1))][j - 1]])
+                    tb[i][j] = x;
+                else
+                    tb[i][j] = y;
     }
 
     int max(int l, int r) {
@@ -53,8 +55,10 @@ int divide_and_conquer(int l, int r) {
     int rc = divide_and_conquer(mid + 1, r);
 
     for (int i = 1; i <= m; i++) {
-        if (lc != -1 && i == 1) f[mid][1] = 0;
-        else f[mid][i] = (lc != -1 ? g[lc][i - 1] : 1LL) * (rc != -1 ? g[rc][i] : 1LL) % MOD;
+        if (lc != -1 && i == 1)
+            f[mid][1] = 0;
+        else
+            f[mid][i] = (lc != -1 ? g[lc][i - 1] : 1LL) * (rc != -1 ? g[rc][i] : 1LL) % MOD;
         g[mid][i] = (g[mid][i - 1] + f[mid][i]) % MOD;
     }
 

@@ -40,8 +40,10 @@ int BFS() {
 
             if (dist[tx][ty] >= turn + turned) {
                 dist[tx][ty] = turn + turned;
-                if (!turned) dq.emplace_front(tx, ty, turn, i);
-                else dq.emplace_back(tx, ty, turn + 1, i);
+                if (!turned)
+                    dq.emplace_front(tx, ty, turn, i);
+                else
+                    dq.emplace_back(tx, ty, turn + 1, i);
             }
         }
     }
@@ -62,8 +64,10 @@ int main() {
             mp[i][j] = ch;
             if (ch != 'C') continue;
 
-            if (!sx) sx = i, sy = j;
-            else ex = i, ey = j;
+            if (!sx)
+                sx = i, sy = j;
+            else
+                ex = i, ey = j;
         }
 
     cout << BFS() << endl;

@@ -29,7 +29,8 @@ struct queue {
     int size() {
         return rear - head + 1;
     }
-    queue() : head(0), rear(-1) {}
+    queue() :
+        head(0), rear(-1) {}
 };
 
 int n, ans;

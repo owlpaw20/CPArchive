@@ -40,11 +40,14 @@ int main() {
         int i, j;
         cin >> opt >> i >> j;
 
-        if (opt == 'M') merge(i, j);
+        if (opt == 'M')
+            merge(i, j);
         else if (opt == 'C') {
             int pi = find(i), pj = find(j);
-            if (pi == pj) cout << abs(dist[i] - dist[j]) - 1 << endl;
-            else cout << -1 << endl;
+            if (pi == pj)
+                cout << abs(dist[i] - dist[j]) - 1 << endl;
+            else
+                cout << -1 << endl;
         }
     }
 

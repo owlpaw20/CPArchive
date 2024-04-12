@@ -38,8 +38,10 @@ void BFS() {
         while (!togo.empty()) {
             int x = togo.front().first, y = togo.front().second;
             togo.pop();
-            if (!vis[x][y] && on[x][y]) q.push({x, y});
-            else delayed.push({x, y});
+            if (!vis[x][y] && on[x][y])
+                q.push({x, y});
+            else
+                delayed.push({x, y});
         }
 
         while (!delayed.empty()) {

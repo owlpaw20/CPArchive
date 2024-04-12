@@ -27,7 +27,7 @@ namespace FastIO {
         if (x > 9) write(x / 10);
         putchar(x % 10 + '0');
     }
-} // namespace FastIO
+}  // namespace FastIO
 using namespace FastIO;
 
 const int N = 1e4 + 10;
@@ -56,13 +56,17 @@ int main() {
     for (int i = 2; i <= sqrtw; i++)
         while (w % i == 0) {
             w /= i;
-            if ((int)pf[i].size() < n) pf[i].push(1);
-            else pf[i].push(pf[i].top() + 1), pf[i].pop();
+            if ((int)pf[i].size() < n)
+                pf[i].push(1);
+            else
+                pf[i].push(pf[i].top() + 1), pf[i].pop();
         }
 
     if (w > 1) {
-        if ((int)pf[w].size() < n) pf[w].push(1);
-        else pf[w].push(pf[w].top() + 1), pf[w].pop();
+        if ((int)pf[w].size() < n)
+            pf[w].push(1);
+        else
+            pf[w].push(pf[w].top() + 1), pf[w].pop();
     }
 
     int ans = 1;

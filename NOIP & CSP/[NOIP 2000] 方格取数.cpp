@@ -22,7 +22,7 @@ int main() {
             for (int k = 1; k <= n; k++)
                 for (int w = 1; w <= n; w++) {
                     f[i][j][k][w] = p[i][j] + max(max(f[i - 1][j][k - 1][w], f[i - 1][j][k][w - 1]),
-                            max(f[i][j - 1][k - 1][w], f[i][j - 1][k][w - 1]));
+                                                  max(f[i][j - 1][k - 1][w], f[i][j - 1][k][w - 1]));
                     if (i != 1 && j != w) f[i][j][k][w] += p[k][w];
                 }
 

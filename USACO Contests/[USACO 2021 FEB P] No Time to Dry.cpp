@@ -60,15 +60,15 @@ int main() {
 
     // 枚举右端点
     for (int i = 1; i <= n; i++) {
-        while (!stk.empty() && c[stk.top()] > c[i]) // 维护单调性
+        while (!stk.empty() && c[stk.top()] > c[i])  // 维护单调性
             stk.pop();
 
-        if (!stk.empty() && c[stk.top()] == c[i]) // 如果两个元素颜色相等
-            BIT.inc(stk.top()), stk.pop(); // 则在树状数组的对应下标的位置更新一次 x
-        stk.push(i); // 将其加入队列
+        if (!stk.empty() && c[stk.top()] == c[i])  // 如果两个元素颜色相等
+            BIT.inc(stk.top()), stk.pop();         // 则在树状数组的对应下标的位置更新一次 x
+        stk.push(i);                               // 将其加入队列
 
-        for (auto [l, j] : qry[i]) // 对于右端点为 i 的所有询问，令其左端点为 l
-            ans[j] = i - l + 1 - BIT.query(l, i); // 按照公式计算需要涂画的次数
+        for (auto [l, j] : qry[i])                 // 对于右端点为 i 的所有询问，令其左端点为 l
+            ans[j] = i - l + 1 - BIT.query(l, i);  // 按照公式计算需要涂画的次数
     }
 
     // 输出离线处理之后的结果

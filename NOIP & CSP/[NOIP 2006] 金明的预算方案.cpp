@@ -24,8 +24,10 @@ int main() {
         int v, p, q;
         cin >> v >> p >> q;
         p *= v;
-        if (q == 0) major[i] = {v, p};
-        else ext[q].emplace_back(v, p);
+        if (q == 0)
+            major[i] = {v, p};
+        else
+            ext[q].emplace_back(v, p);
     }
 
     for (int i = 1; i <= n; i++)

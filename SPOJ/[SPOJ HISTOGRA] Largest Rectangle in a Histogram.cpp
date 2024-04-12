@@ -41,7 +41,7 @@ int main() {
         ll ans = -1;
         int h[N] = {0};
         for (int i = 1; i <= n; i++) cin >> h[i];
-        h[n + 1] = 0; // !!
+        h[n + 1] = 0;  // !!
         for (int i = 1; i <= n + 1; i++) {
             ll wd = 0;
             while (!st.empty() && h[i] <= st.top().height) {

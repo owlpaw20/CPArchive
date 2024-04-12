@@ -21,8 +21,8 @@ void connect(int u, int v) {
 void DP(int u) {
     for (int i = head[u]; ~i; i = nx[i]) {
         DP(ed[i]);
-        for (int j = M + 1; j; --j) // 枚举所选课数
-            for (int k = 0; k < j; ++k) // 枚举当前节点所学习的课程数
+        for (int j = M + 1; j; --j)      // 枚举所选课数
+            for (int k = 0; k < j; ++k)  // 枚举当前节点所学习的课程数
                 f[u][j] = std::max(f[u][j], f[ed[i]][k] + f[u][j - k]);
     }
 }
@@ -36,7 +36,7 @@ int main() {
     std::cin >> N >> M;
     for (int i = 1, k, s; i <= N; ++i) {
         std::cin >> k >> s;
-        f[i][1] = s; // 当前节点的子树中只学习一门课，则一定只能为树根
+        f[i][1] = s;  // 当前节点的子树中只学习一门课，则一定只能为树根
         connect(k, i);
     }
 

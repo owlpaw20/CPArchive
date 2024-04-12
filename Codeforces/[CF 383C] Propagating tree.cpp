@@ -50,7 +50,7 @@ struct SEGTREE {
         node[u].tag = 0;
 
         if (l == r) {
-            node[u].k = (depth[b[l]] & 1) ? 1 : -1; // 当前节点深度的奇偶性
+            node[u].k = (depth[b[l]] & 1) ? 1 : -1;  // 当前节点深度的奇偶性
             node[u].val = a[b[l]];
             return;
         }

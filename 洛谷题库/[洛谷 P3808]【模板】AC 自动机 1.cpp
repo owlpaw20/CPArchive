@@ -52,7 +52,7 @@ struct AhoCorasick {
         for (int i = 0, j = 0; i < len; i++) {
             int c = s[i] - 'a';
             int p = j = trie[j][c];
-            while (p && ~cnt[p]) { // 如果已经统计过，就不需要继续往上跳了
+            while (p && ~cnt[p]) {  // 如果已经统计过，就不需要继续往上跳了
                 ret += cnt[p];
                 cnt[p] = -1;
                 p = fail[p];

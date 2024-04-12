@@ -53,9 +53,9 @@ int main() {
 
     // 枚举右端点 a[i] 作为最大值的情况，队列从前往后单调递增
     for (int i = 1; i <= n; i++) {
-        while (!q.empty() && a[q.front()] > a[i]) q.pop_front(); // 当区间左端点 i 为区间最大值时
-        while (!q.empty() && a[i] - a[q.back()] < i - q.back()) // 若 i 的左边有更优的左端点 j
-            q.pop_back(); // 则 i 距离 j 的长度比 a[i] - a[j] 更小
+        while (!q.empty() && a[q.front()] > a[i]) q.pop_front();  // 当区间左端点 i 为区间最大值时
+        while (!q.empty() && a[i] - a[q.back()] < i - q.back())   // 若 i 的左边有更优的左端点 j
+            q.pop_back();                                         // 则 i 距离 j 的长度比 a[i] - a[j] 更小
         q.push(i);
         ans = max(ans, a[i] - a[q.front()] - (i - q.front() + 1));
     }
@@ -64,9 +64,9 @@ int main() {
 
     // 枚举右端点 a[i] 作为最小值的情况，队列从前往后单调递减
     for (int i = 1; i <= n; i++) {
-        while (!q.empty() && a[q.front()] < a[i]) q.pop_front(); // 当区间左端点 i 为区间最小值时
-        while (!q.empty() && a[i] - a[q.back()] > q.back() - i) // 若 i 的左边有更优的左端点 j
-            q.pop_back(); // 则 i 距离 j 的长度比 a[i] - a[j] 更大
+        while (!q.empty() && a[q.front()] < a[i]) q.pop_front();  // 当区间左端点 i 为区间最小值时
+        while (!q.empty() && a[i] - a[q.back()] > q.back() - i)   // 若 i 的左边有更优的左端点 j
+            q.pop_back();                                         // 则 i 距离 j 的长度比 a[i] - a[j] 更大
         q.push(i);
         ans = max(ans, a[q.front()] - a[i] - (i - q.front() + 1));
     }

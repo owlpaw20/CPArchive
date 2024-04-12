@@ -1,5 +1,5 @@
 # Ignore Clang-Format configuration
-.astyleconfig
+.clang-format
 
 # Ignore CPH assistance files
 .cph/

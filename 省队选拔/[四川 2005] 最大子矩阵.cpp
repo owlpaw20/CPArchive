@@ -49,8 +49,10 @@ int main() {
         pre[i][2] = pre[i - 1][2] + a[i][2];
     }
 
-    if (m == 1) solve1();
-    else solve2();
+    if (m == 1)
+        solve1();
+    else
+        solve2();
 
     return 0;
 }

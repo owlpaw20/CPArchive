@@ -9,12 +9,13 @@ const int DX[] = {0, 1, 0, -1};
 const int DY[] = {1, 0, -1, 0};
 
 int n, m, minn = INF;
-int g[SIZE][SIZE]; // 0 = 无色, 1 = 红色, 2 = 黄色
+int g[SIZE][SIZE];  // 0 = 无色, 1 = 红色, 2 = 黄色
 int cost[SIZE][SIZE];
 
 struct Node {
     int x, y, curr, color;
-    Node(int a, int b, int c, int d) : x(a), y(b), curr(c), color(d) {}
+    Node(int a, int b, int c, int d) :
+        x(a), y(b), curr(c), color(d) {}
     bool operator<(const Node &t) const {
         return curr > t.curr;
     }
@@ -34,13 +35,13 @@ void BFS(int sx, int sy) {
         for (int i = 0; i < 4; i++) {
             int tx = x + DX[i], ty = y + DY[i];
             if (tx > 0 && ty > 0 && tx <= n && ty <= n) {
-                if (g[x][y] == 0 && g[tx][ty] == 0) continue; // 魔法不能连续使用
-                if (g[tx][ty] == 0) { // 如果目标点无色
+                if (g[x][y] == 0 && g[tx][ty] == 0) continue;  // 魔法不能连续使用
+                if (g[tx][ty] == 0) {                          // 如果目标点无色
                     if (curr + 2 < cost[tx][ty]) {
                         cost[tx][ty] = curr + 2;
                         q.emplace(tx, ty, curr + 2, color);
                     }
-                } else { // 如果目标点有色
+                } else {  // 如果目标点有色
                     if (color == g[tx][ty] && curr < cost[tx][ty]) {
                         cost[tx][ty] = curr;
                         q.emplace(tx, ty, curr, color);

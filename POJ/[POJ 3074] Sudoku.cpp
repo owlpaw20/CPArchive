@@ -80,9 +80,12 @@ int main() {
             for (int j = 0; j < 9; j++) {
                 char ch;
                 cin >> ch;
-                if (ch == 'e') exit(0);
-                else if (ch == '.') grid[i][j] = 0;
-                else grid[i][j] = (int)ch - '0';
+                if (ch == 'e')
+                    exit(0);
+                else if (ch == '.')
+                    grid[i][j] = 0;
+                else
+                    grid[i][j] = (int)ch - '0';
                 for (int k = 1; k <= 9; k++) {
                     if (grid[i][j] != k && grid[i][j] != 0) continue;
                     int t = i * 81 + j * 9 + k;

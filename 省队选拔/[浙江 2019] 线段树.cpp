@@ -11,8 +11,14 @@ const int MOD = 998244353;
 
 int N, M, p = 1;
 
-inline int add(int x, c32 y) { x += y; return (x < MOD) ? (x) : (x - MOD); }
-inline int sub(int x, c32 y) { x -= y; return (x < 0) ? (x + MOD) : (x); }
+inline int add(int x, c32 y) {
+    x += y;
+    return (x < MOD) ? (x) : (x - MOD);
+}
+inline int sub(int x, c32 y) {
+    x -= y;
+    return (x < 0) ? (x + MOD) : (x);
+}
 
 struct SegmentTree {
     struct TreeNode {

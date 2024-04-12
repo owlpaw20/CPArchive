@@ -56,7 +56,7 @@ int main() {
                         if (l > 0 && z > 0 && p + a[x][y] + b[x][y] <= K)
                             st += MOD - f[cur][y][l - 1][z - 1][p + a[x][y] + b[x][y]];
 
-                        st %= MOD; // 卡常
+                        st %= MOD;  // 卡常
                     }
 
             cout << f[cur][y][0][0][0] << ' ';

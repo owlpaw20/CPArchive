@@ -109,8 +109,10 @@ int main() {
             SGT.flip(1, l, r);
         else {
             int ret = SGT.query(1, l, r);
-            if (ret == 0 || ret == r - l + 1) puts("Yes");
-            else puts("No");
+            if (ret == 0 || ret == r - l + 1)
+                puts("Yes");
+            else
+                puts("No");
         }
     }
 

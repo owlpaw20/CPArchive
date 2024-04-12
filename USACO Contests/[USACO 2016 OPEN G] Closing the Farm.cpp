@@ -54,19 +54,21 @@ int main() {
         cin >> close[i];
 
     DSU.init(n);
-    vis[close[n]] = true; // 最后一个关闭的农场视为第一个被打开
-    ans[n] = true; // 最后一个农场开启后显然一定联通，所以成立
+    vis[close[n]] = true;  // 最后一个关闭的农场视为第一个被打开
+    ans[n] = true;         // 最后一个农场开启后显然一定联通，所以成立
 
     int cnt = 0;
-    for (int i = n - 1; i > 0; i--) { // 倒序关闭农场等价于正序开启农场
-        vis[close[i]] = true; // 当前农场被开启
+    for (int i = n - 1; i > 0; i--) {  // 倒序关闭农场等价于正序开启农场
+        vis[close[i]] = true;          // 当前农场被开启
         for (int j = head[close[i]]; ~j; j = nx[j]) {
             int u = close[i], v = ed[j];
-            if (vis[v] && DSU.merge(u, v)) // 如果有终点的农场也开启
-                cnt += 1; // 就合并
+            if (vis[v] && DSU.merge(u, v))  // 如果有终点的农场也开启
+                cnt += 1;                   // 就合并
         }
-        if (cnt == n - i) ans[i] = true; // 如果当前开放的所有农场都已联通则存储答案
-        else ans[i] = false;
+        if (cnt == n - i)
+            ans[i] = true;  // 如果当前开放的所有农场都已联通则存储答案
+        else
+            ans[i] = false;
     }
 
     for (int i = 1; i <= n; i++)

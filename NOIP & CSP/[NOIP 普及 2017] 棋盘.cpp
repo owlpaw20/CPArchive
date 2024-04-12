@@ -10,13 +10,14 @@ const int DX[] = {0, 1, 0, -1};
 const int DY[] = {1, 0, -1, 0};
 
 int n, m;
-int g[SIZE][SIZE]; // 邻接数组存图
+int g[SIZE][SIZE];  // 邻接数组存图
 int dist[SIZE][SIZE][2];
 bool vis[SIZE][SIZE][2];
 
 struct Node {
     int x, y, curr, color;
-    Node(int _x, int _y, int _curr, int _color) : x(_x), y(_y), curr(_curr), color(_color) {}
+    Node(int _x, int _y, int _curr, int _color) :
+        x(_x), y(_y), curr(_curr), color(_color) {}
     bool operator<(const Node &t) const {
         return curr > t.curr;
     }
@@ -45,14 +46,17 @@ void Dijkstra(int sx, int sy) {
                 int cur = g[x][y], nxt = g[tx][ty];
                 int delta = 0, tc = 0;
 
-                if (nxt != -1) { // 如果目标点有色
-                    if (color == nxt) delta = 0;
-                    else delta = 1;
+                if (nxt != -1) {  // 如果目标点有色
+                    if (color == nxt)
+                        delta = 0;
+                    else
+                        delta = 1;
                     tc = nxt;
-                } else if (cur != -1) { // 如果当前点有色、目标点无色
+                } else if (cur != -1) {  // 如果当前点有色、目标点无色
                     delta = 2;
                     tc = cur;
-                } else continue;
+                } else
+                    continue;
 
                 if (dist[tx][ty][tc] > dist[x][y][color] + delta) {
                     dist[tx][ty][tc] = dist[x][y][color] + delta;
@@ -78,7 +82,9 @@ int main() {
     Dijkstra(1, 1);
 
     int ans = min(dist[n][n][0], dist[n][n][1]);
-    if (ans == INF) cout << -1 << endl;
-    else cout << ans << endl;
+    if (ans == INF)
+        cout << -1 << endl;
+    else
+        cout << ans << endl;
     return 0;
 }

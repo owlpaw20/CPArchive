@@ -76,7 +76,7 @@ namespace LCA {
         if (maxw[v][0] < w) ret = max(ret, maxw[v][0]);
         return ret;
     }
-} // namespace LCA
+}  // namespace LCA
 
 namespace MST {
     vector<TUP> edges, edges2;
@@ -95,7 +95,7 @@ namespace MST {
             if (x == y) return false;
             return fa[x] = y, true;
         }
-    } // namespace UnionFind
+    }  // namespace UnionFind
 
     i64 Kruskal() {
         i64 ans = 0;
@@ -116,7 +116,7 @@ namespace MST {
         if (cnt != n - 1) return (1ULL << 63) - 1;
         return ans;
     }
-} // namespace MST
+}  // namespace MST
 
 int main() {
     ios::sync_with_stdio(false);

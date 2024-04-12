@@ -31,8 +31,10 @@ int main() {
         if (i >= 5) f[i] = min(f[i], f[i - 5] + 1);
     }
 
-    if (f[n] == INT_MAX - 1) cout << -1 << endl;
-    else cout << f[n] << endl;
+    if (f[n] == INT_MAX - 1)
+        cout << -1 << endl;
+    else
+        cout << f[n] << endl;
     fflush(stdout);
     return 0;
 }

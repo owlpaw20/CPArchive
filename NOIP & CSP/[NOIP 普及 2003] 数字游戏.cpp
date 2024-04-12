@@ -48,6 +48,6 @@ int main() {
     }
 
     cout << mnv << endl
-        << mxv << endl;
+         << mxv << endl;
     return 0;
 }

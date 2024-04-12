@@ -27,7 +27,8 @@ int main() {
     for (int len = 1; len <= n; len++)
         for (int l = 1; l + len - 1 <= (n << 1); l++) {
             int r = l + len - 1;
-            if (l == r) f[l][r] = g[l][r] = 0;
+            if (l == r)
+                f[l][r] = g[l][r] = 0;
             else {
                 int range_sum = pre[r] - pre[l - 1];
                 for (int mid = l; mid < r; mid++) {
@@ -45,7 +46,7 @@ int main() {
     }
 
     cout << ans1 << endl
-        << ans2 << endl;
+         << ans2 << endl;
     fflush(stdout);
     return 0;
 }

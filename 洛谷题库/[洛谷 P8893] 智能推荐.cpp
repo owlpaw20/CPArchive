@@ -31,7 +31,7 @@ namespace FastIO {
         if (x > 9) write(x / 10);
         putchar(x % 10 + '0');
     }
-} // namespace FastIO
+}  // namespace FastIO
 using namespace FastIO;
 
 using PII = std::pair<int, int>;
@@ -45,7 +45,7 @@ std::vector<int> graph[MAX_N];
 std::bitset<MAX_N> stats;
 
 int main() {
-    read<int>(); // 用不到 N
+    read<int>();  // 用不到 N
 
     int K(read<int>()), p(read<int>());
 

@@ -31,7 +31,8 @@ bool check(int x) {
     i64 delta = absolute(y - s);
     ans = min(ans, delta);
 
-    if (y > s) return true;
+    if (y > s)
+        return true;
     else if (y == s) {
         cout << 0 << endl;
         exit(0);
@@ -51,8 +52,10 @@ int main() {
     int l = 0, r = 1e6;
     while (l < r) {
         int mid = (l + r) >> 1;
-        if (check(mid)) l = mid + 1;
-        else r = mid;
+        if (check(mid))
+            l = mid + 1;
+        else
+            r = mid;
     }
 
     cout << ans << endl;

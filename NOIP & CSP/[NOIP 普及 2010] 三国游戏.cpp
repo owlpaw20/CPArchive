@@ -20,6 +20,6 @@ int main() {
     for (int i = 1; i <= n; i++)
         ans = max(ans, w[i][n - 1]);
     cout << 1 << endl
-        << ans << endl;
+         << ans << endl;
     return 0;
 }

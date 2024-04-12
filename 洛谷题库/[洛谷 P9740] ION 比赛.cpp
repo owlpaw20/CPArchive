@@ -6,7 +6,8 @@ const int N = 10;
 
 struct Problem {
     int cnt, ac, per, wa;
-    Problem(int _cnt, int _ac) : cnt(_cnt), ac(_ac), per(100 / _cnt), wa(_cnt - _ac) {}
+    Problem(int _cnt, int _ac) :
+        cnt(_cnt), ac(_ac), per(100 / _cnt), wa(_cnt - _ac) {}
 };
 
 int n, score, t;

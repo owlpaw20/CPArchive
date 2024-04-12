@@ -49,7 +49,7 @@ namespace SP {
     }
 
     void build_edge();
-} // namespace SP
+}  // namespace SP
 
 namespace LP {
     int ed[M], wt[M], nx[M], head[N], idx;
@@ -76,16 +76,16 @@ namespace LP {
 
     int get_longest_path() {
         for (int i = 1; i <= n; i++)
-            if (used[i] && !f[i]) // 如果这个点出现在了最短路树上并且第一次更新
-                DFS(i); // 就尝试用该点更新最长链
+            if (used[i] && !f[i])  // 如果这个点出现在了最短路树上并且第一次更新
+                DFS(i);            // 就尝试用该点更新最长链
 
         int ret = 0;
         for (int i = 1; i <= n; i++)
-            ret = max(ret, f[i]); // 统计所有以任意点为起点的最长链中的最长链
+            ret = max(ret, f[i]);  // 统计所有以任意点为起点的最长链中的最长链
 
         return ret;
     }
-} // namespace LP
+}  // namespace LP
 
 void SP::build_edge() {
     for (int u = 1; u <= n; u++)

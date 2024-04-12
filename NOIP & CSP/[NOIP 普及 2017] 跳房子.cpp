@@ -38,8 +38,10 @@ int main() {
     int l = 0, r = 1001;
     while (l < r) {
         int mid = (l + r) >> 1;
-        if (check(mid)) r = mid;
-        else l = mid + 1;
+        if (check(mid))
+            r = mid;
+        else
+            l = mid + 1;
     }
 
     if (l == 1001)

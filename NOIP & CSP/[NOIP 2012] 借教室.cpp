@@ -43,8 +43,10 @@ int main() {
     int l = 1, r = m;
     while (l < r) {
         int mid = (l + r) >> 1;
-        if (check(mid)) l = mid + 1;
-        else r = mid;
+        if (check(mid))
+            l = mid + 1;
+        else
+            r = mid;
     }
 
     cout << r << endl;

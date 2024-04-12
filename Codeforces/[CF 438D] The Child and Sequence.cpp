@@ -7,7 +7,7 @@ using i64 = long long;
 struct SegTree {
     struct Node {
         int l, r;
-        int rmax; // 维护区间最大值，优化时间复杂度
+        int rmax;  // 维护区间最大值，优化时间复杂度
         i64 rsum;
     };
     vector<int> array;
@@ -42,18 +42,20 @@ struct SegTree {
             return;
         }
         int mid = (tl + tr) >> 1;
-        if (i <= mid) overwrite(i, x, u << 1);
-        else overwrite(i, x, u << 1 | 1);
+        if (i <= mid)
+            overwrite(i, x, u << 1);
+        else
+            overwrite(i, x, u << 1 | 1);
         maintain(u);
     }
 
     void modulo(int l, int r, int mod, int u = 1) {
         int tl = tree[u].l, tr = tree[u].r;
-        if (tree[u].rmax < mod) // 如果当前区间的最大值都不超过模数
-            return; // 整个区间就没有更新的必要了
-        if (tl == tr) { // 否则如果递归到了单点
-            tree[u].rmax %= mod; // 更新取模之后的区间最大值
-            tree[u].rsum %= mod; // 更新取模之后的区间和
+        if (tree[u].rmax < mod)   // 如果当前区间的最大值都不超过模数
+            return;               // 整个区间就没有更新的必要了
+        if (tl == tr) {           // 否则如果递归到了单点
+            tree[u].rmax %= mod;  // 更新取模之后的区间最大值
+            tree[u].rsum %= mod;  // 更新取模之后的区间和
             return;
         }
         int mid = (tl + tr) >> 1;

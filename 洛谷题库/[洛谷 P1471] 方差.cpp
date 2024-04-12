@@ -132,7 +132,7 @@ int main() {
             f64 sum = SGT.query_range_sum(x, y);
             f64 sqr = SGT.query_range_square_sum(x, y);
             f64 avg = sum / (y - x + 1);
-            cout << fixed << sqr / (y - x + 1) - avg *avg << endl;
+            cout << fixed << sqr / (y - x + 1) - avg * avg << endl;
         }
     }
 

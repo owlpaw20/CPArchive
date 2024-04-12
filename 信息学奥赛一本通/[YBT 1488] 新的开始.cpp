@@ -25,7 +25,7 @@ namespace FastIO {
         if (x > 9) write(x / 10);
         putchar(x % 10 + '0');
     }
-} // namespace FastIO
+}  // namespace FastIO
 using namespace FastIO;
 
 struct DisjointSet {
@@ -70,8 +70,10 @@ int main() {
 
     for (int i(1); i <= n; i++)
         for (int j(1); j <= n; j++)
-            if (i >= j) read();
-            else edges.emplace_back(i, j, read());
+            if (i >= j)
+                read();
+            else
+                edges.emplace_back(i, j, read());
 
     auto cmp = [&](EDGE a, EDGE b) {
         return get<2>(a) < get<2>(b);

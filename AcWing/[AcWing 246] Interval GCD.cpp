@@ -29,9 +29,8 @@ struct SegmentTree {
     void build(int u, int l, int r) {
         if (l == r) {
             Long d = a[l] - a[l - 1];
-            tree[u] = (Node) {
-                l, r, d, d
-            };
+            tree[u] = (Node){
+                l, r, d, d};
             return;
         }
         tree[u].l = l, tree[u].r = r;
@@ -58,14 +57,15 @@ struct SegmentTree {
         int tl = tree[u].l, tr = tree[u].r;
         if (tl == tar && tr == tar) {
             Long sum = tree[u].sum + val;
-            tree[u] = (Node) {
-                tar, tar, sum, sum
-            };
+            tree[u] = (Node){
+                tar, tar, sum, sum};
             return;
         }
         int mid = (tl + tr) >> 1;
-        if (tar <= mid) modify(2 * u, tar, val);
-        else modify(2 * u + 1, tar, val);
+        if (tar <= mid)
+            modify(2 * u, tar, val);
+        else
+            modify(2 * u + 1, tar, val);
         pushup(tree[u], tree[2 * u], tree[2 * u + 1]);
     }
 } tr;

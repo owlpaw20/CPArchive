@@ -88,8 +88,10 @@ struct SegTree {
 
         int mid = (nl + nr) >> 1;
 
-        if (x <= mid) increment(x, v, u << 1);
-        else increment(x, v, u << 1 | 1);
+        if (x <= mid)
+            increment(x, v, u << 1);
+        else
+            increment(x, v, u << 1 | 1);
 
         pushup(u);
     }

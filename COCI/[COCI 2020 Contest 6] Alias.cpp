@@ -70,8 +70,10 @@ int main() {
         cin >> a >> b;
         Dijkstra(mir[a]);
         long long ans = dist[mir[b]];
-        if (ans == INF) puts("Roger");
-        else printf("%lld\n", ans);
+        if (ans == INF)
+            puts("Roger");
+        else
+            printf("%lld\n", ans);
     }
 
     fflush(stdout);

@@ -14,8 +14,10 @@ void solve() {
     for (int i = 1; i <= n; i++) {
         char ch;
         cin >> ch;
-        if (!stk.empty() && ch != stk.top()) stk.pop();
-        else stk.emplace(ch);
+        if (!stk.empty() && ch != stk.top())
+            stk.pop();
+        else
+            stk.emplace(ch);
     }
 
     int ans = 0;

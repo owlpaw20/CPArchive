@@ -12,8 +12,8 @@ struct SegmentBounds {
     bool operator<(const SegmentBounds &t) const {
         return x < t.x;
     }
-    SegmentBounds(double _x, double _y1, double _y2, int _diff)
-        : x(_x), y1(_y1), y2(_y2), diff(_diff) {}
+    SegmentBounds(double _x, double _y1, double _y2, int _diff) :
+        x(_x), y1(_y1), y2(_y2), diff(_diff) {}
 };
 
 struct SegmentTree {

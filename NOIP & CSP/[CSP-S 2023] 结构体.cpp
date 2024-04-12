@@ -11,7 +11,8 @@ struct Member {
     int index;
     str name;
     Member() {}
-    Member(int _t, str _n) : index(_t), name(_n) {}
+    Member(int _t, str _n) :
+        index(_t), name(_n) {}
 };
 
 const int N = 1e4 + 10;
@@ -77,14 +78,14 @@ void defineClass() {
         str memberType, memberName;
         cin >> memberType >> memberName;
         obj = Member(typeMap[memberType], memberName);
-        alignment[idx] = max(alignment[idx], alignment[obj.index]); // 保存类的对齐量
+        alignment[idx] = max(alignment[idx], alignment[obj.index]);  // 保存类的对齐量
     }
 
     // 更新类及内部成员的大小
     for (Member obj : members[idx]) {
-        if (sizes[idx] % alignment[obj.index]) // 根据对齐量调整位置
+        if (sizes[idx] % alignment[obj.index])  // 根据对齐量调整位置
             sizes[idx] = (sizes[idx] / alignment[obj.index] + 1) * alignment[obj.index];
-        sizes[idx] += sizes[obj.index]; // 更新整个类的大小
+        sizes[idx] += sizes[obj.index];  // 更新整个类的大小
     }
 
     if (sizes[idx] % alignment[idx])
@@ -103,7 +104,7 @@ void declareVariable() {
     lng address = 0ULL;
     for (int i = 0; i < members[0].size(); i++) {
         Member obj = members[0][i];
-        if (address % alignment[obj.index]) // 根据对齐量调整位置
+        if (address % alignment[obj.index])  // 根据对齐量调整位置
             address = (address / alignment[obj.index] + 1) * alignment[obj.index];
         if (i != members[0].size() - 1)
             address += sizes[obj.index];
@@ -122,16 +123,16 @@ void locateVariable() {
     for (int i = 0; i < varPath.length() && varPath[i] != '.';) {
         str varName;
         while (i < varPath.length() && varPath[i] != '.')
-            varName += varPath[i], i++; // 查找下级成员的名称
+            varName += varPath[i], i++;  // 查找下级成员的名称
         i++;
         for (Member obj : members[currentClass]) {
-            if (address % alignment[obj.index]) // 根据对齐量调整位置
+            if (address % alignment[obj.index])  // 根据对齐量调整位置
                 address = (address / alignment[obj.index] + 1) * alignment[obj.index];
-            if (obj.name == varName) { // 如果找到了下级成员
-                currentClass = obj.index; // 则指针跳转至下级成员的位置
+            if (obj.name == varName) {     // 如果找到了下级成员
+                currentClass = obj.index;  // 则指针跳转至下级成员的位置
                 break;
             }
-            address += sizes[obj.index]; // 如果没有找到则加上当前成员所占用的空间
+            address += sizes[obj.index];  // 如果没有找到则加上当前成员所占用的空间
         }
     }
 
@@ -150,23 +151,23 @@ void visitAddress() {
     lng address = 0ULL, lastAddress = 0ULL;
     while (!members[currentClass].empty()) {
         if (!path.empty())
-            path += "."; // 每轮循环确定一个下级成员所以需要加一个点
+            path += ".";  // 每轮循环确定一个下级成员所以需要加一个点
         bool OK = false;
 
         // 对当前层级的所有成员进行遍历
         for (int i = 0; i < members[currentClass].size(); i++) {
             Member obj = members[currentClass][i];
-            if (address % alignment[obj.index]) // 根据对齐量调整位置
+            if (address % alignment[obj.index])  // 根据对齐量调整位置
                 address = (address / alignment[obj.index] + 1) * alignment[obj.index];
-            if (address > target) { // 如果当前成员遍历完后已经超过目标地址
-                address = lastAddress; // 则找到上一个成员的下标
-                path += members[currentClass][i - 1].name; // 确定上一个成员为目标所在处
-                currentClass = members[currentClass][i - 1].index; // 指针跳转到该成员的下标
-                OK = true; // 记录已经找到所在成员的对齐量
+            if (address > target) {                                 // 如果当前成员遍历完后已经超过目标地址
+                address = lastAddress;                              // 则找到上一个成员的下标
+                path += members[currentClass][i - 1].name;          // 确定上一个成员为目标所在处
+                currentClass = members[currentClass][i - 1].index;  // 指针跳转到该成员的下标
+                OK = true;                                          // 记录已经找到所在成员的对齐量
                 break;
             }
             lastAddress = address;
-            address += sizes[obj.index]; // 加上当前成员所占用的空间
+            address += sizes[obj.index];  // 加上当前成员所占用的空间
         }
 
         // 特判访问到最后一个成员的情况

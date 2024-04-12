@@ -41,7 +41,7 @@ namespace FastIO {
         if (x > 9) write64(x / 10);
         putchar(x % 10 + '0');
     }
-} // namespace FastIO
+}  // namespace FastIO
 using namespace FastIO;
 
 Long n, sum[N], ans[N];
@@ -77,8 +77,10 @@ int main() {
         Long l = 1, r = n;
         while (l < r) {
             Long mid = (l + r) >> 1;
-            if (tr.query(mid) >= t) r = mid;
-            else l = mid + 1;
+            if (tr.query(mid) >= t)
+                r = mid;
+            else
+                l = mid + 1;
         }
         ans[i] = r;
         tr.modify(r, -r);

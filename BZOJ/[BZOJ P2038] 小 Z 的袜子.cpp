@@ -34,7 +34,7 @@ int main() {
         std::cin >> l >> r, j = i;
     }
 
-    std::sort(qry, qry + M, [&](const TUP & x, const TUP & y) -> bool {
+    std::sort(qry, qry + M, [&](const TUP& x, const TUP& y) -> bool {
         if (bel[get<0>(x)] != bel[get<0>(y)]) return bel[get<0>(x)] < bel[get<0>(y)];
         if (bel[get<0>(x)] & 1) return get<1>(x) > get<1>(y);
         return get<1>(x) < get<1>(y);

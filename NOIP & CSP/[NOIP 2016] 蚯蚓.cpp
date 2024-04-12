@@ -27,8 +27,8 @@ int main() {
 
     for (int i = 0; i < m; i++) {
         auto [num, p] = max({PII(que[0].empty() ? I32MIN : que[0].front(), 0),
-                    PII(que[1].empty() ? I32MIN : que[1].front(), 1),
-                    PII(que[2].empty() ? I32MIN : que[2].front(), 2)});
+            PII(que[1].empty() ? I32MIN : que[1].front(), 1),
+            PII(que[2].empty() ? I32MIN : que[2].front(), 2)});
 
         que[p].pop();
 
@@ -47,8 +47,8 @@ int main() {
 
     for (int i = 1; i <= n + m; i++) {
         auto [num, p] = max({PII(que[0].empty() ? I32MIN : que[0].front(), 0),
-                    PII(que[1].empty() ? I32MIN : que[1].front(), 1),
-                    PII(que[2].empty() ? I32MIN : que[2].front(), 2)});
+            PII(que[1].empty() ? I32MIN : que[1].front(), 1),
+            PII(que[2].empty() ? I32MIN : que[2].front(), 2)});
 
         que[p].pop();
 

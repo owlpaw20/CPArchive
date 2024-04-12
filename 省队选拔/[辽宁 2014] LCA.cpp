@@ -152,7 +152,7 @@ namespace TD {
         ret = (ret + SGT.query(1, dfn[u], dfn[v])) % MOD;
         return ret;
     }
-} // namespace TD
+}  // namespace TD
 
 int main() {
     ios::sync_with_stdio(false);
@@ -186,8 +186,10 @@ int main() {
         // L 到 R 中所有点与 X 的 LCA 都一定在 X 到根的路径上
         // 则最终的答案就是 X 到 根的路径上所有标记之和
         while (node < p) TD::update_val_on_path(1, ++node);
-        if (!flag) answers[i].second = TD::query_sum_of_path(1, x);
-        else answers[i].first = TD::query_sum_of_path(1, x);
+        if (!flag)
+            answers[i].second = TD::query_sum_of_path(1, x);
+        else
+            answers[i].first = TD::query_sum_of_path(1, x);
     }
 
     for (int i = 1; i <= q; i++)

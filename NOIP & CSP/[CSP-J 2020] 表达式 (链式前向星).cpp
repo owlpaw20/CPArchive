@@ -22,7 +22,8 @@ struct stack {
     bool empty() {
         return !t;
     }
-    stack() : t(0) {}
+    stack() :
+        t(0) {}
 };
 
 string s;
@@ -121,7 +122,7 @@ int main() {
     int root = st.top();
     bool expr_res = evaluate(root);
 
-    vary(root); // 判断有哪些变量在修改后会导致结果被改变
+    vary(root);  // 判断有哪些变量在修改后会导致结果被改变
 
     int q;
     cin >> q;

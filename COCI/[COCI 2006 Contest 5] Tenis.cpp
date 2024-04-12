@@ -52,8 +52,10 @@ int main() {
             if (round_held == 3 && abs(a - b) < 2) have_invalid = true;
             if (round_held < 3 && (a > 7 || b > 7)) have_invalid = true;
 
-            if (a > b) a_have_won++;
-            else b_have_won++;
+            if (a > b)
+                a_have_won++;
+            else
+                b_have_won++;
 
             if (a_have_won > 2) have_invalid = true;
             if (b_have_won > 2) have_invalid = true;
@@ -63,8 +65,10 @@ int main() {
 
         if (a_have_won < 2 && b_have_won < 2) have_invalid = true;
 
-        if (have_invalid) cout << "ne" << endl;
-        else cout << "da" << endl;
+        if (have_invalid)
+            cout << "ne" << endl;
+        else
+            cout << "da" << endl;
     }
 
     return fflush(stdout), 0;

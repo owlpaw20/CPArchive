@@ -23,17 +23,17 @@ struct SEGTREE {
 
         NODE pull(const NODE &L, const NODE &R) {
             return NODE(l = L.l, r = R.r,
-                    upper = (L.upper && flag[L.r][0] && R.upper) ||
+                upper = (L.upper && flag[L.r][0] && R.upper) ||
                         (L.pdgnl && flag[L.r][1] && R.sdgnl),
-                    lower = (L.lower && flag[L.r][1] && R.lower) ||
+                lower = (L.lower && flag[L.r][1] && R.lower) ||
                         (L.sdgnl && flag[L.r][0] && R.pdgnl),
-                    left = L.left ||
-                        (L.upper && L.lower && R.left && flag[L.r][0] && flag[L.r][1]),
-                    right = R.right ||
+                left = L.left ||
+                       (L.upper && L.lower && R.left && flag[L.r][0] && flag[L.r][1]),
+                right = R.right ||
                         (R.upper && R.lower && L.right && flag[L.r][0] && flag[L.r][1]),
-                    pdgnl = (L.pdgnl && flag[L.r][1] && R.lower) ||
+                pdgnl = (L.pdgnl && flag[L.r][1] && R.lower) ||
                         (L.upper && flag[L.r][0] && R.pdgnl),
-                    sdgnl = (L.sdgnl && flag[L.r][0] && R.upper) ||
+                sdgnl = (L.sdgnl && flag[L.r][0] && R.upper) ||
                         (L.lower && flag[L.r][1] && R.sdgnl));
         }
     } node[MAX_N << 2];
@@ -133,16 +133,16 @@ int main() {
 
             if (r1 == 1 && r2 == 1)
                 flag = mid.upper || (pre.right && mid.lower && suf.left) ||
-                    (pre.right && mid.sdgnl) || (mid.pdgnl && suf.left);
+                       (pre.right && mid.sdgnl) || (mid.pdgnl && suf.left);
             else if (r1 == 1 && r2 == 2)
                 flag = mid.pdgnl || (pre.right && mid.lower) || (mid.upper && suf.left) ||
-                    (pre.right && mid.sdgnl && suf.left);
+                       (pre.right && mid.sdgnl && suf.left);
             else if (r1 == 2 && r2 == 1)
                 flag = mid.sdgnl || (mid.upper && pre.right) || (suf.left && mid.lower) ||
-                    (pre.right && mid.pdgnl && suf.left);
+                       (pre.right && mid.pdgnl && suf.left);
             else
                 flag = mid.lower || (pre.right && mid.upper && suf.left) ||
-                    (pre.right && mid.pdgnl) || (mid.sdgnl && suf.left);
+                       (pre.right && mid.pdgnl) || (mid.sdgnl && suf.left);
 
             cout.put(flag ? 'Y' : 'N').put('\n');
         }

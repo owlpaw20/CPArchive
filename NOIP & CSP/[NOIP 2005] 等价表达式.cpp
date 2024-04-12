@@ -5,7 +5,7 @@
 #include <unordered_map>
 
 using namespace std;
-using lng = unsigned long long; // 自然溢出
+using lng = unsigned long long;  // 自然溢出
 using POLY = unordered_map<lng, lng>;
 
 namespace PolynomialCalculation {
@@ -38,7 +38,7 @@ namespace PolynomialCalculation {
                 return false;
         return true;
     }
-} // namespace PolynomialCalculation
+}  // namespace PolynomialCalculation
 using namespace PolynomialCalculation;
 
 template <class Type>
@@ -120,7 +120,7 @@ POLY to_polynomial(string s) {
 
         else if (ch == ')') {
             for (char o : opt.data)
-                if (o == '(') { // 处理右括号不匹配的情况
+                if (o == '(') {  // 处理右括号不匹配的情况
                     while (!opt.empty() && opt.top() != '(')
                         evaluate();
                     opt.pop();
@@ -137,7 +137,7 @@ POLY to_polynomial(string s) {
     }
 
     while (!opt.empty()) {
-        while (opt.top() == '(') opt.pop(); // 处理左括号不匹配的情况
+        while (opt.top() == '(') opt.pop();  // 处理左括号不匹配的情况
         if (!opt.empty()) evaluate();
     }
 

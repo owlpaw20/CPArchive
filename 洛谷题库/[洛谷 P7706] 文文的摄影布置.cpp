@@ -55,15 +55,19 @@ struct SegTree {
 
     void update(int x, int y, int v, int u = 1) {
         if (nl == nr) {
-            if (v == 1) node[u].x = y;
-            else node[u].y = y;
+            if (v == 1)
+                node[u].x = y;
+            else
+                node[u].y = y;
             return;
         }
 
         int mid = (nl + nr) >> 1;
 
-        if (x <= mid) update(x, y, v, u << 1);
-        else update(x, y, v, u << 1 | 1);
+        if (x <= mid)
+            update(x, y, v, u << 1);
+        else
+            update(x, y, v, u << 1 | 1);
 
         node[u] = pushup(node[u << 1], node[u << 1 | 1]);
     }
@@ -95,8 +99,10 @@ int main() {
         int type, x, y;
         cin >> type >> x >> y;
 
-        if (type < 3) SGT.update(x, y, type);
-        else cout << SGT.query(x, y).ans << endl;
+        if (type < 3)
+            SGT.update(x, y, type);
+        else
+            cout << SGT.query(x, y).ans << endl;
     }
     return fflush(stdout), 0;
 }

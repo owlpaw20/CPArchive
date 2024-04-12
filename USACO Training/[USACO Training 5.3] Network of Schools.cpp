@@ -80,8 +80,10 @@ int main() {
     }
 
     cout << root << endl;
-    if (scc_cnt == 1) cout << 0 << endl;
-    else cout << max(root, leaf) << endl;
+    if (scc_cnt == 1)
+        cout << 0 << endl;
+    else
+        cout << max(root, leaf) << endl;
 
     fflush(stdout);
     return 0;

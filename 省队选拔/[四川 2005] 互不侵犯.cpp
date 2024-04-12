@@ -36,7 +36,7 @@ int main() {
     for (int state = 0; state < (1 << n); state++)
         if (!are_adjacent_kings(state))
             valid_states.push_back(state),
-                                   kings_cnt[state] = count_kings(state);
+                kings_cnt[state] = count_kings(state);
 
     // 预处理所有合法的状态转移
     for (int current_state : valid_states)
@@ -51,7 +51,7 @@ int main() {
         for (int j = 0; j <= K; j++)
             for (int current_state : valid_states)
                 for (int prev_state : valid_transitions[current_state])
-                    if (j >= kings_cnt[current_state]) // 如果可以从上一个状态转移过来
+                    if (j >= kings_cnt[current_state])  // 如果可以从上一个状态转移过来
                         f[i][j][current_state] += f[i - 1][j - kings_cnt[current_state]][prev_state];
 
     i64 ans = 0;

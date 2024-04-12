@@ -30,8 +30,8 @@ const int dy[] = {1, 0, -1, 0};
 
 int n, m, q;
 bool b[N][N];
-int tmp[N][N]; // tmp[x][y] 表示每次 BFS 从起点到 (x, y) 的最短路
-int dist[N][N][4][4]; // dist[x][y][i][j] 表示将空白格从 (x, y) 的 i 方向转至 j 方向的最短距离
+int tmp[N][N];         // tmp[x][y] 表示每次 BFS 从起点到 (x, y) 的最短路
+int dist[N][N][4][4];  // dist[x][y][i][j] 表示将空白格从 (x, y) 的 i 方向转至 j 方向的最短距离
 
 void BFS(int, int, int, int);
 int SPFA(int, int, int, int, int, int);
@@ -108,7 +108,7 @@ int SPFA(int wx, int wy, int sx, int sy, int ex, int ey) {
     memset(path_len, 0x3F, sizeof path_len);
     memset(vis, 0, sizeof vis);
 
-    BFS(wx, wy, sx, sy); // 暴搜空白格移动到矩阵内所有格子的最短距离
+    BFS(wx, wy, sx, sy);  // 暴搜空白格移动到矩阵内所有格子的最短距离
 
     queue<STATE> q;
 
@@ -132,14 +132,14 @@ int SPFA(int wx, int wy, int sx, int sy, int ex, int ey) {
             int tx = x + dx[i], ty = y + dy[i];
             int w = dist[x][y][i][d] + 1;
 
-            int rev = (i + 2) % 4; // 取当前空白格所在方向的反方向
+            int rev = (i + 2) % 4;  // 取当前空白格所在方向的反方向
 
             /*  空白格所在方向的反方向就是可移动方格相对于 (ex, ey) 目标的方向
                 所以需要把空白格交换到当前它相对于可移动方格方向的反方向
                 也就是把可移动方格朝目标 (ex, ey) 移动，最终到达终点 */
 
             if (path_len[tx][ty][rev] > path_len[x][y][d] + w) {
-                path_len[tx][ty][rev] = path_len[x][y][d] + w; // 更新最短路
+                path_len[tx][ty][rev] = path_len[x][y][d] + w;  // 更新最短路
                 if (!vis[tx][ty][rev])
                     q.emplace(tx, ty, rev), vis[tx][ty][rev] = true;
             }

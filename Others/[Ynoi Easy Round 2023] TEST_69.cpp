@@ -99,8 +99,10 @@ int main() {
 
         cin >> type >> l >> r;
 
-        if (type == 1) cin >> x, SGT.update(l, r, x);
-        else cout << SGT.sum(l, r) << endl;
+        if (type == 1)
+            cin >> x, SGT.update(l, r, x);
+        else
+            cout << SGT.sum(l, r) << endl;
     }
 
     return fflush(stdout), 0;

@@ -18,7 +18,8 @@ struct Queue {
     bool empty() {
         return head > rear;
     }
-    Queue(int n) : head(0), rear(-1) {
+    Queue(int n) :
+        head(0), rear(-1) {
         e.resize(n);
     }
 };

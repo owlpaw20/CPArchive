@@ -56,7 +56,7 @@ void Tarjan(int u, int fa = 0) {
 
     for (int i = head[u]; ~i; i = nx[i]) {
         int v = ed[i];
-        if (v == fa) continue; // 二元环不缩点
+        if (v == fa) continue;  // 二元环不缩点
         if (!dfn[v]) {
             Tarjan(v, u);
             low[u] = min(low[u], low[v]);
@@ -137,10 +137,10 @@ int main() {
 
     for (int i = 1; i <= n; i++)
         for (int j = head[i]; ~j; j = nx[j])
-            if (scc[i] != scc[ed[j]]) // 如果这两个点不在同一个双连通分量内
-                CONNECT(scc[i], scc[ed[j]]); // 就分别缩成两个点
+            if (scc[i] != scc[ed[j]])         // 如果这两个点不在同一个双连通分量内
+                CONNECT(scc[i], scc[ed[j]]);  // 就分别缩成两个点
 
-    BFS(scc[1]); // 预处理缩点后图的深度与祖先数组
+    BFS(scc[1]);  // 预处理缩点后图的深度与祖先数组
 
     int q;
     cin >> q;
@@ -148,11 +148,12 @@ int main() {
         int u, v;
         cin >> u >> v;
         u = scc[u], v = scc[v];
-        int ans = depth[u] + depth[v] - 2 * depth[LCA(u, v)] + 1; // 求距离
+        int ans = depth[u] + depth[v] - 2 * depth[LCA(u, v)] + 1;  // 求距离
 
         // 二进制输出
         bitset<31> s(ans);
-        if (s.none()) cout.put(0);
+        if (s.none())
+            cout.put(0);
         else {
             bool flag = false;
             for (int i = 30; i >= 0; i--)

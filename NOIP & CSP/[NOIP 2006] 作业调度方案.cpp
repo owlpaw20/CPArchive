@@ -34,8 +34,10 @@ int main() {
         step[now]++;
         int id = a[now][step[now]].id, cost = a[now][step[now]].cost, s = 0;
         for (int j = las_time[now] + 1;; j++) {
-            if (mac[id][j] == 0) s++;
-            else s = 0;
+            if (mac[id][j] == 0)
+                s++;
+            else
+                s = 0;
             if (s == cost) {
                 for (int k = j - cost + 1; k <= j; k++) mac[id][k] = 1;
                 if (j > ans) ans = j;

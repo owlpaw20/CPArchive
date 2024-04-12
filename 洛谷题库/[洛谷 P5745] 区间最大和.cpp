@@ -16,7 +16,8 @@ struct Queue {
     bool empty() {
         return head > rear;
     }
-    Queue() : head(0), rear(-1) {
+    Queue() :
+        head(0), rear(-1) {
         memset(e, 0, sizeof e);
     }
 };

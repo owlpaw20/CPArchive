@@ -20,11 +20,15 @@ int main() {
         cin >> x >> y, vis[x] = vis[y] = i;
 
     for (int i = 1; i <= n * 2; i++)
-        if (pt.empty() || pt.top() != vis[i]) pt.push(vis[i]);
-        else pt.pop();
+        if (pt.empty() || pt.top() != vis[i])
+            pt.push(vis[i]);
+        else
+            pt.pop();
 
-    if (!pt.empty()) puts("Yes");
-    else puts("No");
+    if (!pt.empty())
+        puts("Yes");
+    else
+        puts("No");
 
     return fflush(stdout), 0;
 }

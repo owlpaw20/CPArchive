@@ -18,12 +18,12 @@ bool check(i64 x) {
 
     // 遍历带薪员工右边的快乐值情况
     for (int i = 1; i <= n; i++) {
-        temp -= q.size(); // 当前员工的快乐值依赖于前一个员工的快乐值
-        if (!q.empty() && i - q.front() >= x) // 如果有员工超出加快乐值的范围
-            q.pop(); // 移除超出范围的带薪员工
-        if (b[i]) // 如果当前员工带薪
-            temp += x, q.push(i); // 则记录快乐值的一个源头
-        sum[i] += temp; // 记录快乐值
+        temp -= q.size();                      // 当前员工的快乐值依赖于前一个员工的快乐值
+        if (!q.empty() && i - q.front() >= x)  // 如果有员工超出加快乐值的范围
+            q.pop();                           // 移除超出范围的带薪员工
+        if (b[i])                              // 如果当前员工带薪
+            temp += x, q.push(i);              // 则记录快乐值的一个源头
+        sum[i] += temp;                        // 记录快乐值
     }
 
     while (!q.empty()) q.pop();
@@ -56,8 +56,10 @@ int main() {
     i64 l = 1, r = 1e10;
     while (l < r) {
         i64 mid = (l + r) >> 1;
-        if (check(mid)) r = mid;
-        else l = mid + 1;
+        if (check(mid))
+            r = mid;
+        else
+            l = mid + 1;
     }
 
     cout << r << endl;

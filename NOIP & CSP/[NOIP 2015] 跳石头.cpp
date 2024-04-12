@@ -12,8 +12,10 @@ bool check(int mid) {
     int cnt = 0, index = 0, now = 0;
     while (index < n + 1) {
         index++;
-        if (dis[index] - dis[now] < mid) cnt++;
-        else now = index;
+        if (dis[index] - dis[now] < mid)
+            cnt++;
+        else
+            now = index;
     }
     if (cnt > m) return 0;
     return 1;

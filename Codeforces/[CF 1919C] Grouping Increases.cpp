@@ -19,9 +19,12 @@ void solve() {
         int x;
         cin >> x;
 
-        if (x <= s.back()) s.push_back(x);
-        else if (x > t.back()) s.push_back(x), ans++;
-        else t.push_back(x);
+        if (x <= s.back())
+            s.push_back(x);
+        else if (x > t.back())
+            s.push_back(x), ans++;
+        else
+            t.push_back(x);
 
         if (s.back() > t.back()) swap(s, t);
     }

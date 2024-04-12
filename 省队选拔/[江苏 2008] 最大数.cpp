@@ -11,7 +11,8 @@ const int N = 2e5 + 10;
 struct SegmentTree {
     struct Node {
         Long l, r, val;
-        Node() : l(0), r(0), val(0) {}
+        Node() :
+            l(0), r(0), val(0) {}
     } tree[4 * N];
 
     void build(Long v, Long l, Long r) {
@@ -40,8 +41,10 @@ struct SegmentTree {
             return;
         }
         Long mid = (tl + tr) >> 1;
-        if (target <= mid) modify(2 * v, target, value);
-        else modify(2 * v + 1, target, value);
+        if (target <= mid)
+            modify(2 * v, target, value);
+        else
+            modify(2 * v + 1, target, value);
         Long lc = tree[2 * v].val, rc = tree[2 * v + 1].val;
         tree[v].val = max(lc, rc);
     }

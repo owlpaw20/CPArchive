@@ -42,8 +42,10 @@ struct PrstTrie {
 
         for (int i = 23; i >= 0; i--) {
             int c = x >> i & 1;
-            if (latest[trie[f][c ^ 1]] >= l) f = trie[f][c ^ 1];
-            else f = trie[f][c];
+            if (latest[trie[f][c ^ 1]] >= l)
+                f = trie[f][c ^ 1];
+            else
+                f = trie[f][c];
         }
 
         return x ^ p[latest[f]];

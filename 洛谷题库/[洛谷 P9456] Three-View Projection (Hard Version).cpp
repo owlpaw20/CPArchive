@@ -27,8 +27,10 @@ int main() {
                     flag = 1;
                     break;
                 }
-            if (flag) cout << 1 << " ";
-            else cout << 0 << " ";
+            if (flag)
+                cout << 1 << " ";
+            else
+                cout << 0 << " ";
         }
         cout << endl;
     }
@@ -41,8 +43,10 @@ int main() {
                     flag = 1;
                     break;
                 }
-            if (flag) cout << 1 << " ";
-            else cout << 0 << " ";
+            if (flag)
+                cout << 1 << " ";
+            else
+                cout << 0 << " ";
         }
         cout << endl;
     }
@@ -55,8 +59,10 @@ int main() {
                     flag = 1;
                     break;
                 }
-            if (flag) cout << 1 << " ";
-            else cout << 0 << " ";
+            if (flag)
+                cout << 1 << " ";
+            else
+                cout << 0 << " ";
         }
         cout << endl;
     }

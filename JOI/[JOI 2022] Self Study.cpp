@@ -17,12 +17,12 @@ bool check(i64 x) {
     i64 cnt = 0;
     for (int i = 1; i <= n; i++) {
         if (a[i] < b[i])
-            cnt += ceil(x, b[i]); // 能自学就全自学
+            cnt += ceil(x, b[i]);  // 能自学就全自学
         else if (m * a[i] >= x)
-            cnt += ceil(x, a[i]); // 上课能上完就全上课
+            cnt += ceil(x, a[i]);  // 上课能上完就全上课
         else
-            cnt += m + ceil(x - m * a[i], b[i]); // 上课上不完就用自习来补
-        if (cnt > n * m) return false; // 一个星期的课都不够Bitaro上的
+            cnt += m + ceil(x - m * a[i], b[i]);  // 上课上不完就用自习来补
+        if (cnt > n * m) return false;            // 一个星期的课都不够Bitaro上的
     }
     return true;
 }

@@ -31,7 +31,7 @@ struct SegTree {
         nl = l, nr = r;
 
         if (l == r)
-            return (void)(leaf[l] = u); // 标记数组中对应下标所在的叶子节点
+            return (void)(leaf[l] = u);  // 标记数组中对应下标所在的叶子节点
 
         int mid = (l + r) >> 1;
 
@@ -49,8 +49,10 @@ struct SegTree {
 
     void connect(int l, int r, int v, int w, bool dir, int u = 1) {
         if (nl >= l && nr <= r) {
-            if (dir) graph[u + SHIFT].emplace_back(v, w); // 如果是区间连单点，就在出树上连边
-            else graph[v].emplace_back(u, w); // 如果是单点连区间，就在入树上连边
+            if (dir)
+                graph[u + SHIFT].emplace_back(v, w);  // 如果是区间连单点，就在出树上连边
+            else
+                graph[v].emplace_back(u, w);  // 如果是单点连区间，就在入树上连边
             return;
         }
 
@@ -96,8 +98,10 @@ int main() {
         int type, a, b, c, d;
         cin >> type >> a >> b >> c;
 
-        if (type == 1) graph[leaf[a]].emplace_back(leaf[b], c); // 单点加边
-        else cin >> d, SGT.connect(b, c, leaf[a], d, type == 3); // 区间加边，需要考虑加在哪棵树上
+        if (type == 1)
+            graph[leaf[a]].emplace_back(leaf[b], c);  // 单点加边
+        else
+            cin >> d, SGT.connect(b, c, leaf[a], d, type == 3);  // 区间加边，需要考虑加在哪棵树上
     }
 
     // 将入树和出树上的相同节点连起来
@@ -109,8 +113,10 @@ int main() {
     Dijkstra(s);
 
     for (int i = 1; i <= n; i++)
-        if (dist[leaf[i]] == INF) cout << -1 << ' ';
-        else cout << dist[leaf[i]] << ' ';
+        if (dist[leaf[i]] == INF)
+            cout << -1 << ' ';
+        else
+            cout << dist[leaf[i]] << ' ';
 
     cout << endl;
     return fflush(stdout), 0;

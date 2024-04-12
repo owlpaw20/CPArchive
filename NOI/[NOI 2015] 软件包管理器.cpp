@@ -145,7 +145,7 @@ namespace Decomp {
     int query_subtree_sum(int u) {
         return SGT.query(1, dfn[u], dfn[u] + size[u] - 1);
     }
-} // namespace Decomp
+}  // namespace Decomp
 
 int main() {
     ios::sync_with_stdio(false);
@@ -175,8 +175,10 @@ int main() {
         cin >> type >> x, x++;
 
         int ans1 = Decomp::query_subtree_sum(1);
-        if (type == "install") Decomp::update_path_val(1, x);
-        else Decomp::update_subtree_val(x);
+        if (type == "install")
+            Decomp::update_path_val(1, x);
+        else
+            Decomp::update_subtree_val(x);
         int ans2 = Decomp::query_subtree_sum(1);
 
         cout << abs(ans1 - ans2) << endl;

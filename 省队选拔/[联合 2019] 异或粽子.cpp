@@ -27,7 +27,7 @@ namespace FastIO {
         if (x > 9) write(x / 10);
         putchar(x % 10 + '0');
     }
-} // namespace FastIO
+}  // namespace FastIO
 using namespace FastIO;
 
 using std::priority_queue;
@@ -57,9 +57,9 @@ struct TRIE {
             u32 c = (x >> i) & 1;
             if (!t[p][!c])
                 p = t[p][c];
-            else if (rank <= cnt[t[p][!c]]) // 如果反着走能够找到足够多的数
+            else if (rank <= cnt[t[p][!c]])  // 如果反着走能够找到足够多的数
                 p = t[p][!c], res += (1ll << i);
-            else // 上一位不同时一定比相同时的异或和更大
+            else  // 上一位不同时一定比相同时的异或和更大
                 rank -= cnt[t[p][!c]], p = t[p][c];
         }
         return res;

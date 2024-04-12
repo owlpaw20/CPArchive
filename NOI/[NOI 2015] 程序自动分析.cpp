@@ -63,9 +63,8 @@ int main() {
         for (int i = 1; i <= n; i++) {
             int a, b, c;
             cin >> a >> b >> c;
-            opt[i] = (Operation) {
-                (bool)c, address(a), address(b)
-            };
+            opt[i] = (Operation){
+                (bool)c, address(a), address(b)};
         }
 
         for (int i = 1; i <= idx; i++)
@@ -82,8 +81,10 @@ int main() {
                     flag = false;
                     break;
                 }
-        if (flag) puts("YES");
-        else puts("NO");
+        if (flag)
+            puts("YES");
+        else
+            puts("NO");
     }
 
     fflush(stdout);

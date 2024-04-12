@@ -37,8 +37,10 @@ int main() {
         int l = 1, r = used + 1;
         while (l < r) {
             int mid = (l + r) >> 1;
-            if (f[mid] >= str) r = mid;
-            else l = mid + 1;
+            if (f[mid] >= str)
+                r = mid;
+            else
+                l = mid + 1;
         }
         f[r] = str;
         used = max(used, r);

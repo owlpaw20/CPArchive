@@ -11,7 +11,8 @@ struct PrefixTree {
     int cnt[N];
     int idx;
 
-    PrefixTree() : idx(0) {}
+    PrefixTree() :
+        idx(0) {}
 
     void insert(string s) {
         int p = 0;

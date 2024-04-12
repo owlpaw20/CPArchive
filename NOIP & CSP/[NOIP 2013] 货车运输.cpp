@@ -86,7 +86,7 @@ namespace LCA {
 
         return min({ret, maxw[v][0], maxw[u][0]});
     }
-} // namespace LCA
+}  // namespace LCA
 
 namespace MST {
     vector<TPL> edges;
@@ -109,7 +109,7 @@ namespace MST {
             if (merge(u, v))
                 LCA::connect(u, v, w), LCA::connect(v, u, w);
     }
-} // namespace MST
+}  // namespace MST
 using namespace MST;
 
 int main() {
@@ -135,8 +135,10 @@ int main() {
     while (q--) {
         int u, v;
         cin >> u >> v;
-        if (find(u) != find(v)) cout << -1 << endl;
-        else cout << LCA::query(u, v) << endl;
+        if (find(u) != find(v))
+            cout << -1 << endl;
+        else
+            cout << LCA::query(u, v) << endl;
     }
 
     fflush(stdout);

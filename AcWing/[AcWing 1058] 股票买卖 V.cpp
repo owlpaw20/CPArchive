@@ -8,7 +8,7 @@ using namespace std;
 const int N = 1e5 + 10;
 
 int n;
-int f[N][3]; // 0 = 未持股且不在冷冻期, 1 = 已持股, 2 = 冷冻期
+int f[N][3];  // 0 = 未持股且不在冷冻期, 1 = 已持股, 2 = 冷冻期
 
 int main() {
     ios::sync_with_stdio(false);

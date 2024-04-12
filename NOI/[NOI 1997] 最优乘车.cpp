@@ -20,7 +20,7 @@ int main() {
     cin >> m >> n;
 
     string line;
-    getline(cin, line); // 读入上一行的换行符
+    getline(cin, line);  // 读入上一行的换行符
     while (m--) {
         getline(cin, line);
         stringstream ssin(line);
@@ -38,7 +38,9 @@ int main() {
             for (int j = 1; j <= n; j++)
                 g[i][j] = min(g[i][j], g[i][k] + g[k][j]);
 
-    if (g[1][n] == INF) puts("NO");
-    else cout << g[1][n] - 1 << endl;
+    if (g[1][n] == INF)
+        puts("NO");
+    else
+        cout << g[1][n] - 1 << endl;
     return 0;
 }

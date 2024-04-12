@@ -39,8 +39,10 @@ int main() {
     for (int i = 1; i <= n; i++) {
         int q;
         cin >> c[i] >> v[i] >> q;
-        if (q == -1) root = i;
-        else connect(q, i);
+        if (q == -1)
+            root = i;
+        else
+            connect(q, i);
     }
 
     DFS(root);

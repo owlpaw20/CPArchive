@@ -11,10 +11,10 @@ int n, K, dist[N];
 bool check(int x) {
     int trv = 0, d = 0;
     for (int i = 1; i <= n + 1; i++) {
-        if (dist[i] > x) return false; // 如果距离已经超过，则不可能达到下一个营地
-        trv += dist[i]; // 加上到达下一个营地的总距离
-        if (trv > x) // 如果总距离超过今天所能行进的距离
-            d += 1, trv = dist[i]; // 则度过一晚上
+        if (dist[i] > x) return false;  // 如果距离已经超过，则不可能达到下一个营地
+        trv += dist[i];                 // 加上到达下一个营地的总距离
+        if (trv > x)                    // 如果总距离超过今天所能行进的距离
+            d += 1, trv = dist[i];      // 则度过一晚上
     }
     return d <= K;
 }
@@ -31,8 +31,10 @@ int main() {
         int l = 1, r = 1e9;
         while (l < r) {
             int mid = (l + r) >> 1;
-            if (check(mid)) r = mid;
-            else l = mid + 1;
+            if (check(mid))
+                r = mid;
+            else
+                l = mid + 1;
         }
 
         cout << r << '\n';

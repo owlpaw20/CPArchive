@@ -23,8 +23,10 @@ int main() {
 
     while (l < r) {
         i64 mid = (l + r) >> 1;
-        if (check(mid)) l = mid + 1;
-        else r = mid;
+        if (check(mid))
+            l = mid + 1;
+        else
+            r = mid;
     }
 
     cout << r << endl;

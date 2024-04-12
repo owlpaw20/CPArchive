@@ -71,8 +71,10 @@ int main() {
         ci.push_back(a), de.push_back(b);
 
     int ret = BFS();
-    if (ret == -1) puts("NO ANSWER!");
-    else cout << ret << endl;
+    if (ret == -1)
+        puts("NO ANSWER!");
+    else
+        cout << ret << endl;
 
     fflush(stdout);
     return 0;

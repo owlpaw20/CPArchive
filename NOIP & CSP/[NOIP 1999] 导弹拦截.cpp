@@ -20,8 +20,10 @@ int main() {
         int l = 1, r = ans1 + 1;
         while (l < r) {
             int mid = (l + r) >> 1;
-            if (f[mid] < h[i]) r = mid;
-            else l = mid + 1;
+            if (f[mid] < h[i])
+                r = mid;
+            else
+                l = mid + 1;
         }
         ans1 = max(ans1, l);
         f[l] = h[i];
@@ -35,8 +37,10 @@ int main() {
         int l = 1, r = ans2 + 1;
         while (l < r) {
             int mid = (l + r) >> 1;
-            if (g[mid] >= h[i]) r = mid;
-            else l = mid + 1;
+            if (g[mid] >= h[i])
+                r = mid;
+            else
+                l = mid + 1;
         }
         ans2 = max(ans2, l);
         g[l] = h[i];

@@ -36,8 +36,10 @@ int main() {
     double l = 0, r = 1e5 + 1;
     while (r - l > EPSILON) {
         double mid = (l + r) / 2;
-        if (check(mid)) l = mid;
-        else r = mid;
+        if (check(mid))
+            l = mid;
+        else
+            r = mid;
     }
 
     cout << (int)(r * 1000) << endl;

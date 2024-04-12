@@ -19,7 +19,7 @@ namespace UnionFind {
         if (x == y) return false;
         return fa[x] = y, true;
     }
-} // namespace UnionFind
+}  // namespace UnionFind
 using namespace UnionFind;
 
 int n, m;

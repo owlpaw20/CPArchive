@@ -59,7 +59,9 @@ int main() {
 
     Dijkstra(s);
 
-    if (dist[t] == INF || c[s] == c[t]) cout << -1 << endl;
-    else cout << dist[t] << endl;
+    if (dist[t] == INF || c[s] == c[t])
+        cout << -1 << endl;
+    else
+        cout << dist[t] << endl;
     return 0;
 }

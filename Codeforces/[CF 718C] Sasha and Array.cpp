@@ -20,7 +20,7 @@ int a[MAX_N];
 
 namespace Matrix {
     using MATRIX = array<array<int, 2>, 2>;
-    
+
     const MATRIX ZERO = {0, 0, 0, 0};
     const MATRIX UNIT = {1, 0, 0, 1};
     const MATRIX BASE = {1, 1, 1, 0};
@@ -51,7 +51,7 @@ namespace Matrix {
         }
         return Z;
     }
-} // namespace Matrix
+}  // namespace Matrix
 using namespace Matrix;
 
 struct SEGTREE {

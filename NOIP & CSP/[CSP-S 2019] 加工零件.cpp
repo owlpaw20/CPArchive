@@ -17,7 +17,7 @@ namespace FastIO {
             x = x * 10 + ch - 48, ch = getchar();
         return x * f;
     }
-} // namespace FastIO
+}  // namespace FastIO
 using namespace FastIO;
 
 const int N = 1e5 + 10;

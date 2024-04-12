@@ -49,8 +49,10 @@ int main() {
             flag = find(s[i]);
             if (flag) break;
         }
-        if (flag) puts("NO");
-        else puts("YES");
+        if (flag)
+            puts("NO");
+        else
+            puts("YES");
     }
     return 0;
 }

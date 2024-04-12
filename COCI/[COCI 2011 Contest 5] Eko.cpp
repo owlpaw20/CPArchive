@@ -33,8 +33,10 @@ int main() {
     l = 1;
     while (l <= r) {
         mid = (l + r) >> 1;
-        if (check(mid)) l = mid + 1;
-        else r = mid - 1;
+        if (check(mid))
+            l = mid + 1;
+        else
+            r = mid - 1;
     }
 
     cout << l - 1 << endl;

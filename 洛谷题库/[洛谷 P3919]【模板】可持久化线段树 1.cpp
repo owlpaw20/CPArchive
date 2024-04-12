@@ -41,8 +41,10 @@ struct PrstSegTree {
             return u;
         }
         int mid = (l + r) >> 1;
-        if (x <= mid) tree[u].l = update(tree[u].l, l, mid, x, val);
-        else tree[u].r = update(tree[u].r, mid + 1, r, x, val);
+        if (x <= mid)
+            tree[u].l = update(tree[u].l, l, mid, x, val);
+        else
+            tree[u].r = update(tree[u].r, mid + 1, r, x, val);
         return u;
     }
 

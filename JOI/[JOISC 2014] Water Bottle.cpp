@@ -97,7 +97,7 @@ namespace LCA {
         mxw = std::max({mxw, mx[u][0], mx[v][0]});
         return mxw;
     }
-} // namespace LCA
+}  // namespace LCA
 
 int main() {
     std::ios::sync_with_stdio(false);
@@ -152,8 +152,10 @@ int main() {
         int S, T;
         cin >> S >> T;
 
-        if (sets.find(S) != sets.find(T)) cout << -1 << endl;
-        else cout << LCA::query(S, T) << endl;
+        if (sets.find(S) != sets.find(T))
+            cout << -1 << endl;
+        else
+            cout << LCA::query(S, T) << endl;
     }
 
     return fflush(stdout), 0;

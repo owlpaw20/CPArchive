@@ -13,7 +13,8 @@ struct SegTree {
         int alt;
         BIT colors;
         Node() {}
-        Node(int _l, int _r) : l(_l), r(_r), alt(0) {
+        Node(int _l, int _r) :
+            l(_l), r(_r), alt(0) {
             colors[1] = 1;
         }
     };

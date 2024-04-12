@@ -25,7 +25,7 @@ namespace FastIO {
         if (x > 9) write(x / 10);
         putchar(x % 10 + '0');
     }
-} // namespace FastIO
+}  // namespace FastIO
 using namespace FastIO;
 
 const int N = 1e7 + 5;
@@ -47,10 +47,14 @@ int main() {
     for (int i = 1; i < n; i++) {
         i64 x, y;
 
-        if (b.empty() || (!a.empty() && a.front() < b.front())) x = a.front(), a.pop();
-        else x = b.front(), b.pop();
-        if (b.empty() || (!a.empty() && a.front() < b.front())) y = a.front(), a.pop();
-        else y = b.front(), b.pop();
+        if (b.empty() || (!a.empty() && a.front() < b.front()))
+            x = a.front(), a.pop();
+        else
+            x = b.front(), b.pop();
+        if (b.empty() || (!a.empty() && a.front() < b.front()))
+            y = a.front(), a.pop();
+        else
+            y = b.front(), b.pop();
 
         ans += x + y;
         b.push(x + y);

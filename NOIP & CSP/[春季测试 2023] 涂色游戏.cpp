@@ -24,8 +24,10 @@ int main() {
 
         for (int i = 1; i <= p; i++) {
             cin >> opt >> x >> c;
-            if (opt == 0) row[x].color = c, row[x].replaced = i;
-            else col[x].color = c, col[x].replaced = i;
+            if (opt == 0)
+                row[x].color = c, row[x].replaced = i;
+            else
+                col[x].color = c, col[x].replaced = i;
         }
 
         for (int i = 1; i <= n; i++) {

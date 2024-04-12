@@ -23,7 +23,8 @@ struct SegTree {
         }
     }
     void build(int u, int l, int r) {
-        if (l == r) tree[u] = {l, r, a[l], 0};
+        if (l == r)
+            tree[u] = {l, r, a[l], 0};
         else {
             tree[u] = {l, r};
             int mid = (l + r) >> 1;

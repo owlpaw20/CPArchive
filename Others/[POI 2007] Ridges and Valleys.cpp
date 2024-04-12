@@ -29,7 +29,8 @@ struct queue {
     bool empty() {
         return head > rear;
     }
-    queue(int n) : head(0), rear(-1) {
+    queue(int n) :
+        head(0), rear(-1) {
         data.resize(n + 10);
     }
 };
@@ -48,8 +49,10 @@ void BFS(int sx, int sy, bool &hi, bool &lo) {
             int tx = x + dx[i];
             int ty = y + dy[i];
             if (tx < 1 || ty < 1 || tx > n || ty > n) continue;
-            if (mat[tx][ty] > mat[x][y]) hi = true;
-            else if (mat[tx][ty] < mat[x][y]) lo = true;
+            if (mat[tx][ty] > mat[x][y])
+                hi = true;
+            else if (mat[tx][ty] < mat[x][y])
+                lo = true;
             else if (!vis[tx][ty]) {
                 vis[tx][ty] = true;
                 q.push({tx, ty});

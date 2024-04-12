@@ -19,13 +19,13 @@ int f[MAX_ST][MAX_ST];
 
 // 在 500 以内，每个数最多拥有一个大于 sqrt(500) 的质因数，
 // 则对这些较大的质因数进行单独考虑。将其排序，以将不同数字中相同的大质因数合在一块考虑。
-int g[MAX_ST][MAX_ST]; // 对于大质因数相同的某连续段，该大质因数只被小 G 选或不被选的方案数
-int h[MAX_ST][MAX_ST]; // 对于大质因数相同的某连续段，该大质因数只被小 W 选或不被选的方案数
+int g[MAX_ST][MAX_ST];  // 对于大质因数相同的某连续段，该大质因数只被小 G 选或不被选的方案数
+int h[MAX_ST][MAX_ST];  // 对于大质因数相同的某连续段，该大质因数只被小 W 选或不被选的方案数
 
 namespace Modulo {
     inline int mod(const int x) { return (x < MOD) ? ((x < 0) ? (x + MOD) : x) : (x - x / MOD * MOD); }
     inline int add(const int x, const int y) { return mod(x + y); }
-} // namespace MODULO
+}  // namespace Modulo
 using namespace Modulo;
 
 // 预处理每个整数的大质因子，并标记当前整数小质因子的存在状态
@@ -46,7 +46,7 @@ int main() {
 
     prep();
 
-    std::sort(max_pf + 2, max_pf + N + 1); // 按照大质因子大小进行聚集
+    std::sort(max_pf + 2, max_pf + N + 1);  // 按照大质因子大小进行聚集
 
     g[0][0] = 1;
 

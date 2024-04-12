@@ -54,9 +54,8 @@ int main() {
     for (int i = 1; i < m; i++) {
         int u, v, w1, w2;
         cin >> u >> v >> w1 >> w2;
-        g.push_back((Edge) {
-            u, v, w1, w2, i
-        });
+        g.push_back((Edge){
+            u, v, w1, w2, i});
     }
 
     auto cmp1 = [&](Edge x, Edge y) {

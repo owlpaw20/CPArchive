@@ -46,8 +46,10 @@ int BFS(int sx, int sy) {
 
             if (dist[x][y] + if_switch < dist[tx][ty]) {
                 dist[tx][ty] = dist[x][y] + if_switch;
-                if (if_switch) q.emplace_back(tx, ty);
-                else q.emplace_front(tx, ty);
+                if (if_switch)
+                    q.emplace_back(tx, ty);
+                else
+                    q.emplace_front(tx, ty);
             }
         }
     }

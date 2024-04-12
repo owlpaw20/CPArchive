@@ -13,9 +13,9 @@ const int N = 1e6 + 10;
 struct SegTree {
     struct Node {
         int l, r;
-        int Max; // 区间最大值
-        int sec; // 区间严格次大值
-        int cnt; // 区间最大值的数量
+        int Max;  // 区间最大值
+        int sec;  // 区间严格次大值
+        int cnt;  // 区间最大值的数量
         i64 sum, tag;
     };
     int a[N];

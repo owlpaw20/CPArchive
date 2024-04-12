@@ -15,12 +15,12 @@ const int V2 = 1e7 + 5;
 const int MOD = 1e9 + 7;
 
 int n;
-int a[N]; // 邮票
-int mu[V2]; // 容斥系数
-int t[V2]; // 存储邮票价值的出现次数
-int b[V2]; // 价值为 i 的倍数的邮票个数
-int p2[N]; // 预处理 2 的幂
-int f[N]; // 预处理组合数，f[x] = 2f[x - 1] + 2^(x - 1)
+int a[N];    // 邮票
+int mu[V2];  // 容斥系数
+int t[V2];   // 存储邮票价值的出现次数
+int b[V2];   // 价值为 i 的倍数的邮票个数
+int p2[N];   // 预处理 2 的幂
+int f[N];    // 预处理组合数，f[x] = 2f[x - 1] + 2^(x - 1)
 
 // 根据欧拉筛枚举质数倍数的结果来预处理容斥系数
 bool flag[V2];
@@ -73,8 +73,8 @@ int main() {
 
     i64 ans = 0;
     for (int d = 1; d <= V1; d++) {
-        ans = (ans + mu[d] * (f[b[d]] - b[d])) % MOD; // 加上前一半式子
-        ans = ((ans - mu[d] * ((i64)n * (p2[b[d]] - 1) - f[b[d]])) % MOD + MOD) % MOD; // 减去后一半式子
+        ans = (ans + mu[d] * (f[b[d]] - b[d])) % MOD;                                   // 加上前一半式子
+        ans = ((ans - mu[d] * ((i64)n * (p2[b[d]] - 1) - f[b[d]])) % MOD + MOD) % MOD;  // 减去后一半式子
     }
 
     cout << ans << endl;

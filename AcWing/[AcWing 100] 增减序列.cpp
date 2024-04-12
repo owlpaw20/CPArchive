@@ -19,8 +19,10 @@ int main() {
         cin >> a[i];
         if (i > 1) {
             int d = a[i] - a[i - 1];
-            if (d >= 0) sumP += d;
-            else sumN -= d;
+            if (d >= 0)
+                sumP += d;
+            else
+                sumN -= d;
         }
     }
 

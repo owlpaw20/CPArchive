@@ -26,13 +26,14 @@ namespace FastIO {
         if (x > 9) write(x / 10);
         putchar(x % 10 + '0');
     }
-} // namespace FastIO
+}  // namespace FastIO
 using namespace FastIO;
 
 struct Edge {
     int fr, to, wt;
     Edge() {}
-    Edge(int x, int y, int z) : fr(x), to(y), wt(z) {}
+    Edge(int x, int y, int z) :
+        fr(x), to(y), wt(z) {}
     bool operator<(const Edge &t) const {
         return wt < t.wt;
     }
@@ -90,8 +91,10 @@ int main() {
     for (int i = 1; i <= n; i++) w[i] = read();
     for (int i = 1; i <= n; i++)
         for (int j = 1; j <= n; j++)
-            if (i != j) edge.emplace_back(i, j, read());
-            else read();
+            if (i != j)
+                edge.emplace_back(i, j, read());
+            else
+                read();
 
     for (int i = 1; i <= n; i++) {
         edge.emplace_back(i, n + 1, w[i]);

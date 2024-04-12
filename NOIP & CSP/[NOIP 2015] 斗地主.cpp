@@ -9,20 +9,20 @@ using namespace std;
 const int N = 20;
 
 int n, ans;
-int remain[N]; // 统计每种点数的牌有多少张
+int remain[N];  // 统计每种点数的牌有多少张
 
 void DFS(int index, int step, int discarded) {
-    if (step >= ans) // 最优性剪枝
+    if (step >= ans)  // 最优性剪枝
         return;
 
-    if (discarded >= n) // 如果已经发完所有的牌
-        return (void)(ans = min(ans, step)); // 则统计答案
+    if (discarded >= n)                       // 如果已经发完所有的牌
+        return (void)(ans = min(ans, step));  // 则统计答案
 
-    if (index > 15) // 已经发完所有点数的牌
+    if (index > 15)  // 已经发完所有点数的牌
         return;
 
-    if (remain[index] == 0) // 如果当前点数已经无牌可用
-        return DFS(index + 1, step, discarded); // 则直接进行下一个点数的搜索
+    if (remain[index] == 0)                      // 如果当前点数已经无牌可用
+        return DFS(index + 1, step, discarded);  // 则直接进行下一个点数的搜索
 
     // 如果有王炸可用
     if (remain[14] != 0 && remain[15] != 0) {
@@ -95,8 +95,8 @@ void DFS(int index, int step, int discarded) {
 
         // 三顺子
         for (int i = index + 1; i <= 12; i++) {
-            if (remain[i] < 3) break; // 顺子中断
-            if (i - index + 1 >= 2) { // 三顺子只需要两种连续点数即可
+            if (remain[i] < 3) break;  // 顺子中断
+            if (i - index + 1 >= 2) {  // 三顺子只需要两种连续点数即可
                 for (int j = index + 1; j <= i; j++) remain[j] -= 3;
                 DFS(index, step + 1, discarded + (i - index + 1) * 3);
                 for (int j = index + 1; j <= i; j++) remain[j] += 3;
@@ -141,8 +141,8 @@ void DFS(int index, int step, int discarded) {
 
         // 双顺子
         for (int i = index + 1; i <= 12; i++) {
-            if (remain[i] < 2) break; // 顺子中断
-            if (i - index + 1 >= 3) { // 双顺子需要三种连续点数
+            if (remain[i] < 2) break;  // 顺子中断
+            if (i - index + 1 >= 3) {  // 双顺子需要三种连续点数
                 for (int j = index + 1; j <= i; j++) remain[j] -= 2;
                 DFS(index, step + 1, discarded + (i - index + 1) * 2);
                 for (int j = index + 1; j <= i; j++) remain[j] += 2;
@@ -187,8 +187,8 @@ void DFS(int index, int step, int discarded) {
 
         // 单顺子
         for (int i = index + 1; i <= 12; i++) {
-            if (remain[i] < 1) break; // 顺子中断
-            if (i - index + 1 >= 5) { // 单顺子需要五种连续点数
+            if (remain[i] < 1) break;  // 顺子中断
+            if (i - index + 1 >= 5) {  // 单顺子需要五种连续点数
                 for (int j = index + 1; j <= i; j++) remain[j]--;
                 DFS(index, step + 1, discarded + (i - index + 1));
                 for (int j = index + 1; j <= i; j++) remain[j]++;
@@ -206,11 +206,16 @@ void solve() {
     // 初始牌型输入
     for (int i = 1, a, b; i <= n; i++) {
         cin >> a >> b;
-        if (a == 1) remain[12]++;
-        else if (a == 2) remain[13]++;
-        else if (a == 0 && b == 1) remain[14]++;
-        else if (a == 0 && b == 2) remain[15]++;
-        else remain[a - 2]++;
+        if (a == 1)
+            remain[12]++;
+        else if (a == 2)
+            remain[13]++;
+        else if (a == 0 && b == 1)
+            remain[14]++;
+        else if (a == 0 && b == 2)
+            remain[15]++;
+        else
+            remain[a - 2]++;
     }
 
     DFS(1, 0, 0);

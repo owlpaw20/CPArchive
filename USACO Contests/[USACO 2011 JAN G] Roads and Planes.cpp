@@ -68,7 +68,7 @@ void DFS(int u) {
 
     for (int v = head[u]; ~v; v = nx[v]) {
         int j = ed[v];
-        if (!belong[j]) // 避免因为双向边重复搜索造成无限递归
+        if (!belong[j])  // 避免因为双向边重复搜索造成无限递归
             DFS(j);
     }
 }
@@ -90,7 +90,7 @@ void Dijkstra(int st) {
             int j = ed[v];
             if (dist[j] > dist[u] + wt[v]) {
                 dist[j] = dist[u] + wt[v];
-                if (belong[j] == st) // 只更新连通块之内的
+                if (belong[j] == st)  // 只更新连通块之内的
                     heap.push({dist[j], j});
             }
 
@@ -115,13 +115,13 @@ void topological_sort(int st) {
         将 Dijkstra 应用于不存在负权边的每一个连通块内
         最终实现全局最短路的计算 */
 
-    q.init(block_idx + 5); // 用队列记录连通块的拓扑序
+    q.init(block_idx + 5);  // 用队列记录连通块的拓扑序
     for (int i = 1; i <= block_idx; i++)
         if (indeg[i] == 0)
             q.push(i);
 
-    while (!q.empty()) // 按照拓扑序
-        Dijkstra(q.extract()); // 在当前连通块内求最短路
+    while (!q.empty())          // 按照拓扑序
+        Dijkstra(q.extract());  // 在当前连通块内求最短路
 }
 
 int main() {
@@ -156,8 +156,10 @@ int main() {
     topological_sort(start);
 
     for (int i = 1; i <= n; i++)
-        if (dist[i] > INF / 2) cout << "NO PATH" << endl;
-        else cout << dist[i] << endl;
+        if (dist[i] > INF / 2)
+            cout << "NO PATH" << endl;
+        else
+            cout << dist[i] << endl;
 
     return 0;
 }

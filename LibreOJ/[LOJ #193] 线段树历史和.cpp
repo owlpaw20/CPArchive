@@ -21,7 +21,8 @@ struct SEGTREE {
         i64 add, hadd, time;
 
         NODE() {}
-        NODE(i64 tag, i64 htag, i64 ti) : add(tag), hadd(htag), time(ti) {}
+        NODE(i64 tag, i64 htag, i64 ti) :
+            add(tag), hadd(htag), time(ti) {}
 
         void pull(const NODE x, const NODE y) {
             sum = x.sum + y.sum;

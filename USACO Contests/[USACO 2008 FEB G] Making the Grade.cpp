@@ -11,8 +11,8 @@ const int MAX_N = 2e3 + 5;
 
 int N;
 int a[MAX_N], b[MAX_N];
-int f[MAX_N][MAX_N]; // f[i][j] 表示当第 i 条道路的高度为 b[j] 时，修理完前 i 条路所需的花费
-int g[MAX_N][MAX_N]; // g[i][j] 表示 f[i][k] where k in [1, j) 的最小值
+int f[MAX_N][MAX_N];  // f[i][j] 表示当第 i 条道路的高度为 b[j] 时，修理完前 i 条路所需的花费
+int g[MAX_N][MAX_N];  // g[i][j] 表示 f[i][k] where k in [1, j) 的最小值
 
 int main() {
     std::ios::sync_with_stdio(false);

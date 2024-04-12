@@ -57,8 +57,10 @@ int main() {
     int l = 0, r = 1e6 + 1;
     while (l < r) {
         int mid = (l + r) >> 1;
-        if (check(mid)) r = mid;
-        else l = mid + 1;
+        if (check(mid))
+            r = mid;
+        else
+            l = mid + 1;
     }
 
     if (r > 1e6) r = -1;

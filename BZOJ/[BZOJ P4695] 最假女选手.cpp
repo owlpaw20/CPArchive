@@ -24,7 +24,7 @@ namespace FastIO {
         if (x > 9) write(x / 10);
         putchar(x % 10 + '0');
     }
-} // namespace FastIO
+}  // namespace FastIO
 using namespace FastIO;
 
 const int N = 5e5 + 5;
@@ -268,12 +268,18 @@ int main() {
     while (m--) {
         int t, l, r;
         t = read(), l = read(), r = read();
-        if (t == 1) STB.range_add(1, l, r, read());
-        else if (t == 2) STB.range_flatten_max(1, l, r, read());
-        else if (t == 3) STB.range_flatten_min(1, l, r, read());
-        else if (t == 4) write(STB.query_sum(1, l, r)), putchar('\n');
-        else if (t == 5) write(STB.query_max(1, l, r)), putchar('\n');
-        else if (t == 6) write(STB.query_min(1, l, r)), putchar('\n');
+        if (t == 1)
+            STB.range_add(1, l, r, read());
+        else if (t == 2)
+            STB.range_flatten_max(1, l, r, read());
+        else if (t == 3)
+            STB.range_flatten_min(1, l, r, read());
+        else if (t == 4)
+            write(STB.query_sum(1, l, r)), putchar('\n');
+        else if (t == 5)
+            write(STB.query_max(1, l, r)), putchar('\n');
+        else if (t == 6)
+            write(STB.query_min(1, l, r)), putchar('\n');
     }
 
     return fflush(stdout), 0;

@@ -31,7 +31,7 @@ namespace MODULO {
     u32 mul(const u32 x, const u32 y) { return ((u64)x * y) % MOD; }
     u32 add(const u32 x, const u32 y) { return ((u32)x + y) % MOD; }
     u32 add(const std::initializer_list<u32> x) { return std::accumulate(x.begin(), x.end(), 0ULL) % MOD; }
-} // namespace MODULO
+}  // namespace MODULO
 using namespace MODULO;
 
 int main() {

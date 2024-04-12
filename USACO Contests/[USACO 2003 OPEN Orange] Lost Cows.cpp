@@ -39,8 +39,10 @@ int main() {
         int l = 1, r = n;
         while (l < r) {
             int mid = (l + r) >> 1;
-            if (query(mid) >= height) r = mid;
-            else l = mid + 1;
+            if (query(mid) >= height)
+                r = mid;
+            else
+                l = mid + 1;
         }
         ans[i] = l;
         modify(l, -1);

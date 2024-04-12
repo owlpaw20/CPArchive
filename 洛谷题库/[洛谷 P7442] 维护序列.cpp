@@ -19,8 +19,10 @@ int main() {
             if (x) txor ^= (1 << shift);
             shift = (shift + 1 == N ? 0 : shift + 1);
         } else {
-            if (!shift) printf("%u\n", x ^ txor);
-            else printf("%u\n", ((x >> (N - shift)) | (x & ((1 << (N - shift)) - 1)) << shift) ^ txor);
+            if (!shift)
+                printf("%u\n", x ^ txor);
+            else
+                printf("%u\n", ((x >> (N - shift)) | (x & ((1 << (N - shift)) - 1)) << shift) ^ txor);
         }
     } while (--M);
 

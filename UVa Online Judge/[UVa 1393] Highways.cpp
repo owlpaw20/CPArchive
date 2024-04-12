@@ -30,8 +30,10 @@ int main() {
 
                 int same_slope = (n - i) * (m - j);
 
-                if (flag[i][j] == 1) ans += same_slope;
-                else ans -= same_slope;
+                if (flag[i][j] == 1)
+                    ans += same_slope;
+                else
+                    ans -= same_slope;
             }
 
         cout << ans * 2 << endl;

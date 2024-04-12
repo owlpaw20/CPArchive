@@ -10,8 +10,8 @@ const int MAX_R = 3e2 + 5;
 const int INF = 0x3F3F3F3F;
 
 int M, F, R, C, cap[MAX_R], prc[MAX_R];
-int f[MAX_R][MAX_M][MAX_F]; // 无夫妻
-int g[MAX_R][MAX_M][MAX_F]; // 有一组夫妻
+int f[MAX_R][MAX_M][MAX_F];  // 无夫妻
+int g[MAX_R][MAX_M][MAX_F];  // 有一组夫妻
 
 int main() {
     std::ios::sync_with_stdio(false);
@@ -31,16 +31,16 @@ int main() {
             for (int k = F; ~k; --k) {
                 f[i][j][k] = f[i - 1][j][k];
 
-                if (cap[i] >= 2 && j && k) // 如果能够组成一组夫妻，则从无夫妻状态进行转移
+                if (cap[i] >= 2 && j && k)  // 如果能够组成一组夫妻，则从无夫妻状态进行转移
                     g[i][j][k] = std::min(g[i - 1][j][k], f[i - 1][j - 1][k - 1] + prc[i]);
 
                 // 对于同性入住，枚举当前房间所有可能的入住人数 t
                 for (int t = 1; t <= cap[i]; ++t) {
-                    if (j >= t) { // 如果剩余男性人数大于 t，则转移
+                    if (j >= t) {  // 如果剩余男性人数大于 t，则转移
                         f[i][j][k] = std::min(f[i][j][k], f[i - 1][j - t][k] + prc[i]);
                         g[i][j][k] = std::min(g[i][j][k], g[i - 1][j - t][k] + prc[i]);
                     }
-                    if (k >= t) { // 如果剩余女性人数大于 t，则转移
+                    if (k >= t) {  // 如果剩余女性人数大于 t，则转移
                         f[i][j][k] = std::min(f[i][j][k], f[i - 1][j][k - t] + prc[i]);
                         g[i][j][k] = std::min(g[i][j][k], g[i - 1][j][k - t] + prc[i]);
                     }

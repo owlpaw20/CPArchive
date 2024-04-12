@@ -27,7 +27,8 @@ struct Queue {
     bool empty() {
         return head > rear;
     }
-    Queue() : head(0), rear(0) {}
+    Queue() :
+        head(0), rear(0) {}
 };
 
 int n, k, e[N];

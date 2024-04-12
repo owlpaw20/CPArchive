@@ -20,7 +20,7 @@ struct DisjointSet {
         p[rx] = ry;
         return true;
     }
-    DisjointSet() {};
+    DisjointSet(){};
     DisjointSet(int n) {
         init(n);
     }

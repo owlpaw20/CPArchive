@@ -22,13 +22,17 @@ int main() {
 
     for (int i = -100; i < 100; i++) {
         l = i, r = i + 1;
-        if (fabs(f(l)) < eps) cout << l << ' ';
-        else if (fabs(f(r)) < eps) continue;
+        if (fabs(f(l)) < eps)
+            cout << l << ' ';
+        else if (fabs(f(r)) < eps)
+            continue;
         else if (f(l) * f(r) < 0) {
             while (r - l > eps) {
                 mid = (l + r) / 2;
-                if (f(mid) * f(r) < 0) l = mid;
-                else r = mid;
+                if (f(mid) * f(r) < 0)
+                    l = mid;
+                else
+                    r = mid;
             }
             cout << l << ' ';
         }

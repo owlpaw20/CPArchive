@@ -15,8 +15,10 @@ int main() {
         cin >> a >> b;
 
         int sum = a + b;
-        if (sum & 1) puts("Alice");
-        else puts("Bob");
+        if (sum & 1)
+            puts("Alice");
+        else
+            puts("Bob");
     }
 
     fflush(stdout);

@@ -29,7 +29,7 @@ bool SPFA() {
     queue<int> q;
 
     for (int i = 1; i <= n; i++)
-        q.push(i), vis[i] = true; // 把所有点都遍历到，确保能找到负环
+        q.push(i), vis[i] = true;  // 把所有点都遍历到，确保能找到负环
 
     while (!q.empty()) {
         int u = q.front();
@@ -42,8 +42,8 @@ bool SPFA() {
             if (dist[v] > dist[u] + w) {
                 dist[v] = dist[u] + w;
                 cnt[v] = cnt[u] + 1;
-                if (cnt[v] >= n) // 如果路径上出现了一个环且其中出现一个重复遍历的节点
-                    return true; // 说明这个节点绕环一圈更新了自己的最短距离，故环总长度为负
+                if (cnt[v] >= n)  // 如果路径上出现了一个环且其中出现一个重复遍历的节点
+                    return true;  // 说明这个节点绕环一圈更新了自己的最短距离，故环总长度为负
                 if (!vis[v]) {
                     q.push(v);
                     vis[v] = true;

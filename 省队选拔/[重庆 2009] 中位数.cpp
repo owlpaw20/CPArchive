@@ -16,9 +16,12 @@ int main() {
     cin >> n >> b;
     for (int i = 1; i <= n; i++) {
         cin >> a[i];
-        if (a[i] == b) mid = i;
-        else if (a[i] > b) flag[i] = 1;
-        else if (a[i] < b) flag[i] = -1;
+        if (a[i] == b)
+            mid = i;
+        else if (a[i] > b)
+            flag[i] = 1;
+        else if (a[i] < b)
+            flag[i] = -1;
     }
 
     int sum = 0;

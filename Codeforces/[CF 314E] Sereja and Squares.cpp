@@ -31,7 +31,7 @@ namespace FastIO {
 
     template <typename T>
     void write(T x, char y) { write(x), putchar(y); }
-} // namespace FastIO
+}  // namespace FastIO
 using namespace FastIO;
 
 using u32 = uint32_t;

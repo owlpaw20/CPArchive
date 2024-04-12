@@ -31,7 +31,7 @@ namespace UnionFind {
         if (x == y) return false;
         return fa[x] = y, true;
     }
-} // namespace UnionFind
+}  // namespace UnionFind
 
 i64 Kruskal1() {
     i64 ans = 0;

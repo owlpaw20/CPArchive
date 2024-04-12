@@ -32,10 +32,14 @@ int main() {
             else {
                 for (int k = 1; k <= K; k++) {
                     int tx = x, ty = y;
-                    if (steps[k] == 'L') ty -= 1;
-                    else if (steps[k] == 'R') ty += 1;
-                    else if (steps[k] == 'U') tx -= 1;
-                    else tx += 1;
+                    if (steps[k] == 'L')
+                        ty -= 1;
+                    else if (steps[k] == 'R')
+                        ty += 1;
+                    else if (steps[k] == 'U')
+                        tx -= 1;
+                    else
+                        tx += 1;
 
                     if (tx < 1 || tx > n || ty < 1 || ty > m || mp[tx][ty] == '#') {
                         flag = false;

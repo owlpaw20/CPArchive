@@ -19,7 +19,7 @@ namespace FastIO {
         y = read();
         z = read();
     }
-} // namespace FastIO
+}  // namespace FastIO
 using namespace FastIO;
 
 const int N = 6e4 + 10;
@@ -47,7 +47,8 @@ struct SegmentTree {
         }
     }
     void build(int u, int l, int r) {
-        if (l == r) tree[u] = {l, r, 0, 0};
+        if (l == r)
+            tree[u] = {l, r, 0, 0};
         else {
             tree[u].l = l, tree[u].r = r;
             int mid = (l + r) >> 1;

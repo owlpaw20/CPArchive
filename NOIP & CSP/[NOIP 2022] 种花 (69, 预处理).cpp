@@ -20,15 +20,19 @@ void init() {
     // 预处理从每一点最多能向右边延伸多远
     for (int i = 1; i <= n; i++, len = 0)
         for (int j = m; j >= 1; j--)
-            if (!map[i][j]) rght[i][j] = len++;
-            else rght[i][j] = -1, len = 0;
+            if (!map[i][j])
+                rght[i][j] = len++;
+            else
+                rght[i][j] = -1, len = 0;
 
     len = 0;
     // 预处理从每一点最多能向下边延伸多远
     for (int j = 1; j <= m; j++, len = 0)
         for (int i = n; i >= 1; i--)
-            if (!map[i][j]) down[i][j] = len++;
-            else down[i][j] = -1, len = 0;
+            if (!map[i][j])
+                down[i][j] = len++;
+            else
+                down[i][j] = -1, len = 0;
 }
 
 void solve() {
@@ -55,7 +59,7 @@ void solve() {
                 ans_c = (ans_c + rght[nw][j] * rght[sw][j] % MOD) % MOD;
                 ans_f = (ans_f + rght[nw][j] * rght[sw][j] * down[sw][j] % MOD) % MOD;
             }
-    cout << c *ans_c % MOD << " " << f *ans_f % MOD << endl;
+    cout << c * ans_c % MOD << " " << f * ans_f % MOD << endl;
 }
 
 int main() {

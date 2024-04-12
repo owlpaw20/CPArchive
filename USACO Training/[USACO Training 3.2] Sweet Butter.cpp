@@ -12,7 +12,7 @@ using PII = pair<int, int>;
 using pair_heap = __gnu_pbds::priority_queue<PII, greater<PII>, __gnu_pbds::pairing_heap_tag>;
 
 const int N = 8e2 + 10;
-const int M = 3e3 + 10; // 两倍空间
+const int M = 3e3 + 10;  // 两倍空间
 const int INF = 0x3F3F3F3F;
 
 int n, m, p, idx;
