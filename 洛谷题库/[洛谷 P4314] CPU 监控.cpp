@@ -1,4 +1,5 @@
 #include <limits>
+#include <cstdint>
 #include <iostream>
 
 #define endl '\n'

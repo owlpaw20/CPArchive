@@ -1,5 +1,6 @@
 // 参考题解：https://ddosvoid.github.io/2022/05/08/Luogu-U216697-线段树区间历史版本和/
 
+#include <cstdint>
 #include <iostream>
 
 #define endl '\n'
