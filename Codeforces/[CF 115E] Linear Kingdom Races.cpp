@@ -60,12 +60,13 @@ struct MyHash {
 };
 
 int N, M, cost[MAX_N];
-i64 f[MAX_N];
+i64 f[MAX_N];  // f[i] 表示前 i 条路中修复若干条路可以获得的最大收益
 std::unordered_map<int, std::vector<PII>, MyHash> val;
 
 struct SegT {
     struct Node {
-        i64 max_v, add_tag;
+        i64 max_v;  // max_v = f[j] + val(j + 1, i) - cost(j + 1, i)
+        i64 add_tag;
 
         Node() :
             max_v(0), add_tag(0) {}
@@ -141,11 +142,11 @@ int main() {
     for (int i = 1, l, r, v; i <= M; ++i)
         l = read<int>(), r = read<int>(), v = read<int>(), val[r].emplace_back(l, v);
 
-    for (int i = 1; i <= N; ++i) {
-        SEGT.range_add(0, i - 1, -cost[i]);
-        for (auto [l, v] : val[i]) SEGT.range_add(0, l - 1, v);
-        f[i] = std::max(f[i - 1], SEGT.query(0, i - 1));
-        SEGT.point_set(i, f[i]);
+    for (int i = 1; i <= N; ++i) {                               // 每次枚举到一个新的右端点时
+        SEGT.range_add(0, i - 1, -cost[i]);                      // 将此前的 maxv 全部多减去一个 cost[i]，因为要多修一条路
+        for (auto [l, v] : val[i]) SEGT.range_add(0, l - 1, v);  // 将这些状态的 maxv 都加上修路带来的价值
+        f[i] = std::max(f[i - 1], SEGT.query(0, i - 1));         // 更新当前状态
+        SEGT.point_set(i, f[i]);                                 // 更新线段树中的状态
     }
 
     write(f[N]), putchar('\n');
