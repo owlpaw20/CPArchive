@@ -9,20 +9,20 @@ using namespace std;
 string s;
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr);
 
-    cin >> s;
+  cin >> s;
 
-    bool flag = true;
-    if (!isupper(s.front())) flag = false;
+  bool flag = true;
+  if (!isupper(s.front())) flag = false;
 
-    for (int i = 1; i < (int)s.length(); i++)
-        flag &= !isupper(s[i]);
+  for (int i = 1; i < (int)s.length(); i++)
+    flag &= !isupper(s[i]);
 
-    if (flag)
-        puts("Yes");
-    else
-        puts("No");
-    return fflush(stdout), 0;
+  if (flag)
+    puts("Yes");
+  else
+    puts("No");
+  return fflush(stdout), 0;
 }

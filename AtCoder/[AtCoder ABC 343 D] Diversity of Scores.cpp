@@ -13,23 +13,23 @@ i64 scores[N];
 unordered_map<i64, int> vis;
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr);
 
-    cin >> n >> T;
-    vis[0] = n;
+  cin >> n >> T;
+  vis[0] = n;
 
-    while (T--) {
-        int x, y;
-        cin >> x >> y;
+  while (T--) {
+    int x, y;
+    cin >> x >> y;
 
-        vis[scores[x]]--;
-        if (!vis[scores[x]]) vis.erase(scores[x]);
-        scores[x] += y;
-        vis[scores[x]]++;
+    vis[scores[x]]--;
+    if (!vis[scores[x]]) vis.erase(scores[x]);
+    scores[x] += y;
+    vis[scores[x]]++;
 
-        cout << vis.size() << endl;
-    }
+    cout << vis.size() << endl;
+  }
 
-    return fflush(stdout), 0;
+  return fflush(stdout), 0;
 }

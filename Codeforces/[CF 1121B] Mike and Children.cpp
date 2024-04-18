@@ -12,21 +12,21 @@ int a[N];
 int b[M];
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr);
 
-    cin >> n;
-    for (int i = 1; i <= n; i++) {
-        cin >> a[i];
-        for (int j = 1; j < i; j++)
-            b[a[i] + a[j]]++;
-    }
+  cin >> n;
+  for (int i = 1; i <= n; i++) {
+    cin >> a[i];
+    for (int j = 1; j < i; j++)
+      b[a[i] + a[j]]++;
+  }
 
-    int ans = 0;
-    for (int i = 2; i <= 2e5; i++)
-        ans = max(ans, b[i]);
+  int ans = 0;
+  for (int i = 2; i <= 2e5; i++)
+    ans = max(ans, b[i]);
 
-    cout << ans << endl;
-    fflush(stdout);
-    return 0;
+  cout << ans << endl;
+  fflush(stdout);
+  return 0;
 }

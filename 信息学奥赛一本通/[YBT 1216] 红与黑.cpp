@@ -16,51 +16,51 @@ char g[N][N];
 bool vis[N][N];
 
 void BFS(int sx, int sy) {
-    vis[sx][sy] = true;
-    queue<PII> q;
-    q.emplace(sx, sy);
+  vis[sx][sy] = true;
+  queue<PII> q;
+  q.emplace(sx, sy);
 
-    while (!q.empty()) {
-        auto [x, y] = q.front();
-        q.pop();
+  while (!q.empty()) {
+    auto [x, y] = q.front();
+    q.pop();
 
-        for (int i = 0; i < 4; i++) {
-            int tx = x + dx[i], ty = y + dy[i];
-            if (tx < 1 || ty < 1 || tx > n || ty > m) continue;
-            if (vis[tx][ty] || g[tx][ty] == '#') continue;
-            vis[tx][ty] = true;
-            q.emplace(tx, ty);
-        }
+    for (int i = 0; i < 4; i++) {
+      int tx = x + dx[i], ty = y + dy[i];
+      if (tx < 1 || ty < 1 || tx > n || ty > m) continue;
+      if (vis[tx][ty] || g[tx][ty] == '#') continue;
+      vis[tx][ty] = true;
+      q.emplace(tx, ty);
     }
+  }
 }
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr);
 
-    while (cin >> n >> m, n && m) {
-        swap(n, m);
-        memset(g, 0, sizeof g);
-        memset(vis, false, sizeof vis);
+  while (cin >> n >> m, n && m) {
+    swap(n, m);
+    memset(g, 0, sizeof g);
+    memset(vis, false, sizeof vis);
 
-        for (int i = 1; i <= n; i++)
-            for (int j = 1; j <= m; j++) {
-                cin >> g[i][j];
-                if (g[i][j] == '@')
-                    sx = i, sy = j, g[i][j] = '.';
-            };
+    for (int i = 1; i <= n; i++)
+      for (int j = 1; j <= m; j++) {
+        cin >> g[i][j];
+        if (g[i][j] == '@')
+          sx = i, sy = j, g[i][j] = '.';
+      };
 
-        BFS(sx, sy);
+    BFS(sx, sy);
 
-        int ans = 0;
-        for (int i = 1; i <= n; i++)
-            for (int j = 1; j <= m; j++)
-                if (vis[i][j])
-                    ans += 1;
+    int ans = 0;
+    for (int i = 1; i <= n; i++)
+      for (int j = 1; j <= m; j++)
+        if (vis[i][j])
+          ans += 1;
 
-        cout << ans << endl;
-    }
+    cout << ans << endl;
+  }
 
-    fflush(stdout);
-    return 0;
+  fflush(stdout);
+  return 0;
 }

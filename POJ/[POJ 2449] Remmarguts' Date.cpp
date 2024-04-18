@@ -27,70 +27,70 @@ int ed[M], nx[M], wt[M], dist[N], Rank[N];
 bool vis[N];
 
 void connect(int u, int v, int w, int *head) {
-    ed[idx] = v;
-    wt[idx] = w;
-    nx[idx] = head[u];
-    head[u] = idx++;
+  ed[idx] = v;
+  wt[idx] = w;
+  nx[idx] = head[u];
+  head[u] = idx++;
 }
 
 void Dijkstra(int st, int *head) {
-    priority_queue<PII, vector<PII>, greater<PII>> heap;
-    memset(dist, 0x3F, sizeof dist);
-    heap.emplace(dist[st] = 0, st);
+  priority_queue<PII, vector<PII>, greater<PII>> heap;
+  memset(dist, 0x3F, sizeof dist);
+  heap.emplace(dist[st] = 0, st);
 
-    while (!heap.empty()) {
-        int u = heap.top().second;
-        heap.pop();
+  while (!heap.empty()) {
+    int u = heap.top().second;
+    heap.pop();
 
-        if (vis[u]) continue;
-        vis[u] = true;
+    if (vis[u]) continue;
+    vis[u] = true;
 
-        for (int i = head[u]; ~i; i = nx[i])
-            if (dist[ed[i]] > dist[u] + wt[i])
-                heap.emplace(dist[ed[i]] = dist[u] + wt[i], ed[i]);
-    }
+    for (int i = head[u]; ~i; i = nx[i])
+      if (dist[ed[i]] > dist[u] + wt[i])
+        heap.emplace(dist[ed[i]] = dist[u] + wt[i], ed[i]);
+  }
 }
 
 int BFS(int st) {
-    priority_queue<TIII, vector<TIII>, greater<TIII>> heap;
-    heap.emplace(dist[st], 0, st);
+  priority_queue<TIII, vector<TIII>, greater<TIII>> heap;
+  heap.emplace(dist[st], 0, st);
 
-    while (!heap.empty()) {
-        auto [eval, d, u] = heap.top();
-        heap.pop();
+  while (!heap.empty()) {
+    auto [eval, d, u] = heap.top();
+    heap.pop();
 
-        Rank[u] += 1;
-        if (Rank[T] == K)
-            return d;
+    Rank[u] += 1;
+    if (Rank[T] == K)
+      return d;
 
-        for (int i = head[u]; ~i; i = nx[i])
-            if (Rank[ed[i]] < K)
-                heap.emplace(d + wt[i] + dist[ed[i]], d + wt[i], ed[i]);
-    }
+    for (int i = head[u]; ~i; i = nx[i])
+      if (Rank[ed[i]] < K)
+        heap.emplace(d + wt[i] + dist[ed[i]], d + wt[i], ed[i]);
+  }
 
-    return -1;
+  return -1;
 }
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-    memset(head, -1, sizeof head);
-    memset(rhead, -1, sizeof rhead);
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr);
+  memset(head, -1, sizeof head);
+  memset(rhead, -1, sizeof rhead);
 
-    cin >> n >> m;
-    while (m--) {
-        int u, v, w;
-        cin >> u >> v >> w;
-        connect(u, v, w, head);
-        connect(v, u, w, rhead);
-    }
-    cin >> S >> T >> K;
+  cin >> n >> m;
+  while (m--) {
+    int u, v, w;
+    cin >> u >> v >> w;
+    connect(u, v, w, head);
+    connect(v, u, w, rhead);
+  }
+  cin >> S >> T >> K;
 
-    if (S == T) K += 1;
+  if (S == T) K += 1;
 
-    Dijkstra(T, rhead);
-    cout << BFS(S) << endl;
+  Dijkstra(T, rhead);
+  cout << BFS(S) << endl;
 
-    fflush(stdout);
-    return 0;
+  fflush(stdout);
+  return 0;
 }

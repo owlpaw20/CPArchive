@@ -12,31 +12,31 @@ bool vis[N];
 queue<int> mem;
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr);
 
-    cin >> m >> n;
+  cin >> m >> n;
 
-    int ans = 0;
+  int ans = 0;
 
-    while (n--) {
-        int word;
-        cin >> word;
+  while (n--) {
+    int word;
+    cin >> word;
 
-        if (vis[word]) continue;
+    if (vis[word]) continue;
 
-        if ((int)mem.size() >= m) {
-            int buf = mem.front();
-            mem.pop();
-            vis[buf] = false;
-        }
-
-        mem.push(word);
-        vis[word] = true;
-        ans++;
+    if ((int)mem.size() >= m) {
+      int buf = mem.front();
+      mem.pop();
+      vis[buf] = false;
     }
 
-    cout << ans << endl;
-    fflush(stdout);
-    return 0;
+    mem.push(word);
+    vis[word] = true;
+    ans++;
+  }
+
+  cout << ans << endl;
+  fflush(stdout);
+  return 0;
 }

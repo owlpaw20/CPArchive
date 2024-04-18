@@ -16,23 +16,23 @@ i64 f[N][N][2];
 // f[x][y][1] = max{f[x+1][y][1], f[x][y-1][0], f[x][y-1][1]}
 
 i64 DFS(int x, int y, int from) {
-    if (x < 1 || y < 1 || x > n || y > m) return NINF;
-    if (f[x][y][from] != NINF) return f[x][y][from];
-    if (from == 0)
-        f[x][y][0] = max({DFS(x - 1, y, 0), DFS(x, y - 1, 0), DFS(x, y - 1, 1)}) + grid[x][y];
-    else if (from == 1)
-        f[x][y][1] = max({DFS(x + 1, y, 1), DFS(x, y - 1, 0), DFS(x, y - 1, 1)}) + grid[x][y];
-    return f[x][y][from];
+  if (x < 1 || y < 1 || x > n || y > m) return NINF;
+  if (f[x][y][from] != NINF) return f[x][y][from];
+  if (from == 0)
+    f[x][y][0] = max({DFS(x - 1, y, 0), DFS(x, y - 1, 0), DFS(x, y - 1, 1)}) + grid[x][y];
+  else if (from == 1)
+    f[x][y][1] = max({DFS(x + 1, y, 1), DFS(x, y - 1, 0), DFS(x, y - 1, 1)}) + grid[x][y];
+  return f[x][y][from];
 }
 
 int main() {
-    ios::sync_with_stdio(false), cin.tie(nullptr);
-    memset(f, 0x80, sizeof f);
-    cin >> n >> m;
-    for (int i = 1; i <= n; i++)
-        for (int j = 1; j <= m; j++)
-            cin >> grid[i][j];
-    f[1][1][0] = f[1][1][1] = grid[1][1];
-    cout << DFS(n, m, 0) << endl;
-    return 0;
+  ios::sync_with_stdio(false), cin.tie(nullptr);
+  memset(f, 0x80, sizeof f);
+  cin >> n >> m;
+  for (int i = 1; i <= n; i++)
+    for (int j = 1; j <= m; j++)
+      cin >> grid[i][j];
+  f[1][1][0] = f[1][1][1] = grid[1][1];
+  cout << DFS(n, m, 0) << endl;
+  return 0;
 }

@@ -21,24 +21,24 @@ char a[N], b[M];
                 = 0                                             (a[i] != b[j]) */
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr);
 
-    cin >> n >> m >> K;
-    cin >> (a + 1) >> (b + 1);
+  cin >> n >> m >> K;
+  cin >> (a + 1) >> (b + 1);
 
-    f[0][0] = 1;
-    for (int i = 1; i <= n; i++)
-        for (int j = m; j > 0; j--)
-            for (int k = K; k > 0; k--) {
-                if (a[i] != b[j])
-                    sum[j][k] = 0;
-                else
-                    sum[j][k] = (sum[j - 1][k] + f[j - 1][k - 1]) % MOD;
-                f[j][k] = (f[j][k] + sum[j][k]) % MOD;
-            }
+  f[0][0] = 1;
+  for (int i = 1; i <= n; i++)
+    for (int j = m; j > 0; j--)
+      for (int k = K; k > 0; k--) {
+        if (a[i] != b[j])
+          sum[j][k] = 0;
+        else
+          sum[j][k] = (sum[j - 1][k] + f[j - 1][k - 1]) % MOD;
+        f[j][k] = (f[j][k] + sum[j][k]) % MOD;
+      }
 
-    cout << f[m][K] << endl;
-    fflush(stdout);
-    return 0;
+  cout << f[m][K] << endl;
+  fflush(stdout);
+  return 0;
 }

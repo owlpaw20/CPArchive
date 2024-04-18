@@ -31,88 +31,88 @@ int ed[M], nx[M], head[N], idx;
 int depth[N], anc[N][20], diff[N];
 
 int log2(int x) {
-    float t = (float)n;
-    return (*(int *)&t) >> 23 & 31;
+  float t = (float)n;
+  return (*(int *)&t) >> 23 & 31;
 }
 
 void connect(int u, int v) {
-    ed[idx] = v;
-    nx[idx] = head[u];
-    head[u] = idx++;
+  ed[idx] = v;
+  nx[idx] = head[u];
+  head[u] = idx++;
 }
 
 void BFS() {
-    memset(depth, 0x3F, sizeof depth);
-    depth[0] = 0, depth[1] = 1;
-    queue<int> q;
-    q.push(1);
-    while (!q.empty()) {
-        int u = q.front();
-        for (int i = head[u]; ~i; i = nx[i]) {
-            int v = ed[i];
-            if (depth[v] > depth[u] + 1) {
-                depth[v] = depth[u] + 1;
-                q.push(v);
-                anc[v][0] = u;
-                for (int j = 1; j <= log2(n); j++)
-                    anc[v][j] = anc[anc[v][j - 1]][j - 1];
-            }
-        }
-        q.pop();
+  memset(depth, 0x3F, sizeof depth);
+  depth[0] = 0, depth[1] = 1;
+  queue<int> q;
+  q.push(1);
+  while (!q.empty()) {
+    int u = q.front();
+    for (int i = head[u]; ~i; i = nx[i]) {
+      int v = ed[i];
+      if (depth[v] > depth[u] + 1) {
+        depth[v] = depth[u] + 1;
+        q.push(v);
+        anc[v][0] = u;
+        for (int j = 1; j <= log2(n); j++)
+          anc[v][j] = anc[anc[v][j - 1]][j - 1];
+      }
     }
+    q.pop();
+  }
 }
 
 int LCA(int u, int v) {
-    if (depth[u] > depth[v]) swap(u, v);
-    for (int i = log2(n); i >= 0; i--)
-        if (depth[anc[v][i]] >= depth[u])
-            v = anc[v][i];
-    if (u == v) return u;
-    for (int i = log2(n); i >= 0; i--)
-        if (anc[v][i] != anc[u][i])
-            u = anc[u][i], v = anc[v][i];
-    return anc[u][0];
+  if (depth[u] > depth[v]) swap(u, v);
+  for (int i = log2(n); i >= 0; i--)
+    if (depth[anc[v][i]] >= depth[u])
+      v = anc[v][i];
+  if (u == v) return u;
+  for (int i = log2(n); i >= 0; i--)
+    if (anc[v][i] != anc[u][i])
+      u = anc[u][i], v = anc[v][i];
+  return anc[u][0];
 }
 
 int DFS(int u) {
-    int ret = diff[u];
-    for (int i = head[u]; ~i; i = nx[i]) {
-        int v = ed[i];
-        if (v != anc[u][0]) {
-            int s = DFS(v);
-            if (s == 0) ans += m;
-            if (s == 1) ans += 1;
-            ret += s;
-        }
+  int ret = diff[u];
+  for (int i = head[u]; ~i; i = nx[i]) {
+    int v = ed[i];
+    if (v != anc[u][0]) {
+      int s = DFS(v);
+      if (s == 0) ans += m;
+      if (s == 1) ans += 1;
+      ret += s;
     }
-    return ret;
+  }
+  return ret;
 }
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-    memset(head, -1, sizeof head);
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr);
+  memset(head, -1, sizeof head);
 
-    cin >> n >> m;
-    for (int i = 1, u, v; i < n; i++) {
-        cin >> u >> v;
-        connect(u, v);
-        connect(v, u);
-    }
+  cin >> n >> m;
+  for (int i = 1, u, v; i < n; i++) {
+    cin >> u >> v;
+    connect(u, v);
+    connect(v, u);
+  }
 
-    BFS();
+  BFS();
 
-    for (int i = 1, u, v; i <= m; i++) {
-        cin >> u >> v;
-        int f = LCA(u, v);
-        diff[u] += 1;
-        diff[v] += 1;
-        diff[f] -= 2;
-    }
+  for (int i = 1, u, v; i <= m; i++) {
+    cin >> u >> v;
+    int f = LCA(u, v);
+    diff[u] += 1;
+    diff[v] += 1;
+    diff[f] -= 2;
+  }
 
-    DFS(1);
+  DFS(1);
 
-    cout << ans << endl;
-    fflush(stdout);
-    return 0;
+  cout << ans << endl;
+  fflush(stdout);
+  return 0;
 }

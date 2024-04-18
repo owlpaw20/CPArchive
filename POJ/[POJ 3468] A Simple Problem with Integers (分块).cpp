@@ -14,57 +14,57 @@ int a[N];
 i64 sum[N], add[N];
 
 void update(int l, int r, i64 x) {
-    if (l / len == r / len)
-        for (int i = l; i <= r; i++)
-            a[i] += x, sum[l / len] += x;
-    else {
-        int i = l, j = r;
-        while (i / len == l / len) a[i] += x, sum[i / len] += x, i++;
-        while (j / len == r / len) a[j] += x, sum[j / len] += x, j--;
-        for (int k = i / len; k <= j / len; k++)
-            sum[k] += x * len, add[k] += x;
-    }
+  if (l / len == r / len)
+    for (int i = l; i <= r; i++)
+      a[i] += x, sum[l / len] += x;
+  else {
+    int i = l, j = r;
+    while (i / len == l / len) a[i] += x, sum[i / len] += x, i++;
+    while (j / len == r / len) a[j] += x, sum[j / len] += x, j--;
+    for (int k = i / len; k <= j / len; k++)
+      sum[k] += x * len, add[k] += x;
+  }
 }
 
 i64 query(int l, int r) {
-    i64 ret = 0;
+  i64 ret = 0;
 
-    if (l / len == r / len)
-        for (int i = l; i <= r; i++)
-            ret += a[i] + add[i / len];
-    else {
-        int i = l, j = r;
-        while (i / len == l / len) ret += a[i] + add[i / len], i++;
-        while (j / len == r / len) ret += a[j] + add[j / len], j--;
-        for (int k = i / len; k <= j / len; k++) ret += sum[k];
-    }
+  if (l / len == r / len)
+    for (int i = l; i <= r; i++)
+      ret += a[i] + add[i / len];
+  else {
+    int i = l, j = r;
+    while (i / len == l / len) ret += a[i] + add[i / len], i++;
+    while (j / len == r / len) ret += a[j] + add[j / len], j--;
+    for (int k = i / len; k <= j / len; k++) ret += sum[k];
+  }
 
-    return ret;
+  return ret;
 }
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr);
 
-    cin >> n >> q;
+  cin >> n >> q;
 
-    len = sqrt(n);
+  len = sqrt(n);
 
-    for (int i = 1; i <= n; i++)
-        cin >> a[i], sum[i / len] += a[i];
+  for (int i = 1; i <= n; i++)
+    cin >> a[i], sum[i / len] += a[i];
 
-    while (q--) {
-        char type;
-        int l, r, x;
+  while (q--) {
+    char type;
+    int l, r, x;
 
-        cin >> type >> l >> r;
+    cin >> type >> l >> r;
 
-        if (type == 'C') {
-            cin >> x;
-            update(l, r, x);
-        } else
-            cout << query(l, r) << endl;
-    }
+    if (type == 'C') {
+      cin >> x;
+      update(l, r, x);
+    } else
+      cout << query(l, r) << endl;
+  }
 
-    return fflush(stdout), 0;
+  return fflush(stdout), 0;
 }

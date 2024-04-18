@@ -19,45 +19,45 @@ int n;
 int q[Q];
 
 void get_phi(int n) {
-    phi[1] = 1;
+  phi[1] = 1;
 
-    for (int i = 2; i <= n; i++) {
-        if (!not_prime[i]) {
-            prime.push_back(i);
-            phi[i] = i - 1;
-        }
-
-        for (int j = 0; prime[j] * i <= n; j++) {
-            int c = prime[j] * i;
-            not_prime[c] = true;
-
-            if (i % prime[j] == 0) {
-                phi[c] = phi[i] * prime[j];
-                break;
-            }
-
-            phi[c] = phi[i] * (prime[j] - 1);
-        }
+  for (int i = 2; i <= n; i++) {
+    if (!not_prime[i]) {
+      prime.push_back(i);
+      phi[i] = i - 1;
     }
+
+    for (int j = 0; prime[j] * i <= n; j++) {
+      int c = prime[j] * i;
+      not_prime[c] = true;
+
+      if (i % prime[j] == 0) {
+        phi[c] = phi[i] * prime[j];
+        break;
+      }
+
+      phi[c] = phi[i] * (prime[j] - 1);
+    }
+  }
 }
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr);
 
-    cin >> n;
+  cin >> n;
 
-    int maxq = 0;
-    for (int i = 1; i <= n; i++)
-        cin >> q[i], maxq = max(maxq, q[i]);
+  int maxq = 0;
+  for (int i = 1; i <= n; i++)
+    cin >> q[i], maxq = max(maxq, q[i]);
 
-    get_phi(maxq);
+  get_phi(maxq);
 
-    for (int i = 2; i <= maxq; i++)
-        phi_sum[i] = phi_sum[i - 1] + phi[i];
+  for (int i = 2; i <= maxq; i++)
+    phi_sum[i] = phi_sum[i - 1] + phi[i];
 
-    for (int i = 1; i <= n; i++)
-        cout << i << ' ' << q[i] << ' ' << phi_sum[q[i]] * 2 + 3 << endl;
+  for (int i = 1; i <= n; i++)
+    cout << i << ' ' << q[i] << ' ' << phi_sum[q[i]] * 2 + 3 << endl;
 
-    return fflush(stdout), 0;
+  return fflush(stdout), 0;
 }

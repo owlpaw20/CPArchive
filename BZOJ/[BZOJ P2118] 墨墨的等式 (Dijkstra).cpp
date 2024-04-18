@@ -21,60 +21,60 @@ i64 dist[N];
 bool vis[N];
 
 void connect(int u, int v, int w) {
-    ed[idx] = v;
-    wt[idx] = w;
-    nx[idx] = head[u];
-    head[u] = idx++;
+  ed[idx] = v;
+  wt[idx] = w;
+  nx[idx] = head[u];
+  head[u] = idx++;
 }
 
 void Dijkstra(int st = 0) {
-    memset(dist, 0x3F, sizeof dist);
+  memset(dist, 0x3F, sizeof dist);
 
-    priority_queue<PII, vector<PII>, greater<PII>> heap;
-    heap.emplace(dist[st] = 0, st);
+  priority_queue<PII, vector<PII>, greater<PII>> heap;
+  heap.emplace(dist[st] = 0, st);
 
-    while (!heap.empty()) {
-        auto [d, u] = heap.top();
-        heap.pop();
+  while (!heap.empty()) {
+    auto [d, u] = heap.top();
+    heap.pop();
 
-        if (vis[u]) continue;
-        vis[u] = true;
+    if (vis[u]) continue;
+    vis[u] = true;
 
-        for (int i = head[u]; ~i; i = nx[i])
-            if (dist[ed[i]] > dist[u] + wt[i])
-                heap.emplace(dist[ed[i]] = dist[u] + wt[i], ed[i]);
-    }
+    for (int i = head[u]; ~i; i = nx[i])
+      if (dist[ed[i]] > dist[u] + wt[i])
+        heap.emplace(dist[ed[i]] = dist[u] + wt[i], ed[i]);
+  }
 }
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr);
 
-    memset(head, -1, sizeof head);
+  memset(head, -1, sizeof head);
 
-    cin >> n >> l >> r;
+  cin >> n >> l >> r;
 
-    int min_a = INTMAX;
-    for (int i = 1, x; i <= n; i++) {
-        cin >> x;
-        if (x) {
-            a.push_back(x);
-            min_a = min(min_a, x);
-        }
+  int min_a = INTMAX;
+  for (int i = 1, x; i <= n; i++) {
+    cin >> x;
+    if (x) {
+      a.push_back(x);
+      min_a = min(min_a, x);
     }
+  }
 
-    for (int i = 0; i < min_a; i++)
-        for (int x : a)
-            connect(i, (i + x) % min_a, x);
+  for (int i = 0; i < min_a; i++)
+    for (int x : a)
+      connect(i, (i + x) % min_a, x);
 
-    Dijkstra();
+  Dijkstra();
 
-    i64 ansl = 0, ansr = 0;
-    for (int i = 0; i < min_a; i++) {
-        if (r >= dist[i]) ansr += (r - dist[i]) / min_a + 1;
-        if (l - 1 >= dist[i]) ansl += (l - 1 - dist[i]) / min_a + 1;
-    }
+  i64 ansl = 0, ansr = 0;
+  for (int i = 0; i < min_a; i++) {
+    if (r >= dist[i]) ansr += (r - dist[i]) / min_a + 1;
+    if (l - 1 >= dist[i]) ansl += (l - 1 - dist[i]) / min_a + 1;
+  }
 
-    cout << ansr - ansl << endl;
-    return fflush(stdout), 0;
+  cout << ansr - ansl << endl;
+  return fflush(stdout), 0;
 }

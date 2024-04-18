@@ -12,31 +12,31 @@ int IQ[MAX_N], EQ[MAX_N];
 int f[MAX_V];
 
 int main() {
-    std::ios::sync_with_stdio(false);
-    std::cin.tie(nullptr);
+  std::ios::sync_with_stdio(false);
+  std::cin.tie(nullptr);
 
-    memset(f, 0xCF, sizeof f);
+  memset(f, 0xCF, sizeof f);
 
-    std::cin >> N;
-    for (int i = 1; i <= N; ++i)
-        std::cin >> IQ[i] >> EQ[i];
+  std::cin >> N;
+  for (int i = 1; i <= N; ++i)
+    std::cin >> IQ[i] >> EQ[i];
 
-    f[SHIFT] = 0;
+  f[SHIFT] = 0;
 
-    for (int i = 1; i <= N; ++i)
-        if (IQ[i] >= 0)
-            for (int j = SHIFT << 1; j >= IQ[i]; --j)
-                f[j] = std::max(f[j], f[j - IQ[i]] + EQ[i]);
-        else
-            for (int j = 0; j <= (SHIFT << 1) + IQ[i]; ++j)
-                f[j] = std::max(f[j], f[j - IQ[i]] + EQ[i]);
+  for (int i = 1; i <= N; ++i)
+    if (IQ[i] >= 0)
+      for (int j = SHIFT << 1; j >= IQ[i]; --j)
+        f[j] = std::max(f[j], f[j - IQ[i]] + EQ[i]);
+    else
+      for (int j = 0; j <= (SHIFT << 1) + IQ[i]; ++j)
+        f[j] = std::max(f[j], f[j - IQ[i]] + EQ[i]);
 
-    int ans = 0;
+  int ans = 0;
 
-    for (int i = SHIFT; i <= (SHIFT << 1); ++i)
-        if (f[i] > 0)
-            ans = std::max(ans, f[i] + i - SHIFT);
+  for (int i = SHIFT; i <= (SHIFT << 1); ++i)
+    if (f[i] > 0)
+      ans = std::max(ans, f[i] + i - SHIFT);
 
-    std::cout << ans << endl;
-    return fflush(stdout), 0;
+  std::cout << ans << endl;
+  return fflush(stdout), 0;
 }

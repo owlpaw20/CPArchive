@@ -15,52 +15,52 @@ int ed[M], nx[M], head[N], idx;
 int dist[N], cnt[N];
 
 void connect(int u, int v) {
-    ed[idx] = v;
-    nx[idx] = head[u];
-    head[u] = idx++;
+  ed[idx] = v;
+  nx[idx] = head[u];
+  head[u] = idx++;
 }
 
 void BFS(int u) {
-    memset(dist, 0x7F, sizeof dist);
-    queue<int> q;
+  memset(dist, 0x7F, sizeof dist);
+  queue<int> q;
 
-    q.push(u);
-    dist[u] = 0;
-    cnt[u] = 1;
+  q.push(u);
+  dist[u] = 0;
+  cnt[u] = 1;
 
-    while (!q.empty()) {
-        int u = q.front();
-        q.pop();
+  while (!q.empty()) {
+    int u = q.front();
+    q.pop();
 
-        for (int i = head[u]; ~i; i = nx[i]) {
-            int v = ed[i];
-            if (dist[v] > dist[u] + 1) {
-                dist[v] = dist[u] + 1;
-                cnt[v] = cnt[u];
-                q.push(v);
-            } else if (dist[v] == dist[u] + 1)
-                cnt[v] = (cnt[v] + cnt[u]) % MOD;
-        }
+    for (int i = head[u]; ~i; i = nx[i]) {
+      int v = ed[i];
+      if (dist[v] > dist[u] + 1) {
+        dist[v] = dist[u] + 1;
+        cnt[v] = cnt[u];
+        q.push(v);
+      } else if (dist[v] == dist[u] + 1)
+        cnt[v] = (cnt[v] + cnt[u]) % MOD;
     }
+  }
 }
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-    memset(head, -1, sizeof head);
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr);
+  memset(head, -1, sizeof head);
 
-    cin >> n >> m;
+  cin >> n >> m;
 
-    while (m--) {
-        int u, v;
-        cin >> u >> v;
-        connect(u, v), connect(v, u);
-    }
+  while (m--) {
+    int u, v;
+    cin >> u >> v;
+    connect(u, v), connect(v, u);
+  }
 
-    BFS(1);
+  BFS(1);
 
-    for (int i = 1; i <= n; i++)
-        cout << cnt[i] << endl;
-    fflush(stdout);
-    return 0;
+  for (int i = 1; i <= n; i++)
+    cout << cnt[i] << endl;
+  fflush(stdout);
+  return 0;
 }

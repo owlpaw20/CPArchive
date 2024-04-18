@@ -21,35 +21,35 @@ inline u32 mod(cu32 x, cu32 y = MOD) { return (x < y) ? (x) : (x - x / y * y); }
 inline u32 mod(cu64 x, cu32 y = MOD) { return (x < y) ? (x) : (x - x / y * y); }
 
 int main() {
-    std::ios::sync_with_stdio(false);
-    std::cin.tie(nullptr);
+  std::ios::sync_with_stdio(false);
+  std::cin.tie(nullptr);
 
-    std::cin >> n >> x;
-    for (u32 i = 1; i <= n; ++i) std::cin >> a[i];
+  std::cin >> n >> x;
+  for (u32 i = 1; i <= n; ++i) std::cin >> a[i];
 
-    auto cmp = [](cu32 x, cu32 y) -> bool { return x > y; };
-    std::sort(a + 1, a + n + 1, cmp);
+  auto cmp = [](cu32 x, cu32 y) -> bool { return x > y; };
+  std::sort(a + 1, a + n + 1, cmp);
 
-    f[0][x] = 1;
+  f[0][x] = 1;
 
-    // 考虑是否要模 a[i]
-    for (u32 i = 1; i <= n; ++i) {
-        // 如果不对 a[i] 取模，就将其放到一个较小的数后面再取模
-        // 由于排序，取法有 n - i 种
-        for (u32 j = 0; j <= x; ++j)
-            f[i][j] = mod(f[i][j] + mod((u64)f[i - 1][j] * (n - i)));
+  // 考虑是否要模 a[i]
+  for (u32 i = 1; i <= n; ++i) {
+    // 如果不对 a[i] 取模，就将其放到一个较小的数后面再取模
+    // 由于排序，取法有 n - i 种
+    for (u32 j = 0; j <= x; ++j)
+      f[i][j] = mod(f[i][j] + mod((u64)f[i - 1][j] * (n - i)));
 
-        // 如果对 a[i] 取模，则从上一个位置转移过来
-        for (u32 j = 0; j <= x; ++j)
-            f[i][mod(j, a[i])] = mod(f[i][mod(j, a[i])] + f[i - 1][j]);
+    // 如果对 a[i] 取模，则从上一个位置转移过来
+    for (u32 j = 0; j <= x; ++j)
+      f[i][mod(j, a[i])] = mod(f[i][mod(j, a[i])] + f[i - 1][j]);
+  }
+
+  for (int i = x; ~i; --i)
+    if (f[n][i]) {
+      std::cout << i << endl
+                << f[n][i] << endl;
+      break;
     }
 
-    for (int i = x; ~i; --i)
-        if (f[n][i]) {
-            std::cout << i << endl
-                      << f[n][i] << endl;
-            break;
-        }
-
-    return fflush(stdout), 0;
+  return fflush(stdout), 0;
 }

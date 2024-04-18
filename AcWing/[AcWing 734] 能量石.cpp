@@ -25,45 +25,45 @@ int f[M];
     S[i] * L[j] <= S[j] * L[i] */
 
 auto cmp = [](TPL x, TPL y) {
-    return s(x) * l(y) < s(y) * l(x);
+  return s(x) * l(y) < s(y) * l(x);
 };
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr);
 
-    int T;
-    cin >> T;
+  int T;
+  cin >> T;
 
-    for (int t = 1, n; t <= T; t++) {
-        memset(f, 0xCF, sizeof f);
-        f[0] = 0;
+  for (int t = 1, n; t <= T; t++) {
+    memset(f, 0xCF, sizeof f);
+    f[0] = 0;
 
-        cin >> n;
+    cin >> n;
 
-        int maxt = 0;
+    int maxt = 0;
 
-        for (int i = 1; i <= n; i++) {
-            auto& [s, e, l] = a[i];
-            cin >> s >> e >> l;
-            maxt += s;
-        }
-
-        sort(a + 1, a + n + 1, cmp);
-
-        for (int i = 1; i <= n; i++) {
-            auto [s, e, l] = a[i];
-            for (int j = maxt; j >= s; j--)
-                f[j] = max(f[j], f[j - s] + max(0, e) - (j - s) * l);
-        }
-
-        int ans = 0;
-        for (int i = 1; i <= maxt; i++)
-            ans = max(ans, f[i]);
-
-        printf("Case #%d: %d\n", t, ans);
+    for (int i = 1; i <= n; i++) {
+      auto& [s, e, l] = a[i];
+      cin >> s >> e >> l;
+      maxt += s;
     }
 
-    fflush(stdout);
-    return 0;
+    sort(a + 1, a + n + 1, cmp);
+
+    for (int i = 1; i <= n; i++) {
+      auto [s, e, l] = a[i];
+      for (int j = maxt; j >= s; j--)
+        f[j] = max(f[j], f[j - s] + max(0, e) - (j - s) * l);
+    }
+
+    int ans = 0;
+    for (int i = 1; i <= maxt; i++)
+      ans = max(ans, f[i]);
+
+    printf("Case #%d: %d\n", t, ans);
+  }
+
+  fflush(stdout);
+  return 0;
 }

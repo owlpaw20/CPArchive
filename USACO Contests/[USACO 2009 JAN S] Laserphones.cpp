@@ -18,59 +18,59 @@ int dist[N][N];
 int sx, sy, ex, ey;
 
 int BFS() {
-    memset(dist, 0x3F, sizeof dist);
-    dist[sx][sy] = 0;
+  memset(dist, 0x3F, sizeof dist);
+  dist[sx][sy] = 0;
 
-    deque<TUP> dq;
-    dq.emplace_back(sx, sy, 0, -1);
+  deque<TUP> dq;
+  dq.emplace_back(sx, sy, 0, -1);
 
-    while (!dq.empty()) {
-        auto [x, y, turn, dir] = dq.front();
-        dq.pop_front();
+  while (!dq.empty()) {
+    auto [x, y, turn, dir] = dq.front();
+    dq.pop_front();
 
-        if (x == ex && y == ey) return turn;
+    if (x == ex && y == ey) return turn;
 
-        for (int i = 0; i < 4; i++) {
-            int tx = x + dx[i];
-            int ty = y + dy[i];
-            bool turned = (i != dir && dir != -1);
+    for (int i = 0; i < 4; i++) {
+      int tx = x + dx[i];
+      int ty = y + dy[i];
+      bool turned = (i != dir && dir != -1);
 
-            if (tx < 1 || ty < 1 || tx > n || ty > m) continue;
-            if (mp[tx][ty] == '*') continue;
+      if (tx < 1 || ty < 1 || tx > n || ty > m) continue;
+      if (mp[tx][ty] == '*') continue;
 
-            if (dist[tx][ty] >= turn + turned) {
-                dist[tx][ty] = turn + turned;
-                if (!turned)
-                    dq.emplace_front(tx, ty, turn, i);
-                else
-                    dq.emplace_back(tx, ty, turn + 1, i);
-            }
-        }
+      if (dist[tx][ty] >= turn + turned) {
+        dist[tx][ty] = turn + turned;
+        if (!turned)
+          dq.emplace_front(tx, ty, turn, i);
+        else
+          dq.emplace_back(tx, ty, turn + 1, i);
+      }
     }
+  }
 
-    return -1;
+  return -1;
 }
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr);
 
-    cin >> m >> n;
-    for (int i = 1; i <= n; i++)
-        for (int j = 1; j <= m; j++) {
-            char ch;
-            cin >> ch;
+  cin >> m >> n;
+  for (int i = 1; i <= n; i++)
+    for (int j = 1; j <= m; j++) {
+      char ch;
+      cin >> ch;
 
-            mp[i][j] = ch;
-            if (ch != 'C') continue;
+      mp[i][j] = ch;
+      if (ch != 'C') continue;
 
-            if (!sx)
-                sx = i, sy = j;
-            else
-                ex = i, ey = j;
-        }
+      if (!sx)
+        sx = i, sy = j;
+      else
+        ex = i, ey = j;
+    }
 
-    cout << BFS() << endl;
-    fflush(stdout);
-    return 0;
+  cout << BFS() << endl;
+  fflush(stdout);
+  return 0;
 }

@@ -18,73 +18,73 @@ int indeg[N], outdeg[N];
 stack<int> stk;
 
 void connect(int u, int v) {
-    ed[idx] = v;
-    nx[idx] = head[u];
-    head[u] = idx++;
+  ed[idx] = v;
+  nx[idx] = head[u];
+  head[u] = idx++;
 }
 
 void Tarjan(int u) {
-    dfn[u] = low[u] = ++timestamp;
+  dfn[u] = low[u] = ++timestamp;
 
-    stk.push(u);
-    in_stk[u] = true;
+  stk.push(u);
+  in_stk[u] = true;
 
-    for (int i = head[u]; ~i; i = nx[i]) {
-        int v = ed[i];
-        if (!dfn[v]) {
-            Tarjan(v);
-            low[u] = min(low[u], low[v]);
-        } else if (in_stk[v])
-            low[u] = min(low[u], dfn[v]);
-    }
+  for (int i = head[u]; ~i; i = nx[i]) {
+    int v = ed[i];
+    if (!dfn[v]) {
+      Tarjan(v);
+      low[u] = min(low[u], low[v]);
+    } else if (in_stk[v])
+      low[u] = min(low[u], dfn[v]);
+  }
 
-    if (low[u] == dfn[u]) {
-        scc_cnt++;
-        int v;
-        do {
-            v = stk.top();
-            stk.pop();
-            in_stk[v] = false;
-            belong[v] = scc_cnt;
-            sizes[scc_cnt]++;
-        } while (v != u);
-    }
+  if (low[u] == dfn[u]) {
+    scc_cnt++;
+    int v;
+    do {
+      v = stk.top();
+      stk.pop();
+      in_stk[v] = false;
+      belong[v] = scc_cnt;
+      sizes[scc_cnt]++;
+    } while (v != u);
+  }
 }
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-    memset(head, -1, sizeof head);
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr);
+  memset(head, -1, sizeof head);
 
-    cin >> n;
-    for (int i = 1, t; i <= n; i++)
-        while (cin >> t, t)
-            connect(i, t);
+  cin >> n;
+  for (int i = 1, t; i <= n; i++)
+    while (cin >> t, t)
+      connect(i, t);
 
-    for (int i = 1; i <= n; i++)
-        if (!dfn[i])
-            Tarjan(i);
+  for (int i = 1; i <= n; i++)
+    if (!dfn[i])
+      Tarjan(i);
 
-    for (int i = 1; i <= n; i++)
-        for (int j = head[i]; ~j; j = nx[j]) {
-            int u = belong[i];
-            int v = belong[ed[j]];
-            if (u != v)
-                outdeg[u]++, indeg[v]++;
-        }
-
-    int root = 0, leaf = 0;
-    for (int i = 1; i <= scc_cnt; i++) {
-        if (indeg[i] == 0) root++;
-        if (outdeg[i] == 0) leaf++;
+  for (int i = 1; i <= n; i++)
+    for (int j = head[i]; ~j; j = nx[j]) {
+      int u = belong[i];
+      int v = belong[ed[j]];
+      if (u != v)
+        outdeg[u]++, indeg[v]++;
     }
 
-    cout << root << endl;
-    if (scc_cnt == 1)
-        cout << 0 << endl;
-    else
-        cout << max(root, leaf) << endl;
+  int root = 0, leaf = 0;
+  for (int i = 1; i <= scc_cnt; i++) {
+    if (indeg[i] == 0) root++;
+    if (outdeg[i] == 0) leaf++;
+  }
 
-    fflush(stdout);
-    return 0;
+  cout << root << endl;
+  if (scc_cnt == 1)
+    cout << 0 << endl;
+  else
+    cout << max(root, leaf) << endl;
+
+  fflush(stdout);
+  return 0;
 }

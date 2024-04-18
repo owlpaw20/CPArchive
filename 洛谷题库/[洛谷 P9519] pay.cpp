@@ -12,56 +12,56 @@ queue<int> q;
 i64 a[N], b[N], sum[N];
 
 bool check(i64 x) {
-    queue<int> q;
-    i64 temp = 0;
-    fill(sum + 1, sum + n + 1, 0);
+  queue<int> q;
+  i64 temp = 0;
+  fill(sum + 1, sum + n + 1, 0);
 
-    // 遍历带薪员工右边的快乐值情况
-    for (int i = 1; i <= n; i++) {
-        temp -= q.size();                      // 当前员工的快乐值依赖于前一个员工的快乐值
-        if (!q.empty() && i - q.front() >= x)  // 如果有员工超出加快乐值的范围
-            q.pop();                           // 移除超出范围的带薪员工
-        if (b[i])                              // 如果当前员工带薪
-            temp += x, q.push(i);              // 则记录快乐值的一个源头
-        sum[i] += temp;                        // 记录快乐值
-    }
+  // 遍历带薪员工右边的快乐值情况
+  for (int i = 1; i <= n; i++) {
+    temp -= q.size();                      // 当前员工的快乐值依赖于前一个员工的快乐值
+    if (!q.empty() && i - q.front() >= x)  // 如果有员工超出加快乐值的范围
+      q.pop();                             // 移除超出范围的带薪员工
+    if (b[i])                              // 如果当前员工带薪
+      temp += x, q.push(i);                // 则记录快乐值的一个源头
+    sum[i] += temp;                        // 记录快乐值
+  }
 
-    while (!q.empty()) q.pop();
-    temp = 0;
+  while (!q.empty()) q.pop();
+  temp = 0;
 
-    // 遍历带薪员工左边的快乐值情况
-    for (int i = n; i > 0; i--) {
-        temp -= q.size();
-        if (!q.empty() && q.front() - i >= x) q.pop();
-        if (b[i]) temp += x, sum[i] -= x, q.push(i);
-        sum[i] += temp;
-    }
+  // 遍历带薪员工左边的快乐值情况
+  for (int i = n; i > 0; i--) {
+    temp -= q.size();
+    if (!q.empty() && q.front() - i >= x) q.pop();
+    if (b[i]) temp += x, sum[i] -= x, q.push(i);
+    sum[i] += temp;
+  }
 
-    for (int i = 1; i <= n; i++)
-        if (sum[i] < a[i])
-            return false;
+  for (int i = 1; i <= n; i++)
+    if (sum[i] < a[i])
+      return false;
 
-    return true;
+  return true;
 }
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr);
 
-    int t;
-    cin >> n >> m;
-    for (int i = 1; i <= n; i++) cin >> a[i];
-    for (int i = 1; i <= m; i++) cin >> t, b[t] = true;
+  int t;
+  cin >> n >> m;
+  for (int i = 1; i <= n; i++) cin >> a[i];
+  for (int i = 1; i <= m; i++) cin >> t, b[t] = true;
 
-    i64 l = 1, r = 1e10;
-    while (l < r) {
-        i64 mid = (l + r) >> 1;
-        if (check(mid))
-            r = mid;
-        else
-            l = mid + 1;
-    }
+  i64 l = 1, r = 1e10;
+  while (l < r) {
+    i64 mid = (l + r) >> 1;
+    if (check(mid))
+      r = mid;
+    else
+      l = mid + 1;
+  }
 
-    cout << r << endl;
-    return 0;
+  cout << r << endl;
+  return 0;
 }

@@ -14,34 +14,34 @@ int stone[N], f[M];
 bool flag[P];
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-    memset(f, 0x3F, sizeof f);
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr);
+  memset(f, 0x3F, sizeof f);
 
-    stone[0] = f[0] = 0;
+  stone[0] = f[0] = 0;
 
-    cin >> L >> S >> T >> m;
-    for (int i = 1; i <= m; i++) cin >> stone[i];
-    sort(stone, stone + m + 2);
+  cin >> L >> S >> T >> m;
+  for (int i = 1; i <= m; i++) cin >> stone[i];
+  sort(stone, stone + m + 2);
 
-    int idx = 0;
-    for (int i = 1; i <= m + 1; i++) {
-        if (stone[i] - stone[i - 1] <= T)
-            idx += stone[i] - stone[i - 1];
-        else
-            idx += (stone[i] - stone[i - 1]) % T + T;
-        flag[idx] = true;
-    }
+  int idx = 0;
+  for (int i = 1; i <= m + 1; i++) {
+    if (stone[i] - stone[i - 1] <= T)
+      idx += stone[i] - stone[i - 1];
+    else
+      idx += (stone[i] - stone[i - 1]) % T + T;
+    flag[idx] = true;
+  }
 
-    for (int i = 1; i <= idx + T; i++)
-        for (int j = S; j <= T; j++)
-            if (i - j >= 0)
-                f[i] = min(f[i], f[i - j] + flag[i]);
+  for (int i = 1; i <= idx + T; i++)
+    for (int j = S; j <= T; j++)
+      if (i - j >= 0)
+        f[i] = min(f[i], f[i - j] + flag[i]);
 
-    int ans = INF;
-    for (int i = idx; i <= idx + T; i++)
-        ans = min(ans, f[i]);
+  int ans = INF;
+  for (int i = idx; i <= idx + T; i++)
+    ans = min(ans, f[i]);
 
-    cout << ans << endl;
-    return 0;
+  cout << ans << endl;
+  return 0;
 }

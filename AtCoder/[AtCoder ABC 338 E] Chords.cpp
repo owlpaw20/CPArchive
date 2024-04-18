@@ -12,23 +12,23 @@ int vis[N];
 stack<int> pt;
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr);
 
-    cin >> n;
-    for (int i = 1, x, y; i <= n; i++)
-        cin >> x >> y, vis[x] = vis[y] = i;
+  cin >> n;
+  for (int i = 1, x, y; i <= n; i++)
+    cin >> x >> y, vis[x] = vis[y] = i;
 
-    for (int i = 1; i <= n * 2; i++)
-        if (pt.empty() || pt.top() != vis[i])
-            pt.push(vis[i]);
-        else
-            pt.pop();
-
-    if (!pt.empty())
-        puts("Yes");
+  for (int i = 1; i <= n * 2; i++)
+    if (pt.empty() || pt.top() != vis[i])
+      pt.push(vis[i]);
     else
-        puts("No");
+      pt.pop();
 
-    return fflush(stdout), 0;
+  if (!pt.empty())
+    puts("Yes");
+  else
+    puts("No");
+
+  return fflush(stdout), 0;
 }
