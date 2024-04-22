@@ -1,34 +1,65 @@
-#include <iostream>
-#include <cstdio>
+#include <bitset>
 #include <vector>
-using namespace std;
+#include <iostream>
 
-const int N = 1e8 + 10;
+#define endl '\n'
 
-int n, q;
-bool is_prime[N];
-vector<int> prime;
+#ifdef _WIN32
+#define getchar _getchar_nolock
+#define putchar _putchar_nolock
+#endif
 
-void get_prime(int n) {
-  for (int i = 2; i <= n; i++) {
-    if (!is_prime[i])
-      prime.push_back(i);
-    for (auto j : prime) {
-      if (i * j > n) break;
-      is_prime[i * j] = 1;
-      if (i % j == 0) break;
+#ifdef unix
+#define getchar getchar_unlocked
+#define putchar putchar_unlocked
+#endif
+
+namespace FastIO {
+  template <typename T>
+  inline T read() {
+    T x = 0, f = 1;
+    char ch = getchar();
+    while (ch < '0' || ch > '9') {
+      if (ch == '-') f = -f;
+      ch = getchar();
+    }
+    while (ch >= '0' && ch <= '9') x = x * 10 + ch - 48, ch = getchar();
+    return x * f;
+  }
+
+  template <typename T>
+  inline void write(T x) {
+    if (x < 0) putchar('-'), x = -x;
+    if (x > 9) write(x / 10);
+    putchar(x % 10 + '0');
+  }
+}  // namespace FastIO
+using namespace FastIO;
+
+const int MAX_N = 1e8 + 5;
+
+std::vector<int> primes;
+std::bitset<MAX_N> not_prime;
+
+void prep(int n) {
+  for (int i = 2; i <= n; ++i) {
+    if (!not_prime.test(i)) primes.push_back(i);
+    for (int p : primes) {
+      if (i * p > n) break;
+      not_prime.set(i * p);
+      if (i % p == 0) break;
     }
   }
 }
 
 int main() {
-  ios::sync_with_stdio(false), cin.tie(nullptr);
-  cin >> n >> q;
-  get_prime(n);
-  while (q--) {
-    int t;
-    cin >> t;
-    cout << prime[t - 1] << endl;
-  }
-  return 0;
+  int n = read<int>();
+  int q = read<int>();
+
+  prep(n);
+
+  while (q--)
+    write(primes[read<int>() - 1]), putchar('\n');
+
+  return fflush(stdout), 0;
 }
