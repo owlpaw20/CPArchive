@@ -6,8 +6,8 @@
 using namespace std;
 using i64 = long long;
 
-const int N = 1e5 + 5;
-const int M = 2e5 + 5;
+const int MAX_E = 1e5 + 5;
+const int MAX_M = 2e5 + 5;
 
 int n, m, root, mod;
 
@@ -15,9 +15,9 @@ struct SegTree {
   struct Node {
     int l, r;
     i64 sum, add;
-  } node[N << 2];
+  } node[MAX_E << 2];
 
-  int a[N];
+  int a[MAX_E];
 
   void init(int b[]) {
     for (int i = 1; i <= n; i++)
@@ -92,9 +92,9 @@ struct SegTree {
 } SGT;
 
 namespace TreeDecomp {
-  int ed[M], nx[M], head[N], val[N], idx;
-  int fa[N], pref[N], depth[N], size[N], top[N];
-  int dfn[N], newval[N], timestamp;
+  int ed[MAX_M], nx[MAX_M], head[MAX_E], val[MAX_E], idx;
+  int fa[MAX_E], pref[MAX_E], depth[MAX_E], size[MAX_E], top[MAX_E];
+  int dfn[MAX_E], newval[MAX_E], timestamp;
 
   void connect(int u, int v) {
     ed[idx] = v;
