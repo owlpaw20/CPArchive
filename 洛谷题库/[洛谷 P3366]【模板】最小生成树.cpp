@@ -1,46 +1,44 @@
-#include <cstdio>
-#include <cstring>
+#include <tuple>
+#include <vector>
+#include <numeric>
 #include <iostream>
 #include <algorithm>
-using namespace std;
 
-const int N = 5e3 + 10;
-const int INF = 0x3f3f3f3f;
+using TUP = std::tuple<int, int, int>;
 
-int n, m, g[N][N], dist[N];
-bool vis[N];
+const int MAX_V = 5e3 + 5;
 
-int Prim() {
-  memset(dist, 0x3f, sizeof dist);
-  int res = 0;
-  for (int i = 1; i <= n; i++) {
-    int t = -1;
-    for (int j = 1; j <= n; j++)
-      if (!vis[j] && (t == -1 || dist[t] > dist[j]))
-        t = j;
-    if (i != 1 && dist[t] == INF)
-      return INF;
-    if (i != 1) res += dist[t];
-    vis[t] = 1;
-    for (int j = 1; j <= n; j++)
-      dist[j] = min(dist[j], g[t][j]);
-  }
-  return res;
+int N, M;
+std::vector<TUP> edges;
+
+struct UnionFind {
+  int fa[MAX_V];
+  inline void init(int x) { std::iota(fa + 1, fa + x + 1, 1); }
+  inline int find(int x) { return (x == fa[x]) ? x : (fa[x] = find(fa[x])); }
+  inline bool merge(int x, int y) { return ((x = find(x)) != (y = find(y))) && (fa[x] = y, true); }
+} dsu;
+
+int Kruskal() {
+  int cnt = 0, ans = 0;
+  for (auto [w, u, v] : edges)
+    if (cnt == N - 1) break;
+    else if (dsu.merge(u, v)) ans += w, ++cnt;
+  if (cnt == N - 1) return ans;
+  return -1;
 }
 
 int main() {
-  ios::sync_with_stdio(false), cin.tie(0), cout.tie(0);
-  cin >> n >> m;
-  memset(g, 0x3f, sizeof g);
-  while (m--) {
-    int u, v, w;
-    cin >> u >> v >> w;
-    g[u][v] = g[v][u] = min(g[u][v], w);
-  }
-  int res = Prim();
-  if (res == INF)
-    puts("orz");
-  else
-    cout << res << endl;
+  std::ios::sync_with_stdio(false);
+  std::cin.tie(nullptr);
+
+  std::cin >> N >> M, edges.resize(M), dsu.init(N + 1);
+  for (auto& [w, u, v] : edges) std::cin >> u >> v >> w;
+
+  std::sort(edges.begin(), edges.end());
+
+  int ans = Kruskal();
+  ans == -1 ? (std::cout << "orz") : (std::cout << ans);
+
+  fflush(stdout);
   return 0;
 }
