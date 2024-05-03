@@ -4,6 +4,8 @@
 # Ignore CPH assistance files
 .cph/
 *.prob
+*.bin
+*.exe
 
 # Ignore VSCode Configurations
 .vscode/
