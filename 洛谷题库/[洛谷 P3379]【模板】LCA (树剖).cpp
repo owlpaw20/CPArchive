@@ -51,7 +51,7 @@ using namespace FastIO;
 const int MAX_V = 5e5 + 5;
 const int MAX_E = 1e6 + 5;
 
-int MAX_N, MAX_M, R;
+int N, M, R;
 
 int ed[MAX_E], nx[MAX_E], head[MAX_V], idx;
 
@@ -100,11 +100,11 @@ int query_LCA(int u, int v) {
 }
 
 int main() {
-  MAX_N = read<int>(), MAX_M = read<int>(), R = read<int>();
+  N = read<int>(), M = read<int>(), R = read<int>();
 
   memset(head, -1, sizeof head);
 
-  for (int i = 1, u, v; i < MAX_N; ++i) {
+  for (int i = 1, u, v; i < N; ++i) {
     u = read<int>(), v = read<int>();
     connect(u, v);
     connect(v, u);
@@ -112,7 +112,7 @@ int main() {
 
   DFS1(R, 0), DFS2(R, R);
 
-  while (MAX_M--)
+  while (M--)
     write(query_LCA(read<int>(), read<int>())), putchar('\n');
 
   flush(), fflush(stdout);
