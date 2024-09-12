@@ -1,5 +1,5 @@
 #include <cmath>
-#include <iostream>
+#include <cstdio>
 
 #define endl '\n'
 
@@ -27,7 +27,7 @@ namespace FastIOStr {
     if (x > 9) write(x / 10);
     putchar_unlocked(x % 10 + '0');
   }
-}  // namespace FastIO
+}  // namespace FastIOStr
 using namespace FastIOStr;
 
 using f64 = double;
