@@ -1,7 +1,4 @@
-#pragma pack(1)
-
-#include <cstring>
-#include <iostream>
+#include <bits/stdc++.h>
 
 #define endl '\n'
 
@@ -68,7 +65,7 @@ struct SparseTable {
   int min[21][MAX_E];
 
   void init() {
-    int lmt = std::max(21, std::__lg(ts) + 1);
+    int lmt = std::min(21, std::__lg(ts) + 1);
     for (int i = 1; i <= ts; ++i)
       f[0][i] = depth[i], min[0][i] = ver[i];
     for (int i = 1; i < lmt; ++i)
