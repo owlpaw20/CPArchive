@@ -10,7 +10,7 @@ const int MOD = 1e9 + 7;
 
 int n, m, K;
 int f[M][M];
-int sum[M][M];
+int s[M][M];
 char a[N], b[M];
 
 /*  f[i][j][k] = a[1 ~ i] 中选取 k 段，可以匹配 b[1 ~ j] 的方案数
@@ -25,17 +25,18 @@ int main() {
   cin.tie(nullptr);
 
   cin >> n >> m >> K;
-  cin >> (a + 1) >> (b + 1);
+  for (int i = 1; i <= n; ++i) cin >> a[i];
+  for (int i = 1; i <= m; ++i) cin >> b[i];
 
   f[0][0] = 1;
   for (int i = 1; i <= n; i++)
     for (int j = m; j > 0; j--)
       for (int k = K; k > 0; k--) {
         if (a[i] != b[j])
-          sum[j][k] = 0;
+          s[j][k] = 0;
         else
-          sum[j][k] = (sum[j - 1][k] + f[j - 1][k - 1]) % MOD;
-        f[j][k] = (f[j][k] + sum[j][k]) % MOD;
+          s[j][k] = (s[j - 1][k] + f[j - 1][k - 1]) % MOD;
+        f[j][k] = (f[j][k] + s[j][k]) % MOD;
       }
 
   cout << f[m][K] << endl;
