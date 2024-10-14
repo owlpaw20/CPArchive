@@ -37,10 +37,8 @@ int main() {
       for (int k = 0; k <= 9; k++)
         for (int l = 0; l <= 9; l++)
           for (int m = 0; m <= 9; m++)
-            if (vis[i][j][k][l][m] == n)
-              ans++;
+            ans += vis[i][j][k][l][m] == n;
 
-  fflush(stdout);
-  cout << ans << endl;
+  cout << ans << flush;
   return 0;
 }
