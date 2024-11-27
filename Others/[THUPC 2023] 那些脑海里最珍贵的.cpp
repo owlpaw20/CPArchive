@@ -105,11 +105,12 @@ void reapply_passive_skills(int t = -1) {
   for (int t = 0; t < 2; ++t) {
     f64 average = 0, strong = 0;  // 统计被动效果叠加层数
     for (int i = 1; i <= member_cnt[t]; ++i)
-      if (team[t][i].status)       // 对于当前队伍中所有还活着的对应类型队员
+      if (team[t][i].status) {     // 对于当前队伍中所有还活着的对应类型队员
         if (team[t][i].type == 1)  // 统计 Average 被动叠加层数
           average += PSV_SKL_MUL[1][team[t][i].psv_skl];
         else if (team[t][i].type == 2)  // 统计 Strong 被动叠加层数
           strong += PSV_SKL_MUL[2][team[t][i].psv_skl];
+      }
 
     // 根据上限进行相应调整
     average = std::min(average, 0.1);

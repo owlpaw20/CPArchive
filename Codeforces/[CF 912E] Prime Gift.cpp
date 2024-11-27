@@ -1,14 +1,12 @@
-#include <cstdio>
-#include <vector>
-#include <numeric>
 #include <algorithm>
+#include <iostream>
+#include <vector>
 
 using u64 = unsigned long long;
-using u128 = unsigned __int128;
+using u128 = __uint128_t;
 
 const int MAX_N = 20;
-const u64 MAX_V = 1e18;
-const int CAPACITY = 2e6 + 5;
+const u64 MAX_V = 1'000'000'000'000'000'000;
 
 int N, p[MAX_N], K;
 std::vector<u64> set_A, set_B;
@@ -37,7 +35,7 @@ bool check(const u64 x) {
   int cnt = 0;
   int b = set_B.size() - 1;
 
-  for (const u64 a : set_A) {
+  for (u64 a : set_A) {
     while (~b && a * set_B[b] > x) --b;
     cnt += b + 1;
   }
@@ -46,13 +44,13 @@ bool check(const u64 x) {
 }
 
 int main() {
-  scanf("%d\n", &N);
-  for (int i = 1; i <= N; ++i) scanf("%d ", &p[i]);
+  std::ios::sync_with_stdio(false);
+  std::cin.tie(nullptr);
 
-  scanf("%d\n", &K);
+  std::cin >> N;
+  for (int i = 1; i <= N; ++i) std::cin >> p[i];
 
-  set_A.reserve(CAPACITY);
-  set_B.reserve(CAPACITY);
+  std::cin >> K;
 
   DFS_set_A(1, 1);
   DFS_set_B(2, 1);
@@ -63,9 +61,8 @@ int main() {
   set_B.erase(std::unique(set_B.begin(), set_B.end()), set_B.end());
 
   u64 l = 0, r = MAX_V, mid;
-  while (l < r)
-    check(mid = (l + r) >> 1) ? (r = mid) : (l = mid + 1);
+  while (l < r) check(mid = (l + r) >> 1) ? (r = mid) : (l = mid + 1);
 
-  printf("%llu\n", r);
-  return fflush(stdout), 0;
+  std::cout << r << '\n';
+  return 0;
 }
