@@ -2,7 +2,7 @@
 
 namespace FastIO {
   // clang-format off
-  const int MAX_BUF = 1 << 20;
+  const int MAX_BUF = 1 << 16;
   char buf[MAX_BUF], *p1, *p2, pbuf[MAX_BUF], *pp = pbuf;
   char getchar() { return (p1 == p2 && (p2 = (p1 = buf) + fread(buf, 1, MAX_BUF, stdin), p1 == p2) ? EOF : *p1++); }
   void putchar(char c) { (((pp - pbuf == MAX_BUF) && (fwrite(pbuf, 1, MAX_BUF, stdout), pp = pbuf)), *pp++ = c); }
@@ -25,24 +25,40 @@ namespace FastIO {
 }  // namespace FastIO
 using namespace FastIO;
 
-using i64 = long long;
+using TUP = std::tuple<int, int, int>;
 
-const int MAX_N = 100'000'005;
-const int MAX_PI = 5'761'455;
+const int MAX_N = 2'000'000;
 
-int N, q;
-int p[MAX_PI + 5], cnt;
-std::bitset<MAX_N> is_composite;
+int N, M;
+int a[MAX_N + 5];
 
-void prep() {
-  for (int i = 2; i <= N && (is_composite.test(i) || (p[++cnt] = i)); ++i)
-    for (int j = 1; j <= cnt && p[j] * i <= N; ++j)
-      if (is_composite.set(p[j] * i), i % p[j] == 0)
-        break;
-}
+std::vector<std::vector<TUP>> qd(MAX_N + 5);
+int ans[MAX_N + 5];
+
+struct Fenwick {
+  int c[MAX_N + 5];
+  void upd(int x) { for (; x <= MAX_N && ++c[x]; x += x & -x); }
+  int qry(int x) {
+    int sum = 0;
+    for (; x; x -= x & -x) sum += c[x];
+    return sum;
+  }
+} fwk;
 
 int main() {
-  N = read<int>(), q = read<int>(), prep();
-  while (q--) write(p[read<int>()]), putchar('\n');
+  N = read<int>(), M = read<int>();
+  for (int i = 1; i <= N; ++i) a[i] = read<int>();
+
+  for (int i = 1, l, r, x; i <= M; ++i) {
+    l = read<int>(), r = read<int>(), x = read<int>();
+    qd[l - 1].emplace_back(x, -1, i);
+    qd[r].emplace_back(x, 1, i);
+  }
+
+  for (int i = 1; i <= N && (fwk.upd(a[i]), true); ++i)
+    for (auto [x, v, id] : qd[i])
+      ans[id] += v * fwk.qry(x);
+
+  for (int i = 1; i <= M; ++i) write(ans[i]), putchar('\n');
   return flush(), 0;
 }

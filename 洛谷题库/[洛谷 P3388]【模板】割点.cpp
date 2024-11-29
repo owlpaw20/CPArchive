@@ -1,52 +1,53 @@
 #include <bits/stdc++.h>
 
-const int MAX_N = 2e4 + 5;
+const int MAX_N = 20'005;
 
 int N, M;
-std::vector<std::vector<int>> g;
+std::vector<std::vector<int>> gg;
 
-int dfn[MAX_N], low[MAX_N], ts, cr_cnt;
-bool cut[MAX_N];
+int dfn[MAX_N], low[MAX_N], ts;
+bool is_cut[MAX_N];
 
-void Tarjan(int u, int fa) {
+bool Tarjan(int u, int fa) {
   dfn[u] = low[u] = ++ts;
 
-  for (int v : g[u]) {
+  int cr_cnt = 0;
+
+  for (int v : gg[u])
     if (!dfn[v]) {
       Tarjan(v, u);
       low[u] = std::min(low[u], low[v]);
-      if (low[v] >= dfn[u]) u == fa ? ++cr_cnt : cut[u] = true;
+      if (low[v] >= dfn[u]) u == fa ? ++cr_cnt : is_cut[u] = true;
     } else if (v != fa)
       low[u] = std::min(low[u], dfn[v]);
-  }
+
+  return cr_cnt >= 2;
 }
+
+std::vector<int> cut;
 
 int main() {
   std::ios::sync_with_stdio(false);
   std::cin.tie(nullptr);
 
   std::cin >> N >> M;
-  g.resize(N + 1);
+  gg.resize(N + 1);
 
-  while (M--) {
-    static int u, v;
+  for (int i = 1, u, v; i <= M; ++i) {
     std::cin >> u >> v;
-    g[u].push_back(v), g[v].push_back(u);
+    gg[u].push_back(v);
+    gg[v].push_back(u);
   }
-
-  for (int i = 1; i <= N; ++i) {
-    if (dfn[i]) continue;
-    cr_cnt = 0;  // 根节点的子节点数
-    Tarjan(i, i);
-    if (cr_cnt >= 2) cut[i] = true;
-  }
-
-  std::cout << std::accumulate(cut + 1, cut + N + 1, 0) << '\n';
 
   for (int i = 1; i <= N; ++i)
-    if (cut[i])
-      std::cout << i << ' ';
+    if (!dfn[i] && Tarjan(i, i))
+      is_cut[i] = true;
 
-  std::cout.flush();
+  for (int i = 1; i <= N; ++i)
+    if (is_cut[i])
+      cut.push_back(i);
+
+  std::cout << cut.size() << '\n';
+  for (int c : cut) std::cout << c << ' ';
   return 0;
 }

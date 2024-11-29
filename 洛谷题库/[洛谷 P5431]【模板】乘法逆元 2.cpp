@@ -27,22 +27,33 @@ using namespace FastIO;
 
 using i64 = long long;
 
-const int MAX_N = 100'000'005;
-const int MAX_PI = 5'761'455;
+const int MAX_N = 5'000'005;
 
-int N, q;
-int p[MAX_PI + 5], cnt;
-std::bitset<MAX_N> is_composite;
+int N, p, k;
+int a[MAX_N], pre_p[MAX_N], suf_p[MAX_N];
 
-void prep() {
-  for (int i = 2; i <= N && (is_composite.test(i) || (p[++cnt] = i)); ++i)
-    for (int j = 1; j <= cnt && p[j] * i <= N; ++j)
-      if (is_composite.set(p[j] * i), i % p[j] == 0)
-        break;
+int power(int b, int e, int mod) {
+  int res = 1;
+  for (; e; e >>= 1)
+    ((e & 1) && (res = (i64)res * b % mod)), b = (i64)b * b % mod;
+  return res;
 }
 
 int main() {
-  N = read<int>(), q = read<int>(), prep();
-  while (q--) write(p[read<int>()]), putchar('\n');
+  N = read<int>(), p = read<int>(), k = read<int>();
+  for (int i = 1; i <= N; ++i) a[i] = read<int>();
+
+  pre_p[0] = suf_p[N + 1] = 1;
+  for (int i = 1; i <= N; ++i) pre_p[i] = (i64)pre_p[i - 1] * a[i] % p;
+  for (int i = N; i >= 1; --i) suf_p[i] = (i64)suf_p[i + 1] * a[i] % p;
+
+  int ans = 0;
+
+  for (int i = 1, coeff = 1; i <= N; ++i) {
+    coeff = (i64)coeff * k % p;
+    (ans += (i64)pre_p[i - 1] % p * suf_p[i + 1] % p * coeff % p) %= p;
+  }
+
+  write((i64)ans * power(pre_p[N], p - 2, p) % p);
   return flush(), 0;
 }

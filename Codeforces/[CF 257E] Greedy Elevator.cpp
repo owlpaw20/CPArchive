@@ -7,7 +7,7 @@ long long ans[MAX_N];
 
 struct Event {
   int t, s, f, id;
-  auto operator<=>(const Event& rhs) const = default;
+  auto operator<=>(const Event&) const = default;
 } e[MAX_N];
 
 std::vector<std::vector<int>> wait;
